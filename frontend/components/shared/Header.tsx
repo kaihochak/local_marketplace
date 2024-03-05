@@ -7,8 +7,14 @@ const Header = () => {
   return (
     <header className="w-full border-b">
         <div className="wrapper flex items-center justify-between">
-            <Link href="/" className="w-36">
-                <Image src="/assets/images/favicon.ico" width={128} height={38} alt="LM_logo" />
+            <Link href="/" className="w-12">
+                <Image 
+                    src="/assets/images/favicon.ico" 
+                    width={48}
+                    height={48}
+                    alt="LM_logo" 
+                    priority={true}
+                />
             </Link>
 
             <div className="flex w-32 justify-end gap-3">
