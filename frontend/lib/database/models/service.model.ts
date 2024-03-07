@@ -1,36 +1,49 @@
 import { Document, Schema, model, models } from "mongoose";
 
 export interface IService extends Document {
+  title: string;
+  description?: string;
+  location?: string;
+  imageUrl: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  price: number; // Optimized to number for calculations
+  isFree: boolean;
+  url?: string;
+  categoryId: Schema.Types.ObjectId;
+  providerId: Schema.Types.ObjectId;
+}
+
+const ServiceSchema = new Schema<IService>({
+  title: { type: String, required: true },
+  description: { type: String },
+  location: { type: String },
+  imageUrl: { type: String, required: true },
+  startDateTime: { type: Date, required: true }, // Consider if default Date.now is appropriate
+  endDateTime: { type: Date, required: true }, // Consider if default Date.now is appropriate
+  price: { type: Number, required: true }, // Changed to Number
+  isFree: { type: Boolean, default: false },
+  url: { type: String },
+  categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
+  providerId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+}, { timestamps: true }); // Enables createdAt and updatedAt fields automatically
+
+const Service = models.Service || model<IService>('Service', ServiceSchema);
+
+// Define a TypeScript type for use in API responses or client-side interactions
+export type ServiceItem = {
   _id: string;
   title: string;
   description?: string;
   location?: string;
-  createdAt: Date;
   imageUrl: string;
   startDateTime: Date;
   endDateTime: Date;
-  price: string;
+  price: number; // Keep as number to match the model
   isFree: boolean;
   url?: string;
-  category: { _id: string, name: string }
-  provider: { _id: string, firstName: string, lastName: string }
-}
-
-const ServiceSchema = new Schema({
-  title: { type: String, required: true },
-  description: { type: String },
-  location: { type: String },
-  createdAt: { type: Date, default: Date.now },
-  imageUrl: { type: String, required: true },
-  startDateTime: { type: Date, default: Date.now },
-  endDateTime: { type: Date, default: Date.now },
-  price: { type: String },
-  isFree: { type: Boolean, default: false },
-  url: { type: String },
-  category: { type: Schema.Types.ObjectId, ref: 'Category' },
-  provider: { type: Schema.Types.ObjectId, ref: 'User' },
-})
-
-const Service = models.Service || model('Service', ServiceSchema);
+  categoryId: string; // Assuming this will be converted to string for frontend use
+  providerId: string; // Assuming this will be converted to string for frontend use
+};
 
 export default Service;

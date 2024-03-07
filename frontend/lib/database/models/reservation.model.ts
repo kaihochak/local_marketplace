@@ -1,52 +1,54 @@
-import { Schema, model, models, Document } from 'mongoose'
+import { Document, Schema, model, models } from 'mongoose';
 
+interface IUserRef {
+  _id: Schema.Types.ObjectId;
+  firstName: string;
+  lastName: string;
+}
+
+interface IServiceRef {
+  _id: Schema.Types.ObjectId;
+  title: string;
+}
+
+// Define the IReservation interface for use in the rest of the application
 export interface IReservation extends Document {
-  createdAt: Date
-  stripeId: string
-  totalAmount: string
-  service: {
-    _id: string
-    title: string
-  }
-  buyer: {
-    _id: string
-    firstName: string
-    lastName: string
-  }
+  stripeId: string;
+  totalAmount: number;
+  reservationDate: Date;
+  clientId: IUserRef;
+  serviceId: IServiceRef;
+  notes?: string;
+  status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
 }
 
-export type IReservationItem = {
-  _id: string
-  totalAmount: string
-  createdAt: Date
-  eventTitle: string
-  eventId: string
-  buyer: string
+const ReservationSchema = new Schema<IReservation>({
+  stripeId: { type: String, required: true },
+  totalAmount: { type: Number, required: true },
+  reservationDate: { type: Date, required: true },
+  clientId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  serviceId: { type: Schema.Types.ObjectId, ref: 'Service', required: true },
+  notes: String,
+  status: { 
+    type: String, 
+    enum: ['pending', 'confirmed', 'completed', 'cancelled'], 
+    default: 'pending' 
+  },
+}, { timestamps: true });
+
+const Reservation = models.Reservation || model<IReservation>('Reservation', ReservationSchema);
+
+// Define the IReservationItem type for use in API responses or elsewhere in the application
+export type ReservationItem = {
+  _id: string;
+  createdAt: Date;
+  stripeId: string;
+  totalAmount: number; 
+  reservationDate: Date;
+  clientId: { _id: string, firstName: string, lastName: string };
+  serviceId: { _id: string, title: string };
+  notes: string;
+  status: string;
 }
 
-const ReservationSchema = new Schema({
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  stripeId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  totalAmount: {
-    type: String,
-  },
-  service: {
-    type: Schema.Types.ObjectId,
-    ref: 'Event',
-  },
-  client: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
-})
-
-const Reservation = models.Reservation || model('Reservation', ReservationSchema)
-
-export default Reservation
+export default Reservation;
