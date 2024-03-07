@@ -41,7 +41,7 @@ const ReservationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Event',
   },
-  buyer: {
+  client: {
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
