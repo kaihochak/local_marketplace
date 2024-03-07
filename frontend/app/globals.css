@@ -74,7 +74,8 @@
 }
 
 body {
-  font-family: var(--font-poppins)
+  font-family: var(--font-poppins);
+  overflow-y: hidden;
 }
 
 .filter-grey {
@@ -238,6 +239,15 @@ body {
   .scrollbar-hide {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+  
+    /* Bottom bar */
+  .bottom-bar-container {
+    @apply md:hidden z-50 w-full sticky bottom-0 bg-secondary px-5 py-4 rounded-3xl shadow-t-md;
+  }
+
+  .bottom-bar {
+    @apply flex justify-evenly bg-primary rounded-2xl ;
   }
 }
 

@@ -5,7 +5,7 @@ import { Button } from "../ui/button"
 
 const Header = () => {
     return (
-        <header className="w-full border-b">
+        <header className="w-full bg-secondary sticky top-0 z-50">
             <div className="wrapper flex items-center justify-between">
 
                 {/* Logo */}
@@ -23,7 +23,7 @@ const Header = () => {
                 </Link>
 
                 {/* Signin or "Create & Profile" */}
-                <div className="flex w-32 justify-end gap-3">
+                <div className="flex gap-3">
 
                     {/*  */}
                     <SignedIn>
