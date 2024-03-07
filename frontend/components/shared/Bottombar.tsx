@@ -32,7 +32,7 @@ const Bottombar = () => {
 
         {/* Profile */}
         <Link
-            href="/profile"
+            href="/profile" 
             className={`p-4 transition
                       ${pathname === "/profile" ? " [&_*]:text-primary-foreground": " [&_*]:text-primary-foreground/50"}`}
           >

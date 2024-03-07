@@ -30,7 +30,7 @@ const Header = () => {
                         <div className="md:flex-between hidden w-full max-w-xs gap-x-4">
                             <Link 
                                 href={"/services/create"} 
-                                className="text-primary-500 flex-center p-medium-16 whitespace-nowrap">
+                                className="text-primary-foreground/80 flex-center p-medium-16 whitespace-nowrap">
                                     + Create new service
                             </Link>
                             <UserButton afterSignOutUrl="/" />
@@ -38,7 +38,7 @@ const Header = () => {
                     </SignedIn>
 
                     <SignedOut>
-                        <Button asChild className="rounded-full" size="lg">
+                        <Button asChild className="rounded-full bg-primary/70" size="lg">
                             <Link href="/sign-in">
                                 Sign in
                             </Link>

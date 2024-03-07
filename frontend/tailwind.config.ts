@@ -20,10 +20,10 @@ module.exports = withUt({
     extend: {
       colors: {
         primary: {
-          500: '#624CF5',
-          50: ' #F6F8FD',
-          DEFAULT: '#624CF5',
-          foreground: 'hsl(var(--primary-foreground))',
+          500: '#D4D2CE',
+          50: '#f5f5f5',
+          DEFAULT: '#ecebe9',
+          foreground: '#000000',
         },
         coral: {
           500: '#15BF59',
@@ -42,7 +42,7 @@ module.exports = withUt({
         ring: 'hsl(var(--ring))',
         foreground: 'hsl(var(--foreground))',
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
+          DEFAULT: '#fafafa',
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
@@ -50,7 +50,7 @@ module.exports = withUt({
           foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
+          DEFAULT: '#ecebe9',
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
