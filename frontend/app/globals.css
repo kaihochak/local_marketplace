@@ -3,18 +3,14 @@
 @tailwind utilities;
 
 
-html, body {
-  background-color: #E8E8E9; /* Replace with any color you wish */
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+html, body {  
+  @apply bg-secondary text-secondary-foreground;
 }
 
 
 @layer base {
   :root {
-    --background: #E8E8E9;
+    --background: #EAEBEB;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;

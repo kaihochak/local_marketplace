@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="flex flex-col px-6 pt-6 sticky top-0 bg-secondary z-50">
+      <section className="flex flex-col px-6 pt-6 sticky top-0 bg-secondary z-50 ">
         <div className='flex justify-between pb-4'>
           <Search />
           <FilterButton />
@@ -45,6 +45,7 @@ export default function Home() {
         <CategoryGroup onCategorySelect={(category: string) => setSelectedCategory(category)} />
       </section>
 
+      {/* Collections */}
       <section className="pl-6 py-4">
         <div className="flex flex-col gap-y-4">
           {categories.map((title) => (

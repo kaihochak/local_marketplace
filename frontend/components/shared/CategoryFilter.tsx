@@ -72,16 +72,16 @@ const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string
     return (
       // each card has the same width
       <div onClick={() => handleSelectCategory(category)}  
-          className={`flex flex-col p-2  rounded-md cursor-pointer min-w-[80px] min-h-[110px] place-items-center justify-end pb-5 gap-y-2
-                    ${category === selectedCategory ? " bg-accent/80 text-accent-foreground [&_*]:font-bold" : "bg-primary"}`}>
+          className={`flex flex-col p-2 pb-6 gap-y-2 rounded-md cursor-pointer min-w-[80px] sm:min-w-[200px] min-h-[110px] sm:min-h-[250px] place-items-center justify-end 
+                    ${category === selectedCategory ? " bg-accent-light" : "bg-primary"}`}>
           <div className="text-[32px]">{icons[category]}</div>
-        <div className="h-[20%] text-[14px] text-center leading-4 tracking-tighter">{category}</div>
+        <div className="h-[20%] text-[16px] text-center leading-4 tracking-tighter">{category}</div>
       </div>
     )
   }
 
   return (
-    <div className="flex gap-x-3 pr-10 pb-4 overflow-x-auto scrollbar-hide">
+    <div className="flex gap-x-2 pr-10 pb-4 overflow-x-auto scrollbar-hide">
       <FilterCard category="All" />
       {categories.map(category => (
         <FilterCard key={category._id} category={category.name} />
