@@ -5,7 +5,7 @@ import { Button } from "../ui/button"
 
 const Header = () => {
     return (
-        <header className="w-full bg-secondary sticky top-0 z-50">
+        <header className="w-full bg-primary sticky top-0 z-50">
             <div className="wrapper flex items-center justify-between">
 
                 {/* Logo */}

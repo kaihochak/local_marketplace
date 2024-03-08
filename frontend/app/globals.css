@@ -243,7 +243,7 @@ body {
   
     /* Bottom bar */
   .bottom-bar-container {
-    @apply md:hidden z-50 w-full sticky bottom-0 bg-secondary px-5 py-4 rounded-3xl shadow-t-md;
+    @apply md:hidden z-50 w-full sticky bottom-0 bg-secondary px-5 py-4 rounded-t-3xl shadow-t-md;
   }
 
   .bottom-bar {
