@@ -19,16 +19,37 @@ module.exports = withUt({
     },
     extend: {
       colors: {
-        primary: {
-          500: '#D4D2CE',
-          50: '#f5f5f5',
+        primary: { // Grey *
+          DEFAULT: '#CDCCC8', // Grey - color name in figma
+          foreground: '#151515', // Black - color name in figma
+        },
+        secondary: { // White *
+          DEFAULT: '#EAEBEB', // White - color name in figma
+          foreground: '#151515', // Black - color name in figma
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
           DEFAULT: '#ecebe9',
-          foreground: '#000000',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: { // Orange *
+          DEFAULT: '#D46534', // Orange - color name in figma
+          foreground: '#151515', // Black - color name in figma
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
         coral: {
-          500: '#15BF59',
+          500: '#15BF59', // Green - color name in figma
         },
-
         grey: {
           600: '#545454', // Subdued - color name in figma
           500: '#757575',
@@ -41,30 +62,6 @@ module.exports = withUt({
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         foreground: 'hsl(var(--foreground))',
-        secondary: {
-          DEFAULT: '#fafafa',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: '#ecebe9',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],
