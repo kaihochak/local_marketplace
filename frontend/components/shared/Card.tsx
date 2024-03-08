@@ -11,7 +11,7 @@ const Card = () => {
     const isLoading = false;
 
     return (
-        <div className='flex flex-col gap-y-2'>
+        <div className='flex flex-col gap-y-2 '>
             { isLoading ?
                 // Skeleton 
                 <div>
@@ -24,13 +24,13 @@ const Card = () => {
                 // Card content
                 <div>
                     {/* Card content */}
-                    <div className='border border-gray-200 h-[170px] w-[250px] rounded-xl '>
+                    <div className='bg-primary border border-gray-200 h-[170px] w-[250px] rounded-xl '>
                         <div className='flex flex-col mx-3 my-2 gap-y-1'>
                             <div className="border border-gray-200 rounded-xl overflow-hidden h-[90px] relative">
                                 <CiBookmark className="absolute top-1 right-0 text-gray-400 mr-1 mt-1" />
                                 <div className='absolute top-1 left-1 flex items-center'>  
                                 <p className="flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
-                                    <GoClock className='text-gray-400'/> <div className='text-xs'>Available Tomorrow</div>
+                                    <GoClock className='text-gray-400'/> <div className='text-xs '>Available Tomorrow</div>
                                 </p>
                                 </div>
                                 <img className="mx-auto" />

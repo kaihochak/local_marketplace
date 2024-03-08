@@ -19,31 +19,16 @@ module.exports = withUt({
     },
     extend: {
       colors: {
-        primary: {
-          500: '#D4D2CE',
-          50: '#f5f5f5',
-          DEFAULT: '#ecebe9',
-          foreground: '#000000',
+        primary: { // Grey *
+          demo: '#D46534', // 
+          DEFAULT: "#e1e0de", // Grey
+          dark: '#CDCCC8', // Grey
+          light: '#F4F4F4', // White Grey
+          foreground: '#151515', // Black
         },
-        coral: {
-          500: '#15BF59',
-        },
-
-        grey: {
-          600: '#545454', // Subdued - color name in figma
-          500: '#757575',
-          400: '#AFAFAF', // Disabled - color name in figma
-          50: '#F6F6F6', // White Grey - color name in figma
-        },
-        black: '#000000',
-        white: '#FFFFFF',
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        foreground: 'hsl(var(--foreground))',
-        secondary: {
-          DEFAULT: '#fafafa',
-          foreground: 'hsl(var(--secondary-foreground))',
+        secondary: { // White *
+          DEFAULT: '#EAEBEB', // White
+          foreground: '#151515', // Black
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -53,9 +38,11 @@ module.exports = withUt({
           DEFAULT: '#ecebe9',
           foreground: 'hsl(var(--muted-foreground))',
         },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+        accent: { // Orange *
+          DEFAULT: '#D46534', // Orange
+          dark: '#BE5A2E', // Dark Orange
+          light: '#F0A16E', // Light Orange
+          foreground: '#151515', // Black
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
@@ -65,6 +52,21 @@ module.exports = withUt({
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        coral: {
+          500: '#15BF59', // Green
+        },
+        grey: {
+          600: '#545454', // Subdued
+          500: '#757575',
+          400: '#AFAFAF', // Disabled
+          50: '#F6F6F6', // White Grey
+        },
+        black: '#000000',
+        white: '#FFFFFF',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        foreground: 'hsl(var(--foreground))',
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],
@@ -73,6 +75,61 @@ module.exports = withUt({
       backgroundImage: {
         'dotted-pattern': "url('/assets/images/dotted-pattern.png')",
         'hero-img': "url('/assets/images/hero.png')",
+      },
+      fontSize: {
+        '3xs' : ['0.5rem', {
+          lineHeight: '0.75rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        '2xs': ['0.625rem', {
+          lineHeight: '0.75rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        'xs': ['0.75rem', {
+          lineHeight: '1rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        's': ['0.875rem', {
+          lineHeight: '1.25rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        'm': ['1rem', {
+          lineHeight: '1.5rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        'l': ['1.125rem', {
+          lineHeight: '1.75rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        'xl': ['1.5rem', {
+          lineHeight: '1.75rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        '2xl': ['1.75rem', {
+          lineHeight: '1.75rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+        '3xl': ['1.875rem', {
+          lineHeight: '2.25rem',
+          letterSpacing: '-0.02em',
+          fontWeight: '400',
+        }],
+      },
+      screens: {
+        'xs': '380px', // mobile SE not included
+        'sm': '640px', // tablet
+        'md': '768px', 
+        'lg': '1024px', // desktop
+        'xl': '1280px',
+        '2xl': '1536px',
       },
       borderRadius: {
         lg: 'var(--radius)',
