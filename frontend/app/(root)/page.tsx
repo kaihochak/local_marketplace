@@ -1,22 +1,19 @@
 import Collection from "@/components/shared/Collection";
+import Search from "@/components/shared/Search";
+import FilterButton from "@/components/shared/FilterButton";
+import CategoryGroup from "@/components/shared/CategoryFilter";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <>
       <section className="flex justify-between px-6 pt-6">
-        <div>
-          Search Bar
-        </div>
-        <div>
-          Filters Button
-        </div>
+        <Search/>
+        <FilterButton/>
       </section>
 
       <section className="pl-6 py-6">
-        <div>
-          List of Filters
-        </div>
+        <CategoryGroup/>
 
         <div className="flex flex-col gap-y-4">
           <Collection title={"Recommendations"}/>
