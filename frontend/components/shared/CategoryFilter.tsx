@@ -15,7 +15,7 @@ import { Collaboratory } from "@/public/assets/icons/Collaboratory";
 import { Clinic } from "@/public/assets/icons/Clinic";
 import { Tools } from "@/public/assets/icons/Tools";
 
-const CategoryFilter = () => {
+const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string) => void}) => {
   const [categories, setCategories] = useState<{_id: string; name: string}[]>([
     {_id: "1", name: "Home"},
     {_id: "2", name: "Personal"},
@@ -26,7 +26,7 @@ const CategoryFilter = () => {
     {_id: "7", name: "Collab"},
     {_id: "8", name: "Health"}
   ]);
-
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   useEffect(() => {
     // const getCategories = async () => {
@@ -69,19 +69,27 @@ const CategoryFilter = () => {
     "Health": <Clinic />
   }
 
-  
+
+  const handleSelectCategory = (category: string) => {
+    setSelectedCategory(category);
+    if (category == "All") { category = "Recommendations" }
+    onCategorySelect(category);
+  };
+
   const FilterCard = ({ category }: { category: string }) => {
     return (
       // each card has the same width
-      <div className="flex flex-col p-2 bg-primary rounded-md cursor-pointer min-w-[80px] min-h-[110px] place-items-center justify-end pb-5 gap-y-2 ">
-        <div className="text-[32px]">{icons[category]}</div>
-        <div className="h-[20%] text-[14px] text-center leading-4 tracking-tighter">{category}</div>
+      <div onClick={() => handleSelectCategory(category)}  
+          className={`flex flex-col p-2 pb-6 gap-y-2 rounded-md cursor-pointer min-w-[80px] sm:min-w-[200px] min-h-[110px] sm:min-h-[250px] place-items-center justify-end 
+                    ${category === selectedCategory ? " bg-accent-light" : "bg-primary"}`}>
+          <div className="text-[32px]">{icons[category]}</div>
+        <div className="h-[20%] text-[16px] text-center leading-4 tracking-tighter">{category}</div>
       </div>
     )
   }
 
   return (
-    <div className="flex gap-x-4 pr-10 pb-4 overflow-x-auto scrollbar-hide">
+    <div className="flex gap-x-2 pr-10 pb-4 overflow-x-auto scrollbar-hide">
       <FilterCard category="All" />
       {categories.map(category => (
         <FilterCard key={category._id} category={category.name} />

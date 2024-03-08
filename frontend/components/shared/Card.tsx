@@ -14,7 +14,7 @@ const Card = () => {
     const isLoading = false;
 
     return (
-        <div className='flex flex-col gap-y-2'>
+        <div className='flex flex-col gap-y-2 '>
             { isLoading ?
                 // Skeleton 
                 <div>
@@ -27,7 +27,7 @@ const Card = () => {
                 // Card content
                 <div>
                     {/* Card content */}
-                    <div className='border border-gray-200 h-[170px] w-[250px] rounded-xl '>
+                    <div className='bg-primary border border-gray-200 h-[170px] w-[250px] rounded-xl '>
                         <div className='flex flex-col mx-3 my-2 gap-y-1'>
                             <div className="border border-gray-200 rounded-xl overflow-hidden h-[90px] relative">
                                 <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />

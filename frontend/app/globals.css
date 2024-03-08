@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+html, body {  
+  @apply bg-secondary text-secondary-foreground;
+}
+
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: #EAEBEB;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -247,7 +253,7 @@ body {
   }
 
   .bottom-bar {
-    @apply flex justify-evenly bg-primary/80 rounded-2xl ;
+    @apply flex justify-evenly bg-primary rounded-2xl ;
   }
 }
 

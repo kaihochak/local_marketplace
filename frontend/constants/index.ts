@@ -10,3 +10,15 @@ export const eventDefaultValues = {
   isFree: false,
   url: '',
 }
+
+export const categories = [
+  "Recommendations",
+  "Home",
+  "Personal",
+  "Tech",
+  "Advisory",
+  "Creative",
+  "Logistic",
+  "Collab",
+  "Health",
+];
