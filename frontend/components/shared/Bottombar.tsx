@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
-import { MdOutlineStorefront } from "react-icons/md";
-import { IoMdAdd } from "react-icons/io";
-import { CiUser } from "react-icons/ci";
+import { Profile } from "@/public/assets/icons/Profile";
+import { Add } from "@/public/assets/icons/Add";
+import { ConvenientStore } from "@/public/assets/icons/ConvenientStore";
 
 const Bottombar = () => {
   const pathname = usePathname()
@@ -18,7 +18,7 @@ const Bottombar = () => {
             className={`p-4 transition
                       ${pathname === "/" ? "[&_*]:text-primary-foreground": "[&_*]:text-primary-foreground/50"}`}
           >
-            <MdOutlineStorefront className='text-[28px]'/>
+            <ConvenientStore className='text-[28px]'/>
         </Link>
 
         {/* Create */}
@@ -27,7 +27,7 @@ const Bottombar = () => {
             className={`p-4 transition
                       ${pathname === "/services/create" ? " [&_*]:text-primary-foreground": " [&_*]:text-primary-foreground/50"}`}
           >
-            <IoMdAdd className='text-[28px]'/>
+            <Add className='text-[28px]'/>
         </Link>
 
         {/* Profile */}
@@ -36,7 +36,7 @@ const Bottombar = () => {
             className={`p-4 transition
                       ${pathname === "/profile" ? " [&_*]:text-primary-foreground": " [&_*]:text-primary-foreground/50"}`}
           >
-            <CiUser className='text-[28px]'/>
+            <Profile className='text-[28px]'/>
         </Link>
       </div>
 

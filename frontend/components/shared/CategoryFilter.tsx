@@ -5,7 +5,15 @@
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CarbonHelpDesk } from "@/public/assets/icons/CarbonHelpDesk";
+import { HelpDesk } from "@/public/assets/icons/HelpDesk";
+import { TableBell } from "@/public/assets/icons/TableBell";
+import { Technical } from "@/public/assets/icons/technical";
+import { Professional } from "@/public/assets/icons/professional";
+import { Creative } from "@/public/assets/icons/creative";
+import { Logistic } from "@/public/assets/icons/logistic";
+import { Collaboratory } from "@/public/assets/icons/Collaboratory";
+import { Clinic } from "@/public/assets/icons/Clinic";
+import { Tools } from "@/public/assets/icons/Tools";
 
 const CategoryFilter = () => {
   const [categories, setCategories] = useState<{_id: string; name: string}[]>([
@@ -50,15 +58,15 @@ const CategoryFilter = () => {
   // }
 
   const icons: { [key: string]: JSX.Element } = {
-    "All": <CarbonHelpDesk />,
-    "Home": <CarbonHelpDesk />,
-    "Personal": <CarbonHelpDesk />,
-    "Tech": <CarbonHelpDesk />,
-    "Advisory": <CarbonHelpDesk />,
-    "Creative": <CarbonHelpDesk />,
-    "Logistic": <CarbonHelpDesk />,
-    "Collab": <CarbonHelpDesk />,
-    "Health": <CarbonHelpDesk />
+    "All": <TableBell />,
+    "Home": <Tools />,
+    "Personal": <HelpDesk />,
+    "Tech": <Technical />,
+    "Advisory": <Professional />,
+    "Creative": <Creative />,
+    "Logistic": <Logistic />,
+    "Collab": <Collaboratory />,
+    "Health": <Clinic />
   }
 
   
