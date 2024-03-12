@@ -1,0 +1,175 @@
+import React from 'react'
+import Collection from '@/components/shared/Collection';
+import { formatDateTime } from '@/lib/utils';
+import { SearchParamProps } from '@/types'
+import Image from 'next/image'
+
+
+const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
+
+    // const service = await getServiceById(id);
+    const service = {
+        _id: "1",
+        title: "Service Title",
+        description: "Service Description",
+        category: {
+            _id: "1",
+            name: "Category Name"
+        },
+        imageUrl: "https://picsum.photos/id/237/200/300",
+        price: "100",
+        isFree: false,
+        url: "http://example.com/service",
+        organizer: {
+            _id: "1",
+            firstName: "Organizer First Name",
+            lastName: "Organizer Last Name"
+        },
+        location: "Location",
+        startDateTime: new Date(),
+        endDateTime: new Date(),
+    }
+
+    // const relatedServices = await getRelatedServicesByCategory({
+    //     categoryId: service.category._id,
+    //     serviceId: service._id,
+    //     page: searchParams.page as string,
+    // })
+    const relatedServices = [
+        {
+            _id: "2",
+            title: "Service Title 2",
+            description: "Service Description 2",
+            category: {
+                _id: "1",
+                name: "Category Name"
+            },
+            imageUrl: "http://example.com/image/service2.jpg",
+            price: "200",
+            isFree: false,
+            url: "http://example.com/service2"
+        },
+        {
+            _id: "3",
+            title: "Service Title 3",
+            description: "Service Description 3",
+            category: {
+                _id: "1",
+                name: "Category Name"
+            },
+            imageUrl: "http://example.com/image/service3.jpg",
+            price: "300",
+            isFree: false,
+            url: "http://example.com/service3"
+        },
+        {
+            _id: "4",
+            title: "Service Title 4",
+            description: "Service Description 4",
+            category: {
+                _id: "1",
+                name: "Category Name"
+            },
+            imageUrl: "http://example.com/image/service4.jpg",
+            price: "400",
+            isFree: false,
+            url: "http://example.com/service4"
+        }
+    ]
+
+    return (
+        <>
+        <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
+            <Image 
+              src={service.imageUrl}
+              alt="hero image"
+              width={1000}
+              height={1000}
+              className="h-full min-h-[300px] object-cover object-center"
+            />
+    
+            <div className="flex w-full flex-col gap-8 p-5 md:p-10">
+              <div className="flex flex-col gap-6">
+                <h2 className='h2-bold'>{service.title}</h2>
+    
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <div className="flex gap-3">
+                    <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700">
+                      {service.isFree ? 'FREE' : `$${service.price}`}
+                    </p>
+                    <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
+                      {service.category.name}
+                    </p>
+                  </div>
+    
+                  <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
+                    by{' '}
+                    <span className="text-primary-500">{service.organizer.firstName} {service.organizer.lastName}</span>
+                  </p>
+                </div>
+              </div>
+    
+              {/* <CheckoutButton service={service} /> */}
+    
+              <div className="flex flex-col gap-5">
+                <div className='flex gap-2 md:gap-3'>
+                  <Image src="/assets/icons/calendar.svg" alt="calendar" width={32} height={32} />
+                  <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
+                    <div>
+                      {formatDateTime(service.startDateTime).dateOnly} - {' '}
+                      {formatDateTime(service.startDateTime).timeOnly}
+                    </div>
+                    <div>
+                      {formatDateTime(service.endDateTime).dateOnly} -  {' '}
+                      {formatDateTime(service.endDateTime).timeOnly}
+                    </div>
+                  </div>
+                </div>
+    
+                <div className="p-regular-20 flex items-center gap-3">
+                  <Image src="/assets/icons/location.svg" alt="location" width={32} height={32} />
+                  <p className="p-medium-16 lg:p-regular-20">{service.location}</p>
+                </div>
+              </div>
+    
+              <div className="flex flex-col gap-2">
+                <p className="p-bold-20 text-grey-600">What You'll Learn:</p>
+                <p className="p-medium-16 lg:p-regular-18">{service.description}</p>
+                <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{service.url}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Offered */}
+        <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+            <h2 className="h2-bold">Services Offered</h2>
+        </section>
+
+        {/* Reviews */}
+        <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+            <h2 className="h2-bold">Reviews</h2>
+        </section>
+    
+        {/* Services with the same category */}
+        <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+          <h2 className="h2-bold">Related Services</h2>
+    
+          <Collection 
+            selectedCategory={"All_Services"}
+            title={""}
+            //   data={relatedServices?.data}
+            //   emptyTitle="No Events Found"
+            //   emptyStateSubtext="Come back later"
+            //   collectionType="All_Events"
+            //   limit={3}
+            //   page={searchParams.page as string}
+            //   totalPages={relatedServices?.totalPages}
+            />
+        </section>
+        </>
+      )
+}
+
+export default ServicePost

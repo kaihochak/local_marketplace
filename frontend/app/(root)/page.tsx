@@ -23,10 +23,6 @@ export default function Home() {
 
   useEffect(() => {
     if (selectedCategory && collectionRefs[selectedCategory]?.current) {
-
-      console.log(collectionRefs[selectedCategory]?.current);
-      
-
       collectionRefs[selectedCategory]?.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -50,7 +46,17 @@ export default function Home() {
         <div className="flex flex-col gap-y-4">
           {categories.map((title) => (
             <div ref={collectionRefs[title]} key={title} className='scroll-mt-[200px]'>
-              <Collection selectedCategory={selectedCategory} title={title} />
+              <Collection 
+                selectedCategory={selectedCategory}
+                title={title}
+                // data={events?.data}
+                // emptyTitle="No Events Found"
+                // emptyStateSubtext="Come back later"
+                // collectionType={title}
+                // limit={6}
+                // page={page}
+                // totalPages={events?.totalPages}
+              />
             </div>
           ))}
         </div>
