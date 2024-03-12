@@ -3,7 +3,16 @@ import Collection from '@/components/shared/Collection';
 import { formatDateTime } from '@/lib/utils';
 import { SearchParamProps } from '@/types'
 import Image from 'next/image'
+import { StarEmpty } from '@/public/assets/icons/StarEmpty';
+import { Phone } from '@/public/assets/icons/Phone';
+import { Mail } from '@/public/assets/icons/Mail';
+import { LocationPin } from '@/public/assets/icons/LocationPin';
+import { Globe } from '@/public/assets/icons/Globe';
+import { StarFilled } from '@/public/assets/icons/StarFilled';
 
+// import Slider  from 'react-slick';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
@@ -22,8 +31,8 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
         url: "http://example.com/service",
         organizer: {
             _id: "1",
-            firstName: "Organizer First Name",
-            lastName: "Organizer Last Name"
+            firstName: "FName",
+            lastName: "LName"
         },
         location: "Location",
         startDateTime: new Date(),
@@ -79,77 +88,115 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
     return (
         <>
-        <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
-          <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
-            <Image 
-              src={service.imageUrl}
-              alt="hero image"
-              width={1000}
-              height={1000}
-              className="h-full min-h-[300px] object-cover object-center"
-            />
-    
-            <div className="flex w-full flex-col gap-8 p-5 md:p-10">
-              <div className="flex flex-col gap-6">
-                <h2 className='h2-bold'>{service.title}</h2>
-    
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <div className="flex gap-3">
-                    <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700">
-                      {service.isFree ? 'FREE' : `$${service.price}`}
-                    </p>
-                    <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
-                      {service.category.name}
-                    </p>
-                  </div>
-    
-                  <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
-                    by{' '}
-                    <span className="text-primary-500">{service.organizer.firstName} {service.organizer.lastName}</span>
-                  </p>
+        <section className="justify-center mx-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl ">
+
+            <h2 className='h2-bold'>{service.title}</h2>
+            <div className='h-48 overflow-auto my-4 relative rounded-lg'>
+                <div className="absolute inset-0 bg-white">
+                    <Image 
+                        src={service.imageUrl}
+                        alt="hero image"
+                        layout="fill"
+                        objectFit="contain"
+                    />
                 </div>
-              </div>
-    
-              {/* <CheckoutButton service={service} /> */}
-    
-              <div className="flex flex-col gap-5">
-                <div className='flex gap-2 md:gap-3'>
-                  <Image src="/assets/icons/calendar.svg" alt="calendar" width={32} height={32} />
-                  <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
-                    <div>
-                      {formatDateTime(service.startDateTime).dateOnly} - {' '}
-                      {formatDateTime(service.startDateTime).timeOnly}
-                    </div>
-                    <div>
-                      {formatDateTime(service.endDateTime).dateOnly} -  {' '}
-                      {formatDateTime(service.endDateTime).timeOnly}
-                    </div>
-                  </div>
-                </div>
-    
-                <div className="p-regular-20 flex items-center gap-3">
-                  <Image src="/assets/icons/location.svg" alt="location" width={32} height={32} />
-                  <p className="p-medium-16 lg:p-regular-20">{service.location}</p>
-                </div>
-              </div>
-    
-              <div className="flex flex-col gap-2">
-                <p className="p-bold-20 text-grey-600">What You'll Learn:</p>
-                <p className="p-medium-16 lg:p-regular-18">{service.description}</p>
-                <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{service.url}</p>
-              </div>
             </div>
           </div>
+
+          <div className="flex flex-col gap-4"> {/* Add gap-4 for spacing between items */}
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
+                <Image/>
+                </div>
+                <p className="">{service.organizer.firstName} {service.organizer.lastName}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <StarEmpty className="w-5 h-5" />
+                <p className="">3.2</p>
+                <p className="text-gray-500">(12)</p>
+              </div>
+              <div className="flex items-center gap-2">
+              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                <Phone className="w-5 h-5" />
+              </div>
+                <a href={`tel:$`} className="text-blue-500 underline">587 966 5002</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <a href={`mailto:$`} className="text-blue-500 underline">enya.umanzor@gmail.com</a> {/* Link email for email */}
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                  <LocationPin className="w-5 h-5" />
+                </div>
+                <p className="">24 Whitecres Ave, Calgary AB</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <a href={service.website} className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">enyaumanzor.com</a> {/* Link website and open in new tab */}
+              </div>
+        </div>
+
+        <div className='my-7'>
+          <p>{service.description}</p>
+        </div>
         </section>
 
         {/* Services Offered */}
         <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-            <h2 className="h2-bold">Services Offered</h2>
+          <h2 className="h2-bold">Services Offered</h2>
+          <div className="w-full overflow-auto rounded-lg shadow-md">
+            <table className="w-full min-w-full text-left table-auto">
+              <thead>
+                <tr className="bg-gray-500 text-gray-100 text-sm font-medium">
+                  <th className="px-4 py-2">Service</th>
+                  <th className="px-4 py-2">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-gray-100 text-gray-600 text-sm">
+                  <td className="px-4 py-2">Service 1</td>
+                  <td className="px-4 py-2">$100</td>
+                </tr>
+                <tr className="bg-gray-100 text-gray-600 text-sm">
+                  <td className="px-4 py-2">Service 2</td>
+                  <td className="px-4 py-2">$200</td>
+                </tr>
+                <tr className="bg-gray-100 text-gray-600 text-sm">
+                  <td className="px-4 py-2">Service 3</td>
+                  <td className="px-4 py-2">$300</td>
+                </tr>
+                <tr className="bg-gray-100 text-gray-600 text-sm">
+                  <td className="px-4 py-2">Service 4</td>
+                  <td className="px-4 py-2">$400</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* Reviews */}
         <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
             <h2 className="h2-bold">Reviews</h2>
+
+            <div className="p-4 ">
+              <div className='flex '>
+                <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center">
+                  <Image/>
+                </div>
+                <h3 className="text-lg font-medium">Felix Catton</h3>
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <StarFilled className="w-5 h-5" />
+              </div>
+              <p className="text-gray-700">Hey, I like that...</p>
+            </div>
+
         </section>
     
         {/* Services with the same category */}
@@ -172,4 +219,4 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
       )
 }
 
-export default ServicePost
+export default ServicePost;
