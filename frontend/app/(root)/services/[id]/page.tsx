@@ -8,6 +8,13 @@ import { Mail } from '@/public/assets/icons/Mail';
 import { LocationPin } from '@/public/assets/icons/LocationPin';
 import { Globe } from '@/public/assets/icons/Globe';
 import { StarFilled } from '@/public/assets/icons/StarFilled';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+// import 'swiper/css/effect-coverflow';
+
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
@@ -129,6 +136,17 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             <h2 className='h2-bold'>{service.title}</h2>
             <div className='h-48 overflow-auto my-4 relative rounded-lg'>
                 <div className="absolute inset-0 bg-white">
+                {/* <Swiper
+                  
+                  spaceBetween={50}
+                  slidesPerView={3}
+                >
+                  <SwiperSlide>Slide 1</SwiperSlide>
+                  <SwiperSlide>Slide 2</SwiperSlide>
+                  <SwiperSlide>Slide 3</SwiperSlide>
+                  <SwiperSlide>Slide 4</SwiperSlide>
+                </Swiper>
+                 */}
                 <Image 
                         src={service.image.url1}
                         alt="hero image"
