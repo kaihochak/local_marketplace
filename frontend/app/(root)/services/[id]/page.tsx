@@ -22,6 +22,8 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
           url2: "http://example.com/image/service3.jpg",
           url3: "http://example.com/image/service3.jpg",
         },
+        averageRating: 3.2,
+        totalReviews: 12,
         serviceProvider: {
           _id: "1",
           profileURL: "http://example.com/profile",
@@ -70,6 +72,16 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             },
             rating: "5",
             comment: "Enya let's record a podcast together without drew...",
+          },
+          review3: {
+            user: {
+              _id: "3",
+              profileURL: "http://example.com/profile",
+              firstName: "Josiah",
+              lastName: "",
+            },
+            rating: "2",
+            comment: "Find yourself a real job",
           },
         }
     }
@@ -146,11 +158,13 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                 </div>
                 <p className="">{service.serviceProvider.firstName} {service.serviceProvider.lastName}</p>
               </div>
-              <div className="flex items-center gap-2">
-                <StarEmpty className="w-5 h-5" />
-                <p className="">3.2</p>
-                <p className="text-gray-500">(12)</p>
-              </div>
+              <section>
+                <div className="flex items-center gap-2">
+                  <StarEmpty className="w-5 h-5" />
+                  <p className="">{service.averageRating}</p>
+                  <p className="text-gray-500">{service.totalReviews}</p>
+                </div>
+              </section>
               <div className="flex items-center gap-2">
               <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                 <Phone className="w-5 h-5" />
