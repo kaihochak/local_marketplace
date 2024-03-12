@@ -24,35 +24,30 @@ const HomeHeader = () => {
                     </div>
                 </Link>
 
-                {/* Message Feature */}
-                <div className="flex gap-4">
-                    <Link href="/messages">
-                        <Button asChild className="text-primary-foreground/80">
-                            Messages
-                        </Button>
-                    </Link>
-                </div>
-
                 {/* Signin or "Create & Profile" */}
                 <div className="flex gap-3">
 
                     {/* when signed in */}
                     <SignedIn>
-                        <div className="md:flex-between hidden w-full max-w-xs gap-x-4">
+                        <div className="flex-between w-full max-w-xs gap-x-4 items-center">
                             {/* link to service page */}
-                            <Link 
-                                href={"/services/create"} 
-                                className="text-primary-foreground/80 flex-center p-medium-16 whitespace-nowrap">
-                                    + Create new service
-                            </Link>
+                            <div className="hidden md:block">
+                                <Link 
+                                    href={"/services/create"} 
+                                    className="text-primary-foreground/80 flex-center p-medium-16 whitespace-nowrap">
+                                        + Create new service
+                                </Link>
+                            </div>
                             {/* Link to profile page */}       
-                            <div className="w-12 h-12">
+                            <div className="hidden md:flex items-center w-12 h-12">
                                 <ProfileButton />
                             </div>     
                             {/* Message */}
-                            <Link href="/messages">
-                                Messages
-                            </Link>
+                            <div className="flex">
+                                <Link href="/messages">
+                                    Messages
+                                </Link>
+                            </div>
                         </div>
                     </SignedIn>
 

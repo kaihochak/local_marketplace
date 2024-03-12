@@ -7,14 +7,13 @@ import { Phone } from '@/public/assets/icons/Phone';
 import { Mail } from '@/public/assets/icons/Mail';
 import { LocationPin } from '@/public/assets/icons/LocationPin';
 import { Globe } from '@/public/assets/icons/Globe';
-import { StarFilled } from '@/public/assets/icons/StarFilled';
+import ServiceReviews from '@/components/shared/ServiceReviews';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 // import 'swiper/css';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 // import 'swiper/css/effect-coverflow';
-
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
@@ -238,31 +237,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
         </section>
 
         {/* Reviews */}
-        <section className="wrapper my-8 flex flex-col gap-2 md:gap-12">
-          <h2 className="h2-bold">Reviews</h2>
-          {Object.keys(service.reviews).map((reviewKey, index) => {
-            const review = service.reviews[reviewKey as keyof typeof service.reviews];
-            const rating = parseFloat(review.rating);
-
-            return (
-              <div key={index} className="p-4">
-                <div className='flex'>
-                  <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center">
-                    <Image src={review.user.profileURL} alt="Profile" width={28} height={28} className="rounded-full" />
-                  </div>
-                  <h3 className="text-lg font-medium">{review.user.firstName} {review.user.lastName}</h3>
-                </div>
-                <div className="flex items-center gap-2 my-2">
-                  {Array.from({ length: rating }, (_, i) => (
-                    <StarFilled key={i} className="w-5 h-5 text-yellow-500" />
-                  ))}
-                </div>
-                <p className="text-gray-700">{review.comment}</p>
-              </div>
-            );
-          })}
-        </section>
-
+        <ServiceReviews service={service} />
     
         {/* Services with the same category */}
         <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
