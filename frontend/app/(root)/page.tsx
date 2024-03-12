@@ -21,7 +21,7 @@ export default function Home() {
     return acc;
   }, {});
 
-
+  // Scroll to the selected category
   useEffect(() => {
     if (selectedCategory && collectionRefs[selectedCategory]?.current) {
       collectionRefs[selectedCategory]?.current?.scrollIntoView({
@@ -34,8 +34,9 @@ export default function Home() {
 
   return (
     <>
-      <section className="flex flex-col  sticky top-0 bg-secondary z-50 ">
+      <section className="flex flex-col sticky top-0 bg-secondary z-50 ">
         <HomeHeader />
+        {/*  Search and Filter */}
         <div className='px-6 pt-6'>
           <div className='flex justify-between pb-4'>
             <Search />
@@ -49,7 +50,11 @@ export default function Home() {
       <section className="pl-6 py-4">
         <div className="flex flex-col gap-y-4">
           {categories.map((title) => (
-            <div ref={collectionRefs[title]} key={title} className='scroll-mt-[200px]'>
+            <div 
+              ref={collectionRefs[title]} 
+              key={title} 
+              className='scroll-mt-[280px]' // This is a temporary fix for the sticky header
+            >
               <Collection 
                 selectedCategory={selectedCategory}
                 title={title}
