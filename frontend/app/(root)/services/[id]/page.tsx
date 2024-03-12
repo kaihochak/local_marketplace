@@ -1,6 +1,5 @@
 import React from 'react'
 import Collection from '@/components/shared/Collection';
-import { formatDateTime } from '@/lib/utils';
 import { SearchParamProps } from '@/types'
 import Image from 'next/image'
 import { StarEmpty } from '@/public/assets/icons/StarEmpty';
@@ -10,33 +9,69 @@ import { LocationPin } from '@/public/assets/icons/LocationPin';
 import { Globe } from '@/public/assets/icons/Globe';
 import { StarFilled } from '@/public/assets/icons/StarFilled';
 
-// import Slider  from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
     // const service = await getServiceById(id);
+    
     const service = {
-        _id: "1",
-        title: "Service Title",
-        description: "Service Description",
-        category: {
-            _id: "1",
-            name: "Category Name"
+       _id: "1",
+       title: "Wall Painter",
+       description: "Service Description",
+       image: {
+          url1: "http://example.com/image/service3.jpg",
+          url2: "http://example.com/image/service3.jpg",
+          url3: "http://example.com/image/service3.jpg",
         },
-        imageUrl: "https://picsum.photos/id/237/200/300",
-        price: "100",
-        isFree: false,
-        url: "http://example.com/service",
-        organizer: {
-            _id: "1",
-            firstName: "FName",
-            lastName: "LName"
+        serviceProvider: {
+          _id: "1",
+          profileURL: "http://example.com/profile",
+          firstName: "Enya",
+          lastName: "Umanzor",
+          email: "enya.umanzor@gmail.com",
+          phone: "587 966 5002",
+          location: "24 whitecres Ave, Calgary AB",
+          website: "enyaumanzor.com",
         },
-        location: "Location",
-        startDateTime: new Date(),
-        endDateTime: new Date(),
+        servicesOffered: {
+          service1: {
+            title: "Service 1",
+            price: "100",
+          },
+          service2: {
+            title: "Service 2",
+            price: "200",
+          },
+          service3: {
+            title: "Service 3",
+            price: "300",
+          },
+          service4: {
+            title: "Service 4",
+            price: "400",
+          },
+        },
+        reviews: {
+          review1: {
+            user: {
+              _id: "1",
+              profileURL: "http://example.com/profile",
+              firstName: "Drew",
+              lastName: "Phillips",
+            },
+            rating: "3",
+            comment: "Hey, I like that...",
+          },
+          review2: {
+            user: {
+              _id: "2",
+              profileURL: "http://example.com/profile",
+              firstName: "Ky",
+              lastName: "Newman",
+            },
+            rating: "5",
+            comment: "Enya let's record a podcast together without drew...",
+          },
+        }
     }
 
     // const relatedServices = await getRelatedServicesByCategory({
@@ -94,8 +129,8 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             <h2 className='h2-bold'>{service.title}</h2>
             <div className='h-48 overflow-auto my-4 relative rounded-lg'>
                 <div className="absolute inset-0 bg-white">
-                    <Image 
-                        src={service.imageUrl}
+                <Image 
+                        src={service.image.url1}
                         alt="hero image"
                         layout="fill"
                         objectFit="contain"
@@ -107,9 +142,9 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
           <div className="flex flex-col gap-4"> {/* Add gap-4 for spacing between items */}
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-                <Image/>
+                <Image src={service.serviceProvider.profileURL} alt="Profile" width={28} height={28} className="rounded-full" />
                 </div>
-                <p className="">{service.organizer.firstName} {service.organizer.lastName}</p>
+                <p className="">{service.serviceProvider.firstName} {service.serviceProvider.lastName}</p>
               </div>
               <div className="flex items-center gap-2">
                 <StarEmpty className="w-5 h-5" />
@@ -120,25 +155,25 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
               <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                 <Phone className="w-5 h-5" />
               </div>
-                <a href={`tel:$`} className="text-blue-500 underline">587 966 5002</a>
+                <a href={`tel:$`} className="text-blue-500 underline">{service.serviceProvider.phone}</a>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <Mail className="w-5 h-5" />
                 </div>
-                <a href={`mailto:$`} className="text-blue-500 underline">enya.umanzor@gmail.com</a> {/* Link email for email */}
+                <a href={`mailto:${service.serviceProvider.email}`} className="text-blue-500 underline">{service.serviceProvider.email}</a> {/* Link email for email */}
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <LocationPin className="w-5 h-5" />
                 </div>
-                <p className="">24 Whitecres Ave, Calgary AB</p>
+                <p className="">{service.serviceProvider.location}</p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <Globe className="w-5 h-5" />
                 </div>
-                <a href={service.website} className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">enyaumanzor.com</a> {/* Link website and open in new tab */}
+                <a href={'{service.serviceProvider.website}'} className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">{service.serviceProvider.website}</a> {/* Link website and open in new tab */}
               </div>
         </div>
 
@@ -148,7 +183,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
         </section>
 
         {/* Services Offered */}
-        <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+        <section className="wrapper flex flex-col gap-8 md:gap-10">
           <h2 className="h2-bold">Services Offered</h2>
           <div className="w-full overflow-auto rounded-lg shadow-md">
             <table className="w-full min-w-full text-left table-auto">
@@ -159,45 +194,43 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                 </tr>
               </thead>
               <tbody>
-                <tr className="bg-gray-100 text-gray-600 text-sm">
-                  <td className="px-4 py-2">Service 1</td>
-                  <td className="px-4 py-2">$100</td>
-                </tr>
-                <tr className="bg-gray-100 text-gray-600 text-sm">
-                  <td className="px-4 py-2">Service 2</td>
-                  <td className="px-4 py-2">$200</td>
-                </tr>
-                <tr className="bg-gray-100 text-gray-600 text-sm">
-                  <td className="px-4 py-2">Service 3</td>
-                  <td className="px-4 py-2">$300</td>
-                </tr>
-                <tr className="bg-gray-100 text-gray-600 text-sm">
-                  <td className="px-4 py-2">Service 4</td>
-                  <td className="px-4 py-2">$400</td>
-                </tr>
+                {Object.keys(service.servicesOffered).map((serviceKey, index) => (
+                  <tr key={index} className="bg-gray-100 text-gray-600 text-sm">
+                    <td className="px-4 py-2">{service.servicesOffered[serviceKey as keyof typeof service.servicesOffered].title}</td>
+                    <td className="px-4 py-2">${service.servicesOffered[serviceKey as keyof typeof service.servicesOffered].price}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </section>
 
         {/* Reviews */}
-        <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-            <h2 className="h2-bold">Reviews</h2>
+        <section className="wrapper my-8 flex flex-col gap-2 md:gap-12">
+          <h2 className="h2-bold">Reviews</h2>
+          {Object.keys(service.reviews).map((reviewKey, index) => {
+            const review = service.reviews[reviewKey as keyof typeof service.reviews];
+            const rating = parseFloat(review.rating);
 
-            <div className="p-4 ">
-              <div className='flex '>
-                <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center">
-                  <Image/>
+            return (
+              <div key={index} className="p-4">
+                <div className='flex'>
+                  <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center">
+                    <Image src={review.user.profileURL} alt="Profile" width={28} height={28} className="rounded-full" />
+                  </div>
+                  <h3 className="text-lg font-medium">{review.user.firstName} {review.user.lastName}</h3>
                 </div>
-                <h3 className="text-lg font-medium">Felix Catton</h3>
+                <div className="flex items-center gap-2 my-2">
+                  {Array.from({ length: rating }, (_, i) => (
+                    <StarFilled key={i} className="w-5 h-5 text-yellow-500" />
+                  ))}
+                </div>
+                <p className="text-gray-700">{review.comment}</p>
               </div>
-              <div className="flex items-center gap-2 mb-2">
-                <StarFilled className="w-5 h-5" />
-              </div>
-              <p className="text-gray-700">Hey, I like that...</p>
-            </div>
-
+            );
+          })}
         </section>
+
     
         {/* Services with the same category */}
         <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
