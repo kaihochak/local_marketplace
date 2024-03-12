@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "../ui/button"
 
-const Header = () => {
+const HomeHeader = () => {
     return (
         <header className="w-full bg-primary sticky top-0 z-50">
             <div className="wrapper flex items-center justify-between">
@@ -50,4 +50,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default HomeHeader
