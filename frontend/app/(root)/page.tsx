@@ -5,6 +5,7 @@ import Search from "@/components/shared/Search";
 import FilterButton from "@/components/shared/FilterButton";
 import CategoryGroup from "@/components/shared/CategoryFilter";
 import { categories } from "@/constants";
+import HomeHeader from '@/components/shared/HomeHeader';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Recommendations");
@@ -33,12 +34,15 @@ export default function Home() {
 
   return (
     <>
-      <section className="flex flex-col px-6 pt-6 sticky top-0 bg-secondary z-50 ">
-        <div className='flex justify-between pb-4'>
-          <Search />
-          <FilterButton />
+      <section className="flex flex-col  sticky top-0 bg-secondary z-50 ">
+        <HomeHeader />
+        <div className='px-6 pt-6'>
+          <div className='flex justify-between pb-4'>
+            <Search />
+            <FilterButton />
+          </div>
+          <CategoryGroup onCategorySelect={(category: string) => setSelectedCategory(category)} />
         </div>
-        <CategoryGroup onCategorySelect={(category: string) => setSelectedCategory(category)} />
       </section>
 
       {/* Collections */}
