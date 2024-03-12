@@ -1,4 +1,4 @@
-export const eventDefaultValues = {
+export const serviceDefaultValues = {
   title: '',
   description: '',
   location: '',

@@ -1,165 +1,71 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import dummyData from '@/constants/dummydata'; // Adjust the import path according to your project structure
+import Collection from '@/components/shared/Collection'
+import { Button } from '@/components/ui/button'
+// import { getEventsByUser } from '@/lib/actions/event.actions'
+// import { getOrdersByUser } from '@/lib/actions/order.actions'
+// import { IOrder } from '@/lib/database/models/order.model'
+import { SearchParamProps } from '@/types'
+import { auth } from '@clerk/nextjs'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-const page = () => {
-    const { users, categories, services, ratingReviews, reservations } = dummyData;
+const ProfilePage = async ({ searchParams }: SearchParamProps) => {
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;
 
-    return (
-        <div className="px-4">
-            {/* for users */}
-            <Table>
-                <TableCaption>Users</TableCaption>
-                <TableHeader>
-                    {/* map columns */}
-                    <TableRow>
-                        <TableHead>Username</TableHead>
-                        <TableHead>Email</TableHead>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Photo</TableHead>
-                        <TableHead>Contact Number</TableHead>
-                        <TableHead>Service IDs</TableHead>
-                        <TableHead>Rating Review IDs</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {users.map((user, index) => (
-                        <TableRow>
-                            <TableCell key={index}>{user.username}</TableCell>
-                            <TableCell key={index}>{user.email}</TableCell>
-                            <TableCell key={index}>{user.firstName} {user.lastName}</TableCell>
-                            <TableCell key={index}>{user.photo}</TableCell>
-                            <TableCell key={index}>{user.contactNumber}</TableCell>
-                            <TableCell key={index}>{user.serviceIDs.join(', ')}</TableCell>
-                            <TableCell key={index}>{user.ratingReviewIDs.join(', ')}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+  const ordersPage = Number(searchParams?.ordersPage) || 1;
+  const eventsPage = Number(searchParams?.eventsPage) || 1;
 
-            {/* for categories */}
-            <Table>
-                <TableCaption>Categories</TableCaption>
-                <TableHeader>
-                    {/* map columns */}
-                    <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Description</TableHead>
-                        <TableHead>Parent Category ID</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {categories.map((category, index) => (
-                        <TableRow>
-                            <TableCell key={index}>{category.name}</TableCell>
-                            <TableCell key={index}>{category.description}</TableCell>
-                            <TableCell key={index}>{category.parentCategoryId}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+  // const orders = await getOrdersByUser({ userId, page: ordersPage})
 
-            {/* for services */}
-            <Table>
-                <TableCaption>Services</TableCaption>
-                <TableHeader>
-                    {/* map columns */}
-                    <TableRow>
-                        <TableHead>Title</TableHead>
-                        <TableHead>Description</TableHead>
-                        <TableHead>Location</TableHead>
-                        <TableHead>Image URL</TableHead>
-                        <TableHead>Start Date Time</TableHead>
-                        <TableHead>End Date Time</TableHead>
-                        <TableHead>Price</TableHead>
-                        <TableHead>Is Free</TableHead>
-                        <TableHead>URL</TableHead>
-                        <TableHead>Category ID</TableHead>
-                        <TableHead>Provider ID</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {services.map((service, index) => (
-                        <TableRow>
-                            <TableCell key={index}>{service.title}</TableCell>
-                            <TableCell key={index}>{service.description}</TableCell>
-                            <TableCell key={index}>{service.location}</TableCell>
-                            <TableCell key={index}>{service.imageUrl}</TableCell>
-                            <TableCell key={index}>{service.startDateTime.toString()}</TableCell> // Convert to string
-                            <TableCell key={index}>{service.endDateTime.toString()}</TableCell>
-                            <TableCell key={index}>{service.price}</TableCell>
-                            <TableCell key={index}>{service.isFree}</TableCell>
-                            <TableCell key={index}>{service.url}</TableCell>
-                            <TableCell key={index}>{service.categoryId}</TableCell>
-                            <TableCell key={index}>{service.providerId}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+  // const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
+  // const organizedEvents = await getEventsByUser({ userId, page: eventsPage })
 
-            {/* for rating reviews */}
-            <Table>
-                <TableCaption>Rating Reviews</TableCaption>
-                <TableHeader>
-                    {/* map columns */}
-                    <TableRow>
-                        <TableHead>Service ID</TableHead>
-                        <TableHead>Client ID</TableHead>
-                        <TableHead>Rating</TableHead>
-                        <TableHead>Review</TableHead>
-                        <TableHead>Created At</TableHead>
-                        <TableHead>Helpful Count</TableHead>
-                        <TableHead>Verified Purchase</TableHead>
-                        <TableHead>Provider Response</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {ratingReviews.map((ratingReview, index) => (
-                        <TableRow>
-                            <TableCell key={index}>{ratingReview.serviceID}</TableCell>
-                            <TableCell key={index}>{ratingReview.clientID}</TableCell>
-                            <TableCell key={index}>{ratingReview.rating}</TableCell>
-                            <TableCell key={index}>{ratingReview.review}</TableCell>
-                            <TableCell key={index}>{ratingReview.createdAt.toString()}</TableCell>
-                            <TableCell key={index}>{ratingReview.helpfulCount}</TableCell>
-                            <TableCell key={index}>{ratingReview.verifiedPurchase}</TableCell>
-                            <TableCell key={index}>{ratingReview.providerResponse?.response}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-
-            {/* for reservations */}
-            <Table>
-                <TableCaption>Reservations</TableCaption>
-                <TableHeader>
-                    {/* map columns */}
-                    <TableRow>
-                        <TableHead>Stripe ID</TableHead>
-                        <TableHead>Total Amount</TableHead>
-                        <TableHead>Reservation Date</TableHead>
-                        <TableHead>Client ID</TableHead>
-                        <TableHead>Service ID</TableHead>
-                        <TableHead>Notes</TableHead>
-                        <TableHead>Status</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {reservations.map((reservation, index) => (
-                        <TableRow>
-                            <TableCell key={index}>{reservation.stripeId}</TableCell>
-                            <TableCell key={index}>{reservation.totalAmount}</TableCell>
-                            <TableCell key={index}>{reservation.reservationDate.toString()}</TableCell>
-                            <TableCell key={index}>{reservation.clientId._id}</TableCell>
-                            <TableCell key={index}>{reservation.serviceId._id}</TableCell>
-                            <TableCell key={index}>{reservation.notes}</TableCell>
-                            <TableCell key={index}>{reservation.status}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-
+  return (
+    <>
+      {/* My Tickets */}
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+        <div className="wrapper flex flex-col items-center justify-center sm:justify-between">
+          {/* profile image */}
+          <Image 
+            src='/images/profile-placeholder.png'
+            alt='profile image'
+            width={150}
+            height={150}
+            className='rounded-full'
+          />
+          {/* name */}
+          <h3 className='h3-bold text-center sm:text-left'>My Name</h3>
         </div>
-    );
+      </section>
+
+      <section className="wrapper my-8 flex gap-x-2 mx-auto">
+        {/* Reserved */}
+        <Link href="/profile/reserved">
+          <h4 className="">Reserved</h4>
+        </Link>
+
+        {/* Saved */}
+        <Link href="/profile/saved">
+          <h4 className="">Saved</h4>
+        </Link>
+      </section>
+
+      <section className="wrapper my-8">
+        <Collection 
+          selectedCategory=''
+          title='My Posts'
+        />
+      </section>
+
+      <section className="wrapper my-8">
+        <Collection 
+          selectedCategory=''
+          title='My Reviews'
+        />
+      </section>
+    </>
+  )
 }
 
-export default page
+export default ProfilePage

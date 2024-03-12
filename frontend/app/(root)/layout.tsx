@@ -1,4 +1,3 @@
-import HomeHeader from "@/components/shared/HomeHeader";
 import Bottombar from "@/components/shared/Bottombar";
 
 export default function RootLayout({
