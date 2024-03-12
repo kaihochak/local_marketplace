@@ -36,10 +36,10 @@ export default function Home() {
     <>
       <section className="flex flex-col sticky top-0 bg-secondary z-50 ">
         <HomeHeader />
-        {/*  Search and Filter */}
+        {/*  Search and Filter */}  
         <div className='px-6 pt-6'>
           <div className='flex justify-between pb-4'>
-            <Search />
+            <Search/>
             <FilterButton />
           </div>
           <CategoryGroup onCategorySelect={(category: string) => setSelectedCategory(category)} />

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 // import { getOrdersByUser } from '@/lib/actions/order.actions'
 // import { IOrder } from '@/lib/database/models/order.model'
 import { SearchParamProps } from '@/types'
-import { auth } from '@clerk/nextjs'
+import { UserButton, auth } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -23,6 +23,10 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
+      <section className='flex justify-end p-6'>
+        <UserButton afterSignOutUrl="/" />
+      </section>
+
       {/* My Tickets */}
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <div className="wrapper flex flex-col items-center justify-center sm:justify-between">
