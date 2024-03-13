@@ -10,8 +10,13 @@ import { StarEmpty } from '@/public/assets/icons/StarEmpty';
 import { ServiceItem } from '@/lib/database/models/service.model';
 import Link from 'next/link';
 
+type CardProps = {
+    service: ServiceItem
+    buttonType?: 'service' | 'reserved' 
+}
 
-const Card = ({ service }: { service: ServiceItem }) => {
+
+const Card = ({ service, buttonType }: CardProps) => {
 
     const title = service.title;
     const description = service.description

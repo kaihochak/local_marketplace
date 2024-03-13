@@ -1,6 +1,6 @@
 "use client"
 
-const CommonHeader = ({ title }: { title: string }) => {
+const CommonHeader = ({ title, savedButton }: { title: string, savedButton?: boolean }) => {
     const goBack = () => {
         if (typeof window !== 'undefined') {
             window.history.back();
@@ -12,7 +12,10 @@ const CommonHeader = ({ title }: { title: string }) => {
         <div className='flex justify-between items-center px-6 py-4'>
             <button onClick={goBack} className='text-white text-lg font-semibold'>Back</button>
             <h2 className='text-primary-foreground text-lg font-semibold absolute left-1/2 transform -translate-x-1/2'>{title}</h2>
-            <div></div> {/* This is a temporary fix for the sticky header */}
+            { savedButton ?
+             <button className='text-primary-foreground text-lg font-semibold'>Save</button>
+             :<div></div> /* This is a temporary fix for the sticky header */
+            }
         </div>
     </section>
 

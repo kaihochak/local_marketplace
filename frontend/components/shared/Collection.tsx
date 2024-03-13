@@ -3,20 +3,18 @@ import Card from './Card'
 import { services } from "@/constants/dummydata";
 
 type CollectionProps = {
-    selectedCategory: string;
-    title: string;
-    
+    title?: string 
+    selectedCategory?: string, 
+    direction?: string
+    buttonType?: string
 };
 
 const Collection = ({ 
     title, 
     selectedCategory, 
-    direction
-}: { 
-    title?: string 
-    selectedCategory?: string, 
-    direction?: string
-}) => {
+    direction,
+    buttonType,
+}: CollectionProps ) => {
 
     // API call to specific get data for this category
 
@@ -26,7 +24,13 @@ const Collection = ({
                     ${selectedCategory === title ? "text-4xl text-accent-dark" : " text-3xl"}`}>{title}</h2>
             <div className={`flex ${direction === "vertical" ? "flex-col gap-y-5 mx-auto" 
                                 : "gap-x-5 pr-10 overflow-x-auto scrollbar-hide" }`}>
-                { services.map((service) => (<Card key={service._id} service={service} />))}
+                { services.map((service) => (
+                    <Card 
+                        key={service._id} 
+                        service={service} 
+                        buttonType={buttonType}
+                    />
+                ))}
             </div>
         </div>
     )

@@ -64,17 +64,17 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
       <section className="flex gap-x-2">
         <div className='wrapper flex items-center justify-center sm:justify-between gap-x-4'>
-          {/* Reserved */}
-          <Link href="/profile/reserved">
+          {/* Reviews */}
+          <Link href="/profile/reviews">
             <div className="w-14 h-14 border border-black rounded-full flex items-center justify-center">
-              <StarFilled className='w-9 h-9'></StarFilled>
+              <StarFilled className='w-9 h-9'/>
             </div>
           </Link>
 
           {/* Saved */}
           <Link href="/profile/saved">
             <div className="w-14 h-14 border border-black rounded-full flex items-center justify-center">
-              <BookmarkFilled className='w-9 h-9'></BookmarkFilled>
+              <BookmarkFilled className='w-9 h-9'/>
             </div>
           </Link>
         </div>
@@ -82,17 +82,16 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
       <section className="wrapper my-5">
         <Collection 
-          selectedCategory=''
-          title='My Posts'
-        />
-      </section>
-
-      <section className="wrapper my-5">
-        <Collection 
-          selectedCategory=''
           title='My Reservations'
         />
       </section>
+      
+      <section className="wrapper my-5">
+        <Collection 
+          title='My Services'
+        />
+      </section>
+
     </>
   )
 }
