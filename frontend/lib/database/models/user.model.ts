@@ -31,11 +31,14 @@ const User = models.User || model<IUser>('User', UserSchema);
 export type UserItem = {
   _id: string;
   clerkId: string;
+  imageURL: string;
   email: string;
+  website: "enyaumanzor.com",
   username: string;
   firstName: string;
   lastName: string;
   photo: string;
+  location: string;
   contactNumber: string;
   serviceIDs: string[]; // Assuming conversion to string IDs for external use
   ratingReviewIDs: string[]; // Assuming conversion to string IDs for external use

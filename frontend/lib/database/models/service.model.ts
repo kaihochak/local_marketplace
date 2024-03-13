@@ -39,16 +39,7 @@ export type ServiceItem = {
   image: string[];
   averageRating: number;
   totalReviews: number;
-  serviceProvider: {
-    _id: string;
-    profileURL: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    location: string;
-    website: string;
-  };
+  serviceProvider: string[],
   servicesOffered: {
     [key: string]: {
       title: string;
