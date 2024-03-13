@@ -36,14 +36,26 @@ export type ServiceItem = {
   title: string;
   description?: string;
   location?: string;
-  imageUrl: string;
-  startDateTime: Date;
-  endDateTime: Date;
-  price: number; // Keep as number to match the model
-  isFree: boolean;
-  url?: string;
-  categoryId: string; // Assuming this will be converted to string for frontend use
-  providerId: string; // Assuming this will be converted to string for frontend use
+  image: string[];
+  averageRating: number;
+  totalReviews: number;
+  serviceProvider: {
+    _id: string;
+    profileURL: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    location: string;
+    website: string;
+  };
+  servicesOffered: {
+    [key: string]: {
+      title: string;
+      price: string;
+    };
+  };
+  ratingReviewIDs:string[],
 };
 
 export default Service;

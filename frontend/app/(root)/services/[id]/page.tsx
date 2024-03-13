@@ -8,6 +8,7 @@ import { Mail } from '@/public/assets/icons/Mail';
 import { LocationPin } from '@/public/assets/icons/LocationPin';
 import { Globe } from '@/public/assets/icons/Globe';
 import ServiceReviews from '@/components/shared/ServiceReviews';
+import CommonHeader from '@/components/shared/CommonHeader';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 // import 'swiper/css';
@@ -141,10 +142,12 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
     return (
         <>
+        <section>
+          <CommonHeader title={service.title} savedButton={true} />
+        </section>
         <section className="justify-center mx-4">
           <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl ">
 
-            <h2 className='h2-bold'>{service.title}</h2>
             <div className='h-48 overflow-auto my-4 relative rounded-lg'>
                 <div className="absolute inset-0 bg-white">
                 {/* <Swiper
@@ -179,20 +182,20 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                 <div className="flex items-center gap-2">
                   <StarEmpty className="w-5 h-5" />
                   <p className="">{service.averageRating}</p>
-                  <p className="text-gray-500">{service.totalReviews}</p>
+                  <p className="text-gray-500">({service.totalReviews})</p>
                 </div>
               </section>
               <div className="flex items-center gap-2">
               <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                 <Phone className="w-5 h-5" />
               </div>
-                <a href={`tel:$`} className="text-blue-500 underline">{service.serviceProvider.phone}</a>
+                <a href={`tel:$`} className="text-black">{service.serviceProvider.phone}</a>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <Mail className="w-5 h-5" />
                 </div>
-                <a href={`mailto:${service.serviceProvider.email}`} className="text-blue-500 underline">{service.serviceProvider.email}</a> {/* Link email for email */}
+                <a href={`mailto:${service.serviceProvider.email}`} className="text-black">{service.serviceProvider.email}</a> {/* Link email for email */}
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
@@ -204,7 +207,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <Globe className="w-5 h-5" />
                 </div>
-                <a href={'{service.serviceProvider.website}'} className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">{service.serviceProvider.website}</a> {/* Link website and open in new tab */}
+                <a href={'{service.serviceProvider.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{service.serviceProvider.website}</a> {/* Link website and open in new tab */}
               </div>
         </div>
 
