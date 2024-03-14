@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { dummyServices } from '@/constants/dummyServices';
+import { dummyServices } from '@/constants/dummyservices';
 import { dummyUsers } from '@/constants/dummyUsers';
 import { ServiceItem } from '@/lib/database/models/service.model';
 import Collection from '@/components/shared/Collection';
 import { SearchParamProps } from '@/types'
 import Image from 'next/image'
 import { StarEmpty } from '@/public/assets/icons/StarEmpty';
-import { Phone } from '@/public/assets/icons/phone';
-import { Mail } from '@/public/assets/icons/mail';
-import { LocationPin } from '@/public/assets/icons/locationPin';
-import { Globe } from '@/public/assets/icons/globe';
+import { Phone } from '@/public/assets/icons/Phone';
+import { Mail } from '@/public/assets/icons/Mail';
+import { LocationPin } from '@/public/assets/icons/LocationPin';
+import { Globe } from '@/public/assets/icons/Globe';
 import ServiceReviews from '@/components/shared/ServiceReviews';
 import CommonHeader from '@/components/shared/CommonHeader';
 // import { Swiper, SwiperSlide } from 'swiper/react';
