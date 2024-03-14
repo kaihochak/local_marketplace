@@ -81,15 +81,19 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-5">
-        <Collection 
-          title='My Reservations'
-        />
+        <Link href="/profile/reservations">
+          <Collection 
+            title='My Reservations'
+          />
+        </Link>
       </section>
       
       <section className="wrapper my-5">
-        <Collection 
-          title='My Services'
-        />
+        <Link href="/profile/services">
+          <Collection 
+            title='My Services'
+          />
+        </Link>
       </section>
 
     </>

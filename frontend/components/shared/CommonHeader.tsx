@@ -1,5 +1,8 @@
 "use client"
 
+import { ArrowLeft } from "@/public/assets/icons/ArrowLeft";
+import { BookmarkEmpty } from "@/public/assets/icons/BookmarkEmpty";
+
 const CommonHeader = ({ title, savedButton }: { title: string, savedButton?: boolean }) => {
     const goBack = () => {
         if (typeof window !== 'undefined') {
@@ -8,13 +11,19 @@ const CommonHeader = ({ title, savedButton }: { title: string, savedButton?: boo
     };
 
     return (
-        <section className='w-full bg-primary sticky top-0 z-50'>
-        <div className='flex justify-between items-center px-6 py-4'>
-            <button onClick={goBack} className='text-white text-lg font-semibold'>Back</button>
-            <h2 className='text-primary-foreground text-lg font-semibold absolute left-1/2 transform -translate-x-1/2'>{title}</h2>
+        <section className='top-0 z-50'>
+        <div className='flex justify-between items-center px-3 py-4'>
+            <button onClick={goBack} className='text-black text-lg font-semibold'>
+                <ArrowLeft className='w-10 h-10' />
+            </button>
+            <div className="flex-grow flex justify-center">
+                <h2 className='text-primary-foreground text-xl font-semibold'>{title}</h2> {/* Removed absolute positioning */}
+            </div>
             { savedButton ?
-             <button className='text-primary-foreground text-lg font-semibold'>Save</button>
-             :<div></div> /* This is a temporary fix for the sticky header */
+             <button className='text-primary-foreground text-lg font-semibold'>
+                <BookmarkEmpty className='w-8 h-8' />
+             </button>
+             : <div className="w-8"></div> /* This is a temporary fix for the sticky header */
             }
         </div>
     </section>
