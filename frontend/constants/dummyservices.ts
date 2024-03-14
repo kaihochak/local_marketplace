@@ -12,7 +12,18 @@ export const dummyServices: ServiceItem[] = [
         ],
         averageRating: 3.2,
         totalReviews: 12,
-        serviceProvider: ["2"],
+        serviceProvider: [
+            {
+                userId: "1", 
+                name: "Kanye West", 
+                imageURL: "https://picsum.photos/seed/picsum/200/300"
+            },
+            {
+                userId: "2", 
+                name: "Kim Kardashian", 
+                imageURL: "https://picsum.photos/seed/picsum/200/300"
+            }
+        ],
         servicesOffered: {
             service1: {
                 title: "Painting all walls",
@@ -28,6 +39,50 @@ export const dummyServices: ServiceItem[] = [
             },
             service4: {
                 title: "Paint somewhere else hehe 🌗",
+                price: "400",
+            },
+        },
+        ratingReviewIDs: ["1", "2", "3"],
+
+    },
+    {
+        _id: "2",
+        title: "Service2",
+        description: "Description2",
+        image: [
+            "https://picsum.photos/seed/picsum/200/300",
+            "https://picsum.photos/seed/picsum/200/300",
+            "https://picsum.photos/seed/picsum/200/300",
+        ],
+        averageRating: 3.2,
+        totalReviews: 12,
+        serviceProvider: [
+            {
+                userId: "1", 
+                name: "Kanye West", 
+                imageURL: "https://picsum.photos/seed/picsum/200/300"
+            },
+            {
+                userId: "2", 
+                name: "Kim Kardashian", 
+                imageURL: "https://picsum.photos/seed/picsum/200/300"
+            }
+        ],
+        servicesOffered: {
+            service1: {
+                title: "Service2",
+                price: "100",
+            },
+            service2: {
+                title: "Service2",
+                price: "200",
+            },
+            service3: {
+                title: "Service2",
+                price: "300",
+            },
+            service4: {
+                title: "Service2",
                 price: "400",
             },
         },

@@ -1,5 +1,8 @@
 import Collection from '@/components/shared/Collection'
 import { Button } from '@/components/ui/button'
+import { dummyReservations } from '@/constants/dummyReservations'
+import { dummyUsers } from '@/constants/dummyUsers'
+import { dummyServices } from '@/constants/dummyServices'
 import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled'
 import { StarFilled } from '@/public/assets/icons/StarFilled'
 // import { getEventsByUser } from '@/lib/actions/event.actions'
@@ -15,22 +18,11 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
+  const profile = dummyUsers[0];
+  const services = dummyServices.filter(service => profile.serviceIDs.includes(service._id));
+
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
-
-  const profile = {
-    userID: 1,
-    name: 'Felix Catton',
-    username: 'cacofelix',
-    image: '/images/profile-placeholder.png',
-
-    userMyPosts: {
-
-    },
-    userMyReviews: {
-      reviewID: 1,
-    },
-  }
 
   // const orders = await getOrdersByUser({ userId, page: ordersPage})
 
@@ -47,17 +39,16 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center md:py-10">
         <div className="wrapper flex flex-col items-center justify-center sm:justify-between">
           {/* profile image */}
-          <div className="w-40 h-40 border border-black rounded-full flex items-center justify-center">
+          <div className="w-40 h-40 border border-black rounded-full flex items-center justify-center overflow-hidden">
             <Image 
-              src='/images/profile-placeholder.png'
-              alt='profile image'
-              width={150}
-              height={150}
-              className='rounded-full'
+              src={profile.imageURL}
+              alt={profile.username}
+              width={500}
+              height={500}
             />
           </div>
           {/* name */}
-          <h3 className='h3-bold text-center sm:text-left my-2'>{profile.name}</h3>
+          <h3 className='h3-bold text-center sm:text-left my-2'>{profile.firstName} {profile.lastName}</h3>
           <h3 className='text-center sm:text-left font-thin text-xl'>@{profile.username}</h3>
         </div>
       </section>
@@ -84,6 +75,10 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
         <Link href="/profile/reservations">
           <Collection 
             title='My Reservations'
+            direction='horizontal'
+            itemType='reservation'
+            items={dummyReservations}
+            hasButton={true}
           />
         </Link>
       </section>
@@ -92,6 +87,9 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
         <Link href="/profile/services">
           <Collection 
             title='My Services'
+            direction='horizontal'
+            itemType='service'
+            items={services}
           />
         </Link>
       </section>

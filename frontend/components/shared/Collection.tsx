@@ -1,22 +1,35 @@
 import React from 'react'
 import Card from './Card'
-import { services } from "@/constants/dummydata";
+import { ServiceItem } from '@/lib/database/models/service.model';
+import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
+import { ReservationItem } from '@/lib/database/models/reservation.model';
 
 type CollectionProps = {
-    title?: string 
+    title?: string,
     selectedCategory?: string, 
-    direction?: string
-    buttonType?: string
+    direction?: 'horizontal' | 'vertical',
+    itemType?: 'service' | 'reservation' | 'review',
+    items?: ServiceItem[] | RatingReviewItem[] | ReservationItem[],
+    hasButton?: boolean,
+    limit?: number,
 };
 
 const Collection = ({ 
     title, 
     selectedCategory, 
     direction,
-    buttonType,
+    itemType,
+    items,
+    hasButton,
+    limit,
 }: CollectionProps ) => {
 
+    console.log("collection1: ", items);
+
+
     // API call to specific get data for this category
+
+    // store the items in a list and map through them
 
     return (
         <div className='flex flex-col gap-y-1 '>
@@ -24,11 +37,13 @@ const Collection = ({
                     ${selectedCategory === title ? "text-4xl text-accent-dark" : " text-3xl"}`}>{title}</h2>
             <div className={`flex ${direction === "vertical" ? "flex-col gap-y-5 mx-auto" 
                                 : "gap-x-5 pr-10 overflow-x-auto scrollbar-hide" }`}>
-                { services.map((service) => (
+                { items?.map((item) => (
                     <Card 
-                        key={service._id} 
-                        service={service} 
-                        buttonType={buttonType}
+                        key={item._id} 
+                        itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
+                        item={item}
+                        direction={direction}
+                        hasButton={hasButton}
                     />
                 ))}
             </div>

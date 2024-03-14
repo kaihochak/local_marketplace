@@ -1,33 +1,192 @@
 import React from 'react'
 import Image from 'next/image'
 import { Skeleton } from "@/components/ui/skeleton"
-import { CiBookmark } from "react-icons/ci";
-import { GoClock } from "react-icons/go";
-import { CiStar } from "react-icons/ci";
 import { BookmarkEmpty } from '@/public/assets/icons/BookmarkEmpty';
 import { Clock } from '@/public/assets/icons/Clock';
 import { StarEmpty } from '@/public/assets/icons/StarEmpty';
 import { ServiceItem } from '@/lib/database/models/service.model';
 import Link from 'next/link';
+import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
+import { ReservationItem } from '@/lib/database/models/reservation.model';
+import dummyUsers from '@/constants/dummyUsers';
 
 type CardProps = {
-    service: ServiceItem
-    buttonType?: 'service' | 'reserved' 
-}
+    direction?: 'horizontal' | 'vertical'
+    itemType?: 'service' | 'reservation' | 'review'
+    item?: ServiceItem | RatingReviewItem | ReservationItem
+    hasButton?: boolean
+};
 
+const Card = ({ 
+    direction, 
+    itemType, 
+    item,
+    hasButton,
+}: CardProps) => {
 
-const Card = ({ service, buttonType }: CardProps) => {
+    let service = itemType === "service" ? item as ServiceItem : null;
+    let reservation = itemType === "reservation" ? item as ReservationItem : null;
+    let review = itemType === "review" ? item as RatingReviewItem : null;
 
-    const title = service.title;
-    const description = service.description
-    const imageUrl = service.imageUrl;
+    const ImageBanner = () => {
+        // for reservation
+        if (itemType === "reservation") {
+            return (
+                <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] relative">
+                    { reservation?.status === "confirmed" ?
+                        <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
+                            <Clock className='text-gray-400' />
+                            <div className='text-xs'>{reservation?.date}</div>
+                        </div>:
+                        <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
+                            <Clock className='text-gray-400' />
+                            <div className='text-xs'>{reservation?.status}</div>
+                        </div>
+                    }   
+                    <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
+                    <Image className="w-full h-full object-cover"
+                        width={5000} height={5000}
+                        src={reservation?.service.image ?? ''} alt={reservation?.service.title ?? ''}
+                    />
+                </div>
+            )
+        }
+        // for service 
+        else if (itemType === "service") {
+            return (
+                <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] relative">
+                    <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
+                        <Clock className='text-gray-400' />
+                        <div className='text-xs'>Avaliable Today</div>
+                    </div>
+                    <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
+                    {service && 'image' in service && (
+                        <Image className="w-full h-full object-cover"
+                            width={5000} height={5000}
+                            src={service?.image[0] ?? ''} alt={service?.title}
+                        />
+                    )}
+                </div>
+            )
+        }
+    }
 
-    // call api: return data and loading state
-    const isLoading = false;
+    const CardInfo = () => {
+        // for reservation
+        if (itemType === "reservation") {
+            return (
+                <div>
+                    <div className='flex justify-between'>
+                        {/* Titile */}
+                        <p className="text-m font-semibold">{reservation?.service?.title}</p>
+                        <StarEmpty className='w-3 h-3' />
+                    </div>
+                    <div className='flex justify-start gap-x-1'>
+                        <div>icon</div>
+                        <p className="text-xs text-gray-500">{reservation?.service.location}</p>
+                    </div>
+                </div>
+            )
+        }
+        // for service 
+        else if (itemType === "service") {
+            return (
+                <div>
+                    <div className='flex justify-between'>
+                        {/* Titile */}
+                        <p className="text-m font-semibold">{service?.title}</p>
+                        <div className='flex flex-center text-xs text-gray-500 gap-x-1 mr-2'>
+                            <p>(12)</p>
+                            <p>3.2</p>
+                            <StarEmpty className='w-3 h-3' />
+                        </div>
+                    </div>
+                    <div className="flex items-center">
+                        <Image className="w-5 h-5 rounded-full mr-2" 
+                            src={service?.serviceProvider[0]?.imageURL ?? ''} 
+                            alt={service?.serviceProvider[0]?.name ?? ''} 
+                            width={5000} height={5000}
+                        />
+                        <p className="text-xs text-gray-500">{service?.serviceProvider[0]?.name ?? ''}</p>
+                    </div>
+                    <p className="text-[10px] text-gray-500">{service?.description?.length ?? 0 > 45 ? service?.description?.slice(0, 45) + "..." : service?.description}</p>
+                </div>
+            )
+        } 
+        // for review
+        else if (itemType === "review") {
+            return (
+                <div>
+                    <div className='flex flex-col gap-y-2'>
+                        {/* title */}
+                        <p className="text-m font-semibold">{review?.service.title}</p>
+                        {/* User */}
+                        <div className='flex '>
+                            <Image className="w-5 h-5 rounded-full mr-2" 
+                                src={review?.service.imageURL ?? ''} 
+                                alt={review?.service.title ?? ''} 
+                                width={5000} height={5000} 
+                            />
+                            <p className="text-m font-semibold">{dummyUsers[0].firstName} {dummyUsers[0].lastName}  </p>
+                        </div>            
+                        {/* rating */}
+                        <div className='flex text-xs text-gray-500 gap-x-1 mr-2'>
+                            { review?.rating && Array.from({length: review?.rating}, (_, index) => (
+                                <StarEmpty key={index} className='w-3 h-3' />
+                            ))}                   
+                        </div>
+                        {/* description */}
+                        <p className="text-[10px] text-gray-500">{review?.review}</p>
+                        {/* Response */}
+                        { review?.providerResponse && 
+                            <div className='flex flex-col gap-y-2'>
+                                <p className="text-s font-semibold">Provider's response</p>
+                                <div className='flex '>
+                                    <Image className="w-5 h-5 rounded-full mr-2" 
+                                        src={review?.service.imageURL ?? ''} 
+                                        alt={review?.service.title ?? ''} 
+                                        width={5000} height={5000} 
+                                    />
+                                    <p className="text-m font-semibold">{review?.service.provider}</p>
+                                </div>
+                                <p className="text-[10px] text-gray-500">{review?.providerResponse.response}</p>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    const ButtonOption = () => {
+        // for reservation
+        if (itemType === 'reservation') {
+            return (
+                <div className='h-[30px]'>
+                    { reservation?.status === "pending" || reservation?.status === "confirmed" ?
+                    <div className='flex flex-center'>
+                        <button className="w-full text-2xs py-2 border-r-[1.5px] border-t-[1.5px] border-primary-dark text-primary-foreground">Cancel</button> 
+                        <button className="w-full text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Reshedule</button> 
+                    </div>:
+                    <div className='flex flex-center'>
+                        <button className="w-full text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Rate & Review</button>
+                    </div>
+                    }
+                </div>
+            )
+        }
+        // for service 
+        else if (itemType === 'review') {
+            return (
+                <button className="text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Review</button>
+            )
+        }
+    }
 
     return (
-        <div className='flex flex-col gap-y-2 '>
-            {isLoading ?
+        <div className='flex flex-col'>
+            {/* {!item ?
                 // Skeleton 
                 <div>
                     <Skeleton className="h-[125px] w-[250px] rounded-xl" />
@@ -36,45 +195,22 @@ const Card = ({ service, buttonType }: CardProps) => {
                         <Skeleton className="h-4 w-[200px]" />
                     </div>
                 </div> :
-                // Card content
-                <div>
-                    {/* Card content */}
-                    <Link href={`/services/${service._id}`}>
-                        <div className='bg-primary border border-gray-200 h-[170px] w-[250px] rounded-xl '>
-                            <div className='flex flex-col mx-3 my-2 gap-y-1'>
-                                <div className="border border-gray-200 rounded-xl overflow-hidden h-[90px] relative">
-                                    <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
-                                    <div className='absolute top-1 left-1 flex items-center'>
-                                        <p className="flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
-                                            <Clock className='text-gray-400' /> <div className='text-xs'>Available Tomorrow</div>
-                                        </p>
-                                    </div>
-                                    {/* <Image className="w-full h-full object-cover" src={imageUrl} alt={title} /> */}
-                                    <img className="mx-auto" />
-                                </div>
-                                <div className="">
-                                    <div className='flex justify-between'>
-                                        <p className="text-m font-semibold">{title}</p>
-                                        <div className='flex items-center'>
-                                            <p className="text-xs text-gray-300">(12)</p>
-                                            <p className="text-xs text-gray-500 mr-2">3.2</p>
-                                            <StarEmpty className='w-3 h-3' />
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center">
-                                        <img className="w-5 h-5 rounded-full mr-2" />
-                                        <p className="text-xs text-gray-500">Enya Umanzor</p>
-                                    </div>
-                                    <p className="text-[10px] text-gray-500">{description?.length ?? 0 > 45 ? description?.slice(0, 45) + "..." : description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
+                
+                // Card content layout */}
 
-
-                    {/* implement */}
-                </div>
-            }
+            <div className={`flex flex-col bg-primary rounded-sm w-[250px] 
+                                ${direction === "vertical" ? "w-[300px]" : ""}`}>
+                {/* Card content */}
+                <Link href={`/${itemType + "s"}/${item?._id.toString()}`} 
+                    className={`h-[170px] flex flex-col mx-3 my-2 gap-y-1 
+                                ${itemType === "review" ? "h-auto" : ""}`}>
+                    <ImageBanner/>
+                    <CardInfo/>
+                </Link>
+                {/* optional button */}
+                { hasButton && <ButtonOption/>}
+            </div>
+            {/* } */}
         </div>
     )
 }

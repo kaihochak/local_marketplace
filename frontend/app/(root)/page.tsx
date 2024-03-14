@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState, useRef, useEffect, RefObject } from 'react';
 import Collection from "@/components/shared/Collection";
 import Search from "@/components/shared/Search";
@@ -6,9 +7,16 @@ import FilterButton from "@/components/shared/FilterButton";
 import CategoryGroup from "@/components/shared/CategoryFilter";
 import { categories } from "@/constants";
 import HomeHeader from '@/components/shared/HomeHeader';
+import dummyServices from '@/constants/dummyServices';
+import { ServiceItem } from '@/lib/database/models/service.model';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Recommendations");
+  const [services, setServices] = useState<ServiceItem[]>([]);
+
+  useEffect(() => {
+    setServices(dummyServices);
+  });
 
   // Refs for each category
   type CollectionRefs = {
@@ -58,13 +66,9 @@ export default function Home() {
               <Collection 
                 selectedCategory={selectedCategory}
                 title={title}
-                // data={events?.data}
-                // emptyTitle="No Events Found"
-                // emptyStateSubtext="Come back later"
-                // collectionType={title}
-                // limit={6}
-                // page={page}
-                // totalPages={events?.totalPages}
+                direction="horizontal"
+                itemType="service"
+                items={services}
               />
             </div>
           ))}

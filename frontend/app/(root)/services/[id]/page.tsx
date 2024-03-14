@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { dummyServices } from '@/constants/dummyservices';
+import { dummyServices } from '@/constants/dummyServices';
 import { dummyUsers } from '@/constants/dummyUsers';
 import { ServiceItem } from '@/lib/database/models/service.model';
 import Collection from '@/components/shared/Collection';
@@ -23,9 +23,8 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
   // dummy for now, later fetch from the database
 
-  const service = dummyServices[0] as ServiceItem;
-  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0]) as any;
-
+  const service = dummyServices[Number(id)] as ServiceItem;
+  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
 
   return (
     <>

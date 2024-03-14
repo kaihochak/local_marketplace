@@ -46,7 +46,8 @@ export type ReservationItem = {
   totalAmount: number; 
   reservationDate: Date;
   clientId: { _id: string, firstName: string, lastName: string };
-  serviceId: { _id: string, title: string };
+  service: { _id: string, title: string, image: string, location: string };
+  date: string;
   notes: string;
   status: string;
 }
