@@ -67,20 +67,22 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
     }
 
     if(type === 'Create') {
-      try {
-        const newService = await createService({
-          service: { ...values, imageUrl: uploadedImageUrl },
-          userId,
-          path: '/profile'
-        })
+      // try {
+      //   const newService = await createService({
+      //     service: { ...values, imageUrl: uploadedImageUrl },
+      //     userId,
+      //     path: '/profile'
+      //   })
 
-        if(newService) {
-          form.reset();
-          router.push(`/services/${newService._id}`)
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      //   if(newService) {
+      //     form.reset();
+      //     router.push(`/services/${newService._id}`)
+      //   }
+      console.log('Create service');
+      
+      // } catch (error) {
+      //   console.log(error);
+      // }
     }
 
     if(type === 'Update') {
@@ -109,7 +111,28 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
+
+        {/* Service Image */}
+        <FormField
+          control={form.control}
+          name="imageUrl"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormControl className="h-72">
+                <FileUploader 
+                  onFieldChange={field.onChange}
+                  imageUrl={field.value}
+                  setFiles={setFiles}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+            
         <div className="flex flex-col gap-5 md:flex-row">
+
           {/* Service Title */}
           <FormField
             control={form.control}
@@ -123,6 +146,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               </FormItem>
             )}
           />
+
           {/* Service Category */}
           <FormField
             control={form.control}
@@ -146,25 +170,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl className="h-72">
-                    <Textarea placeholder="Description" {...field} className="textarea rounded-2xl" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-          {/* Service Image */}
-          <FormField
-              control={form.control}
-              name="imageUrl"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormControl className="h-72">
-                    <FileUploader 
-                      onFieldChange={field.onChange}
-                      imageUrl={field.value}
-                      setFiles={setFiles}
-                    />
+                    <Textarea placeholder="Description" {...field} className="textarea rounded-sm" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -180,7 +186,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
-                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
                       <Image
                         src="/assets/icons/location-grey.svg"
                         alt="calendar"
@@ -206,7 +212,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
-                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
                       <Image
                         src="/assets/icons/calendar.svg"
                         alt="calendar"
@@ -238,7 +244,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
-                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
                       <Image
                         src="/assets/icons/calendar.svg"
                         alt="calendar"
@@ -264,15 +270,15 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
             />
         </div>
 
+        {/* Service Price */}
         <div className="flex flex-col gap-5 md:flex-row">
-          {/* Service Price */}
             <FormField
               control={form.control}
               name="price"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
-                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
                       <Image
                         src="/assets/icons/dollar.svg"
                         alt="dollar"
@@ -315,7 +321,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
-                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
                       <Image
                         src="/assets/icons/link.svg"
                         alt="link"
@@ -334,6 +340,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
         </div>
 
 
+        {/* Submit Button */} 
         <Button 
           type="submit"
           size="lg"
@@ -342,7 +349,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
         >
           {form.formState.isSubmitting ? (
             'Submitting...'
-          ): `${type} Service `}</Button>
+          ): `${type} `}</Button>
       </form>
     </Form>
   )

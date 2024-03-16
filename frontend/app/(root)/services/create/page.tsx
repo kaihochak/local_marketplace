@@ -7,15 +7,13 @@ const CreateService = () => {
   const userId = sessionClaims?.userId as string;
 
   return (
-    <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-        <h3 className="wrapper h3-bold text-center sm:text-left">Create Service</h3>
+      <section className="wrapper py-5 md:py-10">
+        <h3 className="h3-bold text-start sm:text-left mb-3">New Service Post</h3>
+        <ServiceForm 
+          userId={userId} 
+          type="Create" 
+        />
       </section>
-
-      <div className="wrapper my-8">
-        <ServiceForm userId={userId} type="Create" />
-      </div>
-    </>
   )
 }
 
