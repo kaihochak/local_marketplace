@@ -23,7 +23,9 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
   // dummy for now, later fetch from the database
 
-  const service = dummyServices[Number(id)] as ServiceItem;
+  const service = dummyServices[Number(id)-1] as ServiceItem;
+  console.log("service: ", service);
+  
   const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
 
   return (
