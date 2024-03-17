@@ -5,7 +5,7 @@ import { dummyReservations } from '@/constants/dummyReservations'
 const reservations = () => {
 
   return (
-    <div>
+    <div className='wrapper'>
         <CommonHeader title='My Reservations'/>
         <Collection 
             direction='vertical' 

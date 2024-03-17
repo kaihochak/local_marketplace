@@ -195,20 +195,10 @@ const Card = ({
 
     return (
         <div className='flex flex-col'>
-            {/* {!item ?
-                // Skeleton 
-                <div>
-                    <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-                    <div className="space-y-2">
-                        <Skeleton className="h-4 w-[250px]" />
-                        <Skeleton className="h-4 w-[200px]" />
-                    </div>
-                </div> :
-                
-                // Card content layout */}
-
-            <div className={`flex flex-col bg-primary rounded-sm w-[250px] 
-                                ${direction === "vertical" ? "w-[300px]" : ""}`}>
+            {/* Card Outer Box */}
+            <div className={`flex flex-col bg-primary rounded-sm  
+                                ${direction === "vertical" ? "w-[300px]" : 
+                                                "w-[250px] sm:w-[300px] md:w-[400px] lg:w-[450px] "}`}> {/* horizontal */}
                 {/* Card content */}
                 <Link href={`/${itemType + "s"}/${item?._id.toString()}`} 
                     className={`h-[170px] flex flex-col mx-3 my-2 gap-y-1 
@@ -216,6 +206,7 @@ const Card = ({
                     <ImageBanner/>
                     <CardInfo/>
                 </Link>
+
                 {/* optional button */}
                 { hasButton && <ButtonOption/>}
             </div>

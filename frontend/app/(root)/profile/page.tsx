@@ -72,15 +72,15 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-5">
-        <Link href="/profile/reservations">
           <Collection 
             title='My Reservations'
             direction='horizontal'
             itemType='reservation'
             items={dummyReservations}
             hasButton={true}
+            hasViewMore={true}
+            link={"/profile/reservations"}
           />
-        </Link>
       </section>
       
       <section className="wrapper my-5">
