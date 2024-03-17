@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
 import dummyUsers from '@/constants/dummyUsers';
+import { LocationPin } from '@/public/assets/icons/LocationPin';
 
 type CardProps = {
     direction?: 'horizontal' | 'vertical'
@@ -82,7 +83,7 @@ const Card = ({
                         <StarEmpty className='w-3 h-3' />
                     </div>
                     <div className='flex justify-start gap-x-1'>
-                        <div>icon</div>
+                        <LocationPin />
                         <p className="text-xs text-gray-500">{reservation?.service.location}</p>
                     </div>
                 </div>
@@ -176,7 +177,15 @@ const Card = ({
                 </div>
             )
         }
+
         // for service 
+        else if (itemType === 'service') {
+            return ( 
+                <button className="text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Service</button>
+            )
+        }
+
+        // for review 
         else if (itemType === 'review') {
             return (
                 <button className="text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Review</button>
@@ -186,20 +195,10 @@ const Card = ({
 
     return (
         <div className='flex flex-col'>
-            {/* {!item ?
-                // Skeleton 
-                <div>
-                    <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-                    <div className="space-y-2">
-                        <Skeleton className="h-4 w-[250px]" />
-                        <Skeleton className="h-4 w-[200px]" />
-                    </div>
-                </div> :
-                
-                // Card content layout */}
-
-            <div className={`flex flex-col bg-primary rounded-sm w-[250px] 
-                                ${direction === "vertical" ? "w-[300px]" : ""}`}>
+            {/* Card Outer Box */}
+            <div className={`flex flex-col bg-primary rounded-sm  
+                                ${direction === "vertical" ? "w-[300px]" : 
+                                                "w-[250px] sm:w-[300px] md:w-[400px] lg:w-[450px] "}`}> {/* horizontal */}
                 {/* Card content */}
                 <Link href={`/${itemType + "s"}/${item?._id.toString()}`} 
                     className={`h-[170px] flex flex-col mx-3 my-2 gap-y-1 
@@ -207,6 +206,7 @@ const Card = ({
                     <ImageBanner/>
                     <CardInfo/>
                 </Link>
+
                 {/* optional button */}
                 { hasButton && <ButtonOption/>}
             </div>

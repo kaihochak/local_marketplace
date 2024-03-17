@@ -5,6 +5,7 @@ import { createUser, deleteUser, updateUser } from '@/lib/actions/user.actions'
 import { clerkClient } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
  
+// This is the webhook handler from Clerk
 export async function POST(req: Request) {
  
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
@@ -49,14 +50,24 @@ export async function POST(req: Request) {
       status: 400
     })
   }
- 
+
   // Get the ID and type
   const { id } = evt.data;
   const eventType = evt.type;
  
-  if(eventType === 'user.created') {
-    const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
+
+  /*
+  * Handle the user changes in clerk webhook in our database, make sure they are synchronized
+  */
+
+  // Create a new user in OUR database, whenever a user is created in Clerk
+  if(eventType === 'user.created') {
+
+    // this is the data from clerk webhook
+    const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
+    
+    // Create a new user object
     const user = {
       clerkId: id,
       email: email_addresses[0].email_address,
@@ -66,8 +77,10 @@ export async function POST(req: Request) {
       photo: image_url,
     }
 
-    const newUser = await createUser(user);
+    // Create a new user in the database
+    const newUser = await createUser(user); 
 
+    // Update the user's _id in MongoDB to the user's publicMetadata of Clerk
     if(newUser) {
       await clerkClient.users.updateUserMetadata(id, {
         publicMetadata: {
@@ -79,6 +92,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: 'OK', user: newUser })
   }
 
+  // Update the user in OUR database, whenever a user is updated in Clerk
   if (eventType === 'user.updated') {
     const {id, image_url, first_name, last_name, username } = evt.data
 
@@ -94,6 +108,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: 'OK', user: updatedUser })
   }
 
+  // Delete the user in OUR database, whenever a user is deleted in Clerk
   if (eventType === 'user.deleted') {
     const { id } = evt.data
 
