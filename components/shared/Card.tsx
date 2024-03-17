@@ -45,7 +45,7 @@ const Card = ({
                         </div>
                     }   
                     <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
-                    <Image className="w-full h-full object-cover"
+                    <Image priority className="w-full h-full object-cover"
                         width={5000} height={5000}
                         src={reservation?.service.image ?? ''} alt={reservation?.service.title ?? ''}
                     />
@@ -62,7 +62,7 @@ const Card = ({
                     </div>
                     <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
                     {service && 'image' in service && (
-                        <Image className="w-full h-full object-cover"
+                        <Image priority className="w-full h-full object-cover"
                             width={5000} height={5000}
                             src={service?.image[0] ?? ''} alt={service?.title}
                         />
@@ -103,7 +103,7 @@ const Card = ({
                         </div>
                     </div>
                     <div className="flex items-center">
-                        <Image className="w-5 h-5 rounded-full mr-2" 
+                        <Image priority className="w-5 h-5 rounded-full mr-2" 
                             src={service?.serviceProvider[0]?.imageURL ?? ''} 
                             alt={service?.serviceProvider[0]?.name ?? ''} 
                             width={5000} height={5000}
@@ -123,7 +123,7 @@ const Card = ({
                         <p className="text-m font-semibold">{review?.service.title}</p>
                         {/* User */}
                         <div className='flex '>
-                            <Image className="w-5 h-5 rounded-full mr-2" 
+                            <Image priority className="w-5 h-5 rounded-full mr-2" 
                                 src={review?.service.imageURL ?? ''} 
                                 alt={review?.service.title ?? ''} 
                                 width={5000} height={5000} 
@@ -143,7 +143,7 @@ const Card = ({
                             <div className='flex flex-col gap-y-2'>
                                 <p className="text-s font-semibold">Provider's response</p>
                                 <div className='flex '>
-                                    <Image className="w-5 h-5 rounded-full mr-2" 
+                                    <Image priority className="w-5 h-5 rounded-full mr-2" 
                                         src={review?.service.imageURL ?? ''} 
                                         alt={review?.service.title ?? ''} 
                                         width={5000} height={5000} 

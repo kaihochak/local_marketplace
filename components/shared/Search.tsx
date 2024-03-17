@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 import { Input } from '../ui/input';
 import { formUrlQuery, removeKeysFromQuery } from '@/lib/utils';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Link } from 'lucide-react';
+import { SearchIcon } from '@/public/assets/icons/SearchIcon'
+
 
 const Search = ({ placeholder = 'Search title...' }: { placeholder?: string }) => {
   const [query, setQuery] = useState('');
@@ -35,9 +36,12 @@ const Search = ({ placeholder = 'Search title...' }: { placeholder?: string }) =
     return () => clearTimeout(delayDebounceFn);
   }, [query, searchParams, router])
 
+
+  // ...
+
   return (
     <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
-      <Image src="/assets/icons/search.svg" alt="search" width={24} height={24} />
+      <SearchIcon className="w-5 h-5 text-grey-500" />
       <Input 
         type="text"
         placeholder={placeholder}

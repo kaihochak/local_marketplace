@@ -24,8 +24,6 @@ const Collection = ({
     limit,
 }: CollectionProps ) => {
 
-    console.log("collection1: ", items);
-
 
     // API call to specific get data for this category
 

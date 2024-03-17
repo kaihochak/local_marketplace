@@ -45,6 +45,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
               alt={profile.username}
               width={500}
               height={500}
+              // priority
             />
           </div>
           {/* name */}
