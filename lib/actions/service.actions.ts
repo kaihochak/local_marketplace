@@ -5,7 +5,7 @@ import { CheckoutOrderParams, CreateOrderParams, GetOrdersByEventParams, GetOrde
 import { redirect } from 'next/navigation';
 import { handleError } from '../utils';
 import { connectToDatabase } from '../database';
-import Order from '../database/models/order.model';
+import Researvation from '../database/models/reservation.model';
 import Event from '../database/models/event.model';
 import {ObjectId} from 'mongodb';
 import User from '../database/models/user.model';
