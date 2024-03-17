@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import { handleError } from '../utils';
 import { connectToDatabase } from '../database';
 import Researvation from '../database/models/reservation.model';
-import Event from '../database/models/event.model';
+import Service from '../database/models/service.model';
 import {ObjectId} from 'mongodb';
 import User from '../database/models/user.model';
 
