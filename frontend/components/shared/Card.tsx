@@ -176,7 +176,15 @@ const Card = ({
                 </div>
             )
         }
+
         // for service 
+        else if (itemType === 'service') {
+            return (
+                <button className="text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Service</button>
+            )
+        }
+
+        // for review 
         else if (itemType === 'review') {
             return (
                 <button className="text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Review</button>

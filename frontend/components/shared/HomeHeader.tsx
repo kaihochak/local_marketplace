@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "../ui/button"
 import ProfileButton from "./ProfileButton"
+import { Message } from "@/public/assets/icons/Message"
 
 const HomeHeader = () => {
     return (
@@ -44,9 +45,7 @@ const HomeHeader = () => {
                             </div>     
                             {/* Message */}
                             <div className="flex">
-                                <Link href="/messages">
-                                    Messages
-                                </Link>
+                                <Message className="w-6 h-6" />
                             </div>
                         </div>
                     </SignedIn>
