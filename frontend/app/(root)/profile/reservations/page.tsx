@@ -1,6 +1,7 @@
 import React from 'react'
 import CommonHeader from '@/components/shared/CommonHeader'
 import Collection from '@/components/shared/Collection'
+import { dummyReservations } from '@/constants/dummyReservations'
 const reservations = () => {
 
   return (
@@ -9,7 +10,7 @@ const reservations = () => {
         <Collection 
             direction='vertical' 
             itemType='reservation' 
-            items={[]} 
+            items={dummyReservations} 
             hasButton={true}
         />
     </div>

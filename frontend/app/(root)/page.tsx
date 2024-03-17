@@ -45,7 +45,7 @@ export default function Home() {
       <section className="flex flex-col sticky top-0 bg-secondary z-50 ">
         <HomeHeader />
         {/*  Search and Filter */}  
-        <div className='px-6 pt-6'>
+        <div className='wrapper px-6 pt-6 '>
           <div className='flex justify-between pb-4'>
           <div className="flex items-center w-full">
             {/* Container for the Search component */}
@@ -64,7 +64,7 @@ export default function Home() {
       </section>
 
       {/* Collections */}
-      <section className="pl-6 py-4">
+      <section className="wrapper pl-6 py-4">
         <div className="flex flex-col gap-y-4">
           {categories.map((title) => (
             <div 

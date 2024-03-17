@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
 import dummyUsers from '@/constants/dummyUsers';
+import { LocationPin } from '@/public/assets/icons/LocationPin';
 
 type CardProps = {
     direction?: 'horizontal' | 'vertical'
@@ -82,7 +83,7 @@ const Card = ({
                         <StarEmpty className='w-3 h-3' />
                     </div>
                     <div className='flex justify-start gap-x-1'>
-                        <div>icon</div>
+                        <LocationPin />
                         <p className="text-xs text-gray-500">{reservation?.service.location}</p>
                     </div>
                 </div>

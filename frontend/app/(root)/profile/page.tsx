@@ -90,6 +90,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
             direction='horizontal'
             itemType='service'
             items={services}
+            hasButton={true}
           />
         </Link>
       </section>
