@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, RefObject } from 'react';
 import Collection from "@/components/shared/Collection";
-import Search from "@/components/shared/SearchIcon";
+import Search from "@/components/shared/Search";
 import FilterButton from "@/components/shared/FilterButton";
 import CategoryGroup from "@/components/shared/CategoryFilter";
 import { categories } from "@/constants";
