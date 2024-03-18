@@ -1,7 +1,6 @@
 import React from 'react'
 import CommonHeader from '@/components/shared/CommonHeader'
 import Collection from '@/components/shared/Collection'
-import { dummyServices } from '@/lib/dummyData'
 
 const saved = () => {
 
