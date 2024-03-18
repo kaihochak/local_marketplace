@@ -20,13 +20,13 @@ const User = models.User || model('User', UserSchema);
 export type UserItem = {
   _id: string;
   clerkId: string;
-  imageURL: string;
   email: string;
-  website: string; 
   username: string;
   firstName: string;
   lastName: string;
   photo: string;
+  website: string; 
+  imageURL: string;
   location: string;
   contactNumber: string;
   serviceIDs: string[]; // Assuming conversion to string IDs for external use

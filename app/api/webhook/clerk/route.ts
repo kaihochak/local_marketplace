@@ -56,7 +56,6 @@ export async function POST(req: Request) {
   const eventType = evt.type;
  
 
-
   /*
   * Handle the user changes in clerk webhook in our database, make sure they are synchronized
   */
