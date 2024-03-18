@@ -16,7 +16,6 @@ const ProfileReviews = () => {
           direction="vertical"
           itemType='review'
           items={reviews}
-          direction='vertical'
         />
     </div>
   )
