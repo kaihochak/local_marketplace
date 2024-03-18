@@ -1,7 +1,7 @@
 "use server"
 
 import Stripe from 'stripe';
-import { CheckoutOrderParams, CreateOrderParams, GetOrdersByEventParams, GetOrdersByUserParams } from "@/types"
+import { CheckoutReservationParams, CreateReservationParams, GetReservationsByServiceParams, GetReservationsByUserParams } from "@/types"
 import { redirect } from 'next/navigation';
 import { handleError } from '../utils';
 import { connectToDatabase } from '../database';
@@ -10,10 +10,10 @@ import Service from '../database/models/service.model';
 import {ObjectId} from 'mongodb';
 import User from '../database/models/user.model';
 
-export const checkoutOrder = async (order: CheckoutOrderParams) => {
+export const checkoutReservation = async (reservation: CheckoutReservationParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-  const price = order.isFree ? 0 : Number(order.price) * 100;
+  const price = reservation.isFree ? 0 : Number(reservation.price) * 100;
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -23,15 +23,15 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
             currency: 'usd',
             unit_amount: price,
             product_data: {
-              name: order.eventTitle
+              name: reservation.serviceTitle
             }
           },
           quantity: 1
         },
       ],
       metadata: {
-        eventId: order.eventId,
-        buyerId: order.buyerId,
+        serviceId: reservation.serviceId,
+        buyerId: reservation.buyerId,
       },
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
@@ -44,31 +44,31 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
   }
 }
 
-export const createOrder = async (order: CreateOrderParams) => {
+export const createReservation = async (reservation: CreateReservationParams) => {
   try {
     await connectToDatabase();
     
-    const newOrder = await Order.create({
-      ...order,
-      event: order.eventId,
-      buyer: order.buyerId,
+    const newReservation = await Reservation.create({
+      ...reservation,
+      service: reservation.serviceId,
+      buyer: reservation.buyerId,
     });
 
-    return JSON.parse(JSON.stringify(newOrder));
+    return JSON.parse(JSON.stringify(newReservation));
   } catch (error) {
     handleError(error);
   }
 }
 
 // GET ORDERS BY EVENT
-export async function getOrdersByEvent({ searchString, eventId }: GetOrdersByEventParams) {
+export async function getReservationsByService({ searchString, serviceId }: GetReservationsByServiceParams) {
   try {
     await connectToDatabase()
 
-    if (!eventId) throw new Error('Event ID is required')
-    const eventObjectId = new ObjectId(eventId)
+    if (!serviceId) throw new Error('Service ID is required')
+    const serviceObjectId = new ObjectId(serviceId)
 
-    const orders = await Order.aggregate([
+    const reservations = await Reservation.aggregate([
       {
         $lookup: {
           from: 'users',
@@ -82,22 +82,22 @@ export async function getOrdersByEvent({ searchString, eventId }: GetOrdersByEve
       },
       {
         $lookup: {
-          from: 'events',
-          localField: 'event',
+          from: 'services',
+          localField: 'service',
           foreignField: '_id',
-          as: 'event',
+          as: 'service',
         },
       },
       {
-        $unwind: '$event',
+        $unwind: '$service',
       },
       {
         $project: {
           _id: 1,
           totalAmount: 1,
           createdAt: 1,
-          eventTitle: '$event.title',
-          eventId: '$event._id',
+          serviceTitle: '$service.title',
+          serviceId: '$service._id',
           buyer: {
             $concat: ['$buyer.firstName', ' ', '$buyer.lastName'],
           },
@@ -105,33 +105,33 @@ export async function getOrdersByEvent({ searchString, eventId }: GetOrdersByEve
       },
       {
         $match: {
-          $and: [{ eventId: eventObjectId }, { buyer: { $regex: RegExp(searchString, 'i') } }],
+          $and: [{ serviceId: serviceObjectId }, { buyer: { $regex: RegExp(searchString, 'i') } }],
         },
       },
     ])
 
-    return JSON.parse(JSON.stringify(orders))
+    return JSON.parse(JSON.stringify(reservations))
   } catch (error) {
     handleError(error)
   }
 }
 
 // GET ORDERS BY USER
-export async function getOrdersByUser({ userId, limit = 3, page }: GetOrdersByUserParams) {
+export async function getReservationsByUser({ userId, limit = 3, page }: GetReservationsByUserParams) {
   try {
     await connectToDatabase()
 
     const skipAmount = (Number(page) - 1) * limit
     const conditions = { buyer: userId }
 
-    const orders = await Order.distinct('event._id')
+    const reservations = await Reservation.distinct('service._id')
       .find(conditions)
       .sort({ createdAt: 'desc' })
       .skip(skipAmount)
       .limit(limit)
       .populate({
-        path: 'event',
-        model: Event,
+        path: 'service',
+        model: Service,
         populate: {
           path: 'organizer',
           model: User,
@@ -139,9 +139,9 @@ export async function getOrdersByUser({ userId, limit = 3, page }: GetOrdersByUs
         },
       })
 
-    const ordersCount = await Order.distinct('event._id').countDocuments(conditions)
+    const reservationsCount = await Reservation.distinct('service._id').countDocuments(conditions)
 
-    return { data: JSON.parse(JSON.stringify(orders)), totalPages: Math.ceil(ordersCount / limit) }
+    return { data: JSON.parse(JSON.stringify(reservations)), totalPages: Math.ceil(reservationsCount / limit) }
   } catch (error) {
     handleError(error)
   }
