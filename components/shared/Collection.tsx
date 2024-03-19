@@ -5,6 +5,7 @@ import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
 import Link from 'next/link';
 import { Url } from 'next/dist/shared/lib/router/router';
+import { ArrowRight } from '@/public/assets/icons/ArrowRight';
 
 type CollectionProps = {
     title?: string,
@@ -37,14 +38,14 @@ const Collection = ({
     return (
         <div className='flex flex-col gap-y-1 '>
             {/* Title */}
-            <div className='flex items-end justify-start gap-x-2 '>
-                <h2 className={`font-semibold tracking-normal transition-all duration-300 
-                    ${selectedCategory === title ? "text-4xl text-accent-dark" : " text-3xl"}`}>
+            <div className='flex justify-between items-center py-4'>
+                <h2 className={`font-semibold tracking-normal transition-all duration-300 ease-in-out
+                    ${selectedCategory === title ? "text-4xl text-accent-foreground" : " text-2xl"}`}>
                     {title}
                 </h2>
                 {/* view more */}
                 {hasViewMore && link &&
-                    <Link href={link}><h3>View More </h3></Link>
+                    <Link href={link}><ArrowRight className='text-gray-800'/></Link>
                 }
             </div>
 

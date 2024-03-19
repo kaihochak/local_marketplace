@@ -33,7 +33,7 @@ const Card = ({
         // for reservation
         if (itemType === "reservation") {
             return (
-                <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] relative">
+                <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] sm:h-[120px] m:h-[130px] lg:h-[180px] relative">
                     { reservation?.status === "confirmed" ?
                         <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
                             <Clock className='text-gray-400' />
@@ -55,7 +55,7 @@ const Card = ({
         // for service 
         else if (itemType === "service") {
             return (
-                <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] relative">
+                <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] sm:h-[120px] m:h-[130px] lg:h-[180px] relative">
                     <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
                         <Clock className='text-gray-400' />
                         <div className='text-xs'>Avaliable Today</div>
@@ -76,7 +76,7 @@ const Card = ({
         // for reservation
         if (itemType === "reservation") {
             return (
-                <div>
+                <div className=''>
                     <div className='flex justify-between'>
                         {/* Titile */}
                         <p className="text-m font-semibold">{reservation?.service?.title}</p>
@@ -117,7 +117,7 @@ const Card = ({
         // for review
         else if (itemType === "review") {
             return (
-                <div>
+                <div className='h-48'>
                     <div className='flex flex-col gap-y-2'>
                         {/* title */}
                         <p className="text-m font-semibold">{review?.service.title}</p>
@@ -164,14 +164,14 @@ const Card = ({
         // for reservation
         if (itemType === 'reservation') {
             return (
-                <div className='h-[30px]'>
+                <div className=''>
                     { reservation?.status === "pending" || reservation?.status === "confirmed" ?
-                    <div className='flex flex-center'>
-                        <button className="w-full text-2xs py-2 border-r-[1.5px] border-t-[1.5px] border-primary-dark text-primary-foreground">Cancel</button> 
-                        <button className="w-full text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Reshedule</button> 
+                    <div className='flex flex-center border-t-[1.5px] border-primary-dark text-primary-foreground'>
+                        <button className="w-full text-xs md:text-s border-r-[1.5px] border-primary-dark py-2">Cancel</button> 
+                        <button className="w-full text-xs md:text-s py-2">Reshedule</button> 
                     </div>:
                     <div className='flex flex-center'>
-                        <button className="w-full text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Rate & Review</button>
+                        <button className="w-full text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Rate & Review</button>
                     </div>
                     }
                 </div>
@@ -181,14 +181,14 @@ const Card = ({
         // for service 
         else if (itemType === 'service') {
             return ( 
-                <button className="text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Service</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Service</button>
             )
         }
 
         // for review 
         else if (itemType === 'review') {
             return (
-                <button className="text-2xs py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Review</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Review</button>
             )
         }
     }
@@ -198,7 +198,7 @@ const Card = ({
             {/* Card Outer Box */}
             <div className={`flex flex-col bg-primary rounded-sm  
                                 ${direction === "vertical" ? "w-[300px]" : 
-                                                "w-[250px] sm:w-[300px] md:w-[400px] lg:w-[450px] "}`}> {/* horizontal */}
+                                                "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[320px]"}`}> {/* horizontal */}
                 {/* Card content */}
                 <Link href={`/${itemType + "s"}/${item?._id.toString()}`} 
                     className={`h-[170px] flex flex-col mx-3 my-2 gap-y-1 

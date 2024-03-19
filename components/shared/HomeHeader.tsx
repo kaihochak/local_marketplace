@@ -39,7 +39,7 @@ const HomeHeader = () => {
                                     className="text-primary-foreground/80 flex-center p-medium-16 whitespace-nowrap">
                                     <div className="relative w-12 h-12">
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <Add className="w-6 h-6" />
+                                            <Add className="w-8 h-8" />
                                         </div>
                                         <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-black/50 opacity-0 hover:opacity-100"></div>
                                     </div>
@@ -49,7 +49,7 @@ const HomeHeader = () => {
                             <div className="flex">
                                 <div className="relative w-12 h-12">
                                     <div className="absolute inset-0 flex items-center justify-center">
-                                        <Message className="w-6 h-6" />
+                                        <Message className="w-7 h-7" />
                                     </div>
                                     <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-black/50 opacity-0 hover:opacity-100"></div>
                                 </div>
@@ -57,13 +57,7 @@ const HomeHeader = () => {
                             {/* Link to profile page */}       
                             <div className="hidden md:flex items-center w-12 h-12">
                                 <ProfileButton />
-                            </div>     
-                            {/* Message */}
-                            <div className="flex">
-                                <Link href="/messages">
-                                    Messages
-                                </Link>
-                            </div>
+                            </div>   
                         </div>
                     </SignedIn>
 

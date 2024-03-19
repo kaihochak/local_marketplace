@@ -4,12 +4,13 @@ import { dummyReservations } from '@/constants/dummyReservations'
 import { dummyUsers } from '@/constants/dummyUsers'
 import { dummyServices } from '@/constants/dummyServices'
 import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled'
-import { StarFilled } from '@/public/assets/icons/StarFilled'
 import { SearchParamProps } from '@/types'
 import { UserButton, auth } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Reviews } from '@/public/assets/icons/Reviews'
+import CommonHeader from '@/components/shared/CommonHeader'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
@@ -28,12 +29,17 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
-      <section className='flex justify-end p-6'>
+    <div className='lg:wrapper'>
+      <div className="flex justify-between items-center py-4">
+        {/* Common Header */}
+        <CommonHeader title='' />
+        
+        {/* Sign Out Button */}
         <UserButton afterSignOutUrl="/" />
-      </section>
+      </div>
 
-      {/* My Tickets */}
-      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center md:py-10">
+      {/* Profile Name */}
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center lg:py-10">
         <div className="wrapper flex flex-col items-center justify-center sm:justify-between">
           {/* profile image */}
           <div className="w-40 h-40 border border-black rounded-full flex items-center justify-center overflow-hidden">
@@ -51,11 +57,11 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="flex gap-x-2">
-        <div className='wrapper flex items-center justify-center sm:justify-between gap-x-4'>
+        <div className='wrapper flex items-center justify-center gap-x-4'>
           {/* Reviews */}
           <Link href="/profile/reviews">
             <div className="w-14 h-14 border border-black rounded-full flex items-center justify-center">
-              <StarFilled className='w-9 h-9'/>
+              <Reviews className='w-9 h-9'/>
             </div>
           </Link>
 
@@ -81,16 +87,17 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
       
       <section className="wrapper my-5">
-        <Link href="/profile/services">
-          <Collection 
-            title='My Services'
-            direction='horizontal'
-            itemType='service'
-            items={services}
-            hasButton={true}
-          />
-        </Link>
+        <Collection 
+          title='My Services'
+          direction='horizontal'
+          itemType='service'
+          items={services}
+          hasButton={true}
+          hasViewMore={true}
+          link={"/profile/services"}
+        />
       </section>
+    </div>
 
     </>
   )
