@@ -74,8 +74,12 @@ export async function POST(req: Request) {
       imageURL: image_url,
     }
 
+    console.log('testing 1');
+
     // Create a new user in the database
     const newUser = await createUser(user); 
+
+    console.log('testing 2');
 
     // Update the user's _id in MongoDB to the user's publicMetadata of Clerk
     if(newUser) {
@@ -85,6 +89,9 @@ export async function POST(req: Request) {
         }
       })
     }
+
+    console.log('testing 3');
+
 
     return NextResponse.json({ message: 'OK', user: newUser })
   }
