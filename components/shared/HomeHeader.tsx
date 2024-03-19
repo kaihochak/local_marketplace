@@ -3,6 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "../ui/button"
 import ProfileButton from "./ProfileButton"
+import { Message } from "@/public/assets/icons/Message"
+import { Add } from "@/public/assets/icons/Add"
 
 const HomeHeader = () => {
     return (
@@ -35,8 +37,22 @@ const HomeHeader = () => {
                                 <Link 
                                     href={"/services/create"} 
                                     className="text-primary-foreground/80 flex-center p-medium-16 whitespace-nowrap">
-                                        + Create new service
+                                    <div className="relative w-12 h-12">
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <Add className="w-6 h-6" />
+                                        </div>
+                                        <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-black/50 opacity-0 hover:opacity-100"></div>
+                                    </div>
                                 </Link>
+                            </div>
+                            {/* Message */}
+                            <div className="flex">
+                                <div className="relative w-12 h-12">
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <Message className="w-6 h-6" />
+                                    </div>
+                                    <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-black/50 opacity-0 hover:opacity-100"></div>
+                                </div>
                             </div>
                             {/* Link to profile page */}       
                             <div className="hidden md:flex items-center w-12 h-12">

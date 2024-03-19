@@ -18,17 +18,15 @@ import CommonHeader from '@/components/shared/CommonHeader';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 // import 'swiper/css/effect-coverflow';
-import { UserItem } from '@/lib/database/models/user.model'; // Import the UserItem type
-
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
-  
+
   // dummy for now, later fetch from the database
-  
+
   const service = dummyServices[Number(id)-1] as ServiceItem;
   console.log("service: ", service);
   
-  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId) as UserItem; // Add the 'as UserItem' type assertion
+  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
 
   return (
     <>
@@ -67,7 +65,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
         <div className="flex flex-col gap-4"> {/* Add gap-4 for spacing between items */}
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-              <Image priority src={serviceProvider?.imageURL} alt="Profile" width={40} height={40} className="rounded-full" />
+              <Image priority src={serviceProvider?.imageURL ?? ''} alt="Profile" width={40} height={40} className="rounded-full" />
             </div>
             <p className="">{serviceProvider?.firstName} {serviceProvider?.lastName}</p>
           </div>

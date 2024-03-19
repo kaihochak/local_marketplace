@@ -8,7 +8,7 @@ import { dummyUsers } from '@/constants/dummyUsers';
 
 const ServiceReviews = ({ service }: { service: ServiceItem }) => {
 
-    // find all service reviews
+
     const serviceReviews = dummmyRatingReviews.filter(review => review.service._id === service._id);
     console.log("ServiceReviews.ts: ", serviceReviews);
 

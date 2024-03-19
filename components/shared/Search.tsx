@@ -7,7 +7,6 @@ import { formUrlQuery, removeKeysFromQuery } from '@/lib/utils';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { SearchIcon } from '@/public/assets/icons/SearchIcon'
 
-
 const Search = ({ placeholder = 'Search title...' }: { placeholder?: string }) => {
   const [query, setQuery] = useState('');
   const router = useRouter();
@@ -35,9 +34,6 @@ const Search = ({ placeholder = 'Search title...' }: { placeholder?: string }) =
 
     return () => clearTimeout(delayDebounceFn);
   }, [query, searchParams, router])
-
-
-  // ...
 
   return (
     <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
