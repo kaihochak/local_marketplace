@@ -71,7 +71,7 @@ export async function POST(req: Request) {
       username: username!,
       firstName: first_name,
       lastName: last_name,
-      photo: image_url,
+      imageURL: image_url,
     }
 
     // Create a new user in the database
