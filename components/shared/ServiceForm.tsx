@@ -92,16 +92,18 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
       }
 
       try {
-        const updatedService = await updateService({
-          userId,
-          service: { ...values, imageUrl: uploadedImageUrl, _id: serviceId },
-          path: `/services/${serviceId}`
-        })
+        console.log('Update service');
+        
+        // const updatedService = await updateService({
+        //   userId,
+        //   service: { ...values, imageUrl: uploadedImageUrl, _id: serviceId },
+        //   path: `/services/${serviceId}`
+        // })
 
-        if(updatedService) {
-          form.reset();
-          router.push(`/services/${updatedService._id}`)
-        }
+        // if(updatedService) {
+        //   form.reset();
+        //   router.push(`/services/${updatedService._id}`)
+        // }
       } catch (error) {
         console.log(error);
       }

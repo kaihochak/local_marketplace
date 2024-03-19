@@ -82,7 +82,7 @@ const Reviews = () => {
                         <div key={index} className="p-4">
                             <div className='flex'>
                                 <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center">
-                                    <Image src={review.user.imageURL} alt="Profile" width={28} height={28} className="rounded-full" />
+                                    <Image priority  src={review.user.profileURL} alt="Profile" width={28} height={28} className="rounded-full" />
                                 </div>
                                 <h3 className="text-lg font-medium">{review.user.firstName} {review.user.lastName}</h3>
                             </div>

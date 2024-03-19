@@ -8,8 +8,8 @@ import { dummyUsers } from '@/constants/dummyUsers';
 
 const ServiceReviews = ({ service }: { service: ServiceItem }) => {
 
-    // find all service reviews
-    const serviceReviews = dummmyRatingReviews.filter(review => review.serviceID === service._id);
+
+    const serviceReviews = dummmyRatingReviews.filter(review => review.service._id === service._id);
     console.log("ServiceReviews.ts: ", serviceReviews);
 
     // service.ratingReviewIDs;
@@ -31,7 +31,7 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
                         <div key={index} className="p-4">
                             <div className='flex'>
                                 <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center">
-                                    <Image src={client?.imageURL ?? ''} alt="Profile" width={28} height={28} className="rounded-full" />
+                                    <Image priority src={client?.imageURL ?? ''} alt="Profile" width={28} height={28} className="rounded-full" />
                                 </div>
                                 <h3 className="text-lg font-medium">{client?.firstName} {client?.lastName}</h3>
                             </div>
@@ -49,7 +49,7 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
             {/* Button to All Reviews */}
 
             <Link href={`/services/${service._id}/reviews`} className="text-primary-foreground/80 flex justify-end p-medium-16 whitespace-nowrap">
-                See All Reviews ->
+                See All Reviews &gt;
             </Link>
         </section>
 

@@ -58,6 +58,12 @@ const HomeHeader = () => {
                             <div className="hidden md:flex items-center w-12 h-12">
                                 <ProfileButton />
                             </div>     
+                            {/* Message */}
+                            <div className="flex">
+                                <Link href="/messages">
+                                    Messages
+                                </Link>
+                            </div>
                         </div>
                     </SignedIn>
 

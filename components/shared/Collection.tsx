@@ -8,7 +8,7 @@ import { Url } from 'next/dist/shared/lib/router/router';
 
 type CollectionProps = {
     title?: string,
-    selectedCategory?: string,
+    selectedCategory?: string, 
     direction?: 'horizontal' | 'vertical',
     itemType?: 'service' | 'reservation' | 'review',
     items?: ServiceItem[] | RatingReviewItem[] | ReservationItem[],
@@ -29,17 +29,13 @@ const Collection = ({
     hasViewMore,
     link,
 }: CollectionProps) => {
-
-    console.log("collection1: ", items);
-
-
+  
     // API call to specific get data for this category
 
     // store the items in a list and map through them
 
     return (
         <div className='flex flex-col gap-y-1 '>
-
             {/* Title */}
             <div className='flex items-end justify-start gap-x-2 '>
                 <h2 className={`font-semibold tracking-normal transition-all duration-300 
