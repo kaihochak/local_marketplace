@@ -18,6 +18,8 @@ export async function createUser(user: CreateUserParams) {
     const newUser = await User.create(user)
     return JSON.parse(JSON.stringify(newUser))
   } catch (error) {
+    console.log('user.actions.ts: createUser - ', error);
+    
     handleError(error)
   }
 }
