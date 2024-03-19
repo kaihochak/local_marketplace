@@ -3,6 +3,7 @@ import CommonHeader from '@/components/shared/CommonHeader'
 import Collection from '@/components/shared/Collection'
 import DummyUsers from '@/constants/dummyUsers'
 import {dummmyRatingReviews} from '@/constants/dummyReviews'
+import Link from 'next/link'
 
 const ProfileReviews = () => {
 
@@ -12,11 +13,14 @@ const ProfileReviews = () => {
   return (
     <div>
         <CommonHeader title='My Reviews'/>
-        <Collection 
-          direction="vertical"
-          itemType='review'
-          items={reviews}
-        />
+        <Link href="/profile/reviews/edit">
+          <Collection 
+            direction="vertical"
+            itemType='review'
+            items={reviews}
+            hasButton={true} 
+          />
+        </Link>
     </div>
   )
 }

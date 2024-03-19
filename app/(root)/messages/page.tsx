@@ -4,7 +4,7 @@ const page = () => {
 
     return (
         <div className="px-4">
-            Message
+            
         </div>
     );
 }

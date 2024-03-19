@@ -38,10 +38,10 @@ module.exports = withUt({
           DEFAULT: '#ecebe9',
           foreground: 'hsl(var(--muted-foreground))',
         },
-        accent: { // Orange *
-          DEFAULT: '#D46534', // Orange
-          dark: '#BE5A2E', // Dark Orange
-          light: '#F0A16E', // Light Orange
+        accent: { // Yellow *
+          DEFAULT: '#FEC92D', // Yellow
+          dark: '#FEC92D', // Dark Yellow
+          light: '#FFE28D', // Light Yellow
           foreground: '#151515', // Black
         },
         popover: {

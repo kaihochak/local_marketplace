@@ -18,17 +18,15 @@ import CommonHeader from '@/components/shared/CommonHeader';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 // import 'swiper/css/effect-coverflow';
-import { UserItem } from '@/lib/database/models/user.model'; // Import the UserItem type
-
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
-  
+
   // dummy for now, later fetch from the database
-  
+
   const service = dummyServices[Number(id)-1] as ServiceItem;
   console.log("service: ", service);
   
-  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId) as UserItem; // Add the 'as UserItem' type assertion
+  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
 
   return (
     <>

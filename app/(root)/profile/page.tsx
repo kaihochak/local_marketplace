@@ -5,9 +5,6 @@ import { dummyUsers } from '@/constants/dummyUsers'
 import { dummyServices } from '@/constants/dummyServices'
 import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled'
 import { StarFilled } from '@/public/assets/icons/StarFilled'
-// import { getEventsByUser } from '@/lib/actions/event.actions'
-// import { getOrdersByUser } from '@/lib/actions/reservation.actions'
-// import { IOrder } from '@/lib/database/models/service.model'
 import { SearchParamProps } from '@/types'
 import { UserButton, auth } from '@clerk/nextjs'
 import Image from 'next/image'
@@ -45,7 +42,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
               alt={profile.username}
               width={500}
               height={500}
-              // priority
             />
           </div>
           {/* name */}
@@ -73,15 +69,15 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-5">
-        <Link href="/profile/reservations">
           <Collection 
             title='My Reservations'
             direction='horizontal'
             itemType='reservation'
             items={dummyReservations}
             hasButton={true}
+            hasViewMore={true}
+            link={"/profile/reservations"}
           />
-        </Link>
       </section>
       
       <section className="wrapper my-5">
@@ -91,6 +87,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
             direction='horizontal'
             itemType='service'
             items={services}
+            hasButton={true}
           />
         </Link>
       </section>

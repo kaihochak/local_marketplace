@@ -50,12 +50,10 @@ export async function POST(req: Request) {
       status: 400
     })
   }
-
   // Get the ID and type
   const { id } = evt.data;
   const eventType = evt.type;
  
-
   /*
   * Handle the user changes in clerk webhook in our database, make sure they are synchronized
   */
@@ -106,6 +104,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: 'OK', user: updatedUser })
   }
+
 
   // Delete the user in OUR database, whenever a user is deleted in Clerk
   if (eventType === 'user.deleted') {
