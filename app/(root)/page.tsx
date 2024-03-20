@@ -70,7 +70,7 @@ export default function Home() {
             <div 
               ref={collectionRefs[title]} 
               key={title} 
-              className='scroll-mt-[295px]' // This is a temporary fix for the sticky header
+              className='scroll-mt-[350px]' // This is a temporary fix for the sticky header
             >
               <Collection 
                 selectedCategory={selectedCategory}
