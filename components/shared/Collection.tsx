@@ -35,35 +35,53 @@ const Collection = ({
     link,
     itemsPerPage = 3,
 }: CollectionProps) => {
-    const [scrollPosition, setScrollPosition] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const handleScroll = () => {
-        if (containerRef.current) {
-            setScrollPosition(containerRef.current.scrollLeft);
-        }
+    const scrollBy = (offset: number) => {        
+        console.log(containerRef.current?.scrollLeft, offset);
+        
+        if (containerRef.current) { containerRef.current.scrollLeft += offset;}
     };
 
-    useEffect(() => {
-        if (containerRef.current) {
-            containerRef.current.addEventListener('scroll', handleScroll);
-        }
-        return () => {
-            if (containerRef.current) {
-                containerRef.current.removeEventListener('scroll', handleScroll);
-            }
-        };
-    }, []);
-
-    const scrollBy = (offset: number) => {
-        if (containerRef.current) {
-            containerRef.current.scrollLeft += offset;
-        }
-    };
-
-    const [showButtons, setShowButtons] = useState(false);
-    const [showPreviousButton, setShowPreviousButton] = useState(false);
-    const [showNextButton, setShowNextButton] = useState(false);
+    // Card collection
+    const CardCollection = () => {
+        return (
+            <div className="relative [&_button]:hover:opacity-40">
+                {/* Cards */}
+                <div
+                    ref={containerRef}
+                    className={`${direction === "vertical" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto" 
+                                            : "flex gap-x-5 pr-10 overflow-x-auto scrollbar-hide"}`}
+                >
+                    {items?.map((item, index) => (
+                            <Card
+                                key={item._id}
+                                itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
+                                item={item}
+                                direction={direction}
+                                hasButton={hasButton}
+                            />
+                    ))}
+                </div>
+                
+                {/* Previous button */}
+                <button 
+                    onClick={() => scrollBy(-200)} // Adjust scroll amount as per your design
+                    className="card-prev-next-button left-0"
+                >
+                    <ArrowLeft/>
+                </button>
+                
+                {/* Next button */}
+                <button 
+                    onClick={() => scrollBy(200)} // Adjust scroll amount as per your design
+                    className="card-prev-next-button right-0"
+                >
+                    <ArrowRight/>
+                </button>
+            </div>
+        )
+    }
 
     return (
         <div className='relative flex flex-col gap-y-1'>
@@ -79,45 +97,8 @@ const Collection = ({
                 }
             </div>
 
-            
-            <div>
-                {/* Cards */}
-                <div
-                    ref={containerRef}
-                    className={`${direction === "vertical" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto" : "flex gap-x-5 pr-10 overflow-x-auto scrollbar-hide"}`}
-                    style={{ position: 'relative' }} // Position the container relative to place the buttons absolutely inside it
-                >
-                    {items?.map((item, index) => (
-                        <Card
-                            key={item._id}
-                            itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
-                            item={item}
-                            direction={direction}
-                            hasButton={hasButton}
-                        />
-                    ))}
-                </div>
-                
-                {/* Previous button */}
-                <button 
-                    onMouseEnter={() => setShowPreviousButton(true)} // Show previous button on hover
-                    onMouseLeave={() => setShowPreviousButton(false)} // Hide previous button on hover out
-                    onClick={() => scrollBy(-200)} // Adjust scroll amount as per your design
-                    className={`absolute top-1/2 left-0 transform -translate-y-1/2 px-3 py-2 rounded-md bg-black/50 h-full text-white transition-opacity duration-300 ${showButtons ? 'opacity-100' : 'opacity-0'} hover:opacity-100`}
-                >
-                    <ArrowLeft />
-                </button>
-                
-                {/* Next button */}
-                <button 
-                    onMouseEnter={() => setShowNextButton(true)} // Show next button on hover
-                    onMouseLeave={() => setShowNextButton(false)} // Hide next button on hover out
-                    onClick={() => scrollBy(200)} // Adjust scroll amount as per your design
-                    className={`absolute top-1/2 right-0 transform -translate-y-1/2 px-3 py-2 rounded-md bg-black/50 h-full text-white transition-opacity duration-300 ${showButtons ? 'opacity-100' : 'opacity-0'} hover:opacity-100`}
-                >
-                    <ArrowRight />
-                </button>
-            </div>
+            {/* Card collection */}
+            <CardCollection/>
         </div>
     );
 };

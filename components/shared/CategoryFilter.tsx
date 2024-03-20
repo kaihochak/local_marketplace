@@ -83,7 +83,7 @@ const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string
   }
 
   return (
-    <div className="flex gap-x-2 pr-2 pb-2 overflow-x-auto scrollbar-hide">
+    <div className="flex gap-x-2 pl-4 pr-0 overflow-x-auto scrollbar-hide">
       <FilterCard category="All" />
       {categories.map(category => (
         <FilterCard key={category._id} category={category.name} />

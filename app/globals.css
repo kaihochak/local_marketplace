@@ -92,7 +92,7 @@ body {
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {
-    @apply max-w-7xl lg:mx-auto md:px-10 xl:px-10 w-full;
+    @apply max-w-[1600px] lg:mx-auto w-full;
   }
 
   .flex-center {
@@ -259,6 +259,10 @@ body {
   .category-filter-card {
     @apply flex flex-col p-2 pb-2 gap-y-2 rounded-md cursor-pointer place-items-center justify-center;
     @apply min-w-[90px] lg:min-w-[100px] min-h-[100px] lg:min-h-[120px]  sm:items-center h-full;
+  }
+
+  .card-prev-next-button {
+    @apply absolute top-1/2 transform -translate-y-1/2 py-2 rounded-md bg-primary-foreground h-full text-white transition-opacity duration-300 px-2 opacity-0 hover:opacity-60;
   }
 
 }
