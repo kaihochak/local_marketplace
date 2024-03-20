@@ -23,9 +23,9 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   imageURL: { type: String, required: true },
-  website: { type: String, required: true },
-  location: { type: String, required: true },
-  contactNumber: { type: String, required: true, unique: true },
+  website: { type: String},
+  location: { type: String},
+  contactNumber: { type: String, unique: true },
   serviceIDs: [{ type: Schema.Types.ObjectId, ref: 'Service' }],
   ratingReviewIDs: [{ type: Schema.Types.ObjectId, ref: 'RatingReview' }],
 }, { timestamps: true }); // Automatically add createdAt and updatedAt fields
