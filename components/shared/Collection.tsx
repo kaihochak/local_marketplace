@@ -12,7 +12,7 @@ import { ArrowRight } from '@/public/assets/icons/ArrowRight';
 
 type CollectionProps = {
     title?: string;
-    selectedCategory?: string; 
+    selectedCategory?: string;
     direction?: 'horizontal' | 'vertical';
     itemType?: 'service' | 'reservation' | 'review';
     items?: ServiceItem[] | RatingReviewItem[] | ReservationItem[];
@@ -21,6 +21,7 @@ type CollectionProps = {
     hasViewMore?: boolean;
     link?: Url;
     itemsPerPage?: number;
+    nextPrevButton?: boolean;
 };
 
 const Collection = ({
@@ -33,14 +34,15 @@ const Collection = ({
     limit,
     hasViewMore,
     link,
-    itemsPerPage = 3,
+    itemsPerPage,
+    nextPrevButton,
 }: CollectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const scrollBy = (offset: number) => {        
+    const scrollBy = (offset: number) => {
         console.log(containerRef.current?.scrollLeft, offset);
-        
-        if (containerRef.current) { containerRef.current.scrollLeft += offset;}
+
+        if (containerRef.current) { containerRef.current.scrollLeft += offset; }
     };
 
     // Card collection
@@ -50,37 +52,35 @@ const Collection = ({
                 {/* Cards */}
                 <div
                     ref={containerRef}
-                    className={`${direction === "vertical" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto" 
-                                            : "flex gap-x-2 pr-10 overflow-x-auto scrollbar-hide"}`}
+                    className={`${direction === "vertical" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto"
+                        : "flex gap-x-2 pr-10 overflow-x-auto scrollbar-hide"}`}
                 >
                     {items?.map((item, index) => (
-                            <Card
-                                key={item._id}
-                                itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
-                                item={item}
-                                direction={direction}
-                                hasButton={hasButton}
-                            />
+                        <Card
+                            key={item._id}
+                            itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
+                            item={item}
+                            direction={direction}
+                            hasButton={hasButton}
+                        />
                     ))}
                 </div>
-                
-                {/* Previous button */}
-                <button 
+
+                {/* Next Prev button */}
+                {nextPrevButton && <button
                     id="card-prev-next-button"
                     onClick={() => scrollBy(-400)} // Adjust scroll amount as per your design
                     className="left-0"
                 >
-                    <ArrowLeft className='text-[22px]'/>
-                </button>
-                
-                {/* Next button */}
-                <button 
+                    <ArrowLeft className='text-[22px]' />
+                </button>}
+                {nextPrevButton && <button
                     id="card-prev-next-button"
                     onClick={() => scrollBy(400)} // Adjust scroll amount as per your design
                     className="right-0"
                 >
-                    <ArrowRight className='text-[22px]'/>
-                </button>
+                    <ArrowRight className='text-[22px]' />
+                </button>}
             </div>
         )
     }
@@ -94,13 +94,15 @@ const Collection = ({
                     {title}
                 </h2>
                 {/* View more */}
-                {hasViewMore && link &&
-                    <Link href={link}><ArrowRight className='text-gray-800'/></Link>
+                {hasViewMore && link && 
+                    <Link href={link}>
+                        <ArrowRight className='text-[22px] text-primary-foreground/60 mr-4' />
+                    </Link>
                 }
             </div>
 
             {/* Card collection */}
-            <CardCollection/>
+            <CardCollection />
         </div>
     );
 };
