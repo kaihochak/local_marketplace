@@ -53,7 +53,7 @@ export default function Home() {
             <div className="flex-grow">
               <Search /> 
             </div>
-            <div className="bg-black p-4 rounded-xl ml-2"> 
+            <div className="bg-primary-foreground p-4 rounded-xl ml-2"> 
               <Filter className="text-white text-xl" />
             </div>
           </div>

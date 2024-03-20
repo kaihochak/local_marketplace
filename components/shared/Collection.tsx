@@ -46,12 +46,12 @@ const Collection = ({
     // Card collection
     const CardCollection = () => {
         return (
-            <div className="relative [&_button]:hover:opacity-40">
+            <div className="relative [&_#card-prev-next-button]:hover:opacity-50 ">
                 {/* Cards */}
                 <div
                     ref={containerRef}
                     className={`${direction === "vertical" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto" 
-                                            : "flex gap-x-5 pr-10 overflow-x-auto scrollbar-hide"}`}
+                                            : "flex gap-x-2 pr-10 overflow-x-auto scrollbar-hide"}`}
                 >
                     {items?.map((item, index) => (
                             <Card
@@ -66,18 +66,20 @@ const Collection = ({
                 
                 {/* Previous button */}
                 <button 
-                    onClick={() => scrollBy(-200)} // Adjust scroll amount as per your design
-                    className="card-prev-next-button left-0"
+                    id="card-prev-next-button"
+                    onClick={() => scrollBy(-400)} // Adjust scroll amount as per your design
+                    className="left-0"
                 >
-                    <ArrowLeft/>
+                    <ArrowLeft className='text-[22px]'/>
                 </button>
                 
                 {/* Next button */}
                 <button 
-                    onClick={() => scrollBy(200)} // Adjust scroll amount as per your design
-                    className="card-prev-next-button right-0"
+                    id="card-prev-next-button"
+                    onClick={() => scrollBy(400)} // Adjust scroll amount as per your design
+                    className="right-0"
                 >
-                    <ArrowRight/>
+                    <ArrowRight className='text-[22px]'/>
                 </button>
             </div>
         )
@@ -87,8 +89,8 @@ const Collection = ({
         <div className='relative flex flex-col gap-y-1'>
             {/* Title */}
             <div className='flex justify-between items-center py-4'>
-                <h2 className={`font-semibold tracking-normal transition-all duration-300 ease-in-out
-                    ${selectedCategory === title ? "text-4xl text-accent" : " text-2xl text-accent-light"}`}>
+                <h2 className={`font-semibold tracking-normal transition-all duration-300 ease-in-out text-2xl
+                    ${selectedCategory === title ? "text-accent" : " text-accent-light"}`}>
                     {title}
                 </h2>
                 {/* View more */}

@@ -29,12 +29,11 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   return (
     <>
     <div className='lg:wrapper'>
-      <div className="flex justify-between items-center py-4">
+      <div className="flex justify-between items-center py-4 pr-4">
         {/* Common Header */}
         <CommonHeader title='' />
-        
         {/* Sign Out Button */}
-        <UserButton afterSignOutUrl="/" />
+        <UserButton afterSignOutUrl="/"/>
       </div>
 
       {/* Profile Name */}
@@ -73,7 +72,8 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
         </div>
       </section>
 
-      <section className="wrapper my-5">
+      {/* My Reservations */}
+      <section className="wrapper my-5 pl-4">
           <Collection 
             title='My Reservations'
             direction='horizontal'
@@ -85,7 +85,8 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           />
       </section>
       
-      <section className="wrapper my-5">
+      {/* My Services */}
+      <section className="wrapper my-5 pl-4">
         <Collection 
           title='My Services'
           direction='horizontal'

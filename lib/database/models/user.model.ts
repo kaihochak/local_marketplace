@@ -17,7 +17,7 @@ export type UserItem = {
 };
 
 const UserSchema = new Schema({
-  clerkId: { type: String, required: true, unique: true },
+  clerkId: { type: String, required: true, unique: true }, // use clerkId as the unique identifier, after the user has signed up, the webhook will send the clerkId to the server (see app/api/webhook/clerk/route.ts)
   email: { type: String, required: true, unique: true },
   username: { type: String, required: true, unique: true },
   firstName: { type: String, required: true },

@@ -261,8 +261,9 @@ body {
     @apply min-w-[90px] lg:min-w-[100px] min-h-[100px] lg:min-h-[120px]  sm:items-center h-full;
   }
 
-  .card-prev-next-button {
-    @apply absolute top-1/2 transform -translate-y-1/2 py-2 rounded-md bg-primary-foreground h-full text-white transition-opacity duration-300 px-2 opacity-0 hover:opacity-60;
+  #card-prev-next-button {
+    @apply absolute top-1/2 transform -translate-y-1/2 px-0 hover:px-2 rounded-md bg-primary-foreground/30 h-full;
+    @apply text-primary opacity-0 transition-all duration-300 hover:bg-primary-foreground/60;
   }
 
 }
