@@ -5,6 +5,7 @@ import { Button } from "../ui/button"
 import ProfileButton from "./ProfileButton"
 import { Message } from "@/public/assets/icons/Message"
 import { Add } from "@/public/assets/icons/Add"
+import SeedButton from "@/lib/SeedButton"
 
 const HomeHeader = () => {
     return (
@@ -25,6 +26,11 @@ const HomeHeader = () => {
                         <div>Marketplace</div>
                     </div>
                 </Link>
+
+                {/* Seeding Button */}
+                <div className="flex-center">
+                    <SeedButton/>
+                </div>
 
                 {/* Signin or "Create & Profile" */}
                 <div className="flex gap-3">

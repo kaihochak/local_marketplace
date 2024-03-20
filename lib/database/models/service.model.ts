@@ -4,60 +4,55 @@ export interface IService extends Document {
   title: string;
   description?: string;
   location?: string;
-  imageUrl: string;
-  startDateTime: Date;
-  endDateTime: Date;
-  price: number; // Optimized to number for calculations
-  isFree: boolean;
+  imageUrl: string[];
+  averageRating: number;
+  totalReviews: number;
   url?: string;
-  categoryId: Schema.Types.ObjectId;
-  providerId: Schema.Types.ObjectId;
+  servicesOffered: { [key: string]: { title: string; price: string } };
+  availabilityIDs?: string[]; 
+  ratingReviewIDs?: string[]; 
+  categories?: { _id: string; name: string }[];
+  providers: { _id: string; name: string ; imageUrl: string }[];
 }
 
-const ServiceSchema = new Schema({
+const ServiceSchema = new Schema<IService>({
   title: { type: String, required: true },
   description: { type: String },
   location: { type: String },
-  image: { type: [String], required: true },
+  imageUrl: { type: [String], required: true },
   averageRating: { type: Number, required: true },
   totalReviews: { type: Number, required: true },
-  serviceProvider: [{
-    userId: { type: String, required: true },
-    name: { type: String, required: true },
-    imageURL: { type: String, required: true }
+  url: { type: String },
+  servicesOffered: { type: Schema.Types.Mixed },
+  availabilityIDs: [{ type: String }], 
+  ratingReviewIDs: [{ type: String }], 
+  categories: [{
+    _id: { type: String, required: true },
+    name: { type: String, required: true }
   }],
-  servicesOffered: {
-    type: Map,
-    of: {
-      title: { type: String, required: true },
-      price: { type: String, required: true }
-    }
-  },
-  ratingReviewIDs: [{ type: Schema.Types.ObjectId, ref: 'RatingReview' }]
-}, { timestamps: true }); // Enables createdAt and updatedAt fields automatically
+  providers: [{
+    _id: { type: String, required: true },
+    name: { type: String, required: true },
+    imageUrl: { type: String, required: true }
+  }]
+}, { timestamps: true });
 
-const Service = models.Service || model('Service', ServiceSchema);
+const Service = models.Service || model<IService>('Service', ServiceSchema);
 
 export type ServiceItem = {
   _id: string;
   title: string;
   description?: string;
   location?: string;
-  image: string[];
+  imageUrl: string[];
   averageRating: number;
   totalReviews: number;
-  serviceProvider: {
-    userId: string;
-    name: string;
-    imageURL: string;
-  }[];
-  servicesOffered: {
-    [key: string]: {
-      title: string;
-      price: string;
-    };
-  };
-  ratingReviewIDs:string[],
+  url?: string;
+  servicesOffered: { [key: string]: { title: string; price: string } };
+  availabilityIDs?: string[]; 
+  ratingReviewIDs?: string[]; 
+  categories?: { _id: string; name: string }[];
+  providers: { _id: string; name: string ; imageUrl: string }[];
 };
 
 export default Service;

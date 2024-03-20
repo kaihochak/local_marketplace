@@ -26,7 +26,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
   const service = dummyServices[Number(id)-1] as ServiceItem;
   console.log("service: ", service);
   
-  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
+  const providers = dummyUsers.find(user => user._id === service.providers[0].userId);
 
   return (
     <>
@@ -53,7 +53,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                 </Swiper>
                  */}
               <Image
-                src={service.image[0]}
+                src={service.imageUrl[0]}
                 alt="hero image"
                 layout="fill"
                 objectFit="contain"
@@ -65,9 +65,9 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
         <div className="flex flex-col gap-4"> {/* Add gap-4 for spacing between items */}
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-              <Image priority src={serviceProvider?.imageURL ?? ''} alt="Profile" width={40} height={40} className="rounded-full" />
+              <Image priority src={providers?.imageURL ?? ''} alt="Profile" width={40} height={40} className="rounded-full" />
             </div>
-            <p className="">{serviceProvider?.firstName} {serviceProvider?.lastName}</p>
+            <p className="">{providers?.firstName} {providers?.lastName}</p>
           </div>
           <section>
             <div className="flex items-center gap-2">
@@ -80,25 +80,25 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
               <Phone className="w-5 h-5" />
             </div>
-            <a href={`tel:$`} className="text-black">{serviceProvider?.contactNumber}</a>
+            <a href={`tel:$`} className="text-black">{providers?.contactNumber}</a>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
               <Mail className="w-5 h-5" />
             </div>
-            <a href={`mailto:${serviceProvider?.email}`} className="text-black">{serviceProvider?.email}</a> {/* Link email for email */}
+            <a href={`mailto:${providers?.email}`} className="text-black">{providers?.email}</a> {/* Link email for email */}
           </div>
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
               <LocationPin className="w-5 h-5" />
             </div>
-            <p className="">{serviceProvider?.location}</p>
+            <p className="">{providers?.location}</p>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
               <Globe className="w-5 h-5" />
             </div>
-            <a href={'{serviceProvider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{serviceProvider?.website}</a> {/* Link website and open in new tab */}
+            <a href={'{providers?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{providers?.website}</a> {/* Link website and open in new tab */}
           </div>
         </div>
 

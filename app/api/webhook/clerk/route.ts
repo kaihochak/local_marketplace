@@ -7,6 +7,10 @@ import { NextResponse } from 'next/server';
 
 // This is the webhook handler from Clerk
 export async function POST(req: Request) {
+
+  console.log('Handling Clerk webhook');
+  
+
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
@@ -72,13 +76,10 @@ export async function POST(req: Request) {
       imageURL: image_url,
     };
 
-    console.log('Creating a new user:', user);
-
     // Create a new user in the database
+    console.log('Creating a new user:', user);
     const newUser = await createUser(user);
-
-    console.log('User created:', newUser);
-
+    
     // Update the user's _id in MongoDB to the user's publicMetadata of Clerk
     if (newUser) {
       console.log('Updating user metadata in Clerk:', newUser._id);

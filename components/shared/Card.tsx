@@ -47,7 +47,7 @@ const Card = ({
                     <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
                     <Image priority className="w-full h-full object-cover"
                         width={5000} height={5000}
-                        src={reservation?.service.image ?? ''} alt={reservation?.service.title ?? ''}
+                        src={reservation?.service.imageUrl ?? ''} alt={reservation?.service.title ?? ''}
                     />
                 </div>
             )
@@ -61,10 +61,10 @@ const Card = ({
                         <div className='text-xs'>Avaliable Today</div>
                     </div>
                     <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
-                    {service && 'image' in service && (
+                    {service && 'imageUrl' in service && (
                         <Image priority className="w-full h-full object-cover"
                             width={5000} height={5000}
-                            src={service?.image[0] ?? ''} alt={service?.title}
+                            src={service?.imageUrl[0] ?? ''} alt={service?.title}
                         />
                     )}
                 </div>
@@ -103,12 +103,18 @@ const Card = ({
                         </div>
                     </div>
                     <div className="flex items-center">
+<<<<<<< Updated upstream
                         <Image priority className="w-5 h-5 rounded-full mr-2" 
                             src={service?.serviceProvider[0]?.imageURL ?? ''} 
                             alt={service?.serviceProvider[0]?.name ?? ''} 
+=======
+                        <Image priority className="w-5 h-5 rounded-full mr-2"
+                            src={service?.providers[0]?.imageURL ?? ''}
+                            alt={service?.providers[0]?.name ?? ''}
+>>>>>>> Stashed changes
                             width={5000} height={5000}
                         />
-                        <p className="text-xs text-gray-500">{service?.serviceProvider[0]?.name ?? ''}</p>
+                        <p className="text-xs text-gray-500">{service?.providers[0]?.name ?? ''}</p>
                     </div>
                     <p className="text-[10px] text-gray-500">{service?.description?.length ?? 0 > 45 ? service?.description?.slice(0, 45) + "..." : service?.description}</p>
                 </div>

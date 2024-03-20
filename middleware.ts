@@ -5,6 +5,7 @@ export default authMiddleware({
   publicRoutes: [
     '/',
     '/services/:id',
+    '/api/seed',
     '/api/webhooks/clerk',
     '/api/webhooks/stripe', // for web purchases
     '/api/uploadthing'
