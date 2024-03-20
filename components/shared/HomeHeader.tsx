@@ -41,7 +41,7 @@ const HomeHeader = () => {
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <Add className="w-8 h-8" />
                                         </div>
-                                        <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-black/50 opacity-0 hover:opacity-100"></div>
+                                        <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-accent-light/50 opacity-0 hover:opacity-100"></div>
                                     </div>
                                 </Link>
                             </div>
@@ -51,7 +51,7 @@ const HomeHeader = () => {
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <Message className="w-7 h-7" />
                                     </div>
-                                    <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-black/50 opacity-0 hover:opacity-100"></div>
+                                    <div className="absolute inset-0 rounded-full bg-transparent transition ease-in-out duration-300 hover:bg-accent-light/50 opacity-0 hover:opacity-100"></div>
                                 </div>
                             </div>
                             {/* Link to profile page */}       

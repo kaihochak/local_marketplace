@@ -81,7 +81,7 @@ const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string
       // each card has the same width
       <div onClick={() => handleSelectCategory(category)}  
           className={`flex flex-col p-2 pb-6 gap-y-2 rounded-md cursor-pointer min-w-[80px] lg:min-w-[100px] min-h-[110px] lg:min-h-[130px] place-items-center sm:items-center justify-center h-full
-                    ${category === selectedCategory ? " bg-primary-dark" : "bg-primary"}`}>
+                    ${category === selectedCategory ? " bg-accent-light bg-opacity-50" : "bg-primary"}`}>
           <div className="text-[32px]">{icons[category]}</div>
         <div className="h-[20%] text-[16px] text-center leading-4 tracking-tighter">{category}</div>
       </div>

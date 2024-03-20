@@ -1,5 +1,4 @@
 import Collection from '@/components/shared/Collection'
-import { Button } from '@/components/ui/button'
 import { dummyReservations } from '@/constants/dummyReservations'
 import { dummyUsers } from '@/constants/dummyUsers'
 import { dummyServices } from '@/constants/dummyServices'
