@@ -8,8 +8,8 @@ import { UserButton, auth } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Reviews } from '@/public/assets/icons/Reviews'
 import CommonHeader from '@/components/shared/CommonHeader'
+import { Pen } from '@/public/assets/icons/Pen'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
@@ -59,7 +59,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           {/* Reviews */}
           <Link href="/profile/reviews">
             <div className="w-14 h-14 border border-black rounded-full flex items-center justify-center">
-              <Reviews className='w-9 h-9'/>
+              <Pen className='w-9 h-9'/>
             </div>
           </Link>
 

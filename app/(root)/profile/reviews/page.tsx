@@ -14,12 +14,14 @@ const ProfileReviews = () => {
     <div>
         <CommonHeader title='My Reviews'/>
         <Link href="/profile/reviews/edit">
-          <Collection 
-            direction="vertical"
-            itemType='review'
-            items={reviews}
-            hasButton={true} 
-          />
+          <div className='flex justify-center items-center'>
+            <Collection
+              direction="vertical"
+              itemType='review'
+              items={reviews}
+              hasButton={true} 
+            />
+          </div>
         </Link>
     </div>
   )
