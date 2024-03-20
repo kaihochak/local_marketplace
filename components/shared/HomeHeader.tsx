@@ -8,7 +8,7 @@ import { Add } from "@/public/assets/icons/Add"
 
 const HomeHeader = () => {
     return (
-        <header className="w-full bg-primary sticky top-0 z-50">
+        <header className="w-full bg-primary sticky top-0 z-50 p-5">
             <div className="wrapper flex items-center justify-between">
 
                 {/* Logo */}
