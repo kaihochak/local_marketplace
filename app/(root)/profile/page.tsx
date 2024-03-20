@@ -54,7 +54,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
         </div>
       </section>
 
-      <section className="flex gap-x-2">
+      <section className="flex gap-x-2 mt-3">
         <div className='wrapper flex items-center justify-center gap-x-4'>
           {/* Reviews */}
           <Link href="/profile/reviews">
