@@ -7,13 +7,15 @@ const services = () => {
   return (
     <div className='wrapper'>
         <CommonHeader title='My Services'/>
-        <Collection 
-          direction="vertical"
-          itemType='service'
-          items={dummyServices}
-          hasButton={true}
-          hasViewMore={true}
-        />
+        <div className='flex-center'>
+          <Collection 
+            direction="vertical"
+            itemType='service'
+            items={dummyServices}
+            hasButton={true}
+            hasViewMore={true}
+          />
+        </div>
     </div>
   )
 }

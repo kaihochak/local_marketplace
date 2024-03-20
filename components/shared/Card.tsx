@@ -171,7 +171,9 @@ const Card = ({
                         <button className="w-full text-xs md:text-s py-2">Reshedule</button> 
                     </div>:
                     <div className='flex flex-center'>
-                        <button className="w-full text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Rate & Review</button>
+                        <button className="w-full text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">
+                            Review
+                        </button>
                     </div>
                     }
                 </div>
@@ -181,14 +183,14 @@ const Card = ({
         // for service 
         else if (itemType === 'service') {
             return ( 
-                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Service</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit</button>
             )
         }
 
         // for review 
         else if (itemType === 'review') {
             return (
-                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit Review</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit</button>
             )
         }
     }
