@@ -68,14 +68,14 @@ const Collection = ({
     return (
         <div className='relative flex flex-col gap-y-1'>
             {/* Title */}
-            <div className='flex items-end justify-start gap-x-2'>
-                <h2 className={`font-semibold tracking-normal transition-all duration-300 
-                    ${selectedCategory === title ? "text-4xl text-accent-dark" : " text-3xl"}`}>
+            <div className='flex justify-between items-center py-4'>
+                <h2 className={`font-semibold tracking-normal transition-all duration-300 ease-in-out
+                    ${selectedCategory === title ? "text-4xl text-accent" : " text-2xl text-accent-light"}`}>
                     {title}
                 </h2>
                 {/* View more */}
                 {hasViewMore && link &&
-                    <Link href={link}><h3>View More</h3></Link>
+                    <Link href={link}><ArrowRight className='text-gray-800'/></Link>
                 }
             </div>
 
