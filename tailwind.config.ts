@@ -23,7 +23,7 @@ module.exports = withUt({
           demo: '#D46534', // 
           DEFAULT: "#e1e0de", // Grey
           dark: '#CDCCC8', // Grey
-          light: '#F4F4F4', // White Grey
+          light: '#fcfcfc', // White Grey
           foreground: '#151515', // Black
         },
         secondary: { // White *
