@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ServiceItem } from '@/lib/database/models/service.model';
 import { dummmyRatingReviews } from '@/constants/dummyReviews';
 import { dummyUsers } from '@/constants/dummyUsers';
+import { Pen } from '@/public/assets/icons/Pen';
 
 const ServiceReviews = ({ service }: { service: ServiceItem }) => {
 
@@ -17,7 +18,10 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
 
     return (
         <section className="wrapper my-8 flex flex-col gap-2 md:gap-12">
-            <h2 className="h2-bold">Reviews</h2>
+            <div className='flex'>
+                <h2 className="h2-bold">Reviews</h2>
+                <Pen className="w-6 h-6 ml-auto" />
+            </div>
 
             {serviceReviews.length === 0 ? (
                 <p>No reviews yet</p>

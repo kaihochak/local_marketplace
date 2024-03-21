@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { serviceFormSchema } from "@/lib/validator"
@@ -20,6 +19,8 @@ import { Checkbox } from "../ui/checkbox"
 import { useRouter } from "next/navigation"
 // import { createService, updateService } from "@/lib/actions/service.actions"
 import { IService } from "@/lib/database/models/service.model"
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core';
 
 type ServiceFormProps = {
   userId: string
@@ -108,6 +109,9 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
       }
     }
   }
+
+  const [opened, { open, close }] = useDisclosure(false);
+  const isMobile = useMediaQuery('(max-width: 50em)');
 
   return (
     <Form {...form}>
@@ -351,6 +355,18 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
           {form.formState.isSubmitting ? (
             'Submitting...'
           ): `${type} `}</Button>
+
+          <Modal
+                  opened={opened}
+                  onClose={close}
+                  title="This is a fullscreen modal"
+                  fullScreen={isMobile}
+                  transitionProps={{ transition: 'fade', duration: 200 }}
+                >
+                  The Modal will be full screen only on mobile
+                </Modal>
+
+          <Button onClick={open}>Open Modal</Button>
       </form>
     </Form>
   )
