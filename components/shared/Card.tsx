@@ -27,11 +27,11 @@ const Card = ({
     hasButton,
 }: CardProps) => {
 
-    const [loading, setLoading] = useState<boolean>(true);
+    // const [loading, setLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        if (item) setLoading(false);
-    }, [item]);
+    // useEffect(() => {
+    //     if (item) setLoading(false);
+    // }, [item]);
 
 
 
@@ -114,7 +114,7 @@ const Card = ({
                     </div>
                     <div className="flex items-center">
                         <Image priority className="w-5 h-5 rounded-full mr-2"
-                            src={service?.serviceProvider[0]?.imageURL ?? ''}
+                            src={service?.serviceProvider[0]?.imageUrl ?? ''}
                             alt={service?.serviceProvider[0]?.name ?? ''}
                             width={5000} height={5000}
                         />
@@ -131,10 +131,10 @@ const Card = ({
                     <div className='flex flex-col gap-y-2'>
                         {/* title */}
                         <p className="text-m font-semibold">{review?.service.title}</p>
-                        {/* User */}
+                        {/* user */}
                         <div className='flex '>
                             <Image priority className="w-5 h-5 rounded-full mr-2"
-                                src={review?.service.imageURL ?? ''}
+                                src={review?.service.imageUrl ?? ''}
                                 alt={review?.service.title ?? ''}
                                 width={5000} height={5000}
                             />
@@ -154,7 +154,7 @@ const Card = ({
                                 <p className="text-s font-semibold">Provider's response</p>
                                 <div className='flex '>
                                     <Image priority className="w-5 h-5 rounded-full mr-2"
-                                        src={review?.service.imageURL ?? ''}
+                                        src={review?.service.imageUrl ?? ''}
                                         alt={review?.service.title ?? ''}
                                         width={5000} height={5000}
                                     />
@@ -208,11 +208,11 @@ const Card = ({
     return (
         <div className='flex flex-col'>
 
-            {loading ?
+            {/* {loading ?
                 <Skeleton className={`flex flex-col bg-primary rounded-sm h-[180px]
                                     ${direction === "vertical" ? "w-[300px]" :
                         " w-[250px] sm:w-[280px] md:w-[300px] lg:w-[320px]"}`} />
-                :
+                : */}
                 <div className={`flex flex-col bg-primary rounded-sm 
                                     ${direction === "vertical" ? "w-[300px]" :
                         "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[320px]"}`}> {/* horizontal */}
@@ -227,7 +227,7 @@ const Card = ({
                     {/* optional button */}
                     {hasButton && <ButtonOption />}
                 </div>
-            }
+            {/* } */}
 
         </div>
     )

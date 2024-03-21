@@ -319,7 +319,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               )}
             />   
 
-          {/* Service URL */}
+          {/* Service Url */}
            <FormField
               control={form.control}
               name="url"
@@ -334,7 +334,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
                         height={24}
                       />
 
-                      <Input placeholder="URL" {...field} className="input-field" />
+                      <Input placeholder="Url" {...field} className="input-field" />
                     </div>
 
                   </FormControl>
