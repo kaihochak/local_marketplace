@@ -198,7 +198,6 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
                         width={24}
                         height={24}
                       />
-
                       <Input placeholder="Service location or Online" {...field} className="input-field" />
                     </div>
 

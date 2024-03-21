@@ -130,12 +130,12 @@ const Card = ({
                 <div className='h-48'>
                     <div className='flex flex-col gap-y-2'>
                         {/* title */}
-                        <p className="text-m font-semibold">{review?.service.title}</p>
+                        <p className="text-m font-semibold">{review?.service?.title ?? "" }</p>
                         {/* user */}
                         <div className='flex '>
                             <Image priority className="w-5 h-5 rounded-full mr-2"
-                                src={review?.service.imageUrl ?? ''}
-                                alt={review?.service.title ?? ''}
+                                src={review?.service?.imageUrl ?? ''}
+                                alt={review?.service?.title ?? ''}
                                 width={5000} height={5000}
                             />
                             <p className="text-m font-semibold">{dummyUsers[0].firstName} {dummyUsers[0].lastName}  </p>
@@ -154,11 +154,11 @@ const Card = ({
                                 <p className="text-s font-semibold">Provider's response</p>
                                 <div className='flex '>
                                     <Image priority className="w-5 h-5 rounded-full mr-2"
-                                        src={review?.service.imageUrl ?? ''}
-                                        alt={review?.service.title ?? ''}
+                                        src={review?.service?.imageUrl ?? ''}
+                                        alt={review?.service?.title ?? ''}
                                         width={5000} height={5000}
                                     />
-                                    <p className="text-m font-semibold">{review?.service.provider}</p>
+                                    <p className="text-m font-semibold">{review?.service?.provider}</p>
                                 </div>
                                 <p className="text-[10px] text-gray-500">{review?.providerResponse.response}</p>
                             </div>

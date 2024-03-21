@@ -1,6 +1,7 @@
 import React from 'react';
 import { useUser } from '@clerk/nextjs';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ProfileButton = () => {
   const { user } = useUser();
@@ -11,7 +12,13 @@ const ProfileButton = () => {
 
   return (
     <Link href="/profile">
-        <img src={user.imageUrl} alt="User Avatar" style={{ borderRadius: '50%' }} />
+        <Image
+            src={user.imageUrl || '/avatar.png'}
+            alt="profile image"
+            width={50}
+            height={50}
+            className="rounded-full"
+        />
     </Link>
   );
 };

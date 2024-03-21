@@ -85,20 +85,17 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
         }
     }
 
-
-
-
     const user = dummyUsers[0];
     const reviews = dummmyRatingReviews.filter(review => review.clientID === user._id);
 
     // State for editable ratings
-    const [rating, setRating] = useState(reviews[0].rating);
+    const [rating, setRating] = useState(reviews[0]?.rating);
 
     const handleRatingChange = (event: Event, newValue: number | number[]) => {
         setRating(newValue as number);
     };
 
-    const [reviewText, setReviewText] = useState(reviews[0].review);
+    const [reviewText, setReviewText] = useState(reviews[0]?.review);
 
     // Marks for the rating slider
     const marks = [
@@ -115,16 +112,16 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
 
             {/* Service Image */}
             <div className="border border-gray-200 rounded-lg overflow-hidden h-[210px] relative">
-                <img className="w-full h-full object-cover" src={reviews[0].service.imageUrl ?? ''} alt={reviews[0].service.imageUrl ?? ''} />
+                <img className="w-full h-full object-cover" src={reviews[0]?.service.imageUrl ?? ''} alt={reviews[0]?.service.imageUrl ?? ''} />
             </div>
 
             {/* Service Title and Provider */}
             <div className="my-4">
                 {/* Link to the service page */}
-                <h1 className="text-2xl font-bold">{reviews[0].service.title}</h1>
+                <h1 className="text-2xl font-bold">{reviews[0]?.service.title}</h1>
                 <div className="flex items-center">
                     <img className="w-5 h-5 rounded-full mr-2" src={user.imageUrl} alt="Profile" />
-                    <h2 className="text-lg">{reviews[0].service.provider}</h2>
+                    <h2 className="text-lg">{reviews[0]?.service.provider}</h2>
                 </div>
             </div>
 
@@ -148,7 +145,7 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
                                         <FormControl className="h-72">
                                             <Slider
                                                 aria-label="Custom marks"
-                                                defaultValue={reviews[0].rating}
+                                                defaultValue={reviews[0]?.rating}
                                                 value={rating}
                                                 onChange={handleRatingChange}
                                                 step={1}
