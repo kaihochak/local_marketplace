@@ -1,3 +1,4 @@
+import CommonHeader from "@/components/shared/CommonHeader";
 import ServiceForm from "@/components/shared/ServiceForm"
 import { auth } from "@clerk/nextjs";
 
@@ -7,8 +8,10 @@ const CreateService = () => {
   const userId = sessionClaims?.userId as string;
 
   return (
-      <section className="wrapper py-5 md:py-10">
-        <h3 className="h3-bold text-start sm:text-left mb-3">New Service Post</h3>
+      <section className="wrapper md:py-10">
+        <CommonHeader 
+          title="Create New Service"
+        />
         <ServiceForm 
           userId={userId} 
           type="Create" 

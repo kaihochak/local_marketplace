@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
+import { MantineProvider, createTheme } from "@mantine/core";
 
 const poppins = Poppins({ 
   subsets: ["latin"],
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
   }
 };
 
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,9 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={poppins.variable}>{children}</body>
-      </html>
+        <html lang="en">
+          <MantineProvider theme={theme}>
+              <body className={poppins.variable}>{children}</body>
+          </MantineProvider>
+        </html>
     </ClerkProvider>
   );
 }
