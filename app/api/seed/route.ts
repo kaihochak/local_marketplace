@@ -1,4 +1,4 @@
-import { createUser } from '@/lib/actions/user.actions';
+import { createUser, deleteUser } from '@/lib/actions/user.actions';
 import { connectToDatabase } from '@/lib/database';
 import User from '@/lib/database/models/user.model';
 // import { dummyUsers } from '@/constants/dummyUsers';
@@ -33,13 +33,11 @@ export async function POST(req: Request) {
 
     console.log('Seeding database');
 
-    const newUser = await createUser(dummyUser);
+    // delete all users
+    deleteAllUsers();
 
-    if(newUser) {
-        console.log('Created user', newUser);
-    }
-    return NextResponse.json({ message: 'OK', user: newUser })
-
+    // create users
+    createAllUsers(dummyUser);    
 
     // let newUsers: typeof User[] = [];
 
@@ -53,7 +51,30 @@ export async function POST(req: Request) {
     //     newUsers.push(newUser);
     // });
 
-    // return response
-    // return NextResponse.json({ message: 'OK', user: newUsers})
+    return NextResponse.json({ message: 'OK' });
 
+}
+
+const createAllUsers = async (dummyUser: any) => {
+    const newUser = await createUser(dummyUser);
+    if(newUser) {
+        console.log('Created user', newUser);
+    }
+    return NextResponse.json({ message: 'OK', user: newUser })
+}
+
+const deleteAllUsers = async () => {
+
+    console.log('Deleting all users');
+    try {
+        await connectToDatabase();
+        const deleted = await User.deleteMany({});
+        if (deleted) {
+            console.log('Deleted all users', deleted);
+        }
+        return NextResponse.json({ message: 'OK', user: deleted })
+    } catch (error) {
+        console.error('Error deleting all users:', error);
+        return NextResponse.json({ message: 'Error', error: error })
+    }
 }
