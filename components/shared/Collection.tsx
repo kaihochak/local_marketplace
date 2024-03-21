@@ -48,7 +48,7 @@ const Collection = ({
     // Card collection
     const CardCollection = () => {
         return (
-            <div className="relative [&_#card-prev-next-button]:hover:opacity-50 ">
+            <div className="relative [&_#card-prev-next-button]:hover:opacity-50">
                 {/* Cards */}
                 <div
                     ref={containerRef}

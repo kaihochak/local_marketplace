@@ -11,6 +11,11 @@ export const serviceDefaultValues = {
   url: '',
 }
 
+export const reviewDefaultValues = {
+  rating: 1,
+  review: '',
+}
+
 export const categories = [
   "Recommendations",
   "Home",
