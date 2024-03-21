@@ -13,7 +13,6 @@ const ProfileReviews = () => {
   return (
     <div>
         <CommonHeader title='My Reviews'/>
-        <Link href="/profile/reviews/edit">
           <div className='flex justify-center items-center'>
             <Collection
               direction="vertical"
@@ -22,7 +21,6 @@ const ProfileReviews = () => {
               hasButton={true} 
             />
           </div>
-        </Link>
     </div>
   )
 }
