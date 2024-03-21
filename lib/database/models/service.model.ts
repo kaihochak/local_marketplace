@@ -45,7 +45,7 @@ export type ServiceItem = {
   serviceProvider: {
     userId: string;
     name: string;
-    imageURL: string;
+    imageUrl: string;
   }[];
   servicesOffered: {
     [key: string]: {

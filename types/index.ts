@@ -142,7 +142,7 @@ export type GetOrdersByUserParams = {
   page: string | number | null
 }
 
-// ====== URL QUERY PARAMS
+// ====== Url QUERY PARAMS
 export type UrlQueryParams = {
   params: string
   key: string

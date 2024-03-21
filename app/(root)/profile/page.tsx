@@ -42,7 +42,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           {/* profile image */}
           <div className="w-40 h-40 border border-black rounded-full flex items-center justify-center overflow-hidden">
             <Image 
-              src={profile.imageURL}
+              src={profile.imageUrl}
               alt={profile.username}
               width={500}
               height={500}

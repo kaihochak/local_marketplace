@@ -115,7 +115,7 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
 
             {/* Service Image */}
             <div className="border border-gray-200 rounded-lg overflow-hidden h-[210px] relative">
-                <img className="w-full h-full object-cover" src={reviews[0].service.imageURL ?? ''} alt={reviews[0].service.imageURL ?? ''} />
+                <img className="w-full h-full object-cover" src={reviews[0].service.imageUrl ?? ''} alt={reviews[0].service.imageUrl ?? ''} />
             </div>
 
             {/* Service Title and Provider */}
@@ -123,7 +123,7 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
                 {/* Link to the service page */}
                 <h1 className="text-2xl font-bold">{reviews[0].service.title}</h1>
                 <div className="flex items-center">
-                    <img className="w-5 h-5 rounded-full mr-2" src={user.imageURL} alt="Profile" />
+                    <img className="w-5 h-5 rounded-full mr-2" src={user.imageUrl} alt="Profile" />
                     <h2 className="text-lg">{reviews[0].service.provider}</h2>
                 </div>
             </div>
