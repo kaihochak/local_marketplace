@@ -1,21 +1,5 @@
 import { Document, Schema, model, models } from "mongoose";
 
-// Define a TypeScript type for external use (e.g., API responses)
-export type UserItem = {
-  _id: string;
-  clerkId: string;
-  email: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  imageUrl: string;
-  website: string; 
-  location: string;
-  contactNumber: string;
-  serviceIDs: string[]; // Assuming conversion to string IDs for external use
-  ratingReviewIDs: string[]; // Assuming conversion to string IDs for external use
-};
-
 const UserSchema = new Schema({
   clerkId: { type: String, required: true, unique: true }, // use clerkId as the unique identifier, after the user has signed up, the webhook will send the clerkId to the server (see app/api/webhook/clerk/route.ts)
   email: { type: String, required: true, unique: true },
@@ -31,5 +15,22 @@ const UserSchema = new Schema({
 }, { timestamps: true }); // Automatically add createdAt and updatedAt fields
 
 const User = models.User || model('User', UserSchema);
+
+// type Service Item is not updated yet
+// currently this is only for the frontend 
+export type UserItem = {
+  _id: string;
+  clerkId: string;
+  email: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
+  website: string; 
+  location: string;
+  contactNumber: string;
+  serviceIDs: string[]; // Assuming conversion to string IDs for external use
+  ratingReviewIDs: string[]; // Assuming conversion to string IDs for external use
+};
 
 export default User;

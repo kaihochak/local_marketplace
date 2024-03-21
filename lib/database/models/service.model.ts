@@ -32,6 +32,8 @@ const ServiceSchema = new Schema({
 
 const Service = models.Service || model('Service', ServiceSchema);
 
+// type Service Item is not updated yet
+// currently this is only for the frontend 
 export type ServiceItem = {
   _id: string;
   title: string;

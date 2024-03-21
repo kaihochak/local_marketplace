@@ -7,9 +7,8 @@ import Service from '@/lib/database/models/service.model';
 import { createService } from '@/lib/actions/service.actions';
 import { dummyServices } from '@/constants/dummyServicesSeeding';
 
-
+// main function
 export async function POST(req: Request) {
-
     console.log('Seeding database');
 
     // Users
@@ -28,7 +27,6 @@ export async function POST(req: Request) {
  *  Users
  */
 const createAllUsers = async (dummyUsers: any[]) => {
-
     console.log('Creating all users');
 
     // create users
@@ -36,13 +34,10 @@ const createAllUsers = async (dummyUsers: any[]) => {
         const user = dummyUsers[i];
         await createUser(user);
     }
-
-
     return NextResponse.json({ message: 'OK', user: dummyUsers });
 }
 
 const deleteAllUsers = async () => {
-
     console.log('Deleting all users');
     try {
         await connectToDatabase();
@@ -61,7 +56,6 @@ const deleteAllUsers = async () => {
  * Services
  */
 const createAllServices = async (dummyServices: any[]) => {
-
     console.log('Creating all services');
     // create services
     for (let i = 0; i < dummyServices.length; i++) {
