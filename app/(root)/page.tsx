@@ -78,6 +78,7 @@ export default function Home() {
                 direction="horizontal"
                 itemType="service"
                 items={services}
+                nextPrevButton={true}
               />
             </div>
           ))}

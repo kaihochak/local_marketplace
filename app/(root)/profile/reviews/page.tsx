@@ -2,7 +2,7 @@ import React from 'react'
 import CommonHeader from '@/components/shared/CommonHeader'
 import Collection from '@/components/shared/Collection'
 import DummyUsers from '@/constants/dummyUsers'
-import {dummmyRatingReviews} from '@/constants/dummyReviews'
+import { dummmyRatingReviews } from '@/constants/dummyReviews'
 import Link from 'next/link'
 
 const ProfileReviews = () => {

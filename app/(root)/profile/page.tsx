@@ -82,6 +82,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
             hasButton={true}
             hasViewMore={true}
             link={"/profile/reservations"}
+            nextPrevButton={true}
           />
       </section>
       
@@ -95,6 +96,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           hasButton={true}
           hasViewMore={true}
           link={"/profile/services"}
+          nextPrevButton={true}
         />
       </section>
     </div>
