@@ -4,21 +4,21 @@ export interface IService extends Document {
   title: string;
   description?: string;
   location?: string;
-  imageUrl: string[];
-  averageRating?: number;
-  totalReviews?: number;
+  imageUrl: string;
+  url?: string;
   providers: { _id: string, name: string }[]; 
   servicesOffered: Map<string, { title: string; price: string }>;
   ratingReviewIDs: string[]; 
+  averageRating?: number;
+  totalReviews?: number;
 }
 
 const ServiceSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   location: { type: String },
-  imageUrl: { type: [String], required: true },
-  averageRating: { type: Number, required: false },
-  totalReviews: { type: Number, required: false },
+  imageUrl: { type: String, required: true },
+  url: { type: String },
   providers: [{ type: String, ref: 'User' }],
   servicesOffered: {
     type: Map,
@@ -27,7 +27,9 @@ const ServiceSchema = new Schema({
       price: { type: String, required: true }
     }
   },
-  ratingReviewIDs: [{ type: String, ref: 'RatingReview' }]
+  ratingReviewIDs: [{ type: String, ref: 'RatingReview' }],
+  averageRating: { type: Number, required: false },
+  totalReviews: { type: Number, required: false },
 }, { timestamps: true }); // Enables createdAt and updatedAt fields automatically
 
 const Service = models.Service || model('Service', ServiceSchema);

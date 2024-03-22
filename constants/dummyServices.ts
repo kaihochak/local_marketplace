@@ -6,7 +6,7 @@ export const dummyServices: ServiceItem[] = [
         title: "Wall Painter",
         description: "Hey boiii, I'm a wall painter and I paint asses on walls",
         image: [
-            "https://picsum.photos/seed/picsum/200/300",
+            "https://picsum.photos/seed/picsum/700/300",
             "https://picsum.photos/seed/picsum/200/300",
             "https://picsum.photos/seed/picsum/200/300",
         ],
@@ -50,7 +50,7 @@ export const dummyServices: ServiceItem[] = [
         title: "Service2",
         description: "Description2",
         image: [
-            "https://picsum.photos/seed/picsum/200/300",
+            "https://picsum.photos/seed/picsum/500/300",
             "https://picsum.photos/seed/picsum/200/300",
             "https://picsum.photos/seed/picsum/200/300",
         ],

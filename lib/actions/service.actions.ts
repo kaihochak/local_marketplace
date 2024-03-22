@@ -17,13 +17,31 @@ import {
   GetRelatedServicesByCategoryParams,
 } from '@/types'
 
-export async function createService(service: CreateServiceParams) {
+// Create a new service
+export async function createService({ userId, service, path}: CreateServiceParams) {
   try {
     await connectToDatabase()
 
-    const newService = await Service.create(service)
+    console.log("service actions: ", userId);
+    
+
+    const provider = await User.findById(userId)
+    if (!provider) throw new Error('Provider not found')
+
+
+    console.log({
+      ...service,
+      category: service.categoryId,
+      organizer: userId
+    });
+    
+
+    const newService = await Service.create({ ...service, category: service.categoryId, organizer: userId })
+    // revalidatePath(path)
+
     return JSON.parse(JSON.stringify(newService))
   } catch (error) {
+    console.log(error)
     handleError(error)
   }
 }

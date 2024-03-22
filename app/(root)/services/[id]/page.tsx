@@ -23,87 +23,76 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
   // dummy for now, later fetch from the database
 
-  const service = dummyServices[Number(id)-1] as ServiceItem;
+  const service = dummyServices[Number(id) - 1] as ServiceItem;
   console.log("service: ", service);
-  
+
   const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
 
   return (
-    <>
+    <div className='px-2'>
       {/* Header */}
       <section>
         <CommonHeader title={service.title} savedButton={true} />
       </section>
 
       {/* Provider Info */}
-      <section className="justify-center mx-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl ">
+      <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl gap-y-4 gap-x-4">
+          {/* hero image */}
 
-          <div className='h-48 overflow-auto my-4 relative rounded-lg'>
-            <div className="absolute inset-0 bg-white">
-              {/* <Swiper
-                  
-                  spaceBetween={50}
-                  slidesPerView={3}
-                >
-                  <SwiperSlide>Slide 1</SwiperSlide>
-                  <SwiperSlide>Slide 2</SwiperSlide>
-                  <SwiperSlide>Slide 3</SwiperSlide>
-                  <SwiperSlide>Slide 4</SwiperSlide>
-                </Swiper>
-                 */}
-              <Image
-                src={service.image[0]}
-                alt="hero image"
-                layout="fill"
-                objectFit="contain"
-              />
+          <Image src={service.image[0]} alt="hero image" width={1000} height={400}
+            className="min-h-[300px] object-cover object-center rounded-md"
+          />
+          {/* Details */}
+          <div className="flex flex-col gap-4">
+            {/* Provider Info */}
+            <div className="flex items-center gap-2">
+              <div className="w-16 h-16 border border-secondary rounded-full flex items-center justify-center overflow-hidden">
+                <Image
+                  priority
+                  src={serviceProvider?.imageUrl ?? ''}
+                  alt="Profile"
+                  width={500}
+                  height={500}
+                />
+              </div>
+              <p className="">{serviceProvider?.firstName} {serviceProvider?.lastName}</p>
             </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4"> {/* Add gap-4 for spacing between items */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 border border-black rounded-full flex items-center justify-center">
-              <Image priority src={serviceProvider?.imageUrl ?? ''} alt="Profile" width={40} height={40} className="rounded-full" />
-            </div>
-            <p className="">{serviceProvider?.firstName} {serviceProvider?.lastName}</p>
-          </div>
-          <section>
+            {/* Rating & Reviews */}
             <div className="flex items-center gap-2">
               <StarEmpty className="w-5 h-5" />
               <p className="">{service.averageRating}</p>
               <p className="text-gray-500">({service.totalReviews})</p>
             </div>
-          </section>
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-              <Phone className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                <Phone className="w-5 h-5" />
+              </div>
+              <a href={`tel:$`} className="text-black">{serviceProvider?.contactNumber}</a>
             </div>
-            <a href={`tel:$`} className="text-black">{serviceProvider?.contactNumber}</a>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-              <Mail className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                <Mail className="w-5 h-5" />
+              </div>
+              <a href={`mailto:${serviceProvider?.email}`} className="text-black">{serviceProvider?.email}</a> {/* Link email for email */}
             </div>
-            <a href={`mailto:${serviceProvider?.email}`} className="text-black">{serviceProvider?.email}</a> {/* Link email for email */}
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-              <LocationPin className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                <LocationPin className="w-5 h-5" />
+              </div>
+              <p className="">{serviceProvider?.location}</p>
             </div>
-            <p className="">{serviceProvider?.location}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-              <Globe className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                <Globe className="w-5 h-5" />
+              </div>
+              <a href={'{serviceProvider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{serviceProvider?.website}</a> {/* Link website and open in new tab */}
             </div>
-            <a href={'{serviceProvider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{serviceProvider?.website}</a> {/* Link website and open in new tab */}
           </div>
-        </div>
-
-        <div className='my-7'>
-          <p>{service.description}</p>
+          {/* Service Description */}
+          <div className='my-7'>
+            <p>{service.description}</p>
+          </div>
         </div>
       </section>
 
@@ -149,7 +138,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
         //   totalPages={relatedServices?.totalPages}
         />
       </section>
-    </>
+    </div>
   )
 }
 

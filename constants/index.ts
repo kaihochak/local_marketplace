@@ -3,8 +3,6 @@ export const serviceDefaultValues = {
   description: '',
   location: '',
   imageUrl: '',
-  startDateTime: new Date(),
-  endDateTime: new Date(),
   categoryId: '',
   price: '',
   isFree: false,

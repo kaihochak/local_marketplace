@@ -19,6 +19,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Input } from "../ui/input"
+import { dummyCategories } from "@/constants/dummyCategories"
 // import { createCategory, getAllCategories } from "@/lib/actions/category.actions"
 
 type DropdownProps = {
@@ -27,7 +28,8 @@ type DropdownProps = {
 }
 
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
-  const [categories, setCategories] = useState<ICategory[]>([])
+
+  const [categories, setCategories] = useState<ICategory[]>(dummyCategories);
   const [newCategory, setNewCategory] = useState('');
 
   const handleAddCategory = () => {
@@ -55,12 +57,14 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
         <SelectValue placeholder="Category" />
       </SelectTrigger>
       <SelectContent>
+        {/* existing categories */}
         {categories.length > 0 && categories.map((category) => (
           <SelectItem key={category._id} value={category._id} className="select-item p-regular-14">
             {category.name}
           </SelectItem>
         ))}
 
+        {/* Add new category */}
         <AlertDialog>
           <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">Add new category</AlertDialogTrigger>
           <AlertDialogContent className="bg-white">
