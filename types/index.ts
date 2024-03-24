@@ -5,37 +5,20 @@ export type CreateUserParams = {
   username: string;
   firstName: string;
   lastName: string;
-  imageUrl: string;
+  photo: string;
 };
 
 export type UpdateUserParams = {
   firstName?: string;
   lastName?: string;
   username?: string;
-  imageUrl?: string;
+  photo?: string;
   website?: string;
   location?: string;
 };
 
 
 // ====== SERVICE PARAMS
-// export type CreateServiceParams = {
-//   userId: string
-//   service: {
-//     title: string
-//     description: string
-//     location: string
-//     imageUrl: string
-//     startDateTime: Date
-//     endDateTime: Date
-//     categoryId: string
-//     price: string
-//     isFree: boolean
-//     url: string
-//   }
-//   path: string
-// }
-
 export type CreateServiceParams = {
   userId: string
   service: {

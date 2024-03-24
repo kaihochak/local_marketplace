@@ -50,11 +50,7 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
 
     if (files.length > 0) {
       const uploadedImages = await startUpload(files)
-
-      if (!uploadedImages) {
-        return
-      }
-
+      if (!uploadedImages) { return }
       uploadedImageUrl = uploadedImages[0].url
     }
 

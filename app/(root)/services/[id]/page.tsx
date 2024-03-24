@@ -12,134 +12,122 @@ import { LocationPin } from '@/public/assets/icons/LocationPin';
 import { Globe } from '@/public/assets/icons/Globe';
 import ServiceReviews from '@/components/shared/ServiceReviews';
 import CommonHeader from '@/components/shared/CommonHeader';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// import 'swiper/css/effect-coverflow';
+import { getServiceById } from '@/lib/actions/service.actions';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
-  // dummy for now, later fetch from the database
-
-  const service = dummyServices[Number(id) - 1] as ServiceItem;
+  const service = await getServiceById(id);
+  
   console.log("service: ", service);
 
-  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
+  
 
   return (
-    <div className='px-2'>
-      {/* Header */}
-      <section>
-        <CommonHeader title={service.title} savedButton={true} />
-      </section>
+    <>
+      <section className='px-2'>
+        {/* Header */}
+        <div>
+          <CommonHeader title={service?.title} savedButton={true} />
+        </div>
+        {/* Provider Info */}
+        <div className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl gap-y-4 gap-x-4">
+            {/* hero image */}
 
-      {/* Provider Info */}
-      <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl gap-y-4 gap-x-4">
-          {/* hero image */}
-
-          <Image src={service.image[0]} alt="hero image" width={1000} height={400}
-            className="min-h-[300px] object-cover object-center rounded-md"
-          />
-          {/* Details */}
-          <div className="flex flex-col gap-4">
-            {/* Provider Info */}
-            <div className="flex items-center gap-2">
-              <div className="w-16 h-16 border border-secondary rounded-full flex items-center justify-center overflow-hidden">
-                <Image
-                  priority
-                  src={serviceProvider?.imageUrl ?? ''}
-                  alt="Profile"
-                  width={500}
-                  height={500}
-                />
+            <Image src={service.imageUrl} alt="hero image" width={1000} height={400}
+              className="min-h-[300px] object-cover object-center rounded-md"
+            />
+            {/* Details */}
+            <div className="flex flex-col gap-4">
+              {/* Provider Info */}
+              <div className="flex items-center gap-2">
+                <div className="w-16 h-16 border border-secondary rounded-full flex items-center justify-center overflow-hidden">
+                  {/* <Image
+                    priority
+                    src={serviceProvider?.imageUrl ?? ''}
+                    alt="Profile"
+                    width={500}
+                    height={500}
+                  /> */}
+                </div>
+                <p className="">{service.provider.firstName} {service.provider.lastName}</p>
               </div>
-              <p className="">{serviceProvider?.firstName} {serviceProvider?.lastName}</p>
-            </div>
-            {/* Rating & Reviews */}
-            <div className="flex items-center gap-2">
-              <StarEmpty className="w-5 h-5" />
-              <p className="">{service.averageRating}</p>
-              <p className="text-gray-500">({service.totalReviews})</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                <Phone className="w-5 h-5" />
+              {/* Rating & Reviews */}
+              <div className="flex items-center gap-2">
+                <StarEmpty className="w-5 h-5" />
+                <p className="">{service?.averageRating}</p>
+                <p className="text-gray-500">({service?.totalReviews})</p>
               </div>
-              <a href={`tel:$`} className="text-black">{serviceProvider?.contactNumber}</a>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                <Mail className="w-5 h-5" />
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                  <Phone className="w-5 h-5" />
+                </div>
+                {/* <a href={`tel:$`} className="text-black">{service.provider.contactNumber}</a> */}
               </div>
-              <a href={`mailto:${serviceProvider?.email}`} className="text-black">{serviceProvider?.email}</a> {/* Link email for email */}
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                <LocationPin className="w-5 h-5" />
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                  <Mail className="w-5 h-5" />
+                </div>
+                {/* <a href={`mailto:${serviceProvider?.email}`} className="text-black">{serviceProvider?.email}</a> Link email for email */}
               </div>
-              <p className="">{serviceProvider?.location}</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                <Globe className="w-5 h-5" />
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                  <LocationPin className="w-5 h-5" />
+                </div>
+                {/* <p className="">{serviceProvider?.location}</p> */}
               </div>
-              <a href={'{serviceProvider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{serviceProvider?.website}</a> {/* Link website and open in new tab */}
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                  <Globe className="w-5 h-5" />
+                </div>
+                {/* <a href={'{serviceProvider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{serviceProvider?.website}</a> Link website and open in new tab */}
+              </div>
             </div>
-          </div>
-          {/* Service Description */}
-          <div className='my-7'>
-            <p>{service.description}</p>
+            {/* Service Description */}
+            <div className='my-7'>
+              <p>{service?.description}</p>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Services Offered */}
-      <section className="wrapper flex flex-col gap-8 md:gap-10">
-        <h2 className="h2-bold">Services Offered</h2>
-        <div className="w-full overflow-auto rounded-lg shadow-md">
-          <table className="w-full min-w-full text-left table-auto">
-            <thead>
-              <tr className="bg-gray-500 text-gray-100 text-sm font-medium">
-                <th className="px-4 py-2">Service</th>
-                <th className="px-4 py-2">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.keys(service.servicesOffered).map((serviceKey, index) => (
-                <tr key={index} className="bg-gray-100 text-gray-600 text-sm">
-                  <td className="px-4 py-2">{service.servicesOffered[serviceKey as keyof typeof service.servicesOffered].title}</td>
-                  <td className="px-4 py-2">${service.servicesOffered[serviceKey as keyof typeof service.servicesOffered].price}</td>
+        {/* Services Offered */}
+        <div className="wrapper flex flex-col gap-8 md:gap-10">
+          <h2 className="h2-bold">Services Offered</h2>
+          <div className="w-full overflow-auto rounded-lg shadow-md">
+            <table className="w-full min-w-full text-left table-auto">
+              <thead>
+                <tr className="bg-gray-500 text-gray-100 text-sm font-medium">
+                  <th className="px-4 py-2">Service</th>
+                  <th className="px-4 py-2">Price</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {/* {Object.keys(service?.servicesOffered).map((serviceKey, index) => (
+                  <tr key={index} className="bg-gray-100 text-gray-600 text-sm">
+                    <td className="px-4 py-2">{service?.servicesOffered[serviceKey].title}</td>
+                    <td className="px-4 py-2">{service?.servicesOffered[serviceKey].price}</td>
+                  </tr>
+                ))} */}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Reviews */}
+        <ServiceReviews service={service} />
+
+        {/* Services with the same category */}
+        <div className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+          <h2 className="h2-bold">Related Services</h2>
+
+          <Collection
+            selectedCategory={"All_Services"}
+            title={""}
+          />
         </div>
       </section>
-
-      {/* Reviews */}
-      <ServiceReviews service={service} />
-
-      {/* Services with the same category */}
-      <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className="h2-bold">Related Services</h2>
-
-        <Collection
-          selectedCategory={"All_Services"}
-          title={""}
-        //   data={relatedServices?.data}
-        //   emptyTitle="No Events Found"
-        //   emptyStateSubtext="Come back later"
-        //   collectionType="All_Events"
-        //   limit={3}
-        //   page={searchParams.page as string}
-        //   totalPages={relatedServices?.totalPages}
-        />
-      </section>
-    </div>
+    </>
   )
 }
 
-export default ServicePost;
+export default ServicePost

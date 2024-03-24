@@ -1,16 +1,44 @@
-import { ICategory } from "@/lib/database/models/category.model";
+import { CategoryItem } from "@/lib/database/models/category.model";
 
-export const dummyCategories: ICategory[] = [
-    "Home",
-    "Personal",
-    "Tech",
-    "Advisory",
-    "Creative",
-    "Logistic",
-    "Collab",
-    "Health",
-].map((category, index) => ({
-    _id: index.toString(),
-    name: category,
-} as ICategory));
-    
+export const dummyCategories: CategoryItem[] = [
+    {
+        _id: "1",
+        name: "Home",
+    },
+
+    {
+        _id: "2",
+        name: "Personal",
+    },
+
+    {
+        _id: "3",
+        name: "Tech",
+    },
+
+    {
+        _id: "4",
+        name: "Advisory",
+    },
+
+    {
+        _id: "5",
+        name: "Creative",
+    },
+
+    {
+        _id: "6",
+        name: "Logistic",
+    },
+
+    {
+        _id: "7",
+        name: "Collab",
+    },
+
+    {
+        _id: "8",
+        name: "Health",
+    },
+]
+

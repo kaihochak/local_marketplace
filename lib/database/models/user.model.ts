@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   username: { type: String, required: true, unique: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  imageUrl: { type: String, required: true },
+  photo: { type: String, required: true },
   website: { type: String, required: false },
   location: { type: String, required: false },
   contactNumber: { type: String, required: false, unique: true },
@@ -25,7 +25,7 @@ export type UserItem = {
   username: string;
   firstName: string;
   lastName: string;
-  imageUrl: string;
+  photo: string;
   website: string; 
   location: string;
   contactNumber: string;

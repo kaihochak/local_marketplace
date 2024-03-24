@@ -43,7 +43,7 @@ export const dummyServices: ServiceItem[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
-
+        categoryIDs: ["1", "2", "3"],
     },
     {
         _id: "2",
@@ -87,6 +87,7 @@ export const dummyServices: ServiceItem[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
+        categoryIDs: ["1", "2", "3"],
     },
     {
         _id: "3",
@@ -130,6 +131,7 @@ export const dummyServices: ServiceItem[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
+        categoryIDs: ["1", "2", "3"],
 
     },
     {
@@ -174,7 +176,7 @@ export const dummyServices: ServiceItem[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
-
+        categoryIDs: ["1", "2", "3"],
     }
 ];
 
