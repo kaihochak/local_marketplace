@@ -69,7 +69,7 @@ export async function POST(req: Request) {
       username: username || first_name + last_name,
       firstName: first_name,
       lastName: last_name,
-      imageURL: image_url,
+      imageUrl: image_url,
     };
 
     console.log('Creating a new user:', user);
