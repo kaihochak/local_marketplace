@@ -5,14 +5,14 @@ export type CreateUserParams = {
   username: string;
   firstName: string;
   lastName: string;
-  photo: string;
+  imageUrl: string;
 };
 
 export type UpdateUserParams = {
   firstName?: string;
   lastName?: string;
   username?: string;
-  photo?: string;
+  imageUrl?: string;
   website?: string;
   location?: string;
 };

@@ -69,7 +69,7 @@ export async function POST(req: Request) {
       username: username || first_name + last_name,
       firstName: first_name,
       lastName: last_name,
-      photo: image_url,
+      imageUrl: image_url,
     };
 
     // Create a new user in the database
@@ -93,7 +93,7 @@ export async function POST(req: Request) {
       firstName: first_name,
       lastName: last_name,
       username: username!,
-      photo: image_url,
+      imageUrl: image_url,
     };
     const updatedUser = await updateUser(id, user);
     return NextResponse.json({ message: 'OK', user: updatedUser });
