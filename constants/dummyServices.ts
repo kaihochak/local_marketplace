@@ -1,6 +1,22 @@
 import { ServiceItem } from '@/lib/database/models/service.model';
 
-export const dummyServices: ServiceItem[] = [
+export const dummyServices: any[] = [
+    {
+        _id: "65ffcac921567b16cf8e0a0b",
+        title: "123",
+        description: "123",
+        imageUrl: "https://utfs.io/f/10e17672-4064-441d-a5c1-7527fe2d34b6-5482fr.jpg",
+        url: "https://www.jacobchak.com",
+        location: "123",
+        provider: {
+            _id: "65fe9a5396346912b7163251",
+            firstName: "Jacob",
+            lastName: "Chak",
+        },
+        ratingReviewIDs: [],
+        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "123" },
+    },
+
     {
         _id: "1",
         title: "Wall Painter",

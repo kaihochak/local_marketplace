@@ -16,10 +16,9 @@ import { getServiceById } from '@/lib/actions/service.actions';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
+  console.log("test: ", id);
   const service = await getServiceById(id);
-  
   console.log("service: ", service);
-
   
 
   return (
@@ -42,13 +41,13 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
               {/* Provider Info */}
               <div className="flex items-center gap-2">
                 <div className="w-16 h-16 border border-secondary rounded-full flex items-center justify-center overflow-hidden">
-                  {/* <Image
+                  <Image
                     priority
-                    src={serviceProvider?.imageUrl ?? ''}
+                    src={service?.provider?.imageUrl ?? ''}
                     alt="Profile"
                     width={500}
                     height={500}
-                  /> */}
+                  />
                 </div>
                 <p className="">{service.provider.firstName} {service.provider.lastName}</p>
               </div>
@@ -62,25 +61,25 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <Phone className="w-5 h-5" />
                 </div>
-                {/* <a href={`tel:$`} className="text-black">{service.provider.contactNumber}</a> */}
+                <a href={`tel:$`} className="text-black">{service?.provider?.contactNumber}</a>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <Mail className="w-5 h-5" />
                 </div>
-                {/* <a href={`mailto:${serviceProvider?.email}`} className="text-black">{serviceProvider?.email}</a> Link email for email */}
+                <a href={`mailto:${service?.provider?.email}`} className="text-black">{service?.provider?.email}</a>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <LocationPin className="w-5 h-5" />
                 </div>
-                {/* <p className="">{serviceProvider?.location}</p> */}
+                <p className="">{service?.provider?.location}</p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                   <Globe className="w-5 h-5" />
                 </div>
-                {/* <a href={'{serviceProvider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{serviceProvider?.website}</a> Link website and open in new tab */}
+                <a href={'{service?.provider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{service?.provider?.website}</a>
               </div>
             </div>
             {/* Service Description */}

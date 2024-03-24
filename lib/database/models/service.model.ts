@@ -41,24 +41,16 @@ const Service = models.Service || model('Service', ServiceSchema);
 export type ServiceItem = {
   _id: string;
   title: string;
-  description?: string;
-  location?: string;
-  image: string[];
-  provider: {
-    userId: string;
-    name: string;
-    imageUrl: string;
-  }[];
-  servicesOffered: {
-    [key: string]: {
-      title: string;
-      price: string;
-    };
-  };
-  ratingReviewIDs:string[],
-  category: string[];
+  description: string;
+  imageUrl: string;
+  url: string;
+  location: string;
+  provider: { _id: string, firstName: string, lastName: string };
+  category: { _id: string, name: string}
+  servicesOffered: Map<string, { title: string; price: string }>;
+  ratingReviewIDs: string[];
   averageRating?: number;
-  totalReviews?: number;
 };
+
 
 export default Service;
