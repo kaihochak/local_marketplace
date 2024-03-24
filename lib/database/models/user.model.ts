@@ -8,7 +8,7 @@ export type UserItem = {
   username: string;
   firstName: string;
   lastName: string;
-  imageURL: string;
+  imageUrl: string;
   website: string; 
   location: string;
   contactNumber: string;
@@ -22,7 +22,7 @@ const UserSchema = new Schema({
   username: { type: String, required: true, unique: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  imageURL: { type: String, required: true },
+  imageUrl: { type: String, required: true },
   website: { type: String, required: false },
   location: { type: String, required: false },
   contactNumber: { type: String, required: false, unique: true },

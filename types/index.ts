@@ -12,7 +12,7 @@ export type UpdateUserParams = {
   firstName?: string;
   lastName?: string;
   username?: string;
-  imageURL?: string;
+  imageUrl?: string;
   website?: string;
   location?: string;
 };

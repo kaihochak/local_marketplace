@@ -30,7 +30,7 @@ const MyReview = () => {
                 <div className="border border-gray-200 rounded-lg overflow-hidden h-[210px] relative">
                     <img className="w-full h-full object-cover"
                         width={5000} height={5000}
-                        src={reviews[0].service.imageURL ?? ''} alt={reviews[0].service.imageURL ?? ''}
+                        src={reviews[0].service.imageUrl ?? ''} alt={reviews[0].service.imageUrl ?? ''}
                     />
                 </div>
                 <div className="my-4">

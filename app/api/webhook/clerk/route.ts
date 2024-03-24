@@ -102,7 +102,7 @@ export async function POST(req: Request) {
       firstName: first_name,
       lastName: last_name,
       username: username!,
-      imageURL: image_url,
+      imageUrl: image_url,
     };
 
     console.log('Updating user:', user);

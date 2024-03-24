@@ -16,12 +16,12 @@ export const dummyServices: ServiceItem[] = [
             {
                 userId: "1", 
                 name: "Kanye West", 
-                imageURL: "https://picsum.photos/seed/picsum/200/300"
+                imageUrl: "https://picsum.photos/seed/picsum/200/300"
             },
             {
                 userId: "2", 
                 name: "Kim Kardashian", 
-                imageURL: "https://picsum.photos/seed/picsum/200/300"
+                imageUrl: "https://picsum.photos/seed/picsum/200/300"
             }
         ],
         servicesOffered: {
@@ -60,12 +60,12 @@ export const dummyServices: ServiceItem[] = [
             {
                 userId: "1", 
                 name: "Kanye West", 
-                imageURL: "https://picsum.photos/seed/picsum/200/300"
+                imageUrl: "https://picsum.photos/seed/picsum/200/300"
             },
             {
                 userId: "2", 
                 name: "Kim Kardashian", 
-                imageURL: "https://picsum.photos/seed/picsum/200/300"
+                imageUrl: "https://picsum.photos/seed/picsum/200/300"
             }
         ],
         servicesOffered: {

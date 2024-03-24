@@ -24,7 +24,7 @@ const ServiceSchema = new Schema({
   serviceProvider: [{
     userId: { type: String, required: true },
     name: { type: String, required: true },
-    imageURL: { type: String, required: true }
+    imageUrl: { type: String, required: true }
   }],
   servicesOffered: {
     type: Map,
@@ -49,7 +49,7 @@ export type ServiceItem = {
   serviceProvider: {
     userId: string;
     name: string;
-    imageURL: string;
+    imageUrl: string;
   }[];
   servicesOffered: {
     [key: string]: {
