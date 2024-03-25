@@ -12,7 +12,7 @@ const CommonHeader = ({ title, savedButton }: { title: string, savedButton?: boo
 
     return (
         <section className='top-0 z-50'>
-            <div className='flex justify-between items-center px-3 py-4'>
+            <div className='flex justify-between items-center py-6'>
                 {/* Back Button */}
                 <button onClick={goBack} className='text-black text-lg font-semibold'>
                     <ArrowLeft className='text-[30px]' />

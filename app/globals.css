@@ -92,7 +92,7 @@ body {
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {
-    @apply max-w-[1280px] lg:mx-auto w-full;
+    @apply max-w-[1024px] lg:mx-auto w-full;
   }
 
   .flex-center {
@@ -115,7 +115,8 @@ body {
   }
 
   .h2-medium {
-    @apply font-medium text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
+    @apply font-medium tracking-tighter text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
+    @apply md:font-medium md:tracking-tighter md:text-[32px] md:leading-[40px] md:lg:text-[36px] md:lg:leading-[44px] md:xl:text-[40px] md:xl:leading-[48px];
   }
 
   /* 36 */
@@ -124,7 +125,8 @@ body {
   }
 
   .h3-medium {
-    @apply font-medium text-[28px] leading-[36px] md:text-[36px] md:leading-[44px];
+    @apply font-medium tracking-tighter text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
+    @apply md:font-medium md:tracking-tighter md:text-[32px] md:leading-[40px] md:lg:text-[36px] md:lg:leading-[44px] md:xl:text-[40px] md:xl:leading-[48px];
   }
 
   /* 32 */
@@ -137,13 +139,17 @@ body {
     @apply font-bold text-[28px] leading-[36px];
   }
 
+  .h5-medium {
+    @apply font-medium text-[28px] leading-[36px] ;
+  }
+
   /* 24 */
   .p-bold-24 {
-    @apply font-bold text-[24px] leading-[36px];
+    @apply font-bold text-[24px] leading-[36px] tracking-wide; 
   }
 
   .p-medium-24 {
-    @apply font-medium text-[24px] leading-[36px];
+    @apply font-medium text-[24px] leading-[36px] tracking-wider;
   }
 
   .p-regular-24 {
@@ -207,9 +213,36 @@ body {
   }
 
   /* 12 */
+  .p-bold-12 {
+    @apply text-[12px] font-bold leading-[20px];
+  }
+  
   .p-medium-12 {
     @apply text-[12px] font-medium leading-[20px];
   }
+
+  .p-regular-12 {
+    @apply text-[12px] font-normal leading-[20px];
+  }
+
+  /* 10 */
+  .p-medium-10 {
+    @apply text-[10px] font-medium leading-[16px];
+  }
+
+  .p-regular-10 {
+    @apply text-[10px] font-normal leading-[16px];
+  }
+
+  /* 8 */
+  .p-medium-8 {
+    @apply text-[8px] font-medium leading-[12px];
+  }
+
+  .p-regular-8 {
+    @apply text-[8px] font-normal leading-[12px];
+  }
+
 
   /* SHADCN OVERRIDES */
   .select-field {

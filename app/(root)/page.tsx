@@ -42,19 +42,21 @@ export default function Home() {
 
   return (
     <>
-      <section className="flex flex-col sticky top-0 bg-secondary z-50 pb-2">
-        <HomeHeader />
+      <section className="flex flex-col sticky top-0 bg-white z-50 pb-2 border-b border-gray-200">
+        <div className='wrapper'>
+          <HomeHeader />
+        </div>
         {/*  Search and Filter */} 
-        <div className='wrapper pt-3 lg:pt-6 '>
+        <div className='wrapper pt-3 lg:pt-0 '>
           <div className='flex justify-between pb-4'>
 
           {/* Search & Filter */}
-          <div className="flex px-4 lg:px-6 items-center w-full gap-x-4">
+          <div className="flex px-4 lg:px-4 items-center w-full gap-x-2">
             <div className="flex-grow">
               <Search /> 
             </div>
-            <div className="bg-primary-foreground p-4 rounded-xl ml-2"> 
-              <Filter className="text-white text-xl" />
+            <div className="bg-primary p-4 rounded-md ml-2"> 
+              <Filter className="text-primary-foreground text-xl" />
             </div>
           </div>
 

@@ -4,7 +4,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "1",
         clerkId: "clerkId1",
-        imageUrl: "https://picsum.imageUrls/id/237/200/300",
+        imageUrl: "https://picsum.photos/id/237/200/300",
         email: "example@example.com",
         website: "enyaumanzor.com",
         username: "enyaumanzor",
@@ -18,7 +18,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "2",
         clerkId: "clerkId2",
-        imageUrl: "https://picsum.imageUrls/id/237/200/300",
+        imageUrl: "https://picsum.photos/id/237/200/300",
         email: "example2@example.com",
         website: "enyaumanzor.com",
         username: "cacofelix",
@@ -32,7 +32,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "3",
         clerkId: "clerkId3",
-        imageUrl: "http://example.com/profile",
+        imageUrl: "https://picsum.photos/id/237/200/300",
         email: "example3@example.com",
         website: "enyaumanzor.com",
         username: "username3",
