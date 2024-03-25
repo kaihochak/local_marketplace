@@ -9,12 +9,7 @@ import { Pen } from '@/public/assets/icons/Pen';
 
 const ServiceReviews = ({ service }: { service: ServiceItem }) => {
 
-
-    const serviceReviews = dummmyRatingReviews.filter(review => review.service._id === service._id);
-    console.log("ServiceReviews.ts: ", serviceReviews);
-
-    // service.ratingReviewIDs;
-
+    const serviceReviews = dummmyRatingReviews;
 
     return (
         <section className="wrapper my-8 flex flex-col gap-2 md:gap-12">
@@ -26,24 +21,29 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
             {serviceReviews.length === 0 ? (
                 <p>No reviews yet</p>
             ) : (
-                // printe all of them
-                serviceReviews.map((review, index) => {
+                // printe only 3  of them
+                serviceReviews.slice(0,3).map((review, index) => {
 
                     const client = dummyUsers.find(user => user._id === review.clientID);
 
                     return (
-                        <div key={index} className="p-4">
-                            <div className='flex'>
-                                <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center">
+                        <div key={index} className="flex flex-col">
+                            <div className='flex justify-start items-center'>
+                                {/* profile pic */}
+                                <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center overflow-hidden">
                                     <Image priority src={client?.imageUrl ?? ''} alt="Profile" width={28} height={28} className="rounded-full" />
                                 </div>
+                                {/* name */}
                                 <h3 className="text-lg font-medium">{client?.firstName} {client?.lastName}</h3>
+                                {/* date */}
+                                <p className="text-secondary-light text-s ml-4">2024-02-02</p>
                             </div>
+                            {/* stars */}
                             <div className="flex items-center gap-2 my-2">
                                 {Array.from({ length: review.rating }, (_, i) => (
-                                    <StarFilled key={i} className="w-5 h-5 text-yellow-500" />
-                                ))}
+                                    <StarFilled key={i} className="w-5 h-5 text-yellow-500" />))}
                             </div>
+                            {/* review */}
                             <p className="text-gray-700">{review.review}</p>
                         </div>
                     );

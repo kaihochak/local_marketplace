@@ -89,8 +89,7 @@ const Collection = ({
         <div className='relative flex flex-col gap-y-1'>
             {/* Title */}
             <div className='flex justify-between items-center py-4'>
-                <h2 className={`font-semibold tracking-normal transition-all duration-300 ease-in-out text-2xl
-                    ${selectedCategory === title ? "text-accent" : " text-accent-light"}`}>
+                <h2 className='h4-medium'>
                     {title}
                 </h2>
                 {/* View more */}

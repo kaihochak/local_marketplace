@@ -65,16 +65,19 @@ const Card = ({
         // for service 
         else if (itemType === "service") {
             return (
-                <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] sm:h-[120px] m:h-[130px] lg:h-[180px] relative">
-                    <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
+                <div className="border border-gray-200 rounded-lg overflow-hidden 
+                    h-[120px] sm:h-[120px] m:h-[130px] lg:h-[250px] relative">
+                    {/* label */}
+                    <div className="absolute top-1 lg:top-2 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 lg:px-3 rounded-xl">
                         <Clock className='text-gray-400' />
-                        <div className='text-xs'>Avaliable Today</div>
+                        <div className='p-medium-14 lg:p-medium-18'>Avaliable Today</div>
                     </div>
-                    <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
-                    {service && 'image' in service && (
+                    {/* bookmark */}
+                    <BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                    {service &&  (
                         <Image priority className="w-full h-full object-cover"
                             width={5000} height={5000}
-                            src={service?.image[0] ?? ''} alt={service?.title}
+                            src={service?.imageUrl ?? ''} alt={service?.title}
                         />
                     )}
                 </div>
@@ -89,7 +92,7 @@ const Card = ({
                 <div className=''>
                     <div className='flex justify-between'>
                         {/* Titile */}
-                        <p className="text-m font-semibold">{reservation?.service?.title}</p>
+                        <p className="p-bold-14 lg:p-bold-20 tracking-wide">{reservation?.service?.title}</p>
                         <StarEmpty className='w-3 h-3' />
                     </div>
                     <div className='flex justify-start gap-x-1'>
@@ -102,25 +105,33 @@ const Card = ({
         // for service 
         else if (itemType === "service") {
             return (
-                <div>
+                <div className='flex flex-col gap-y-1 lg:gap-y-2'>
+                    {/* Service Titile */}
                     <div className='flex justify-between'>
-                        {/* Titile */}
-                        <p className="text-m font-semibold">{service?.title}</p>
+                        <p className="p-bold-14 lg:p-bold-20 tracking-wide">{service?.title}</p>
                         <div className='flex flex-center text-xs text-gray-500 gap-x-1 mr-2'>
                             <p>(12)</p>
                             <p>3.2</p>
                             <StarEmpty className='w-3 h-3' />
                         </div>
                     </div>
-                    <div className="flex items-center">
-                        <Image priority className="w-5 h-5 rounded-full mr-2"
-                            src={service?.serviceProvider[0]?.imageUrl ?? ''}
-                            alt={service?.serviceProvider[0]?.name ?? ''}
-                            width={5000} height={5000}
-                        />
-                        <p className="text-xs text-gray-500">{service?.serviceProvider[0]?.name ?? ''}</p>
+                    {/* Provider */}
+                    <div className="flex items-center gap-x-2 ml-1 ">
+                        <div className='w-5 h-5 lg:w-7 lg:h-7 overflow-hidden'>
+                            <Image priority className="w-full h-full rounded-full mr-2 object-cover"
+                                src={service?.provider?.imageUrl ?? ''}
+                                alt={service?.provider?.name ?? ''}
+                                width={5000} height={5000}
+                            />
+                        </div>
+                        <p className="p-medium-12 lg:p-medium-16">
+                            {service?.provider?.firstName ?? ''} {service?.provider?.lastName ?? ''}
+                        </p>
                     </div>
-                    <p className="text-[10px] text-gray-500">{service?.description?.length ?? 0 > 45 ? service?.description?.slice(0, 45) + "..." : service?.description}</p>
+                    {/* description */}
+                    <p className="p-medium-10 lg:p-medium-14 text-background-foreground/80">
+                        {service?.description?.length ?? 0 > 45 ? service?.description?.slice(0, 45) + "..." : service?.description}
+                    </p>
                 </div>
             )
         }
@@ -130,7 +141,7 @@ const Card = ({
                 <div className='h-48'>
                     <div className='flex flex-col gap-y-2'>
                         {/* title */}
-                        <p className="text-m font-semibold">{review?.service?.title ?? "" }</p>
+                        <p className="p-bold-14 lg:p-bold-20 tracking-wide">{review?.service?.title ?? "" }</p>
                         {/* user */}
                         <div className='flex '>
                             <Image priority className="w-5 h-5 rounded-full mr-2"
@@ -138,7 +149,7 @@ const Card = ({
                                 alt={review?.service?.title ?? ''}
                                 width={5000} height={5000}
                             />
-                            <p className="text-m font-semibold">{dummyUsers[0].firstName} {dummyUsers[0].lastName}  </p>
+                            <p className="p-bold-14 lg:p-bold-20 tracking-wide">{dummyUsers[0].firstName} {dummyUsers[0].lastName}  </p>
                         </div>
                         {/* rating */}
                         <div className='flex text-xs text-gray-500 gap-x-1 mr-2'>
@@ -158,7 +169,7 @@ const Card = ({
                                         alt={review?.service?.title ?? ''}
                                         width={5000} height={5000}
                                     />
-                                    <p className="text-m font-semibold">{review?.service?.provider}</p>
+                                    <p className="p-bold-14 lg:p-bold-20 tracking-wide">{review?.service?.provider}</p>
                                 </div>
                                 <p className="text-[10px] text-gray-500">{review?.providerResponse.response}</p>
                             </div>
@@ -207,28 +218,21 @@ const Card = ({
 
     return (
         <div className='flex flex-col'>
-
-            {/* {loading ?
-                <Skeleton className={`flex flex-col bg-primary rounded-sm h-[180px]
-                                    ${direction === "vertical" ? "w-[300px]" :
-                        " w-[250px] sm:w-[280px] md:w-[300px] lg:w-[320px]"}`} />
-                : */}
-                <div className={`flex flex-col bg-primary rounded-sm 
-                                    ${direction === "vertical" ? "w-[300px]" :
-                        "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[320px]"}`}> {/* horizontal */}
-                    {/* Card content */}
-                    <Link href={`/${itemType + "s"}/${item?._id.toString()}`}
-                        className={`h-[170px] flex flex-col mx-3 my-2 gap-y-1 
-                                    ${itemType === "review" ? "h-auto" : ""}`}>
-                        <ImageBanner />
+            <div className={`flex flex-col bg-primary-light rounded-md border border-gray-200 
+                                ${direction === "vertical" ? "w-[300px]" :
+                    "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[400px] lg:h-[270px]"}`}> {/* horizontal */}
+                {/* Card content */}
+                <Link href={`/${itemType + "s"}/${item?._id.toString()}`}
+                    className={`h-[170px] lg:h-[240px] flex flex-col mx-3 my-2 lg:m-2 gap-y-1 
+                                ${itemType === "review" ? "h-auto" : ""}`}>
+                    <ImageBanner />
+                    <div className='mx-2'>
                         <CardInfo />
-                    </Link>
-
-                    {/* optional button */}
-                    {hasButton && <ButtonOption />}
-                </div>
-            {/* } */}
-
+                    </div>
+                </Link>
+                {/* optional button */}
+                {hasButton && <ButtonOption />}
+            </div>
         </div>
     )
 }
