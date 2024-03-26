@@ -153,8 +153,8 @@ const FilterButton = () => {
                             setSelectedCategory(category);
                           }}
                           className={`px-4 py-2 border border-primary rounded-md transition duration-300 ${selectedCategory === category
-                            ? 'bg-primary text-secondary-light' // Active button style
-                            : 'bg-white text-black hover:bg-gray-100' // Inactive button style
+                            ? 'bg-primary text-primary-foreground' // Active button style
+                            : ' hover:bg-background-light' // Inactive button style
                             }`}
                         >
                           {category}
