@@ -5,7 +5,6 @@ import Collection from '@/components/shared/Collection'
 import { dummyServices } from '@/constants/dummyServices'
 import FilterButton from '@/components/shared/FilterButton'
 import Search from '@/components/shared/Search'
-import { ArrowLeft } from '@/public/assets/icons/ArrowLeft'
 
 const page = () => {
 
