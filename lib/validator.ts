@@ -15,3 +15,8 @@ export const reviewFormSchema = z.object({
   rating: z.number().min(1, 'Rating must be at least 1').max(5, 'Rating must be at most 5'),
   review: z.string().min(0, 'Review must be at least 0 characters').max(400, 'Review must be less than 400 characters'),
 })
+
+export const filterFormSchema = z.object({
+  rating: z.number().min(1, 'Rating must be at least 1').max(5, 'Rating must be at most 5'),
+  distance: z.number().min(10, 'Distance must be at least 10').max(50, 'Distance must be at most 50'),
+})
