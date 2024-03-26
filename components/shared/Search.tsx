@@ -9,6 +9,7 @@ import { SearchIcon } from '@/public/assets/icons/SearchIcon'
 import { Filter } from '@/public/assets/icons/Filter';
 import Link from 'next/link';
 import FilterButton from './FilterButton';
+import { ArrowLeft } from '@/public/assets/icons/ArrowLeft'
 
 const Search = ({ placeholder = 'Search services...', isHome }:
   { placeholder?: string, isHome: boolean }) => {
@@ -16,6 +17,12 @@ const Search = ({ placeholder = 'Search services...', isHome }:
   const [query, setQuery] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const goBack = () => {
+    if (typeof window !== 'undefined') {
+      window.history.back();
+    }
+  };
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -41,6 +48,13 @@ const Search = ({ placeholder = 'Search services...', isHome }:
 
   return (
     <div className="flex px-4 lg:px-4 items-center w-full gap-x-2">
+      {/* Back Button */}
+      { !isHome && 
+            <button onClick={goBack} className='text-black text-lg font-semibold'>
+            <ArrowLeft className='text-[30px]' />
+          </button>
+      }
+
       {/* Search */}
       <Link
         href={"/search"}

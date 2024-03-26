@@ -5,16 +5,16 @@ import Collection from '@/components/shared/Collection'
 import { dummyServices } from '@/constants/dummyServices'
 import FilterButton from '@/components/shared/FilterButton'
 import Search from '@/components/shared/Search'
-
+import { ArrowLeft } from '@/public/assets/icons/ArrowLeft'
 
 const page = () => {
 
+
   return (
     <>
-
       {/* Search & Filter */}
       <div className="flex w-full p-4">
-        <Search isHome={false}/>
+        <Search isHome={false} />
       </div>
 
       {/* print result collection */}
