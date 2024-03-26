@@ -4,6 +4,7 @@ import React from 'react'
 import Collection from '@/components/shared/Collection'
 import { dummyServices } from '@/constants/dummyServices'
 import FilterButton from '@/components/shared/FilterButton'
+import Search from '@/components/shared/Search'
 
 
 const page = () => {
@@ -13,14 +14,7 @@ const page = () => {
 
       {/* Search & Filter */}
       <div className="flex w-full p-4">
-        {/* Search icon inside the search bar */}
-        <div className="flex items-center bg-gray-100 px-4 py-2 mr-8 rounded-full w-full">
-          <SearchIcon className="text-gray-500 mr-4" />
-          <input type="text" placeholder="Search title..." className="bg-transparent focus:outline-none" />
-        </div>
-        {/* Filter icon */}
-
-        <FilterButton />
+        <Search isHome={false}/>
       </div>
 
       {/* print result collection */}

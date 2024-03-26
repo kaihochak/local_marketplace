@@ -49,17 +49,7 @@ export default function Home() {
         {/*  Search and Filter */} 
         <div className='wrapper pt-3 lg:pt-0 '>
           <div className='flex justify-between pb-4'>
-
-          {/* Search & Filter */}
-          <div className="flex px-4 lg:px-4 items-center w-full gap-x-2">
-            <div className="flex-grow">
-              <Search /> 
-            </div>
-            <div className="bg-primary p-4 rounded-md ml-2"> 
-              <Filter className="text-primary-foreground text-xl" />
-            </div>
-          </div>
-
+            <Search isHome={true}/> 
           </div>
           <CategoryGroup onCategorySelect={(category: string) => setSelectedCategory(category)} />
         </div>

@@ -19,8 +19,8 @@ import { Button } from '../ui/button';
 import { styled } from '@mui/system';
 
 type ReviewFormProps = {
-  userId: string
-  type: "Create" | "Edit"
+  userId?: string
+  type?: "Create" | "Edit"
   review?: IRatingReview,
   reviewId?: string
 }
@@ -214,8 +214,8 @@ const FilterButton = ({ userId, type, review, reviewId }: ReviewFormProps) => {
           </div>
         </div>
       </Modal>
-      <div className="bg-primary-foreground p-4 rounded-xl">
-        <Filter className="text-white text-xl" onClick={open} />
+      <div className="bg-accent text-primary-foreground p-4 rounded-xl cursor-pointer">
+        <Filter className="text-xl" onClick={open} />
       </div> 
     </div>
 
