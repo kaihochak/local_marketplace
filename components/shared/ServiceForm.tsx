@@ -38,6 +38,8 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
     ? { ...service }
     : serviceDefaultValues;
   const router = useRouter();
+  const [opened, { open, close }] = useDisclosure(false);
+  const isMobile = useMediaQuery('(max-width: 50em)');
 
   const { startUpload } = useUploadThing('imageUploader')
 
