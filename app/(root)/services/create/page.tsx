@@ -7,15 +7,19 @@ const CreateService = () => {
 
   const userId = sessionClaims?.userId as string;
 
+  console.log('userId', userId)
+
   return (
-      <section className="wrapper md:py-10">
+      <section className="wrapper md:py-4">
         <CommonHeader 
           title="Create New Service"
         />
-        <ServiceForm 
-          userId={userId} 
-          type="Create" 
-        />
+        <div className="md:py-2">
+          <ServiceForm 
+            userId={userId} 
+            type="Create" 
+          />
+        </div>
       </section>
   )
 }

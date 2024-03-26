@@ -19,16 +19,29 @@ module.exports = withUt({
     },
     extend: {
       colors: {
-        primary: { // Grey *
-          demo: '#D46534', // 
-          DEFAULT: "#e1e0de", // Grey
-          dark: '#CDCCC8', // Grey
-          light: '#fcfcfc', // White Grey
-          foreground: '#151515', // Black
+        background: {
+          dark: '#B9B0B0', // grey
+          DEFAULT: '#FFFFFF', //white
+          light: '#F4F4F4', // light grey
+          foreground: '#23221E', // Black
         },
-        secondary: { // White *
-          DEFAULT: '#EAEBEB', // White
-          foreground: '#151515', // Black
+        primary: { 
+          dark: '#F39086', // dark pink
+          DEFAULT: "#EDCECB", // pink
+          light: '#FDF5F4', // light pink
+          foreground: '#23221E', // Black
+        },
+        secondary: {
+          dark: '#A3B16B', // dark green
+          DEFAULT: '#D0DDA2', // green
+          light: '#F5F8ED', // light grey
+          foreground: '#23221E', // Black
+        },
+        accent: { 
+          DEFAULT: '#ECAA20', // orange
+          dark: '#D18E03', // dark orange
+          light: '#FBCB6E', // dark orange
+          foreground: '#23221E', // Black
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -37,12 +50,6 @@ module.exports = withUt({
         muted: {
           DEFAULT: '#ecebe9',
           foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: { // Blue *
-          DEFAULT: '#758CA3', // Blue
-          dark: '#5D6C7E', // Dark Blue
-          light: '#8CA6C2', // Light Blue
-          foreground: '#151515', // Black
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
