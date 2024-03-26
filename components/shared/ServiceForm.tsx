@@ -17,10 +17,13 @@ import { useUploadThing } from '@/lib/uploadthing'
 import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "../ui/checkbox"
 import { useRouter } from "next/navigation"
+import { IService, ServiceItem } from "@/lib/database/models/service.model"
 import { createService } from "@/lib/actions/service.actions"
-import { IService } from "@/lib/database/models/service.model"
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
+import Card from "./Card"
+import Link from "next/link"
+import Confetti from 'react-confetti';
 
 type ServiceFormProps = {
   userId: string
@@ -67,7 +70,6 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
           router.push(`/services/${newService._id}`)
         }
         console.log('Create service');
-
       } catch (error) {
         console.log(error);
       }
@@ -98,11 +100,30 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
   //   }
   // }
 
+  //newly created service
+  const newlyCreatedService: ServiceItem = {
+    _id: '1',
+    title: 'New Service',
+    description: 'This is a new service',
+    location: 'New York, USA',
+    image: ['https://picsum.photos/seed/picsum/200/300'], // Ensure 'image' is an array of strings
+    averageRating: 0, // Set initial average rating
+    totalReviews: 0, // Set initial total reviews
+    serviceProvider: [
+      {
+        userId: '1',
+        name: 'Provider Name',
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300' // Assuming 'imageUrl' is provided
+      }
+    ],
+    servicesOffered: {}, // Initialize servicesOffered as an empty object
+    ratingReviewIDs: [] // Initialize ratingReviewIDs as an empty array
+  };
+
   return (
     <section className="px-4 md:px-20 pt-2">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
-
           {/* Service Image */}
           <FormField
             control={form.control}
@@ -120,7 +141,6 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               </FormItem>
             )}
           />
-
 
           <div className="flex flex-col gap-5 md:flex-row">
 
@@ -276,6 +296,52 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
             ) : `${type} `}
           </Button>
 
+        
+        <Modal
+          opened={opened}
+          onClose={close}
+          title=""
+          fullScreen={isMobile}
+          transitionProps={{ transition: 'fade', duration: 200 }}
+        >
+
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="text-3xl font-semibold mt-5 text-left">Service Created Successfully!</h1>
+
+            <div className="my-20">
+              {/* Display the card of the new service */}
+              <Card
+                direction="vertical"
+                itemType="service"
+                item={newlyCreatedService}
+                hasButton={false}
+              />
+            </div>
+
+            {/* Find the service under profile > services */}
+            <h3 className="text-3xl font-semibold text-center mt-5">
+              Find the service under <br />
+              <Link href="/profile/services" className="text-accent-light underline">
+                profile {'>'} services
+              </Link>
+            </h3>
+          </div>
+
+          {/* show confetti */}
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            numberOfPieces={500}
+            recycle={false}
+            initialVelocityY={10}
+            initialVelocityX={10}
+            colors={['#f44336', '#2196f3', '#ffeb3b', '#4caf50']}
+          /> 
+
+        </Modal>
+
+        <Button onClick={open}>Open Modal</Button>
+        
         </form>
       </Form>
     </section>
