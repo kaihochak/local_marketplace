@@ -52,7 +52,7 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
 
             {/* Button to All Reviews */}
 
-            <Link href={`/services/${service._id}/reviews`} className="text-primary-foreground/80 flex justify-end p-medium-16 whitespace-nowrap">
+            <Link href={`/services/${service?._id}/reviews`} className="text-primary-foreground/80 flex justify-end p-medium-16 whitespace-nowrap">
                 See All Reviews &gt;
             </Link>
         </section>

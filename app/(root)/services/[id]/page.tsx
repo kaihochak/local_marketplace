@@ -19,7 +19,7 @@ import { DummyServices } from '@/constants/dummyServices';
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
   // const service = await getServiceById(id);
-  const service = dummyServices.find((service) => service._id === id);
+  const service = dummyServices.find((service) => service?._id === id);
 
   return (
     <>
@@ -36,7 +36,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             {/* hero image */}
             <div className='w-full h-48 md:h-72 flex items justify-center overflow-hidden'>
               <Image
-                src={service.imageUrl}
+                src={service?.imageUrl}
                 alt="hero image"
                 width={1000}
                 height={1000}
@@ -57,7 +57,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                       height={500}
                     />
                   </div>
-                  <p className="text-xl text-end">{service.provider.firstName} {service.provider.lastName}</p>
+                  <p className="text-xl text-end">{service?.provider?.firstName} {service?.provider?.lastName}</p>
                 </div>
                 {/* Rating & Reviews */}
                 <div className="flex items-center">

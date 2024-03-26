@@ -1,5 +1,6 @@
 "use client"
 
+import react, { useEffect } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -17,10 +18,15 @@ import { useUploadThing } from '@/lib/uploadthing'
 import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "../ui/checkbox"
 import { useRouter } from "next/navigation"
+import { IService, ServiceItem } from "@/lib/database/models/service.model"
 import { createService } from "@/lib/actions/service.actions"
-import { IService } from "@/lib/database/models/service.model"
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
+import Card from "./Card"
+import Link from "next/link"
+import Confetti from 'react-confetti';
+import dummyServices from "@/constants/dummyServices"
+import { set } from 'mongoose'
 
 type ServiceFormProps = {
   userId: string
@@ -36,9 +42,9 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
     : serviceDefaultValues;
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
-  const isMobile = useMediaQuery('(max-width: 50em)');
-
   const { startUpload } = useUploadThing('imageUploader')
+
+  const [ newServiceId, setNewServiceId ] = useState<string | null>(null)
 
   // form setup with react-hook-form and zod
   const form = useForm<z.infer<typeof serviceFormSchema>>({
@@ -66,10 +72,9 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
 
         if (newService) {
           form.reset();
-          router.push(`/services/${newService._id}`)
+          setNewServiceId(newService._id);
+          open();
         }
-        console.log('Create service');
-
       } catch (error) {
         console.log(error);
       }
@@ -100,11 +105,15 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
   //   }
   // }
 
+  const confettiProps = typeof window !== 'undefined' ? {
+    width: window.innerWidth,
+    height: window.innerHeight
+  } : {};
+
   return (
     <section className="px-4 md:px-20 pt-2">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
-
           {/* Service Image */}
           <FormField
             control={form.control}
@@ -122,7 +131,6 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
               </FormItem>
             )}
           />
-
 
           <div className="flex flex-col gap-5 md:flex-row">
 
@@ -212,7 +220,11 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
                         height={24}
                         className="filter-grey"
                       />
-                      <Input type="number" placeholder="Price" {...field} className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
+                      <Input 
+                        type="number" 
+                        placeholder="Price" {...field} 
+                        className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" 
+                      />
                       <FormField
                         control={form.control}
                         name="isFree"
@@ -278,6 +290,47 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
             ) : `${type} `}
           </Button>
 
+        {/* successful confetti */}
+        <Modal
+          opened={opened}
+          onClose={close}
+          title=""
+          transitionProps={{ transition: 'fade', duration: 200 }}
+        >
+
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="text-3xl font-semibold mt-5 text-left">Service Created Successfully!</h1>
+
+            <div className="my-20">
+              {/* Display the card of the new service */}
+              <Card
+                direction="vertical"
+                itemType="service"
+                item={dummyServices[0]}
+                hasButton={false}
+              />
+            </div>
+
+            {/* Find the service under profile > services */}
+            <h3 className="text-3xl font-semibold text-center mt-5">
+              Find the service under <br />
+              <Link href={`/services/${newServiceId}`} className="text-accent-light underline">
+                profile {'>'} services
+              </Link>
+            </h3>
+          </div>
+
+          {/* show confetti */}
+          <Confetti
+            {...confettiProps}  
+            numberOfPieces={500}
+            recycle={false}
+            initialVelocityY={10}
+            initialVelocityX={10}
+            colors={['#f44336', '#2196f3', '#ffeb3b', '#4caf50']}
+          /> 
+
+        </Modal>
         </form>
       </Form>
     </section>
