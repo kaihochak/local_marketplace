@@ -46,7 +46,7 @@ const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string
     return (
       // each card has the same width
       <div onClick={() => handleSelectCategory(category)}  
-          className={`category-filter-card ${category === selectedCategory ? "bg-secondary-light border-[1px] border-background-dark" : "bg-background"}`}>
+          className={`hover-scale category-filter-card ${category === selectedCategory ? "bg-secondary" : "bg-background hover:bg-secondary-light"}`}>
           <div className="h2-bold">{icons[category]}</div>
         <div className="p-regular-16 h-[20%] text-[16px] text-center leading-4 tracking-wide">{category}</div>
       </div>
@@ -54,7 +54,7 @@ const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string
   }
 
   return (
-    <div className="flex gap-x-2 pl-4 pr-0 pb-2 overflow-x-auto scrollbar-hide">
+    <div className="flex gap-x-2 pl-4 pr-0 pb-2 pt-3 overflow-x-auto scrollbar-hide">
       <FilterCard category="All" />
       {categories.map(category => (
         <FilterCard key={category._id} category={category.name} />

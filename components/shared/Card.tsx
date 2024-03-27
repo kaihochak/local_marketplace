@@ -27,14 +27,6 @@ const Card = ({
     hasButton,
 }: CardProps) => {
 
-    // const [loading, setLoading] = useState<boolean>(true);
-
-    // useEffect(() => {
-    //     if (item) setLoading(false);
-    // }, [item]);
-
-
-
     let service = itemType === "service" ? item as ServiceItem : null;
     let reservation = itemType === "reservation" ? item as ReservationItem : null;
     let review = itemType === "review" ? item as RatingReviewItem : null;
@@ -218,7 +210,7 @@ const Card = ({
 
     return (
         <div className='flex flex-col'>
-            <div className={`flex flex-col bg-primary-light rounded-md border border-gray-200 
+            <div className={`hover-scale hover:bg-primary-light flex flex-col bg-white rounded-md border border-gray-200 
                                 ${direction === "vertical" ? "w-[300px]" :
                     "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[400px] lg:h-[270px]"}`}> {/* horizontal */}
                 {/* Card content */}

@@ -62,6 +62,8 @@ export type GetAllServicesParams = {
   category: string
   limit: number
   page: number
+  rating: number
+  distance: number
 }
 
 export type GetServicesByUserParams = {
