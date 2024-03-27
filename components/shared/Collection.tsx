@@ -54,18 +54,20 @@ const Collection = ({
                 {/* Cards */}
                 <div
                     ref={containerRef}
-                    className={`${direction === "vertical" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto"
-                        : "flex gap-x-2 pr-10 overflow-x-auto scrollbar-hide"}`}
+                    className={`${direction === "vertical" ?
+                        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto"
+                        : "flex gap-x-2 md:gap-x-4 pr-10 overflow-x-auto scrollbar-hide"}`}
                 >
                     {items?.map((item, index) => (
-                        <Card
-                            key={item._id}
-                            itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
-                            item={item}
-                            direction={direction}
-                            hasButton={hasButton}
-                            bookmarked={bookmarked}
-                        />
+                        <div key={index} className={`${direction === "vertical" ? "" : "py-6"}`}>
+                            <Card
+                                key={item._id}
+                                itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
+                                item={item}
+                                direction={direction}
+                                hasButton={hasButton}
+                            />
+                        </div>
                     ))}
                 </div>
 
@@ -91,12 +93,12 @@ const Collection = ({
     return (
         <div className='relative flex flex-col gap-y-1'>
             {/* Title */}
-            <div className='flex justify-between items-center py-4'>
+            <div className='flex justify-between items-center pt-4'>
                 <h2 className='h4-medium'>
                     {title}
                 </h2>
                 {/* View more */}
-                {hasViewMore && link && 
+                {hasViewMore && link &&
                     <Link href={link}>
                         <ArrowRight className='text-[22px] text-primary-foreground/60 mr-4' />
                     </Link>

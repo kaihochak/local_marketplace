@@ -31,14 +31,6 @@ const Card = ({
     bookmarked,
 }: CardProps) => {
 
-    // const [loading, setLoading] = useState<boolean>(true);
-
-    // useEffect(() => {
-    //     if (item) setLoading(false);
-    // }, [item]);
-
-
-
     let service = itemType === "service" ? item as ServiceItem : null;
     let reservation = itemType === "reservation" ? item as ReservationItem : null;
     let review = itemType === "review" ? item as RatingReviewItem : null;
@@ -49,17 +41,19 @@ const Card = ({
         if (itemType === "reservation") {
             return (
                 <div className="border border-gray-200 rounded-lg overflow-hidden h-[120px] sm:h-[120px] m:h-[130px] lg:h-[180px] relative">
+                    {/* label */}
                     {reservation?.status === "confirmed" ?
-                        <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
+                        <div className="absolute top-1 lg:top-2 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 lg:px-3 rounded-xl">
                             <Clock className='text-gray-400' />
-                            <div className='text-xs'>{reservation?.date}</div>
+                            <div className='p-medium-14 lg:p-medium-18'>{reservation?.date}</div>
                         </div> :
-                        <div className="absolute top-1 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 text-sm rounded-xl">
+                        <div className="absolute top-1 lg:top-2 left-1 flex items-center gap-x-2 bg-gray-200 text-black-100 py-0.5 px-1 lg:px-3 rounded-xl">
                             <Clock className='text-gray-400' />
-                            <div className='text-xs'>{reservation?.status}</div>
+                            <div className='p-medium-14 lg:p-medium-18'>{reservation?.status}</div>
                         </div>
                     }
-                    <BookmarkEmpty className="absolute top-1 right-0 text-gray-400 mr-1 w-5 h-5" />
+                    {/* bookmark */}
+                    <BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     <Image priority className="w-full h-full object-cover"
                         width={5000} height={5000}
                         src={reservation?.service.image ?? ''} alt={reservation?.service.title ?? ''}
@@ -78,7 +72,6 @@ const Card = ({
                         <div className='p-medium-14 lg:p-medium-18'>Avaliable Today</div>
                     </div>
                     {/* bookmark */}
-                    {/* check if bookmarked is true or else empty*/}
                     {bookmarkedItem ?
                         <BookmarkFilled className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" /> :
                         <BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
@@ -150,7 +143,7 @@ const Card = ({
                 <div className='h-48'>
                     <div className='flex flex-col gap-y-2'>
                         {/* title */}
-                        <p className="p-bold-14 lg:p-bold-20 tracking-wide">{review?.service?.title ?? "" }</p>
+                        <p className="p-bold-14 lg:p-bold-20 tracking-wide">{review?.service?.title ?? ""}</p>
                         {/* user */}
                         <div className='flex '>
                             <Image priority className="w-5 h-5 rounded-full mr-2"
@@ -196,12 +189,12 @@ const Card = ({
             return (
                 <div className=''>
                     {reservation?.status === "pending" || reservation?.status === "confirmed" ?
-                        <div className='flex flex-center border-t-[1.5px] border-primary-dark text-primary-foreground'>
-                            <button className="w-full text-xs md:text-s border-r-[1.5px] border-primary-dark py-2">Cancel</button>
+                        <div className='flex flex-center border-t-[1.5px] border-background-dark text-primary-foreground'>
+                            <button className="w-full text-xs md:text-s border-r-[1.5px] border-background-dark py-2">Cancel</button>
                             <button className="w-full text-xs md:text-s py-2">Reshedule</button>
                         </div> :
                         <div className='flex flex-center'>
-                            <button className="w-full text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">
+                            <button className="w-full text-xs md:text-s py-2 border-t-[1.5px] border-background-dark text-primary-foreground">
                                 Review
                             </button>
                         </div>
@@ -213,23 +206,23 @@ const Card = ({
         // for service 
         else if (itemType === 'service') {
             return (
-                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-background-dark text-primary-foreground">Edit</button>
             )
         }
 
         // for review 
         else if (itemType === 'review') {
             return (
-                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-primary-foreground">Edit</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-background-dark text-primary-foreground">Edit</button>
             )
         }
     }
 
     return (
         <div className='flex flex-col'>
-            <div className={`flex flex-col bg-primary-light rounded-md border border-gray-200 
+            <div className={`hover-scale hover:bg-primary-light flex flex-col bg-white rounded-md border border-gray-200 
                                 ${direction === "vertical" ? "w-[300px]" :
-                    "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[400px] lg:h-[270px]"}`}> {/* horizontal */}
+                    "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[400px]"} ${hasButton === true} ? "lg:h-[295px]" : "lg:h-[270px]"`}> {/* horizontal */}
                 {/* Card content */}
                 <Link href={`/${itemType + "s"}/${item?._id.toString()}`}
                     className={`h-[170px] lg:h-[240px] flex flex-col mx-3 my-2 lg:m-2 gap-y-1 

@@ -1,45 +1,66 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { formUrlQuery, removeKeysFromQuery } from '@/lib/utils';
 import { Modal } from '@mantine/core';
-import { Filter } from '@/public/assets/icons/Filter';
+import { FilterIcon } from '@/public/assets/icons/Filter';
 import Slider from '@mui/material/Slider';
-import { ratings, distances, filterCategories } from '@/constants';
+import { ratings, distances, filterCategories, initialFilterSettings } from '@/constants';
+import { getAllCategories } from "@/lib/actions/category.actions";
+import { ICategory } from "@/lib/database/models/category.model";
 
-type FilterSettingsProps = {
-  rating: number,
-  category: string,
-  distance: number
-}
-
-const FilterButton = ({
-  filterSettings: parentFilterSettings, 
-  setFilterSettings: parentSetParentFilterSettings
-}: {filterSettings: FilterSettingsProps, 
-    setFilterSettings: (filterSettings: FilterSettingsProps) => void
-}) => {
-
+const Filter = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const isMobile = useMediaQuery('(max-width: 50em)');
-  const [filters, setFilters] = useState(parentFilterSettings);
+  const [filters, setFilters] = useState(initialFilterSettings);
+
+  const [categories, setCategories] = useState<ICategory[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoryList = await getAllCategories();
+      categoryList && setCategories(categoryList as ICategory[])
+    }
+
+    getCategories();
+  }, [])
+
+  const onSelectFilter = (key: string, value: string | number) => {
+    let newUrl = '';
+  
+    if (value && value !== 'All') {
+      newUrl = formUrlQuery({
+        params: searchParams.toString(),
+        key,
+        value: value.toString()
+      });
+    } else {
+      newUrl = removeKeysFromQuery({
+        params: searchParams.toString(),
+        keysToRemove: [key]
+      });
+    }
+    router.push(newUrl, { scroll: false });
+  };
 
   const handleRatingChange = (event: Event, newValue: number | number[]) => {
     setFilters({ ...filters, rating: newValue as number });
+    onSelectFilter('rating', newValue as number);
   };
 
   const handleDistanceChange = (event: Event, newValue: number | number[]) => {
     setFilters({ ...filters, distance: newValue as number })
+    onSelectFilter('distance', newValue as number);
   };
 
   const handleCategoryChange = (category: string) => {
-    setFilters({ ...filters, category });
+    setFilters({ ...filters, category});
+    onSelectFilter('category', category);
   };
-
-  const handleApplyFilters = () => {
-    close();
-    parentSetParentFilterSettings(filters);
-  }
 
   return (
     <div>
@@ -48,7 +69,6 @@ const FilterButton = ({
         onClose={close}
         title=""
         transitionProps={{ transition: 'fade', duration: 300 }}
-        //modal only shows up on bottom 1/2 of the screen using offset
         size={isMobile ? 'xl' : 'md'}
         centered
         overlayProps={{ opacity: 0.5 }}
@@ -66,7 +86,7 @@ const FilterButton = ({
                   defaultValue={filters.rating}
                   value={filters.rating}
                   onChange={handleRatingChange}
-                  step={1}
+                  step={0.5}
                   valueLabelDisplay="auto"
                   marks={ratings}
                   min={1}
@@ -102,7 +122,7 @@ const FilterButton = ({
                     className={`px-4 py-2 border border-primary rounded-md transition duration-300 ${filters.category === category
                       ? 'bg-primary text-primary-foreground' // Active button style
                       : ' hover:bg-background-light' // Inactive button style
-                      }`}
+                    }`}
                   >
                     {category}
                   </button>
@@ -144,8 +164,8 @@ const FilterButton = ({
           </form>
           {/* Button */}
           <div className="flex-center mt-2 mb-5 w-full">
-            <button 
-              onClick={handleApplyFilters}
+            <button
+              onClick={close}
               className="px-4 py-4 rounded-lg bg-secondary text-secondary-foreground w-full"
             >
               Show Results
@@ -156,10 +176,10 @@ const FilterButton = ({
 
       {/* button to open the model */}
       <button className="border-2 border-grey-300 hover:bg-background-light text-primary-foreground p-4 rounded-xl cursor-pointer">
-        <Filter className="text-xl" onClick={open} />
+        <FilterIcon className="text-xl" onClick={open} />
       </button>
     </div>
   )
 }
 
-export default FilterButton
+export default Filter

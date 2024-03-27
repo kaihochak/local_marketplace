@@ -33,7 +33,6 @@ export const initialFilterSettings = {
   distance: 20
 }
 
-
 export const ratings = [
   { value: 1, label: '1⭐' },
   { value: 2, label: '2⭐' },

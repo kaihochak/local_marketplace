@@ -1,22 +1,40 @@
-import { Filter } from '@/public/assets/icons/Filter'
-import { SearchIcon } from '@/public/assets/icons/SearchIcon'
 import React from 'react'
 import Collection from '@/components/shared/Collection'
 import { dummyServices } from '@/constants/dummyServices'
-import FilterButton from '@/components/shared/FilterButton'
 import Search from '@/components/shared/Search'
+import Filter from '@/components/shared/Filter'
+import { getAllServices } from '@/lib/actions/service.actions';
+import { SearchParamProps } from '@/types';
+import BackButton from '@/components/shared/BackButton'
 
-const page = () => {
-
+export default async function SearchPage({ searchParams }: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const searchText = (searchParams?.query as string) || '';
+  const category = (searchParams?.category as string) || '';
+  const rating = Number(searchParams?.rating) || 0;
+  const distance = Number(searchParams?.distance) || 0;
+  
+  // const services = await getAllServices({
+  //   query: searchText,
+  //   category,
+  //   rating, 
+  //   distance,
+  //   page,
+  //   limit: 12
+  // })
 
   return (
     <>
       {/* Search & Filter */}
       <div className="flex w-full p-4">
-        <Search isHome={false} />
+        <div className="wrapper flex px-4 lg:px-4 items-center w-full gap-x-2">
+          <BackButton/>
+          <Search/>
+          <Filter/>
+        </div>
       </div>
 
-      {/* print result collection */}
+      {/* Result collection */}
       <div className='flex-center'>
         <Collection
           direction="vertical"
@@ -25,11 +43,6 @@ const page = () => {
           hasViewMore={true}
         />
       </div>
-
-
-
     </>
   )
 }
-
-export default page
