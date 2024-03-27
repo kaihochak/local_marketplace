@@ -22,7 +22,6 @@ type CollectionProps = {
     link?: Url;
     itemsPerPage?: number;
     nextPrevButton?: boolean;
-    bookmarked?: boolean;
 };
 
 const Collection = ({
@@ -37,7 +36,6 @@ const Collection = ({
     link,
     itemsPerPage,
     nextPrevButton,
-    bookmarked
 }: CollectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 

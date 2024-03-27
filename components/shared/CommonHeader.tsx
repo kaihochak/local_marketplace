@@ -2,6 +2,8 @@
 
 import { ArrowLeft } from "@/public/assets/icons/ArrowLeft";
 import { BookmarkEmpty } from "@/public/assets/icons/BookmarkEmpty";
+import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled';
+import { useState } from "react";
 
 const CommonHeader = ({ title, savedButton }: { title: string, savedButton?: boolean }) => {
     const goBack = () => {
@@ -9,6 +11,7 @@ const CommonHeader = ({ title, savedButton }: { title: string, savedButton?: boo
             window.history.back();
         }
     };
+    const [isBookmarked, setIsBookmarked] = useState(false);
 
     return (
         <section className='top-0 z-50'>
@@ -23,8 +26,11 @@ const CommonHeader = ({ title, savedButton }: { title: string, savedButton?: boo
                 </div>
                 {/* Bookmark */}
                 {savedButton ?
-                    <button className='text-primary-foreground text-lg font-semibold'>
-                        <BookmarkEmpty className='w-8 h-8' />
+                    <button onClick={() => setIsBookmarked(!isBookmarked)} className='text-primary-foreground text-lg font-semibold pr'>
+                        { isBookmarked ?
+                            <BookmarkFilled className="text-background-dark font-extrabold w-5 h-5 lg:w-10 lg:h-10" /> 
+                            :<BookmarkEmpty className="text-background-dark font-extrabold w-5 h-5 lg:w-10 lg:h-10" />
+                        }
                     </button>
                     : <div className="w-8"></div> /* This is a temporary fix for the sticky header */
                 }

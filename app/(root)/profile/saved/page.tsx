@@ -12,7 +12,6 @@ const saved = () => {
               direction="vertical"
               itemType='service'
               items={dummmyServices}
-              bookmarked={true} 
             />
         </div>
     </div>

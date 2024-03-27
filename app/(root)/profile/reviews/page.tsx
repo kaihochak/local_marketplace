@@ -11,16 +11,18 @@ const ProfileReviews = () => {
   const reviews = dummmyRatingReviews.filter(review => review.clientID === user._id);
 
   return (
-    <div className='wrapper'>
-        <CommonHeader title='My Reviews'/>
-          <div className='flex justify-center items-center'>
-            <Collection
-              direction="vertical"
-              itemType='review'
-              items={reviews}
-              hasButton={true} 
-            />
-          </div>
+    <div >
+      <div className="wrapper">
+        <CommonHeader title='My Reviews' />
+      </div>
+      <div className='flex justify-center items-center'>
+        <Collection
+          direction="vertical"
+          itemType='review'
+          items={reviews}
+          hasButton={true}
+        />
+      </div>
     </div>
   )
 }

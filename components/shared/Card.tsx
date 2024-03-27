@@ -32,9 +32,9 @@ const Card = ({
 }: CardProps) => {
 
     let service = itemType === "service" ? item as ServiceItem : null;
+    let bookmarkedItem = itemType === "service" ? service?.bookmarked : null;
     let reservation = itemType === "reservation" ? item as ReservationItem : null;
     let review = itemType === "review" ? item as RatingReviewItem : null;
-    let bookmarkedItem = itemType === "service" ? service?.bookmarked : null;
 
     const ImageBanner = () => {
         // for reservation
@@ -73,8 +73,8 @@ const Card = ({
                     </div>
                     {/* bookmark */}
                     {bookmarkedItem ?
-                        <BookmarkFilled className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" /> :
-                        <BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                        <BookmarkFilled className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" /> 
+                        :<BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     }
                     {service &&  (
                         <Image priority className="w-full h-full object-cover"
