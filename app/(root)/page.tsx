@@ -50,8 +50,8 @@ export default function Home() {
         {/* Search */}
         <div className='wrapper pt-3 lg:pt-0 '>
           <div className='flex justify-between pb-4'>
-            <Link href={"/search"} className='w-full mx-4'>
-              <Search />
+            <Link href={"/search"} className='w-full mx-4 '>
+              <Search disabled={true}/>
             </Link>
           </div>
           <CategoryGroup onCategorySelect={(category: string) => setSelectedCategory(category)} />
