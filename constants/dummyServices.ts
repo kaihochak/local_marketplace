@@ -40,6 +40,7 @@ export const dummyServices: any[] = [
         totalReviews: 12,
         ratingReviewIDs: [],
         category: { _id: "65fe8fbcfb55d63b100a4d28", name: "123" },
+        bookmarked: true,
     },
 
     {
@@ -79,6 +80,7 @@ export const dummyServices: any[] = [
         },
         ratingReviewIDs: ["1", "2", "3"],
         categoryIDs: ["1", "2", "3"],
+        bookmarked: false,
     },
     {
         _id: "2",
@@ -117,6 +119,7 @@ export const dummyServices: any[] = [
         },
         ratingReviewIDs: ["1", "2", "3"],
         categoryIDs: ["1", "2", "3"],
+        bookmarked: true,
     },
     {
         _id: "3",
@@ -155,7 +158,7 @@ export const dummyServices: any[] = [
         },
         ratingReviewIDs: ["1", "2", "3"],
         categoryIDs: ["1", "2", "3"],
-
+        bookmarked: false,
     },
     {
         _id: "4",
@@ -194,6 +197,7 @@ export const dummyServices: any[] = [
         },
         ratingReviewIDs: ["1", "2", "3"],
         categoryIDs: ["1", "2", "3"],
+        bookmarked: true,
     }
 ];
 

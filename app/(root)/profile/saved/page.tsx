@@ -10,9 +10,9 @@ const saved = () => {
         <div className='flex justify-center items-center'>
             <Collection
               direction="vertical"
-              itemType='review'
+              itemType='service'
               items={dummmyServices}
-              hasButton={true} 
+              bookmarked={true} 
             />
         </div>
     </div>
