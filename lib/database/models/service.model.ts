@@ -12,6 +12,7 @@ export interface IService extends Document {
   ratingReviewIDs: string[]; 
   averageRating?: number;
   totalReviews?: number;
+  bookmarked?: boolean;
 }
 
 const ServiceSchema = new Schema({
@@ -32,6 +33,7 @@ const ServiceSchema = new Schema({
   ratingReviewIDs: [{ type: String, ref: 'RatingReview' }],
   averageRating: { type: Number, required: false },
   totalReviews: { type: Number, required: false },
+  bookmarked: { type: Boolean, required: false }
 }, { timestamps: true }); // Enables createdAt and updatedAt fields automatically
 
 const Service = models.Service || model('Service', ServiceSchema);
@@ -50,6 +52,7 @@ export type ServiceItem = {
   servicesOffered: Map<string, { title: string; price: string }>;
   ratingReviewIDs: string[];
   averageRating?: number;
+  bookmarked?: boolean;
 };
 
 

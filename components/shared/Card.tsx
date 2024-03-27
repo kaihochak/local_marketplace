@@ -11,13 +11,16 @@ import Link from 'next/link';
 import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
 import dummyUsers from '@/constants/dummyUsers';
+import dummyServices from '@/constants/dummyServices';
 import { LocationPin } from '@/public/assets/icons/LocationPin';
+import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled';
 
 type CardProps = {
     direction?: 'horizontal' | 'vertical'
     itemType?: 'service' | 'reservation' | 'review'
     item?: ServiceItem | RatingReviewItem | ReservationItem
     hasButton?: boolean
+    bookmarked?: boolean
 };
 
 const Card = ({
@@ -25,6 +28,7 @@ const Card = ({
     itemType,
     item,
     hasButton,
+    bookmarked,
 }: CardProps) => {
 
     // const [loading, setLoading] = useState<boolean>(true);
@@ -38,6 +42,7 @@ const Card = ({
     let service = itemType === "service" ? item as ServiceItem : null;
     let reservation = itemType === "reservation" ? item as ReservationItem : null;
     let review = itemType === "review" ? item as RatingReviewItem : null;
+    let bookmarkedItem = itemType === "service" ? service?.bookmarked : null;
 
     const ImageBanner = () => {
         // for reservation
@@ -73,7 +78,11 @@ const Card = ({
                         <div className='p-medium-14 lg:p-medium-18'>Avaliable Today</div>
                     </div>
                     {/* bookmark */}
-                    <BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                    {/* check if bookmarked is true or else empty*/}
+                    {bookmarkedItem ?
+                        <BookmarkFilled className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" /> :
+                        <BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                    }
                     {service &&  (
                         <Image priority className="w-full h-full object-cover"
                             width={5000} height={5000}
