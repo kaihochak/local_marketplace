@@ -134,8 +134,9 @@ body {
   }
 
   .h3-medium {
-    @apply font-medium tracking-tighter text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
-    @apply md:font-medium md:tracking-tighter md:text-[32px] md:leading-[40px] md:lg:text-[36px] md:lg:leading-[44px] md:xl:text-[40px] md:xl:leading-[48px];
+    @apply font-medium tracking-tighter;
+    @apply text-[30px] leading-[36px] md:text-[32px] md:leading-[40px];
+    @apply lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px]
   }
 
   /* 32 */
@@ -149,7 +150,8 @@ body {
   }
 
   .h5-medium {
-    @apply font-medium text-[28px] leading-[36px] ;
+    @apply font-medium text-[24px] leading-[32px];
+    @apply md:font-medium md:text-[28px] md:leading-[36px];
   }
 
   /* 24 */
@@ -290,7 +292,7 @@ body {
   
   /* Bottom bar */
   .bottom-bar-container {
-    @apply md:hidden z-50 w-full sticky bottom-0 bg-secondary px-5 py-4 rounded-t-3xl shadow-t-md;
+    @apply md:hidden z-50 w-full sticky bottom-0 bg-white px-5 py-4 rounded-t-3xl shadow-t-md;
   }
 
   .bottom-bar {
@@ -303,8 +305,8 @@ body {
   }
 
   #card-prev-next-button {
-    @apply absolute z-40 top-1/2 transform -translate-y-1/2 px-0 hover:px-2 rounded-md bg-primary-foreground/30 h-[85%];
-    @apply text-primary opacity-0 transition-all duration-300 hover:bg-primary-foreground/60;
+    @apply absolute z-40 top-1/2 transform -translate-y-1/2 px-0 hover:px-2 rounded-md bg-grey-400/60 h-[85%];
+    @apply text-white opacity-0 transition-all duration-300 hover:bg-grey-400;
   }
 
 }

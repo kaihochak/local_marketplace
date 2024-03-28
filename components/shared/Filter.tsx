@@ -121,7 +121,7 @@ const Filter = () => {
                     }}
                     className={`px-4 py-2 border border-primary rounded-md transition duration-300 ${filters.category === category
                       ? 'bg-primary text-primary-foreground' // Active button style
-                      : ' hover:bg-background-light' // Inactive button style
+                      : ' hover:bg-primary' // Inactive button style
                     }`}
                   >
                     {category}
@@ -175,7 +175,7 @@ const Filter = () => {
       </Modal>
 
       {/* button to open the model */}
-      <button className="border-2 border-grey-300 hover:bg-background-light text-primary-foreground p-4 rounded-xl cursor-pointer">
+      <button className="border-2 border-grey-300 hover:bg-primary text-primary-foreground p-2 md:p-4 mr-2 rounded-xl cursor-pointer">
         <FilterIcon className="text-xl" onClick={open} />
       </button>
     </div>

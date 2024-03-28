@@ -12,8 +12,8 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
     const serviceReviews = dummmyRatingReviews;
 
     return (
-        <section className="wrapper my-8 flex flex-col gap-2 md:gap-12">
-            <div className='flex'>
+        <section className="wrapper my-8 flex flex-col gap-3 md:gap-6">
+            <div className='flex-between'>
                 <h2 className="h4-medium">Reviews</h2>
                 <Pen className="w-6 h-6 ml-auto" />
             </div>
@@ -27,7 +27,7 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
                     const client = dummyUsers.find(user => user._id === review.clientID);
 
                     return (
-                        <div key={index} className="flex flex-col">
+                        <div key={index} className="flex flex-col py-2">
                             <div className='flex justify-start items-center'>
                                 {/* profile pic */}
                                 <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center overflow-hidden">
@@ -36,10 +36,10 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
                                 {/* name */}
                                 <h3 className="text-lg font-medium">{client?.firstName} {client?.lastName}</h3>
                                 {/* date */}
-                                <p className="text-secondary-light text-s ml-4">2024-02-02</p>
+                                <p className="text-grey-600 text-s ml-4">2024-02-02</p>
                             </div>
                             {/* stars */}
-                            <div className="flex items-center gap-2 my-2">
+                            <div className="flex items-center md:gap-2 my-2">
                                 {Array.from({ length: review.rating }, (_, i) => (
                                     <StarFilled key={i} className="w-5 h-5 text-yellow-500" />))}
                             </div>

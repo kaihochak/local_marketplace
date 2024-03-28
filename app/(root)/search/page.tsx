@@ -26,9 +26,9 @@ export default async function SearchPage({ searchParams }: SearchParamProps) {
   return (
     <>
       {/* Search & Filter */}
-      <div className="flex w-full p-4">
-        <div className="wrapper flex px-4 lg:px-4 items-center w-full gap-x-2">
-          <BackButton/>
+      <div className="flex w-full p-2 py-4 md:p-4">
+        <div className="big-wrapper flex items-center w-full gap-x-2">
+          <BackButton destination='/'/>
           <Search/>
           <Filter/>
         </div>

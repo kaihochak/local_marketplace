@@ -80,10 +80,10 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
       <section className=''>
         <CommonHeader title={service?.title} savedButton={true} />
         <div className='wrapper'>
-          <div className='md:px-8'>
+          <div className='px-8 md:pt-4'>
             <BreadcrumbBar />
             {/* Provider Info */}
-            <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain pb-4 md:py-4">
+            <section className="flex justify-center bg-dotted-pattern bg-contain pb-4 md:py-4">
               <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl gap-y-4 gap-x-4">
                 {/* hero image */}
                 <div className='w-full h-48 md:h-80 flex justify-center overflow-hidden rounded-md'>
@@ -95,11 +95,10 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                     className='object-cover '
                   />
                 </div>
-
                 {/* Details */}
-                <div className="w-full h-48 md:h-80 flex justify-evenly flex-col gap-1 mx-2 bg-primary-light px-4 rounded-md">
+                <div className="w-full md:h-80 flex justify-evenly flex-col gap-1 bg-primary px-4 rounded-md">
                   {/* image, name, rating */}
-                  <div className="flex-between my-2 w-full mt-4">
+                  <div className="flex-between my-4 mx-2">
                     <div className='flex-between gap-x-3'>
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center overflow-hidden">
                         <Image
@@ -110,7 +109,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                           height={500}
                         />
                       </div>
-                      <p className="text-xl text-end">{service?.provider?.firstName} {service?.provider?.lastName}</p>
+                      <p className="h5-medium text-end">{service?.provider?.firstName} {service?.provider?.lastName}</p>
                     </div>
                     {/* Rating & Reviews */}
                     <div className="flex items-center">
@@ -120,7 +119,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                     </div>
                   </div>
                   {/* Contact Info */}
-                  <div className='flex flex-col items-start justify-center w-full px-2 m-2 gap-y-2'>
+                  <div className='flex flex-col items-start justify-center w-full gap-y-2 px-4 pb-4'>
                     {/* Phone */}
                     <div className="flex items-center gap-x-6">
                       <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
@@ -150,14 +149,10 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                       <a href={'{service?.provider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{service?.provider?.website}</a>
                     </div>
                     {/* Service Description (for desktop) */}
-                    <div className='hidden md:flex mx-2 md:my-2'>
+                    <div className='mx-2 md:my-2'>
                       <p className='text-m'>{service?.description}</p>
                     </div>
                   </div>
-                </div>
-                {/* Service Description (for mobile) */}
-                <div className='md:hidden mx-2 md:my-6'>
-                  <p className='text-m'>{service?.description}</p>
                 </div>
               </div>
             </section>
@@ -170,8 +165,8 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
           </div>
 
           {/* Services with the same category */}
-          <section className="my-8 flex flex-col gap-y-2 md:gap-y-0">
-            <h2 className="h4-medium md:px-8">Related Services</h2>
+          <section className="my-8 flex flex-col md:gap-y-0">
+            <h2 className="h4-medium px-8">Related Services</h2>
             <div className='pl-4'>
               <Collection
                 direction="horizontal"

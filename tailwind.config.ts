@@ -19,23 +19,17 @@ module.exports = withUt({
     },
     extend: {
       colors: {
-        background: {
-          dark: '#B9B0B0', // grey
-          DEFAULT: '#FFFFFF', //white
-          light: '#F4F4F4', // light grey
-          foreground: '#23221E', // Black
+        primary: { // blueish grey
+          dark: '#A4B5D1',
+          DEFAULT: "#EDF0F5", 
+          light: '#F8FBFF', 
+          foreground: '#23221E', 
         },
-        primary: { 
-          dark: '#F39086', // dark pink
-          DEFAULT: "#EDCECB", // pink
-          light: '#FDF5F4', // light pink
-          foreground: '#23221E', // Black
-        },
-        secondary: {
-          dark: '#A3B16B', // dark green
-          DEFAULT: '#D0DDA2', // green
-          light: '#F5F8ED', // light grey
-          foreground: '#23221E', // Black
+        secondary: { // beige
+          dark: '#CCB897', 
+          DEFAULT: '#F4E1C1', 
+          light: '#F6E1BC', 
+          foreground: '#23221E', 
         },
         accent: { 
           DEFAULT: '#ECAA20', // orange
@@ -132,8 +126,8 @@ module.exports = withUt({
       },
       screens: {
         'xs': '380px', // mobile SE not included
-        'sm': '640px', // tablet
-        'md': '768px', 
+        'sm': '640px', 
+        'md': '768px', // tablet
         'lg': '1024px', // desktop
         'xl': '1280px',
         '2xl': '1536px',

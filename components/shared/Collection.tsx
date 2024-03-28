@@ -54,10 +54,11 @@ const Collection = ({
                     ref={containerRef}
                     className={`${direction === "vertical" ?
                         "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-auto"
-                        : "flex gap-x-2 md:gap-x-4 pr-10 overflow-x-auto scrollbar-hide"}`}
+                        : "flex pr-10 overflow-x-auto scrollbar-hide"}`}
                 >
                     {items?.map((item, index) => (
-                        <div key={index} className={`${direction === "vertical" ? "" : "py-6"}`}>
+                        <div key={index} className={`${direction === "vertical" ? "" : "py-6 pl-2"} 
+                        ${(index === 0 && direction !== "vertical") ? 'md:pl-6' : ''}`}>
                             <Card
                                 key={item._id}
                                 itemType={itemType as 'service' | 'reservation' | 'review' | undefined}
@@ -73,14 +74,14 @@ const Collection = ({
                 {nextPrevButton && <button
                     id="card-prev-next-button"
                     onClick={() => scrollBy(-400)} // Adjust scroll amount as per your design
-                    className="left-0"
+                    className="hidden md:block left-0"
                 >
                     <ArrowLeft className='text-[22px]' />
                 </button>}
                 {nextPrevButton && <button
                     id="card-prev-next-button"
                     onClick={() => scrollBy(400)} // Adjust scroll amount as per your design
-                    className="right-0"
+                    className="hidden md:block right-0"
                 >
                     <ArrowRight className='text-[22px]' />
                 </button>}
@@ -90,8 +91,8 @@ const Collection = ({
 
     return (
         <>
-            <div className='flex pt-4 md:pt-2'>
-                <h2 className='h4-medium'>
+            <div className='flex'>
+                <h2 className='pl-3 md:pl-4 lg:pl-10 h3-medium'>
                     {title}
                 </h2>
                 {/* View more */}

@@ -46,7 +46,7 @@ const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string
     return (
       // each card has the same width
       <div onClick={() => handleSelectCategory(category)}  
-          className={`hover-scale category-filter-card ${category === selectedCategory ? "bg-secondary" : "bg-background hover:bg-secondary-light"}`}>
+          className={`hover-scale category-filter-card ${category === selectedCategory ? "bg-secondary" : "bg-transparent hover:bg-secondary-light"}`}>
           <div className="h2-bold">{icons[category]}</div>
         <div className="p-regular-16 h-[20%] text-[16px] text-center leading-4 tracking-wide">{category}</div>
       </div>

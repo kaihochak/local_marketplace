@@ -4,12 +4,12 @@ import { dummyUsers } from '@/constants/dummyUsers'
 import { dummyServices } from '@/constants/dummyServices'
 import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled'
 import { SearchParamProps } from '@/types'
-import { UserButton, auth } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import CommonHeader from '@/components/shared/CommonHeader'
 import { Pen } from '@/public/assets/icons/Pen'
+import { auth } from '@clerk/nextjs'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
@@ -21,20 +21,9 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
 
-  // const orders = await getOrdersByUser({ userId, page: ordersPage})
-
-  // const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
-  // const organizedEvents = await getEventsByUser({ userId, page: eventsPage })
-
   return (
     <>
-    <div className='lg:wrapper'>
-      <div className="flex justify-between items-center py-4 pr-4">
-        {/* Common Header */}
-        <CommonHeader title='' />
-        {/* Sign Out Button */}
-        <UserButton afterSignOutUrl="/"/>
-      </div>
+      <CommonHeader title='' signOutButton={true}/>
 
       {/* Profile Name */}
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center lg:py-10">
@@ -100,8 +89,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           nextPrevButton={true}
         />
       </section>
-    </div>
-
     </>
   )
 }

@@ -34,13 +34,13 @@ const Search = ({ placeholder = 'Search services...', disabled }: { placeholder?
   }, [query, searchParams, router])
 
   return (
-    <div className="rounded-lg flex-center min-h-[54px] w-full overflow-hidden bg-background-light px-4 py-2">
+    <div className="rounded-lg flex-center min-h-[54px] w-full overflow-hidden bg-primary px-4 py-2">
       <SearchIcon className="w-5 h-5 text-grey-500" />
       <Input
         type="text"
         placeholder={placeholder}
         onChange={(e) => setQuery(e.target.value)}
-        className={`p-regular-16 border-0 bg-background-light outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0
+        className={`p-regular-16 border-0 bg-primary outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0
         ${disabled ? 'cursor-pointer' : 'cursor-text'}`}
       />
     </div>

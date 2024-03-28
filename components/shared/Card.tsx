@@ -53,7 +53,7 @@ const Card = ({
                         </div>
                     }
                     {/* bookmark */}
-                    <BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                    <BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     <Image priority className="w-full h-full object-cover"
                         width={5000} height={5000}
                         src={reservation?.service.image ?? ''} alt={reservation?.service.title ?? ''}
@@ -73,8 +73,8 @@ const Card = ({
                     </div>
                     {/* bookmark */}
                     {bookmarkedItem ?
-                        <BookmarkFilled className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" /> 
-                        :<BookmarkEmpty className="absolute top-1 right-0 text-background-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                        <BookmarkFilled className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" /> 
+                        :<BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     }
                     {service &&  (
                         <Image priority className="w-full h-full object-cover"
@@ -131,7 +131,7 @@ const Card = ({
                         </p>
                     </div>
                     {/* description */}
-                    <p className="p-medium-10 lg:p-medium-14 text-background-foreground/80">
+                    <p className="p-medium-10 lg:p-medium-14 text-primary-foreground/80">
                         {service?.description?.length ?? 0 > 45 ? service?.description?.slice(0, 45) + "..." : service?.description}
                     </p>
                 </div>
@@ -189,12 +189,12 @@ const Card = ({
             return (
                 <div className=''>
                     {reservation?.status === "pending" || reservation?.status === "confirmed" ?
-                        <div className='flex flex-center border-t-[1.5px] border-background-dark text-primary-foreground'>
-                            <button className="w-full text-xs md:text-s border-r-[1.5px] border-background-dark py-2">Cancel</button>
+                        <div className='flex flex-center border-t-[1.5px] border-primary-dark text-secondary-foreground'>
+                            <button className="w-full text-xs md:text-s border-r-[1.5px] border-primary-dark py-2">Cancel</button>
                             <button className="w-full text-xs md:text-s py-2">Reshedule</button>
                         </div> :
                         <div className='flex flex-center'>
-                            <button className="w-full text-xs md:text-s py-2 border-t-[1.5px] border-background-dark text-primary-foreground">
+                            <button className="w-full text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-secondary-foreground">
                                 Review
                             </button>
                         </div>
@@ -206,21 +206,21 @@ const Card = ({
         // for service 
         else if (itemType === 'service') {
             return (
-                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-background-dark text-primary-foreground">Edit</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-secondary-foreground">Edit</button>
             )
         }
 
         // for review 
         else if (itemType === 'review') {
             return (
-                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-background-dark text-primary-foreground">Edit</button>
+                <button className="text-xs md:text-s py-2 border-t-[1.5px] border-primary-dark text-secondary-foreground">Edit</button>
             )
         }
     }
 
     return (
         <div className='flex flex-col'>
-            <div className={`hover-scale hover:bg-primary-light flex flex-col bg-white rounded-md border border-gray-200 
+            <div className={`hover-scale flex flex-col bg-primary rounded-md 
                                 ${direction === "vertical" ? "w-[300px]" :
                     "w-[250px] sm:w-[280px] md:w-[300px] lg:w-[400px]"} ${hasButton === true} ? "lg:h-[295px]" : "lg:h-[270px]"`}> {/* horizontal */}
                 {/* Card content */}
