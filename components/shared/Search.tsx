@@ -40,7 +40,7 @@ const Search = ({ placeholder = 'Search services...', disabled }: { placeholder?
         type="text"
         placeholder={placeholder}
         onChange={(e) => setQuery(e.target.value)}
-        className={`p-regular-16 border-0 bg-primary outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0
+        className={`p6-regular border-0 bg-primary outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0
         ${disabled ? 'cursor-pointer' : 'cursor-text'}`}
       />
     </div>

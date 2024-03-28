@@ -13,6 +13,7 @@ import ServiceReviews from '@/components/shared/ServiceReviews';
 import CommonHeader from '@/components/shared/CommonHeader';
 import { Slash } from "lucide-react"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import ServiceTable from '@/components/shared/ServiceTable/ServiceTable';
 // import { getServiceById } from '@/lib/actions/service.actions';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
@@ -24,7 +25,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
     return (
       <div className='py-4'>
         <Breadcrumb >
-          <BreadcrumbList className='p-medium-16 md:p-medium-20 lg:p-medium-22'>
+          <BreadcrumbList className='p5-regular'>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
@@ -43,35 +44,6 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-    )
-  }
-
-  const ServiceTable = () => {
-    return (
-      <section className="flex flex-col mt-2 gap-8 md:gap-4 ">
-        <h2 className="h4-medium">Services Offered</h2>
-        {/* TABLE */}
-        <div className="mx-auto w-full overflow-auto rounded-lg shadow-md">
-          <Table >
-            <TableHeader>
-              <TableRow className='bg-accent [&_*]:text-accent-foreground'>
-                <TableHead className="">Service</TableHead>
-                <TableHead>Availability</TableHead>
-                <TableHead className="text-right">Price</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {service?.servicesOffered && Object.keys(service?.servicesOffered).map((serviceKey, index) => (
-                <TableRow key={index}>
-                  <TableCell className="font-medium">{service?.servicesOffered[serviceKey].title}</TableCell>
-                  <TableCell>Today</TableCell>
-                  <TableCell className="text-right">{service?.servicesOffered[serviceKey].price}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table >
-        </div>
-      </section>
     )
   }
 
@@ -158,7 +130,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             </section>
 
             {/* Services Offered */}
-            <ServiceTable />
+            <ServiceTable service={service} />
 
             {/* Reviews */}
             <ServiceReviews service={service} />
@@ -166,7 +138,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
           {/* Services with the same category */}
           <section className="my-8 flex flex-col md:gap-y-0">
-            <h2 className="h4-medium px-8">Related Services</h2>
+            <h2 className="h4-semibold px-8">Related Services</h2>
             <div className='pl-4'>
               <Collection
                 direction="horizontal"

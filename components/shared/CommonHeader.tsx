@@ -20,8 +20,8 @@ const CommonHeader = ({ title, savedButton, signOutButton }:
                 <BackButton />
 
                 {/* Title */}
-                <div className="flex-grow flex justify-center mx-2">
-                    <h2 className='text-primary-foreground text-xl font-semibold'>{title}</h2> {/* Removed absolute positioning */}
+                <div className="flex-grow flex-center mx-2">
+                    <h2 className='h4-semibold'>{title}</h2> {/* Removed absolute positioning */}
                 </div>
                 {/* Bookmark */}
                 <div>
@@ -39,7 +39,7 @@ const CommonHeader = ({ title, savedButton, signOutButton }:
 
                 {/* Sign Out */}
                 {signOutButton &&
-                    <div className="flex-between w-7 h-7 lg:w-10 lg:h-10 mx-8">
+                    <div className="hover-scale flex-between w-7 h-7 lg:w-10 lg:h-10 mx-8">
                         <UserButton afterSignOutUrl="/" />
                     </div>
                 }

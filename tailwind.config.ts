@@ -77,53 +77,6 @@ module.exports = withUt({
         // 'dotted-pattern': "url('/assets/images/dotted-pattern.png')",
         'hero-img': "url('/assets/images/hero.png')",
       },
-      fontSize: {
-        '3xs' : ['0.5rem', {
-          lineHeight: '0.75rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        '2xs': ['0.625rem', {
-          lineHeight: '0.75rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        'xs': ['0.75rem', {
-          lineHeight: '1rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        's': ['0.875rem', {
-          lineHeight: '1.25rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        'm': ['1rem', {
-          lineHeight: '1.5rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        'l': ['1.125rem', {
-          lineHeight: '1.75rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        'xl': ['1.5rem', {
-          lineHeight: '1.75rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        '2xl': ['1.75rem', {
-          lineHeight: '1.75rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-        '3xl': ['1.875rem', {
-          lineHeight: '2.25rem',
-          letterSpacing: '-0.02em',
-          fontWeight: '400',
-        }],
-      },
       screens: {
         'xs': '380px', // mobile SE not included
         'sm': '640px', 

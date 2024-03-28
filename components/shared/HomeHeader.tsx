@@ -46,7 +46,7 @@ const HomeHeader = () => {
                                 <Message className="text-[26px]" />
                             </div>
                             {/* Link to profile page */}       
-                            <div className="hidden md:flex items-center w-8 h-8 m-2">
+                            <div className="hidden md:flex items-center w-8 h-8 m-2 hover-scale">
                                 <ProfileButton />
                             </div>   
                         </div>

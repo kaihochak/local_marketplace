@@ -7,7 +7,7 @@ const saved = () => {
   return (
     <div>
         <CommonHeader title='Saved Services'/>
-        <div className='flex justify-center items-center'>
+        <div className='flex-center pt-8'>
             <Collection
               direction="vertical"
               itemType='service'

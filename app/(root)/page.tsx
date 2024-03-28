@@ -7,7 +7,6 @@ import { categories } from "@/constants";
 import HomeHeader from '@/components/shared/HomeHeader';
 import dummyServices from '@/constants/dummyServices';
 import { ServiceItem } from '@/lib/database/models/service.model';
-import { Filter } from '@/public/assets/icons/Filter';
 import Search from '@/components/shared/Search';
 import Link from 'next/link';
 
@@ -48,7 +47,7 @@ export default function Home() {
           <HomeHeader />
         </div>
         {/* Search */}
-        <div className='wrapper pt-3 lg:pt-0 '>
+        <div className='wrapper pt-4 lg:pt-0 '>
           <div className='flex justify-between md:pb-2'>
             <Link href={"/search"} className='w-full mx-4 '>
               <Search disabled={true}/>
@@ -59,7 +58,7 @@ export default function Home() {
       </section>
 
       {/* Collections */}
-      <section className="wrapper pt-4 lg:pr-0 py-2 lg:py-0">
+      <section className="wrapper pt-4 pb-2 lg:pr-0 lg:pb-0">
         <div className="flex flex-col gap-y-0">
           {categories.map((title) => (
             <div

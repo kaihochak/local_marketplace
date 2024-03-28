@@ -12,10 +12,8 @@ const ProfileReviews = () => {
 
   return (
     <div >
-      <div className="wrapper">
-        <CommonHeader title='My Reviews' />
-      </div>
-      <div className='flex justify-center items-center'>
+      <CommonHeader title='My Reviews'/>
+      <div className='flex justify-center items-center pt-10 '>
         <Collection
           direction="vertical"
           itemType='review'

@@ -19,7 +19,7 @@ const BackButton = ({ destination }: { destination?: string }) => {
     };
 
     return (
-        <button onClick={goBack} className='hover:bg-accent-light/50 hover-scale p-2 rounded-full text-lg font-semibold items-center md:ml-4'>
+        <button onClick={goBack} className='hover:bg-accent-light/50 hover-scale p-2 rounded-full text-lg font-semibold items-center ml-2 md:ml-4'>
             <ArrowLeft className='text-[30px]' />
         </button>
     )
