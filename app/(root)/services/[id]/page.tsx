@@ -74,7 +74,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                     <div className='flex-between gap-x-3'>
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center overflow-hidden">
                         <Image
-                          priority
+                          priority className="object-cover w-full h-full"
                           src={service?.provider?.imageUrl ?? ''}
                           alt="Profile"
                           width={500}
