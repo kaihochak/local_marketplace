@@ -12,11 +12,9 @@ const BackButton = () => {
     };
 
     return (
-        <div>
-            <button onClick={goBack} className='text-black text-lg font-semibold'>
-                <ArrowLeft className='text-[30px]' />
-            </button>
-        </div>
+        <button onClick={goBack} className='hover:bg-accent-light/50 hover-scale p-2 rounded-full text-lg font-semibold items-center'>
+            <ArrowLeft className='text-[30px]' />
+        </button>
     )
 }
 

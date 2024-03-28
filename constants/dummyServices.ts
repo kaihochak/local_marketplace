@@ -14,7 +14,7 @@ export const dummyServices: any[] = [
             lastName: "Chak",
             location: "Calgary, AB",
             imageUrl: "https://utfs.io/f/10e17672-4064-441d-a5c1-7527fe2d34b6-5482fr.jpg",
-            contactNumber: "123",
+            contactNumber: "587 587 5877",
             email: "jacobchakkaiho@gmail.com",
             website: "jacobchak.com",
         },
@@ -39,7 +39,7 @@ export const dummyServices: any[] = [
         averageRating: 3.2,
         totalReviews: 12,
         ratingReviewIDs: [],
-        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "123" },
+        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "Music" },
         bookmarked: true,
     },
 
@@ -52,11 +52,11 @@ export const dummyServices: any[] = [
         totalReviews: 12,
         provider: {
             _id: "65fe9a5396346912b7163251",
-            firstName: "Jacob",
-            lastName: "Chak",
-            location: "123",
-            imageUrl: "https://utfs.io/f/10e17672-4064-441d-a5c1-7527fe2d34b6-5482fr.jpg",
-            contactNumber: "123",
+            firstName: "Loser",
+            lastName: "Boy",
+            location: "Calgary, Alberta",
+            imageUrl: "https://picsum.photos/200/300",
+            contactNumber: "587 587 5877",
             email: "123",
             website: "123",
         },
@@ -79,7 +79,7 @@ export const dummyServices: any[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
-        categoryIDs: ["1", "2", "3"],
+        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "Home" },
         bookmarked: false,
     },
     {
@@ -118,7 +118,7 @@ export const dummyServices: any[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
-        categoryIDs: ["1", "2", "3"],
+        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "Music" },
         bookmarked: true,
     },
     {
@@ -157,7 +157,7 @@ export const dummyServices: any[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
-        categoryIDs: ["1", "2", "3"],
+        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "Home" },
         bookmarked: false,
     },
     {
@@ -196,7 +196,7 @@ export const dummyServices: any[] = [
             },
         },
         ratingReviewIDs: ["1", "2", "3"],
-        categoryIDs: ["1", "2", "3"],
+        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "Home" },
         bookmarked: true,
     }
 ];

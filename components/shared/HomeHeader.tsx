@@ -9,7 +9,7 @@ import SeedButton from "@/lib/SeedButton"
 
 const HomeHeader = () => {
     return (
-        <header className="w-full sticky top-0 z-50 p-5">
+        <header className="w-full sticky top-0 z-50 p-5 ">
             <div className="wrapper flex items-center justify-between">
 
                 {/* Logo */}

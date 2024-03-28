@@ -14,7 +14,7 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
     return (
         <section className="wrapper my-8 flex flex-col gap-2 md:gap-12">
             <div className='flex'>
-                <h2 className="h2-bold">Reviews</h2>
+                <h2 className="h4-medium">Reviews</h2>
                 <Pen className="w-6 h-6 ml-auto" />
             </div>
 

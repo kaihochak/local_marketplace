@@ -89,9 +89,8 @@ const Collection = ({
     }
 
     return (
-        <div className='relative flex flex-col gap-y-1'>
-            {/* Title */}
-            <div className='flex justify-between items-center pt-4'>
+        <>
+            <div className='flex pt-4 md:pt-2'>
                 <h2 className='h4-medium'>
                     {title}
                 </h2>
@@ -103,9 +102,8 @@ const Collection = ({
                 }
             </div>
 
-            {/* Card collection */}
             <CardCollection />
-        </div>
+        </>
     );
 };
 

@@ -96,6 +96,10 @@ body {
     @apply transition ease-in-out delay-75 duration-300 hover:-translate-y-1 hover:scale-110 hover:drop-shadow-xl hover:z-30;
   }
 
+  .big-wrapper {
+    @apply max-w-[1280px] lg:mx-auto w-full;
+  }
+
   .wrapper {
     @apply max-w-[1024px] lg:mx-auto w-full;
   }
