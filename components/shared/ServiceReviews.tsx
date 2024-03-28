@@ -24,7 +24,7 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
                 // printe only 3  of them
                 serviceReviews.slice(0,3).map((review, index) => {
 
-                    const client = dummyUsers.find(user => user._id === review.clientID);
+                    const client = dummyUsers.find(user => user._id === review.client._id);
 
                     return (
                         <div key={index} className="flex flex-col py-2">
