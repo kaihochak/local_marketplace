@@ -28,7 +28,7 @@ export const dummmyRatingReviews: RatingReviewItem[] = [
         },
     },
     {
-        _id: "2",
+        _id: "1",
         service: {
             _id: "2",
             title: "Plumbing Services",
@@ -54,7 +54,7 @@ export const dummmyRatingReviews: RatingReviewItem[] = [
         },
     },
     {
-        _id: "3",
+        _id: "1",
         service: {
             _id: "3",
             title: "Painting Services",
