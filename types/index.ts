@@ -18,16 +18,14 @@ export type UpdateUserParams = {
 };
 
 
-// ====== EVENT PARAMS
-export type CreateEventParams = {
+// ====== SERVICE PARAMS
+export type CreateServiceParams = {
   userId: string
-  event: {
+  service: {
     title: string
     description: string
     location: string
     imageUrl: string
-    startDateTime: Date
-    endDateTime: Date
     categoryId: string
     price: string
     isFree: boolean
@@ -36,9 +34,9 @@ export type CreateEventParams = {
   path: string
 }
 
-export type UpdateEventParams = {
+export type UpdateServiceParams = {
   userId: string
-  event: {
+  service: {
     _id: string
     title: string
     imageUrl: string
@@ -54,32 +52,34 @@ export type UpdateEventParams = {
   path: string
 }
 
-export type DeleteEventParams = {
-  eventId: string
+export type DeleteServiceParams = {
+  serviceId: string
   path: string
 }
 
-export type GetAllEventsParams = {
+export type GetAllServicesParams = {
   query: string
   category: string
   limit: number
   page: number
+  rating: number
+  distance: number
 }
 
-export type GetEventsByUserParams = {
+export type GetServicesByUserParams = {
   userId: string
   limit?: number
   page: number
 }
 
-export type GetRelatedEventsByCategoryParams = {
+export type GetRelatedServicesByCategoryParams = {
   categoryId: string
-  eventId: string
+  serviceId: string
   limit?: number
   page: number | string
 }
 
-export type Event = {
+export type Service = {
   _id: string
   title: string
   description: string
@@ -108,8 +108,8 @@ export type CreateCategoryParams = {
 
 // ====== ORDER PARAMS
 export type CheckoutOrderParams = {
-  eventTitle: string
-  eventId: string
+  serviceTitle: string
+  serviceId: string
   price: string
   isFree: boolean
   buyerId: string
@@ -117,14 +117,14 @@ export type CheckoutOrderParams = {
 
 export type CreateOrderParams = {
   stripeId: string
-  eventId: string
+  serviceId: string
   buyerId: string
   totalAmount: string
   createdAt: Date
 }
 
-export type GetOrdersByEventParams = {
-  eventId: string
+export type GetOrdersByServiceParams = {
+  serviceId: string
   searchString: string
 }
 
@@ -134,7 +134,7 @@ export type GetOrdersByUserParams = {
   page: string | number | null
 }
 
-// ====== URL QUERY PARAMS
+// ====== Url QUERY PARAMS
 export type UrlQueryParams = {
   params: string
   key: string
