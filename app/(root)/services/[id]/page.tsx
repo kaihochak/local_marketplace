@@ -24,7 +24,6 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
   // dummy for now, later fetch from the database
 
   const service = dummyServices[Number(id)-1] as ServiceItem;
-  console.log("service: ", service);
   
   const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
 
@@ -131,7 +130,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
       </section>
 
       {/* Reviews */}
-      <ServiceReviews service={service} />
+      <ServiceReviews service={service as ServiceItem} />
 
       {/* Services with the same category */}
       <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
