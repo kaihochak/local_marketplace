@@ -131,7 +131,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             {/* Services Offered */}
             <section className="flex flex-col pt-6">
               <h2 className="h4-semibold">Services Offered</h2>
-              <ServiceTable service={service} />
+              <ServiceTable />
             </section>
 
             {/* Reviews */}
