@@ -86,7 +86,7 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
     }
 
     const user = dummyUsers[0];
-    const reviews = dummmyRatingReviews.filter(review => review.clientID === user._id);
+    const reviews = dummmyRatingReviews.filter(review => review.client._id === user._id);
 
     // State for editable ratings
     const [rating, setRating] = useState(reviews[0]?.rating);
