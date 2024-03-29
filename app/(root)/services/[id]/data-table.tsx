@@ -44,7 +44,7 @@ export function DataTable<TData, TValue>({
         <div className="rounded-lg border p-4">
 
             {/* Search bar and show */}
-            <div className="flex items-between px-2 gap-x-6">
+            <div className="flex items-between px-2 gap-x-6 pt-2 pb-4">
                 <Input
                     placeholder="Find services..."
                     value={(table.getColumn("service")?.getFilterValue() as string) ?? ""}

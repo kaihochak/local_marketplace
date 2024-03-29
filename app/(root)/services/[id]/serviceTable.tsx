@@ -35,7 +35,7 @@ export default async function ServiceTable() {
   const data = await getData()
 
   return (
-    <div className="container pt-6 pb-3">
+    <div className="pt-6 pb-3">
       <DataTable columns={columns} data={data} />
     </div>
   )
