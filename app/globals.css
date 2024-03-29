@@ -4,7 +4,7 @@
 
 
 html, body {  
-  @apply bg-[#EAEBEB] text-secondary-foreground;
+  @apply bg-white text-secondary-foreground;
 }
 
 @layer base {
