@@ -1,13 +1,8 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
-
 import { connectToDatabase } from '@/lib/database'
 import User from '@/lib/database/models/user.model'
-// import Order from '@/lib/database/models/service.model'
-// import Event from '@/lib/database/models/event.model'
 import { handleError } from '@/lib/utils'
-
 import { CreateUserParams, UpdateUserParams } from '@/types'
 
 
@@ -16,9 +11,14 @@ export async function createUser(user: CreateUserParams) {
     await connectToDatabase()
 
     const newUser = await User.create(user)
+
+    console.log("newUser: ", newUser);
+    console.log("newUser: ", newUser);
+    console.log("newUser: ", newUser);
+    console.log("newUser: ", newUser);
+
     return JSON.parse(JSON.stringify(newUser))
   } catch (error) {
-    console.log('user.actions.ts: createUser - ', error);
     handleError(error)
   }
 }
@@ -35,6 +35,7 @@ export async function getUserById(userId: string) {
     handleError(error)
   }
 }
+
 
 export async function updateUser(clerkId: string, user: UpdateUserParams) {
   try {
@@ -62,15 +63,14 @@ export async function deleteUser(clerkId: string) {
 
     // Unlink relationships
     await Promise.all([
-      console.log('Unlinking relationships'),
       // Update the 'events' collection to remove references to the user
-      // Event.updateMany(
-      //   { _id: { $in: userToDelete.events } },
-      //   { $pull: { organizer: userToDelete._id } }
-      // ),
+      Event.updateMany(
+        { _id: { $in: userToDelete.events } },
+        { $pull: { organizer: userToDelete._id } }
+      ),
 
-      // // Update the 'orders' collection to remove references to the user
-      // Order.updateMany({ _id: { $in: userToDelete.orders } }, { $unset: { buyer: 1 } }),
+      // Update the 'orders' collection to remove references to the user
+      Order.updateMany({ _id: { $in: userToDelete.orders } }, { $unset: { buyer: 1 } }),
     ])
 
     // Delete user
