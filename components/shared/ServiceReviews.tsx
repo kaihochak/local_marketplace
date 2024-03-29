@@ -27,7 +27,8 @@ const ServiceReviews = ({ service }: { service: ServiceItem }) => {
                     const client = dummyUsers.find(user => user._id === review.client._id);
 
                     return (
-                        <div key={index} className="flex flex-col py-2">
+
+                      <div key={index} className="flex flex-col py-2">
                             <div className='flex justify-start items-center'>
                                 {/* profile pic */}
                                 <div className="w-7 h-7 mr-3 border border-black rounded-full flex items-center justify-center overflow-hidden">
