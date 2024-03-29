@@ -33,9 +33,7 @@ export const dummmyRatingReviews: RatingReviewItem[] = [
             _id: "2",
             title: "Plumbing Services",
             provider: "Michael Johnson",
-            imageUrl: "https://source.unsplash.com/man-holding-orange-angle-grinder-UuW4psOb388"
-            rating: 2,
-            review: "I was not satisfied with the plumbing services provided. The issue was not fully resolved.",
+            imageUrl: "https://source.unsplash.com/man-holding-orange-angle-grinder-UuW4psOb388",
         },
         client: {
             _id: '1',
@@ -68,9 +66,11 @@ export const dummmyRatingReviews: RatingReviewItem[] = [
             firstName: "Drew",
             lastName: "Barontini",
             imageUrl: "https://picsum.photos/id/237/200/300",
+            rating: 5,
+            review: "David did an exceptional job with the painting services. The attention to detail was impressive.",
+        },
         rating: 5,
         review: "David did an exceptional job with the painting services. The attention to detail was impressive.",
-        },
         createdAt: new Date(),
         helpfulCount: 0,
         verifiedPurchase: true,
