@@ -13,16 +13,14 @@ import ServiceReviews from '@/components/shared/ServiceReviews';
 import CommonHeader from '@/components/shared/CommonHeader';
 import { Slash } from "lucide-react"
 import ServiceTable from './serviceTable';
+import { ServiceItem } from '@/lib/database/models/service.model';
 // import { getServiceById } from '@/lib/actions/service.actions';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
   // dummy for now, later fetch from the database
 
-  const service = dummyServices[Number(id)-1] as ServiceItem;
-  console.log("service: ", service);
-  
-  const serviceProvider = dummyUsers.find(user => user._id === service.serviceProvider[0].userId);
+  const service = dummyServices[Number(id) - 1] as ServiceItem;
 
   return (
     <>
@@ -109,25 +107,26 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             {/* Services Offered */}
             <section className="flex flex-col pt-6">
               <h2 className="h4-semibold">Services Offered</h2>
-              <ServiceTable service={service} />
+              <ServiceTable />
             </section>
 
-      {/* Reviews */}
-      <ServiceReviews service={service} />
+            {/* Reviews */}
+            <ServiceReviews service={service} />
 
-          {/* Services with the same category */}
-          <section className="my-8 flex flex-col md:gap-y-0">
-            <h2 className="h4-semibold px-8">Related Services</h2>
-            <div className='pl-4'>
-              <Collection
-                direction="horizontal"
-                itemType="service"
-                items={dummyServices}
-                nextPrevButton={true}
-              />
-            </div>
-          </section>
+            {/* Services with the same category */}
+            <section className="my-8 flex flex-col md:gap-y-0">
+              <h2 className="h4-semibold px-8">Related Services</h2>
+              <div className='pl-4'>
+                <Collection
+                  direction="horizontal"
+                  itemType="service"
+                  items={dummyServices}
+                  nextPrevButton={true}
+                />
+              </div>
+            </section>
 
+          </div>
         </div>
       </section>
     </>
