@@ -4,9 +4,8 @@
 
 
 html, body {  
-  @apply bg-secondary text-secondary-foreground;
+  @apply bg-[#EAEBEB] text-secondary-foreground;
 }
-
 
 @layer base {
   :root {
