@@ -4,9 +4,8 @@
 
 
 html, body {  
-  @apply bg-secondary text-secondary-foreground;
+  @apply bg-white text-secondary-foreground;
 }
-
 
 @layer base {
   :root {
@@ -180,22 +179,22 @@ body {
   /* p2: 22-26 */
   .p2-bold {
     @apply font-bold tracking-normal leading-normal;
-    @apply text-xl md:text-[24px] lg:text-[26px];
+    @apply text-[22px] md:text-[24px] lg:text-[26px];
   }
 
   .p2-medium {
     @apply font-medium tracking-normal leading-normal;
-    @apply text-xl md:text-[24px] lg:text-[26px];
+    @apply text-[22px] md:text-[24px] lg:text-[26px];
   }
 
   .p2-regular {
-    @apply font-normal tracking-normal leading-normal;
-    @apply text-xl md:text-[24px] lg:text-[26px];
+    @apply font-normal tracking-normal leading-loose;
+    @apply text-[22px] md:text-[24px] lg:text-[26px];
   }
 
   .p2-light {
     @apply font-light tracking-normal leading-normal;
-    @apply text-xl md:text-[24px] lg:text-[26px];
+    @apply text-[22px] md:text-[24px] lg:text-[26px];
   }
 
 
