@@ -32,14 +32,14 @@ const ReserveButton = () => {
                 </div>
 
                 {/* show confetti */}
-                <Confetti
+                {/* <Confetti
                     {...confettiProps}
                     numberOfPieces={500}
                     recycle={false}
                     initialVelocityY={10}
                     initialVelocityX={10}
                     colors={['#f44336', '#2196f3', '#ffeb3b', '#4caf50']}
-                />
+                /> */}
 
             </Modal>
         </div>

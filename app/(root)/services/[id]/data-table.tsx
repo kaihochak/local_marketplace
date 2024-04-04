@@ -40,6 +40,10 @@ export function DataTable<TData, TValue>({
         },
     })
 
+    const handleRowSelect = (rowId: string) => {
+        console.log("Selected row data://", rowId);
+    };
+
     return (
         <div className="rounded-lg border p-4">
 
@@ -110,6 +114,7 @@ export function DataTable<TData, TValue>({
                             <TableRow
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"}
+                                onClick={() => handleRowSelect(row.id)}
                             >
                                 {row.getVisibleCells().map((cell) => (
                                     <TableCell key={cell.id}>
