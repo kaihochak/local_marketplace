@@ -225,7 +225,7 @@ const Card = ({
 
     return (
         <div className={`hover-scale flex flex-col bg-primary rounded-md w-[280px] md:w-[350px] lg:w-[400px]
-            ${!hasButton ? "h-[200px] md:h-[250px] lg:h-[285px] " : "h-[235px] md:h-[280px] lg:h-[315px]"}`}>
+            ${!hasButton ? "h-[200px] md:h-[250px] lg:h-[285px]" : "h-[235px] md:h-[280px] lg:h-[315px]"}`}>
 
             {/* Card content */}
             <Link href={`/${itemType + "s"}/${item?._id.toString()}`}
