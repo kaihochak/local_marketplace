@@ -176,25 +176,25 @@ body {
     @apply text-2xl md:text-[26px] lg:text-[28px];
   }
 
-  /* p2: 22-26 */
+  /* p2 */
+  .p2 {
+    @apply text-[12px] md:text-[14px] lg:text-[16px] tracking-wide leading-normal
+  }
+
   .p2-bold {
-    @apply font-bold tracking-normal leading-normal;
-    @apply text-[22px] md:text-[24px] lg:text-[26px];
+    @apply p2 font-bold;
   }
 
   .p2-medium {
-    @apply font-medium tracking-normal leading-normal;
-    @apply text-[22px] md:text-[24px] lg:text-[26px];
+    @apply p2 font-medium;
   }
 
   .p2-regular {
-    @apply font-normal tracking-normal leading-loose;
-    @apply text-[22px] md:text-[24px] lg:text-[26px];
+    @apply p2 font-normal;
   }
 
   .p2-light {
-    @apply font-light tracking-normal leading-normal;
-    @apply text-[22px] md:text-[24px] lg:text-[26px];
+    @apply p2 font-light;
   }
 
 

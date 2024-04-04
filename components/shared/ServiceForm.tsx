@@ -1,32 +1,32 @@
 "use client"
 
-import react, { useEffect } from 'react'
+import react, { useEffect, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import * as z from 'zod'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { serviceFormSchema } from "@/lib/validator"
-import * as z from 'zod'
-import { serviceDefaultValues } from "@/constants"
-import Dropdown from "./Dropdown"
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/createServiceTable"
 import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button";
 import { FileUploader } from "./FileUploader"
-import { useState } from "react"
-import Image from "next/image"
 import DatePicker from "react-datepicker";
-import { useUploadThing } from '@/lib/uploadthing'
 import "react-datepicker/dist/react-datepicker.css";
-import { Checkbox } from "../ui/checkbox"
+import { serviceFormSchema } from "@/lib/validator"
+import { useUploadThing } from '@/lib/uploadthing'
+import { serviceDefaultValues } from "@/constants"
+import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { IService, ServiceItem } from "@/lib/database/models/service.model"
 import { createService } from "@/lib/actions/service.actions"
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
-import Card from "./Card"
-import Link from "next/link"
+import { Modal } from '@mantine/core';
+import Card from "@/components/shared/Card";
+import Dropdown from "@/components/shared/Dropdown";
+import AddServiceItemModal from "@/components/shared/AddServiceItemModal";
 import Confetti from 'react-confetti';
 import dummyServices from "@/constants/dummyServices"
-import { set } from 'mongoose'
 
 type ServiceFormProps = {
   userId: string
@@ -133,7 +133,6 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
           />
 
           <div className="flex flex-col gap-5 md:flex-row">
-
             {/* Service Title */}
             <FormField
               control={form.control}
@@ -163,14 +162,14 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
             />
           </div>
 
+          {/* Service Description */}
           <div className="flex flex-col gap-5 md:flex-row">
-            {/* Service Description */}
             <FormField
               control={form.control}
               name="description"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormControl className="h-72">
+                  <FormControl className="h-20">
                     <Textarea placeholder="Description" {...field} className="textarea rounded-sm" />
                   </FormControl>
                   <FormMessage />
@@ -179,6 +178,30 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
             />
           </div>
 
+          {/* Services offered */}
+          <div className='border-1 p-2 bg-grey'>
+            <Table>
+              <TableCaption>
+                <AddServiceItemModal />
+              </TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className='w-[30%]'>Service Item</TableHead>
+                  <TableHead className='w-[50%]'>Description</TableHead>
+                  <TableHead className="text-right">Price</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Wall Painting</TableCell>
+                  <TableCell>Paid</TableCell>
+                  <TableCell className="text-right">$250.00</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+
+          {/* Location & Website */}
           <div className="flex flex-col gap-5 md:flex-row">
             {/* Service Location */}
             <FormField
@@ -202,55 +225,6 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
                 </FormItem>
               )}
             />
-          </div>
-
-          {/* Service Price */}
-          <div className="flex flex-col gap-5 md:flex-row">
-            <FormField
-              control={form.control}
-              name="price"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormControl>
-                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
-                      <Image
-                        src="/assets/icons/dollar.svg"
-                        alt="dollar"
-                        width={24}
-                        height={24}
-                        className="filter-grey"
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Price" {...field}
-                        className="p6-regular border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                      />
-                      <FormField
-                        control={form.control}
-                        name="isFree"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <div className="flex items-center">
-                                <label htmlFor="isFree" className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Free Service</label>
-                                <Checkbox
-                                  onCheckedChange={field.onChange}
-                                  checked={field.value}
-                                  id="isFree" className="mr-2 h-5 w-5 border-2 border-primary-500" />
-                              </div>
-
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
 
             {/* Service Url */}
             <FormField
@@ -266,17 +240,14 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
                         width={24}
                         height={24}
                       />
-
-                      <Input placeholder="Url" {...field} className="input-field" />
+                      <Input placeholder="Website" {...field} className="input-field" />
                     </div>
-
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-
 
           {/* Submit Button */}
           <Button
