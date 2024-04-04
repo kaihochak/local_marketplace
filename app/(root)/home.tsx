@@ -77,7 +77,7 @@ export default function Home() {
         {/* Search */}
         <div className='wrapper pt-4 lg:pt-0 '>
           <div className='flex justify-between md:pb-2'>
-            <Link href={"/search"} className='w-full mx-4 '>
+            <Link href={"/search"} className='hidden sm:block w-full mx-4 '>
               <Search disabled={true} />
             </Link>
           </div>
