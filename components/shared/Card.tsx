@@ -42,7 +42,7 @@ const Card = ({
         close();
     };
     const cancel = () => {
-        
+
     };
 
     const ImageBanner = () => {
@@ -206,7 +206,7 @@ const Card = ({
                     {reservation?.status === "pending" || reservation?.status === "confirmed" ?
                         <div className='flex flex-center border-t-[1.5px] border-grey-200 text-secondary-foreground'>
                             <button onClick={open} className="w-full text-xs md:text-s border-r-[1.5px] border-grey-200 py-2">Cancel</button>
-                            <Modal opened={opened} onClose={close} withCloseButton={false} yOffset="45vh" xOffset={0}>
+                            <Modal opened={opened} onClose={close} withCloseButton={false} yOffset="40vh" xOffset={0} size={320}>
                                 <p className='pb-4 text-center'>Are you sure you want to cancel this reservation?</p>
                                 <div className='flex flex-center border-t-[1.5px] border-grey-200 text-secondary-foreground'>
                                     <button onClick={exit} className="w-full text-xs md:text-s border-r-[1.5px] border-grey-200 py-2">Exit</button>
