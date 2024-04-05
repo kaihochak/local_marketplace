@@ -1,6 +1,6 @@
 import Reservation from "@/lib/database/models/reservation.model"
 import { ServiceOffered, columns } from "./columns"
-import { ServiceTable } from "./ServiceTable"
+import { ServiceTable } from "./serviceTable"
 
 async function getData(): Promise<ServiceOffered[]> {
   // Fetch data from API here.

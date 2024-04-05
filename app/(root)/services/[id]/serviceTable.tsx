@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ColumnDef, ColumnFiltersState, SortingState, VisibilityState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -46,13 +46,19 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     const handleRowSelect = (rowId: string) => {
         // Get the selected row data
         const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
-        console.log(selectedRow?.original);
-        setSelectedServices([...selectedServices, selectedRow?.original as ServiceOffered]);
+        const selectedItem = selectedRow?.original as ServiceOffered;
+        // check for duplicate, if found remove it
+        if (selectedServices.some(service => service.id === selectedItem.id)) {
+            setSelectedServices(selectedServices.filter(service => service.id !== selectedItem.id));
+            return;
+        } else {
+            setSelectedServices([...selectedServices, selectedRow?.original as ServiceOffered]);
+        }
     };
 
     // for DEBUG
     useEffect(() => {
-        console.log(selectedServices)
+        // console.log(selectedServices)
     }, [selectedServices])
 
     const confettiProps = typeof window !== 'undefined' ? {
@@ -63,8 +69,24 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     // Confirming reservation
     const ReserveDashboard = () => {
 
+        console.log("selectedServices//");
         console.log(selectedServices);
-        
+
+        const [totalPrice, setTotalPrice] = useState(0);
+
+        useEffect(() => {
+            // Calculate total price when selectedServices changes
+            const calculateTotalPrice = () => {
+                let total = 0;
+                selectedServices.forEach(service => {
+                    total += service.price;
+                });
+                setTotalPrice(total);
+            };
+
+            calculateTotalPrice();
+        }, [selectedServices]);
+
         return (
             <Modal
                 opened={opened}
@@ -73,13 +95,42 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 transitionProps={{ transition: 'fade', duration: 200 }}
             >
                 <div className="flex flex-col items-center justify-center">
-                    <h1 className="text-3xl font-semibold mt-5 text-left">Reservation Details</h1>
+                    <h1 className="text-3xl font-semibold my-5 text-left">Reservation Details</h1>
                 </div>
 
                 {/* Table */}
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Service</TableHead>
+                            <TableHead>Rating</TableHead>
+                            <TableHead>Price</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {selectedServices.map((service, index) => (
+                            <TableRow key={index}>
+                                <TableCell>{service.service}</TableCell>
+                                <TableCell>{service.rating}</TableCell>
+                                <TableCell>{service.price}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
 
-                    
+                {/* line below table */}
+                <div className="border-b my-4"></div>
 
+                {/* Total Price */}
+                <div className="flex flex-col items-end">
+                    <h3 className="text-end mr-4">Total Price <span className="font-bold">{totalPrice}</span></h3>
+                    <div className="border-b my-4 w-32"></div>
+                </div>
+
+                {/* okay button */}
+                <div className="flex justify-end">
+                    <Button onClick={close} variant="default">Okay</Button>
+                </div>
 
                 {/* show confetti */}
                 {/* <Confetti
