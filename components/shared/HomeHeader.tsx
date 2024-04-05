@@ -22,8 +22,7 @@ const HomeHeader = () => {
                         priority={true}
                     />
                     <div className="text-lg">
-                        <div>LOCAL</div>
-                        <div>MARKETPLACE</div>
+                        <div>LOCAL MARKETPLACE</div>
                     </div>
                 </Link>
 

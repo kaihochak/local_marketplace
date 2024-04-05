@@ -11,16 +11,16 @@ import { Collaboratory } from "@/public/assets/icons/Collaboratory";
 import { Clinic } from "@/public/assets/icons/Clinic";
 import { Tools } from "@/public/assets/icons/Tools";
 
-const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string) => void}) => {
-  const [categories, setCategories] = useState<{_id: string; name: string}[]>([
-    {_id: "1", name: "Home"},
-    {_id: "2", name: "Personal"},
-    {_id: "3", name: "Tech"},
-    {_id: "4", name: "Advisory"},
-    {_id: "5", name: "Creative"},
-    {_id: "6", name: "Logistic"},
-    {_id: "7", name: "Collab"},
-    {_id: "8", name: "Health"}
+const CategoryFilter = ({ onCategorySelect }: { onCategorySelect: (category: string) => void }) => {
+  const [categories, setCategories] = useState<{ _id: string; name: string }[]>([
+    { _id: "1", name: "Home" },
+    { _id: "2", name: "Personal" },
+    { _id: "3", name: "Tech" },
+    { _id: "4", name: "Advisory" },
+    { _id: "5", name: "Creative" },
+    { _id: "6", name: "Logistic" },
+    { _id: "7", name: "Collab" },
+    { _id: "8", name: "Health" }
   ]);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -45,9 +45,9 @@ const CategoryFilter = ({onCategorySelect}: {onCategorySelect: (category: string
   const FilterCard = ({ category }: { category: string }) => {
     return (
       // each card has the same width
-      <div onClick={() => handleSelectCategory(category)}  
-          className={`hover-scale category-filter-card ${category === selectedCategory ? "bg-secondary" : "bg-transparent hover:bg-secondary-light"}`}>
-          <div className="h2-bold">{icons[category]}</div>
+      <div onClick={() => handleSelectCategory(category)}
+        className={`hover-scale category-filter-card ${category === selectedCategory ? "bg-secondary" : "bg-transparent hover:bg-secondary-light shadow-none xs:bg-secondary"}`}>
+        <div className="h2-bold">{icons[category]}</div>
         <div className="p6-regular h-[20%] text-[16px] text-center leading-4 tracking-wide">{category}</div>
       </div>
     )
