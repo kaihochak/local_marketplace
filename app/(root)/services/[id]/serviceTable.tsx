@@ -18,9 +18,9 @@ interface DataTableProps<TData, TValue> {
 };
 
 export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
-    /**
-     * For the Table
-     */
+    /**************************************************************************
+     *  React Table
+     **************************************************************************/
     const [sorting, setSorting] = useState<SortingState>([])
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
@@ -43,11 +43,11 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
             rowSelection,
         },
     })
-    
-    /**
-     * For the dashboard
-     */
-    const [opened, { open, close }] = useDisclosure(false);
+
+    /**************************************************************************
+     *  Modal
+     **************************************************************************/
+    const [opened, { open, close: closeModal }] = useDisclosure(false);
     const [step, setStep] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
     const [selectedServices, setSelectedServices] = useState<ServiceOffered[]>([]);
@@ -57,47 +57,9 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         height: window.innerHeight
     } : {};
 
-  
-    // Calculate total price
-    const calculateTotalPrice = () => {
-        let total = 0;
-
-        // convert rowSelection to array of selected services
-        setSelectedServices(Object.keys(rowSelection).map(rowId => getServiceDetails(rowId)));
-        selectedServices.forEach(service => total += service.price)
-        setTotalPrice(total);
-    }
-
-    // Get the selected service details by rowId
-    const getServiceDetails = (rowId: string) => {
-        // Get the selected row data
-        const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
-        return selectedRow?.original as ServiceOffered;
-    };
-
-      // Open modal and calculate total price
-    const handleReserve = () => {
-        open();
-        calculateTotalPrice();
-    }
-
-  
-    
-    
-    const handleCardPayment = () => {
-        setSelectedPaymentMethod('card');
-    }
-
-    const handleStripePayment = () => {
-        setSelectedPaymentMethod('stripe');
-    }
-
-    const handlePaypalPayment = () => {
-        setSelectedPaymentMethod('paypal');
-    }
-
-
-    // Step 1: Confirm Reservation
+    /**************************************************************************
+     *  Step 1: Confirm Reservation 
+     **************************************************************************/
     const ConfirmReservation = () => {
         return (
             <div>
@@ -150,7 +112,25 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         )
     }
 
-    // Step 2: Payment Screen
+    // Calculate total price
+    const calculateTotalPrice = () => {
+        let total = 0;
+        // convert rowSelection to array of selected services
+        setSelectedServices(Object.keys(rowSelection).map(rowId => getServiceDetails(rowId)));
+        selectedServices.forEach(service => total += service.price)
+        setTotalPrice(total);
+    }
+
+    // Get the selected service details by rowId
+    const getServiceDetails = (rowId: string) => {
+        // Get the selected row data
+        const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
+        return selectedRow?.original as ServiceOffered;
+    };
+
+    /**************************************************************************
+     *  Step 2: Payment Screen
+     **************************************************************************/
     const PaymentScreen = () => {
         return (
             <div>
@@ -238,7 +218,28 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         )
     }
 
-    // Step 3: Payment Success
+    // Open modal and calculate total price
+    const handleReserve = () => {
+        open();
+        calculateTotalPrice();
+    }
+
+    const handleCardPayment = () => {
+        setSelectedPaymentMethod('card');
+    }
+
+    const handleStripePayment = () => {
+        setSelectedPaymentMethod('stripe');
+    }
+
+    const handlePaypalPayment = () => {
+        setSelectedPaymentMethod('paypal');
+    }
+
+
+    /**************************************************************************
+     *  Step 3: Payment Success
+     **************************************************************************/
     const PaymentSuccess = () => {
         return (
             <div>
@@ -248,22 +249,23 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     }
 
 
-
-    // Reservation Dashboard Modal
+    /**************************************************************************
+     *  Reserve Dashboard Modal
+     **************************************************************************/
     const ReserveDashboard = () => {
 
         return (
             <Modal
                 opened={opened}
-                onClose={closeDisclosure}
+                onClose={close}
                 title=""
                 transitionProps={{ transition: 'fade', duration: 200 }}
             >
 
-                { step === 1 && <ConfirmReservation />}
-                { step === 2 && <PaymentScreen />}
-                { step === 3 && <PaymentSuccess />}
-                
+                {step === 1 && <ConfirmReservation />}
+                {step === 2 && <PaymentScreen />}
+                {step === 3 && <PaymentSuccess />}
+
                 {/* show confetti */}
                 {/* <Confetti
                 {...confettiProps}
@@ -277,6 +279,15 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         )
     }
 
+    const close = () => {
+        setStep(1);
+        setSelectedPaymentMethod(null);
+        closeModal();
+    }
+
+    /**************************************************************************
+     *  Render
+     **************************************************************************/
     return (
         <div className="rounded-lg border p-4">
             <div className="flex items-between px-2 gap-x-6 pt-2 pb-4">
