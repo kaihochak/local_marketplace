@@ -13,6 +13,8 @@ import dummyUsers from '@/constants/dummyUsers';
 import { LocationPin } from '@/public/assets/icons/LocationPin';
 import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled';
 import { Separator } from "@/components/ui/separator"
+import { Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
 type CardProps = {
     direction?: 'horizontal' | 'vertical'
@@ -34,6 +36,14 @@ const Card = ({
     let bookmarkedItem = itemType === "service" ? service?.bookmarked : null;
     let reservation = itemType === "reservation" ? item as ReservationItem : null;
     let review = itemType === "review" ? item as RatingReviewItem : null;
+
+    const [opened, { open, close }] = useDisclosure(false);
+    const exit = () => {
+        close();
+    };
+    const cancel = () => {
+
+    };
 
     const ImageBanner = () => {
         // for reservation
@@ -70,11 +80,11 @@ const Card = ({
                         <div className='p-medium-14 lg:p-medium-18'>Avaliable Today</div>
                     </div>
                     {/* bookmark */}
-                    {bookmarkedItem ?
-                        <BookmarkFilled className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" /> 
-                        :<BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
-                    }
-                    {service &&  (
+                    {/* {bookmarkedItem ?
+                        <BookmarkFilled className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                        : <BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
+                    } */}
+                    {service && (
                         <Image priority className="object-cover w-full h-full"
                             width={5000} height={5000}
                             src={service?.imageUrl ?? ''} alt={service?.title}
@@ -195,7 +205,14 @@ const Card = ({
                 <div className=''>
                     {reservation?.status === "pending" || reservation?.status === "confirmed" ?
                         <div className='flex flex-center border-t-[1.5px] border-grey-200 text-secondary-foreground'>
-                            <button className="w-full text-xs md:text-s border-r-[1.5px] border-grey-200 py-2">Cancel</button>
+                            <button onClick={open} className="w-full text-xs md:text-s border-r-[1.5px] border-grey-200 py-2">Cancel</button>
+                            <Modal opened={opened} onClose={close} withCloseButton={false} yOffset="40vh" xOffset={0} size={320}>
+                                <p className='pb-4 text-center'>Are you sure you want to cancel this reservation?</p>
+                                <div className='flex flex-center border-t-[1.5px] border-grey-200 text-secondary-foreground'>
+                                    <button onClick={exit} className="w-full text-xs md:text-s border-r-[1.5px] border-grey-200 py-2">Exit</button>
+                                    <button onClick={cancel} className="w-full text-xs md:text-s py-2">Cancel</button>
+                                </div>
+                            </Modal>
                             <button className="w-full text-xs md:text-s py-2">Reshedule</button>
                         </div> :
                         <div className='flex flex-center'>
@@ -225,7 +242,7 @@ const Card = ({
 
     return (
         <div className={`hover-scale flex flex-col bg-primary rounded-md w-[280px] md:w-[350px] lg:w-[400px]
-            ${!hasButton ? "h-[200px] md:h-[250px] lg:h-[285px] " : "h-[235px] md:h-[280px] lg:h-[315px]"}`}>
+            ${!hasButton ? "h-[200px] md:h-[250px] lg:h-[285px]" : "h-[235px] md:h-[280px] lg:h-[315px]"}`}>
 
             {/* Card content */}
             <Link href={`/${itemType + "s"}/${item?._id.toString()}`}

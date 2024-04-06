@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <>
-      <Modal
+      {/* <Modal
         opened={opened}
         onClose={close}
         withCloseButton={false}
@@ -68,7 +68,7 @@ export default function Home() {
             <div className='h4-bold'>Browse around</div>
           </Button>
         </div>
-      </Modal>
+      </Modal> */}
 
       <section className="flex flex-col sticky top-0 bg-white z-50 md:pb-2 border-b border-gray-200">
         <div className='wrapper'>
@@ -77,7 +77,7 @@ export default function Home() {
         {/* Search */}
         <div className='wrapper pt-4 lg:pt-0 '>
           <div className='flex justify-between md:pb-2'>
-            <Link href={"/search"} className='w-full mx-4 '>
+            <Link href={"/search"} className='hidden sm:block w-full mx-4 '>
               <Search disabled={true} />
             </Link>
           </div>
