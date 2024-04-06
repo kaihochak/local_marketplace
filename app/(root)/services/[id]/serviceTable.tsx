@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { use, useEffect, useRef, useState } from "react"
 import { ColumnDef, ColumnFiltersState, SortingState, VisibilityState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -43,18 +43,23 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         },
     })
 
-    const handleRowSelect = (rowId: string) => {
-        // Get the selected row data
-        const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
-        const selectedItem = selectedRow?.original as ServiceOffered;
-        // check for duplicate, if found remove it
-        if (selectedServices.some(service => service.id === selectedItem.id)) {
-            setSelectedServices(selectedServices.filter(service => service.id !== selectedItem.id));
-            return;
-        } else {
-            setSelectedServices([...selectedServices, selectedRow?.original as ServiceOffered]);
-        }
-    };
+    // when a row is selected, log the selected row
+    useEffect(() => {
+        console.log(table.getSelectedRowModel().rows)
+    }, [table.getSelectedRowModel().rows])
+
+    // const handleRowSelect = (rowId: string) => {
+    //     // Get the selected row data
+    //     const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
+    //     const selectedItem = selectedRow?.original as ServiceOffered;
+    //     // check for duplicate, if found remove it
+    //     if (selectedServices.some(service => service.id === selectedItem.id)) {
+    //         setSelectedServices(selectedServices.filter(service => service.id !== selectedItem.id));
+    //         return;
+    //     } else {
+    //         setSelectedServices([...selectedServices, selectedRow?.original as ServiceOffered]);
+    //     }
+    // };
 
     // for DEBUG
     useEffect(() => {
@@ -215,7 +220,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                             <TableRow
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"}
-                                onClick={() => handleRowSelect(row.id)}
+                                // onClick={() => handleRowSelect(row.id)}
                             >
                                 {row.getVisibleCells().map((cell) => (
                                     <TableCell key={cell.id}>
