@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/createServiceTable"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button";
-import { FileUploader } from "./FileUploader"
+import { Checkbox } from "@/components/ui/checkbox";
+import { FileUploader } from "../../../../components/shared/FileUploader"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { serviceFormSchema } from "@/lib/validator"
@@ -24,7 +25,7 @@ import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
 import Card from "@/components/shared/Card";
 import Dropdown from "@/components/shared/Dropdown";
-import AddServiceItemModal from "@/components/shared/AddServiceItemModal";
+import ServiceItemModal from "@/app/(root)/services/create/ServiceItemModal";
 import Confetti from 'react-confetti';
 import dummyServices from "@/constants/dummyServices"
 
@@ -33,9 +34,11 @@ type ServiceFormProps = {
   type: "Create" | "Update"
   service?: IService,
   serviceId?: string
+  setIsModalOpen: (isOpen: boolean) => void
+  isModalOpen?: boolean
 }
 
-const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => {
+const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModalOpen}: ServiceFormProps) => {
   const [files, setFiles] = useState<File[]>([])
   const initialValues = service && type === 'Update'
     ? { ...service }
@@ -182,7 +185,9 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
           <div className='border-1 p-2 bg-grey'>
             <Table>
               <TableCaption>
-                <AddServiceItemModal />
+                {/* <ServiceItemModal userId={userId} type="Create"/> */}
+                <Button type='button' onClick={() => setIsModalOpen(true)}
+                  className='w-full bg-transparent rounded-none hover:bg-grey-50'>+ Add Service</Button>
               </TableCaption>
               <TableHeader>
                 <TableRow>
@@ -199,6 +204,55 @@ const ServiceForm = ({ userId, type, service, serviceId }: ServiceFormProps) => 
                 </TableRow>
               </TableBody>
             </Table>
+          </div>
+
+          {/* Service */}
+          <div className="flex flex-col gap-5 md:flex-row">
+            <FormField
+              control={form.control}
+              name="price"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormControl>
+                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
+                      <Image
+                        src="/assets/icons/dollar.svg"
+                        alt="dollar"
+                        width={24}
+                        height={24}
+                        className="filter-grey"
+                      />
+                      <Input
+                        type="number"
+                        placeholder="Price" {...field}
+                        className="p6-regular border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      />
+                      <FormField
+                        control={form.control}
+                        name="isFree"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <div className="flex items-center">
+                                <label htmlFor="isFree" className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Free Service</label>
+                                <Checkbox
+                                  onCheckedChange={field.onChange}
+                                  checked={field.value}
+                                  id="isFree" className="mr-2 h-5 w-5 border-2 border-primary-500" />
+                              </div>
+
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
 
           {/* Location & Website */}

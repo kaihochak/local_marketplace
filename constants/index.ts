@@ -9,6 +9,12 @@ export const serviceDefaultValues = {
   url: '',
 }
 
+export const serviceItemDefaultValues = {
+  title: '',
+  description: '',
+  price: '',
+}
+
 export const reviewDefaultValues = {
   rating: 1,
   review: '',
