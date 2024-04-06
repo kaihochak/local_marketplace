@@ -45,6 +45,10 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         },
     })
 
+
+    const [step, setStep] = useState(1);
+
+
     const handleRowSelect = (rowId: string) => {
         // Get the selected row data
         const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
@@ -68,32 +72,100 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         height: window.innerHeight
     } : {};
 
-    const PaymentScreen = () => {
 
-        const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 
-        const handleCardPayment = () => {
-            setSelectedPaymentMethod('card');
-        }
+    const handleCardPayment = () => {
+        setSelectedPaymentMethod('card');
+    }
 
-        const handleStripePayment = () => {
-            setSelectedPaymentMethod('stripe');
-        }
+    const handleStripePayment = () => {
+        setSelectedPaymentMethod('stripe');
+    }
 
-        const handlePaypalPayment = () => {
-            setSelectedPaymentMethod('paypal');
-        }
+    const handlePaypalPayment = () => {
+        setSelectedPaymentMethod('paypal');
+    }
 
+
+
+    const [totalPrice, setTotalPrice] = useState(0);
+
+
+    useEffect(() => {
+        // Calculate total price when selectedServices changes
+        const calculateTotalPrice = () => {
+            let total = 0;
+            selectedServices.forEach(service => {
+                total += service.price;
+            });
+            setTotalPrice(total);
+        };
+
+        calculateTotalPrice();
+    }, [selectedServices]);
+
+
+    // Step 1: Confirm Reservation
+    const ConfirmReservation = () => {
         return (
-            <Modal
-                opened={openPaymentModal}
-                onClose={closePayment}
-                title=""
-                transitionProps={{ transition: 'fade', duration: 200 }}
-            >
+            <div>
+                <div className="flex items-center justify-center space-x-4 pb-5">
+                    <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">1</div>
+                    <div className="w-12 h-0.5 bg-gray-200"></div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">2</div>
+                    <div className="w-12 h-0.5 bg-gray-200"></div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full">3</div>
+                </div>
+
+                <div className="flex flex-col items-center justify-center">
+                    <h1 className="text-3xl font-semibold my-5 text-left">Reservation Details</h1>
+                </div>
+
+                {/* Table */}
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Service</TableHead>
+                            <TableHead>Rating</TableHead>
+                            <TableHead>Price</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {selectedServices.map((service, index) => (
+                            <TableRow key={index}>
+                                <TableCell>{service.service}</TableCell>
+                                <TableCell>{service.rating}</TableCell>
+                                <TableCell>{service.price}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+
+                {/* line below table */}
+                <div className="border-b my-4"></div>
+
+                {/* Total Price */}
+                <div className="flex flex-col items-end">
+                    <h3 className="text-end mr-4">Total Price <span className="font-bold">{totalPrice}</span></h3>
+                    <div className="border-b my-4 w-32"></div>
+                </div>
+
+                {/* okay button */}
+                <div className="flex justify-end">
+                    <Button onClick={() => setStep(2)} variant="default">Okay</Button>
+                </div>
+            </div>
+        )
+    }
+
+    // Step 2: Payment Screen
+    const PaymentScreen = () => {
+        return (
+            <div>
                 {/* <div className="flex flex-col items-center justify-center">
-                    <h1 className="text-3xl font-semibold my-5 text-left">Payment</h1>
-                </div> */}
+                            <h1 className="text-3xl font-semibold my-5 text-left">Payment</h1>
+                        </div> */}
 
                 <div className="flex items-center justify-center space-x-4 pb-5">
                     <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full pl-2">
@@ -171,31 +243,23 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                         <p>Use Paypal payment gateway here...</p>
                     </div>
                 )}
-            </Modal>
+            </div>
         )
     }
 
+    // Step 3: Payment Success
+    const PaymentSuccess = () => {
+        return (
+            <div>
+                Payment Success
+            </div>
+        )
+    }
+
+
+
     // Confirming reservation
     const ReserveDashboard = () => {
-
-        console.log("selectedServices//");
-        console.log(selectedServices);
-
-        const [totalPrice, setTotalPrice] = useState(0);
-
-        useEffect(() => {
-            // Calculate total price when selectedServices changes
-            const calculateTotalPrice = () => {
-                let total = 0;
-                selectedServices.forEach(service => {
-                    total += service.price;
-                });
-                setTotalPrice(total);
-            };
-
-            calculateTotalPrice();
-        }, [selectedServices]);
-
 
         return (
             <Modal
@@ -204,54 +268,11 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 title=""
                 transitionProps={{ transition: 'fade', duration: 200 }}
             >
-                <div className="flex items-center justify-center space-x-4 pb-5">
-                <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">1</div>
-                    <div className="w-12 h-0.5 bg-gray-200"></div>
-                    <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">2</div>
-                    <div className="w-12 h-0.5 bg-gray-200"></div>
-                    <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full">3</div>
-                </div>
 
-                <div className="flex flex-col items-center justify-center">
-                    <h1 className="text-3xl font-semibold my-5 text-left">Reservation Details</h1>
-                </div>
-
-                {/* Table */}
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Service</TableHead>
-                            <TableHead>Rating</TableHead>
-                            <TableHead>Price</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {selectedServices.map((service, index) => (
-                            <TableRow key={index}>
-                                <TableCell>{service.service}</TableCell>
-                                <TableCell>{service.rating}</TableCell>
-                                <TableCell>{service.price}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-
-                {/* line below table */}
-                <div className="border-b my-4"></div>
-
-                {/* Total Price */}
-                <div className="flex flex-col items-end">
-                    <h3 className="text-end mr-4">Total Price <span className="font-bold">{totalPrice}</span></h3>
-                    <div className="border-b my-4 w-32"></div>
-                </div>
-
-                {/* okay button */}
-                <div className="flex justify-end">
-                    <Button onClick={openPayment} variant="default">Okay</Button>
-                </div>
-
-                <PaymentScreen />
-
+                { step === 1 && <ConfirmReservation />}
+                { step === 2 && <PaymentScreen />}
+                { step === 3 && <PaymentSuccess />}
+                
                 {/* show confetti */}
                 {/* <Confetti
                 {...confettiProps}
@@ -261,7 +282,6 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 initialVelocityX={10}
                 colors={['#f44336', '#2196f3', '#ffeb3b', '#4caf50']}
             /> */}
-
             </Modal>
         )
     }
