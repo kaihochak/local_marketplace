@@ -18,14 +18,13 @@ interface DataTableProps<TData, TValue> {
 };
 
 export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+    /**
+     * For the Table
+     */
     const [sorting, setSorting] = useState<SortingState>([])
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = useState({})
-    const [opened, { open: openDisclosure, close: closeDisclosure }] = useDisclosure(false);
-    const [openPaymentModal, { open: openPayment, close: closePayment }] = useDisclosure(false);
-    const [selectedServices, setSelectedServices] = useState<ServiceOffered[]>([])
-
     const table = useReactTable({
         data,
         columns,
@@ -44,37 +43,47 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
             rowSelection,
         },
     })
-
-
+    
+    /**
+     * For the dashboard
+     */
+    const [opened, { open, close }] = useDisclosure(false);
     const [step, setStep] = useState(1);
-
-
-    const handleRowSelect = (rowId: string) => {
-        // Get the selected row data
-        const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
-        const selectedItem = selectedRow?.original as ServiceOffered;
-        // check for duplicate, if found remove it
-        if (selectedServices.some(service => service.id === selectedItem.id)) {
-            setSelectedServices(selectedServices.filter(service => service.id !== selectedItem.id));
-            return;
-        } else {
-            setSelectedServices([...selectedServices, selectedRow?.original as ServiceOffered]);
-        }
-    };
-
-    // for DEBUG
-    useEffect(() => {
-        // console.log(selectedServices)
-    }, [selectedServices])
-
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [selectedServices, setSelectedServices] = useState<ServiceOffered[]>([]);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
     const confettiProps = typeof window !== 'undefined' ? {
         width: window.innerWidth,
         height: window.innerHeight
     } : {};
 
+  
+    // Calculate total price
+    const calculateTotalPrice = () => {
+        let total = 0;
 
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
+        // convert rowSelection to array of selected services
+        setSelectedServices(Object.keys(rowSelection).map(rowId => getServiceDetails(rowId)));
+        selectedServices.forEach(service => total += service.price)
+        setTotalPrice(total);
+    }
 
+    // Get the selected service details by rowId
+    const getServiceDetails = (rowId: string) => {
+        // Get the selected row data
+        const selectedRow = table.getRowModel().rows.find((row) => row.id === rowId);
+        return selectedRow?.original as ServiceOffered;
+    };
+
+      // Open modal and calculate total price
+    const handleReserve = () => {
+        open();
+        calculateTotalPrice();
+    }
+
+  
+    
+    
     const handleCardPayment = () => {
         setSelectedPaymentMethod('card');
     }
@@ -86,24 +95,6 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     const handlePaypalPayment = () => {
         setSelectedPaymentMethod('paypal');
     }
-
-
-
-    const [totalPrice, setTotalPrice] = useState(0);
-
-
-    useEffect(() => {
-        // Calculate total price when selectedServices changes
-        const calculateTotalPrice = () => {
-            let total = 0;
-            selectedServices.forEach(service => {
-                total += service.price;
-            });
-            setTotalPrice(total);
-        };
-
-        calculateTotalPrice();
-    }, [selectedServices]);
 
 
     // Step 1: Confirm Reservation
@@ -258,7 +249,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
 
 
 
-    // Confirming reservation
+    // Reservation Dashboard Modal
     const ReserveDashboard = () => {
 
         return (
@@ -355,7 +346,6 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                             <TableRow
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"}
-                                onClick={() => handleRowSelect(row.id)}
                             >
                                 {row.getVisibleCells().map((cell) => (
                                     <TableCell key={cell.id}>
@@ -383,7 +373,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 </div>
 
                 {/* Reserve Button */}
-                <Button onClick={openDisclosure} variant="default">Reserve</Button>
+                <Button onClick={handleReserve} variant="default">Reserve</Button>
             </div>
 
             {/* Reserve Modal */}
