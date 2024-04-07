@@ -25,7 +25,7 @@ const Bottombar = () => {
         {/* Search */}
         <Link
             href="/search"
-            className={`p-3 transition
+            className={`p-2 transition
                       ${pathname === "/search" ? " [&_*]:text-primary-foreground": " [&_*]:text-primary-foreground/50"}`}
           >
             <SearchIcon className='text-[24px]'/>
@@ -34,7 +34,7 @@ const Bottombar = () => {
         {/* Create */}
         <Link
             href="/services/create"
-            className={`p-3 transition
+            className={`p-2 transition
                       ${pathname === "/services/create" ? " [&_*]:text-primary-foreground": " [&_*]:text-primary-foreground/50"}`}
           >
             <Add className='text-[32px]'/>
@@ -43,7 +43,7 @@ const Bottombar = () => {
         {/* Profile */}
         <Link
             href="/profile/" 
-            className={`p-3 transition
+            className={`p-2 transition
                       ${pathname === "/profile" ? " [&_*]:text-primary-foreground": " [&_*]:text-primary-foreground/50"}`}
         >
             <Profile className='text-[28px]'/>
