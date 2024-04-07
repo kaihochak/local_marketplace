@@ -1,11 +1,13 @@
 "use client";
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import ServiceForm from "./ServiceForm"
 import ServiceItemModal from "./ServiceItemModal";
-
-const CreateServiceWithModal = ({ userId } : { userId: string }) => {
+import { ServiceItem } from "@/types";
+  
+const CreateService = ({ userId } : { userId: string }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
+    const [serviceItems, setServiceItems] = React.useState<ServiceItem[]>([])
 
     return (
         <div>
@@ -14,12 +16,15 @@ const CreateServiceWithModal = ({ userId } : { userId: string }) => {
                     userId={userId}
                     type="Create"
                     setIsModalOpen={setIsModalOpen}
+                    serviceItems={serviceItems}
                 />
             </div>
-
+            
             <ServiceItemModal
                 userId={userId}
                 type="Create"
+                serviceItems={serviceItems}
+                setServiceItems={setServiceItems}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             />
@@ -27,4 +32,4 @@ const CreateServiceWithModal = ({ userId } : { userId: string }) => {
     )
 }
 
-export default CreateServiceWithModal
+export default CreateService

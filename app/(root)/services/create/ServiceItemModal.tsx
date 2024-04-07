@@ -12,162 +12,133 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-
-interface IServiceItem {
-    title: string
-    description: string
-    price: string
-}
+import { serviceFormSchema } from "@/lib/validator"
+import { ServiceItem } from "@/types";
 
 type ServiceFormProps = {
-    userId: string
-    type: "Create" | "Update"
-    serviceItem?: IServiceItem,
-    serviceItemId?: string
-    isModalOpen: boolean
-    setIsModalOpen: (isOpen: boolean) => void
+  userId: string
+  type: "Create" | "Update"
+  service?: ServiceItem,
+  serviceId?: string
+  serviceItems?: ServiceItem[]
+  setServiceItems?: (serviceItems: ServiceItem[]) => void
+  setIsModalOpen: (isOpen: boolean) => void
+  isModalOpen?: boolean
 }
 
-const ServiceItemModal = ({ userId, type, serviceItem, serviceItemId, isModalOpen, setIsModalOpen }: ServiceFormProps) => {
-    const initialValues = serviceItem && type === 'Update'
-        ? { ...serviceItem }
-        : serviceItemDefaultValues;
+const ServiceItemModal = ({ userId, type, service, serviceId, serviceItems, setServiceItems, setIsModalOpen, isModalOpen }: ServiceFormProps) => {
+  const [files, setFiles] = useState<File[]>([])
+  const initialValues = service && type === 'Update'
+    ? { ...service }
+    : serviceItemDefaultValues;
 
-    // form setup with react-hook-form and zod
-    const form = useForm<z.infer<typeof serviceItemSchema>>({
-        resolver: zodResolver(serviceItemSchema),
-        defaultValues: initialValues,
-    })
+  // form setup with react-hook-form and zod
+  const form = useForm<z.infer<typeof serviceItemSchema>>({
+    resolver: zodResolver(serviceItemSchema),
+    defaultValues: initialValues
+  })
 
-    // submit handler
-    async function onSubmit(values: z.infer<typeof serviceItemSchema>) {
-        console.log("test123")
-    }
+  // submit form
+  function onSubmit(values: z.infer<typeof serviceItemSchema>) {
+     // assign an _id to newServiceID
+    setServiceItems && setServiceItems([...(serviceItems || []), values])
+    setIsModalOpen(false)
+  }
 
-    return (
-        <section className="px-4 md:px-20 pt-2">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
-            {/* Service Image */}
-  
-            {/* Service Description */}
-            <div className="flex flex-col gap-5 md:flex-row">
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormControl className="h-20">
-                      <Textarea placeholder="Description" {...field} className="textarea rounded-sm" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-  
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              size="lg"
-              disabled={form.formState.isSubmitting}
-              className="button col-span-2 w-full"
-            >
-              {form.formState.isSubmitting ? (
-                'Submitting...'
-              ) : `${type} `}
-            </Button>
-          </form>
-        </Form>
-      </section>
+  return (
+    <section className="px-4 pt-2 md:px-20">
+      <div className='cursor-pointer border-y hover:bg-grey-50'>
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          {/* Content */}
+          <DialogContent className="sm:max-w-[425px] bg-primary">
+            <DialogHeader>
+              <DialogTitle>Add a service item</DialogTitle>
+            </DialogHeader>
 
-        // <Form {...form}>
-        //     <form onSubmit={form.handleSubmit(onSubmit)}>
-        //         <div className="grid gap-4 py-4">
-        //             {/* title */}
-        //             <div className="grid grid-cols-4 items-center gap-4">
-        //                 <Label htmlFor="service-item" className="text-right">
-        //                     Service
-        //                 </Label>
-        //                 <FormField
-        //                     control={form.control}
-        //                     name="title"
-        //                     render={({ field }) => (
-        //                         <FormItem className="w-full col-span-3">
-        //                             <FormControl>
-        //                                 <Input {...field} />
-        //                             </FormControl>
-        //                         </FormItem>
-        //                     )}
-        //                 />
-        //             </div>
-        //             {/* description */}
-        //             <div className="grid grid-cols-4 items-center gap-4">
-        //                 <Label htmlFor="description" className="text-right">
-        //                     Description
-        //                 </Label>
-        //                 <FormField
-        //                     control={form.control}
-        //                     name="description"
-        //                     render={({ field }) => (
-        //                         <FormItem className="w-full col-span-3">
-        //                             <FormControl>
-        //                                 <Textarea placeholder="Description" {...field} />
-        //                             </FormControl>
-        //                         </FormItem>
-        //                     )}
-        //                 />
-        //             </div>
-        //             {/* price */}
-        //             <div className="grid grid-cols-4 items-center gap-4">
-        //                 <Label htmlFor="price" className="text-right">
-        //                     CA$
-        //                 </Label>
-        //                 <FormField
-        //                     control={form.control}
-        //                     name="price"
-        //                     render={({ field }) => (
-        //                         <FormItem className="w-full col-span-3">
-        //                             <FormControl>
-        //                                 <Input {...field} type="number" />
-        //                             </FormControl>
-        //                         </FormItem>
-        //                     )}
-        //                 />
-        //             </div>
-        //         </div>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
+                {/* Service Image */}
+
+                <div className="flex flex-col gap-5 md:flex-row">
+                  {/* Service Title */}
+                  <FormField
+                    control={form.control}
+                    name="title"
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormControl>
+                          <Input placeholder="Service title" {...field} className="input-field" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                </div>
+
+                {/* Service Description */}
+                <div className="flex flex-col gap-5 md:flex-row">
+                  <FormField
+                    control={form.control}
+                    name="description"
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormControl className="h-20">
+                          <Textarea placeholder="Description" {...field} className="rounded-sm textarea" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
 
-        //         {/* Submit */}
-        //         <Button
-        //             type="submit"
-        //             size="lg"
-        //             disabled={form.formState.isSubmitting}
-        //             className="button col-span-2 w-full"
-        //         >
-        //             {form.formState.isSubmitting ? (
-        //                 'Submitting...'
-        //             ) : `${type} `}
-        //         </Button>
-        //     </form>
-        // </Form>
+                {/* price */}
+                <div className="flex flex-col gap-5 md:flex-row">
+                  <FormField
+                    control={form.control}
+                    name="price"
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormControl>
+                          <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
+                            <Input
+                              type="number"
+                              placeholder="Price" {...field}
+                              className="border-0 p6-regular bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                            />
+                          </div>
+
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={form.formState.isSubmitting}
+                  className="w-full col-span-2 button"
+                >
+                  {form.formState.isSubmitting ? (
+                    'Submitting...'
+                  ) : `${type} `}
+                </Button>
+
+              </form>
+            </Form>
 
 
-        // <div className='border-y hover:bg-grey-50 cursor-pointer'>
-        //     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        //         {/* Content */}
-        //         <DialogContent className="sm:max-w-[425px] bg-primary">
-        //             <DialogHeader>
-        //                 <DialogTitle>Add a service item</DialogTitle>
-        //             </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      </div>
 
-
-
-
-        //         </DialogContent>
-        //     </Dialog>
-        // </div>
-    )
+    </section>
+  )
 }
 
 export default ServiceItemModal
+

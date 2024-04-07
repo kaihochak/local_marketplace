@@ -101,6 +101,13 @@ export type Service = {
   }
 }
 
+export type ServiceItem = {
+  // _id: string
+  title: string
+  description: string
+  price: string
+}
+
 // ====== CATEGORY PARAMS
 export type CreateCategoryParams = {
   categoryName: string

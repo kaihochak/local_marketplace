@@ -19,35 +19,34 @@ import { serviceDefaultValues } from "@/constants"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { IService, ServiceItem } from "@/lib/database/models/service.model"
+import { IService } from "@/lib/database/models/service.model"
 import { createService } from "@/lib/actions/service.actions"
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
 import Card from "@/components/shared/Card";
 import Dropdown from "@/components/shared/Dropdown";
-import ServiceItemModal from "@/app/(root)/services/create/ServiceItemModal";
 import Confetti from 'react-confetti';
 import dummyServices from "@/constants/dummyServices"
+import { ServiceItem } from "@/types";
 
 type ServiceFormProps = {
   userId: string
   type: "Create" | "Update"
   service?: IService,
   serviceId?: string
+  serviceItems?: ServiceItem[]
   setIsModalOpen: (isOpen: boolean) => void
-  isModalOpen?: boolean
 }
 
-const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModalOpen}: ServiceFormProps) => {
+const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentServiceItems, setIsModalOpen }: ServiceFormProps) => {
   const [files, setFiles] = useState<File[]>([])
   const initialValues = service && type === 'Update'
     ? { ...service }
     : serviceDefaultValues;
-  const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const { startUpload } = useUploadThing('imageUploader')
-
   const [newServiceId, setNewServiceId] = useState<string | null>(null)
+  const [serviceItems, setServiceItems] = useState<ServiceItem[]>(parentServiceItems || [])
 
   // form setup with react-hook-form and zod
   const form = useForm<z.infer<typeof serviceFormSchema>>({
@@ -58,30 +57,32 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
   // submit form
   async function onSubmit(values: z.infer<typeof serviceFormSchema>) {
     let uploadedImageUrl = values.imageUrl;
+    console.log('values', values);
 
-    if (files.length > 0) {
-      const uploadedImages = await startUpload(files)
-      if (!uploadedImages) { return }
-      uploadedImageUrl = uploadedImages[0].url
-    }
 
-    if (type === 'Create') {
-      try {
-        const newService = await createService({
-          service: { ...values, imageUrl: uploadedImageUrl },
-          userId,
-          path: '/profile'
-        })
+    // if (files.length > 0) {
+    //   const uploadedImages = await startUpload(files)
+    //   if (!uploadedImages) { return }
+    //   uploadedImageUrl = uploadedImages[0].url
+    // }
 
-        if (newService) {
-          form.reset();
-          setNewServiceId(newService._id);
-          open();
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    // if (type === 'Create') {
+    //   try {
+    //     const newService = await createService({
+    //       service: { ...values, imageUrl: uploadedImageUrl },
+    //       userId,
+    //       path: '/profile'
+    //     })
+
+    //     if (newService) {
+    //       form.reset();
+    //       setNewServiceId(newService._id);
+    //       open();
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
   }
 
   // if(type === 'Update') {
@@ -114,7 +115,7 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
   } : {};
 
   return (
-    <section className="px-4 md:px-20 pt-2">
+    <section className="px-4 pt-2 md:px-20">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
           {/* Service Image */}
@@ -173,7 +174,7 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl className="h-20">
-                    <Textarea placeholder="Description" {...field} className="textarea rounded-sm" />
+                    <Textarea placeholder="Description" {...field} className="rounded-sm textarea" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -182,7 +183,7 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
           </div>
 
           {/* Services offered */}
-          <div className='border-1 p-2 bg-grey'>
+          <div className='p-2 border-1 bg-grey'>
             <Table>
               <TableCaption>
                 {/* <ServiceItemModal userId={userId} type="Create"/> */}
@@ -197,11 +198,13 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
-                  <TableCell>Wall Painting</TableCell>
-                  <TableCell>Paid</TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
+                {serviceItems.map((serviceItem, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{serviceItem.title}</TableCell>
+                    <TableCell>{serviceItem.description}</TableCell>
+                    <TableCell className="text-right">CA${serviceItem.price}</TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </div>
@@ -225,7 +228,7 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
                       <Input
                         type="number"
                         placeholder="Price" {...field}
-                        className="p6-regular border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="border-0 p6-regular bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                       />
                       <FormField
                         control={form.control}
@@ -234,11 +237,11 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
                           <FormItem>
                             <FormControl>
                               <div className="flex items-center">
-                                <label htmlFor="isFree" className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Free Service</label>
+                                <label htmlFor="isFree" className="pr-3 leading-none whitespace-nowrap peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Free Service</label>
                                 <Checkbox
                                   onCheckedChange={field.onChange}
                                   checked={field.value}
-                                  id="isFree" className="mr-2 h-5 w-5 border-2 border-primary-500" />
+                                  id="isFree" className="w-5 h-5 mr-2 border-2 border-primary-500" />
                               </div>
 
                             </FormControl>
@@ -308,7 +311,7 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
             type="submit"
             size="lg"
             disabled={form.formState.isSubmitting}
-            className="button col-span-2 w-full"
+            className="w-full col-span-2 button"
           >
             {form.formState.isSubmitting ? (
               'Submitting...'
@@ -324,7 +327,7 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
           >
 
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-3xl font-semibold mt-5 text-left">Service Created Successfully!</h1>
+              <h1 className="mt-5 text-3xl font-semibold text-left">Service Created Successfully!</h1>
 
               <div className="my-20">
                 {/* Display the card of the new service */}
@@ -337,9 +340,9 @@ const ServiceForm = ({ userId, type, service, serviceId, setIsModalOpen, isModal
               </div>
 
               {/* Find the service under profile > services */}
-              <h3 className="text-3xl font-semibold text-center mt-5">
+              <h3 className="mt-5 text-3xl font-semibold text-center">
                 Find the service under <br />
-                <Link href={`/services/${newServiceId}`} className="text-accent-light underline">
+                <Link href={`/services/${newServiceId}`} className="underline text-accent-light">
                   profile {'>'} services
                 </Link>
               </h3>
