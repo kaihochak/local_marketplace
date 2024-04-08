@@ -11,6 +11,8 @@ import { Collaboratory } from "@/public/assets/icons/Collaboratory";
 import { Clinic } from "@/public/assets/icons/Clinic";
 import { Tools } from "@/public/assets/icons/Tools";
 import Category, { ICategory } from "@/lib/database/models/category.model";
+import { ArrowLeft } from "@/public/assets/icons/ArrowLeft";
+import { ArrowRight } from "@/public/assets/icons/ArrowRight";
 
 type CateogoryFilterProps = {
   categories: ICategory[];
@@ -52,12 +54,30 @@ const CategoryFilter = ({ categories, onCategorySelect }: CateogoryFilterProps) 
     )
   }
 
-  // For "recommentdationnns"
   return (
-    <div className="flex pt-3 pb-2 pl-4 pr-0 overflow-x-auto gap-x-2 scrollbar-hide">
+    <div className="relative [&_#card-prev-next-button]:hover:opacity-50">
+      <div className="flex pt-3 pb-2 pl-4 pr-0 overflow-x-auto gap-x-2 scrollbar-hide">
+        <FilterCard category="All" />
       {categories.map(category => (
         <FilterCard key={category._id} category={category} />
       ))}
+
+        {/* Next Prev button */}
+        <button
+          id="card-prev-next-button"
+          onClick={() => scrollBy({ top: -400 })} // Adjust scroll amount as per your design
+          className="left-0 hidden md:block"
+        >
+          <ArrowLeft className='text-[22px]' />
+        </button>
+        <button
+          id="card-prev-next-button"
+          onClick={() => scrollBy({ top: 400 })} // Adjust scroll amount as per your design
+          className="right-0 hidden md:block"
+        >
+          <ArrowRight className='text-[22px]' />
+        </button>
+      </div>
     </div>
   )
 }

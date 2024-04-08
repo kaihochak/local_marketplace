@@ -364,11 +364,11 @@ body {
   
   /* Bottom bar */
   .bottom-bar-container {
-    @apply md:hidden z-50 w-full sticky bottom-0 bg-white px-2 py-4 rounded-t-3xl shadow-t-md; 
+    @apply md:hidden z-50 w-full sticky bottom-0 bg-white px-2 py-2 rounded-t-3xl shadow-t-md; 
   }
   
   .bottom-bar {
-    @apply flex justify-evenly bg-primary rounded-2xl;
+    @apply flex justify-evenly bg-primary rounded-2xl items-center;
   }
   
 
