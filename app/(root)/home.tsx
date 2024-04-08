@@ -14,37 +14,49 @@ import { Modal } from '@mantine/core';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-
+import { getAllCategories } from '@/lib/actions/category.actions';
+import { ICategory } from '@/lib/database/models/category.model';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Recommendations");
-  const [services, setServices] = useState<ServiceItem[]>([]);
+  const [services, setServices] = useState<ServiceItem[]>(dummyServices);
+  const [categories, setCategories] = useState<ICategory[]>([]);
   const [opened, { open, close }] = useDisclosure(true);
 
-  useEffect(() => {
-    setServices(dummyServices);
-  });
+  /*************************************************************************
+   * Categories
+   *************************************************************************/
 
-  // Refs for each category
-  type CollectionRefs = {
-    [key: string]: RefObject<HTMLDivElement>;
+  // Fetch categories
+  useEffect(() => {
+    // For "recommentdationnns"
+    const recommendationCategory = {
+      _id: 'recommendations',
+      name: 'Recommendations'
+    }
+
+    const getCategories = async () => {
+      const categoryList = await getAllCategories();
+      categoryList && setCategories([recommendationCategory, ...categoryList]);
+    }
+
+    getCategories();
+  }, [])
+
+  // Refs for scrolling to selected category
+  const categoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  // Populate category refs by adding the element to the categoryRefs object
+  const setCategoryRef = (categoryId: string, element: HTMLDivElement | null) => {
+    categoryRefs.current[categoryId] = element;
   };
 
-  // Create refs for each category
-  const collectionRefs: CollectionRefs = categories.reduce((acc: CollectionRefs, category) => {
-    acc[category] = useRef<HTMLDivElement>(null);
-    return acc;
-  }, {});
-
-  // Scroll to the selected category
+  // Scroll to selected category
   useEffect(() => {
-    if (selectedCategory && collectionRefs[selectedCategory]?.current) {
-      collectionRefs[selectedCategory]?.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    if (selectedCategory && categoryRefs.current[selectedCategory]) {
+      categoryRefs.current[selectedCategory]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [selectedCategory, collectionRefs]);
+  }, [selectedCategory]);
 
 
   return (
@@ -81,26 +93,32 @@ export default function Home() {
               <Search disabled={true} />
             </Link>
           </div>
-          <CategoryFilter onCategorySelect={(category: string) => setSelectedCategory(category)} />
+          <CategoryFilter
+            categories={categories}
+            onCategorySelect={(categoryId: string) => {
+              setSelectedCategory(categoryId);
+            }}
+          />
         </div>
       </section>
 
       {/* Collections */}
       <section className="pt-4 pb-2 wrapper lg:pr-0 lg:pb-0">
         <div className="flex flex-col gap-y-0">
-          {categories.map((title) => (
+          {categories.map((category) => (
             <div
-              ref={collectionRefs[title]}
-              key={title}
-              className='scroll-mt-[280px] md:scroll-mt-[320px] lg:scroll-mt-[320px]' // This is a temporary fix for the sticky header
+              ref={el => setCategoryRef(category._id, el)}
+              key={category._id}
+              className='scroll-mt-[280px] md:scroll-mt-[320px] lg:scroll-mt-[320px]'
             >
               <Collection
                 selectedCategory={selectedCategory}
-                title={title}
+                title={category.name}
                 direction="horizontal"
                 itemType="service"
-                items={services}
+                items={services.filter(service => service.category._id === category._id)} // Adjust based on how you link services to categories
                 nextPrevButton={true}
+                hasViewMore={true}
               />
             </div>
           ))}
