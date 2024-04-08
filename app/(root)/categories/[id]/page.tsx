@@ -7,7 +7,7 @@ import { dummyReservations } from '@/constants/dummyReservations'
 import dummyServices from '@/constants/dummyServices'
 import { useRouter } from 'next/router'
 
-const home = () => {
+const page = () => {
 
     // const router = useRouter();
     // const selectedTitle  = router.query.title as string;
@@ -15,7 +15,17 @@ const home = () => {
     return (
         <div className=''>
             <CommonHeader title= 'All' />
-            <div className='flex-center pt-6'>
+            <div className='pt-6 flex-center'>
+                {/* search */}
+                <div>
+                </div>
+
+                {/* category filters */}
+                <div>
+                    
+                </div>
+
+                {/* categories */}
                 <Collection
                     direction='vertical'
                     itemType='service'
@@ -27,4 +37,4 @@ const home = () => {
     )
 }
 
-export default home
+export default page

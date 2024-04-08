@@ -20,7 +20,6 @@ const Search = ({ placeholder = 'Search services...', disabled}: { placeholder?:
     }
   }, [shouldFocus]);
 
-
   useEffect(() => {
     // Debounce the query change
     const delayDebounceFn = setTimeout(() => {

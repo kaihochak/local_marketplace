@@ -24,33 +24,17 @@ type CollectionProps = {
     nextPrevButton?: boolean;
 };
 
-const Collection = ({
-    title,
-    selectedCategory,
-    direction,
-    itemType,
-    items,
-    hasButton,
-    limit,
-    hasViewMore,
-    link,
-    itemsPerPage,
-    nextPrevButton,
+const Collection = ({ title, selectedCategory, direction, itemType, items, hasButton, limit, hasViewMore, link, itemsPerPage, nextPrevButton
 }: CollectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     const scrollBy = (offset: number) => {
-        console.log(containerRef.current?.scrollLeft, offset);
-
         if (containerRef.current) { containerRef.current.scrollLeft += offset; }
     };
 
-    link = link || { pathname: '/home', query: { title } };
-    //console log link
-    console.log(link);
-    hasViewMore = hasViewMore || true;
-
-    // Card collection
+    /*************************************************************************************
+     * Layout Components
+     *************************************************************************************/
     const CardCollection = () => {
         return (
             <div className="relative [&_#card-prev-next-button]:hover:opacity-50">
@@ -78,14 +62,14 @@ const Collection = ({
                 {nextPrevButton && <button
                     id="card-prev-next-button"
                     onClick={() => scrollBy(-400)} // Adjust scroll amount as per your design
-                    className="hidden md:block left-0"
+                    className="left-0 hidden md:block"
                 >
                     <ArrowLeft className='text-[22px]' />
                 </button>}
                 {nextPrevButton && <button
                     id="card-prev-next-button"
                     onClick={() => scrollBy(400)} // Adjust scroll amount as per your design
-                    className="hidden md:block right-0"
+                    className="right-0 hidden md:block"
                 >
                     <ArrowRight className='text-[22px]' />
                 </button>}
@@ -93,16 +77,17 @@ const Collection = ({
         )
     }
 
+    /*************************************************************************************
+     * Render
+     *************************************************************************************/
     return (
         <>
             <div className='flex justify-start items-center gap-x-2 cursor-pointer [&_*]:hover:opacity-100'>
-                <h2 className='pl-5 md:pl-4 lg:pl-10 h4-bold text-primary-foreground'>
-                    {title}
-                </h2>
+                <h2 className='pl-5 md:pl-4 lg:pl-10 h4-bold text-primary-foreground'>{title}</h2>
 
                 {/* View more */}
                 {hasViewMore && link &&
-                    <Link href={link} className='opacity-0 transition-all duration-300 ease-in-out'>                       
+                    <Link href={link} className='transition-all duration-300 ease-in-out opacity-0'>                       
                         <ArrowRight className='text-[24px] font-bold text-primary-foreground' />
                     </Link>
                 }
