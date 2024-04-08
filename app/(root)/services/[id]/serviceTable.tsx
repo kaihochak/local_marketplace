@@ -62,11 +62,13 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
      **************************************************************************/
     const ConfirmReservation = () => {
         return (
+
+
             <div>
                 <div className="flex items-center justify-center space-x-4 pb-5">
                     <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">1</div>
                     <div className="w-12 h-0.5 bg-gray-200"></div>
-                    <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">2</div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full">2</div>
                     <div className="w-12 h-0.5 bg-gray-200"></div>
                     <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full">3</div>
                 </div>
@@ -100,7 +102,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
 
                 {/* Total Price */}
                 <div className="flex flex-col items-end">
-                    <h3 className="text-end mr-4">Total Price <span className="font-bold">{totalPrice}</span></h3>
+                    <h3 className="text-end mr-4">Total Price <span className="font-bold">${totalPrice}</span></h3>
                     <div className="border-b my-4 w-32"></div>
                 </div>
 
@@ -114,10 +116,11 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
 
     // Calculate total price
     const calculateTotalPrice = () => {
+        const selectedServicesArray = Object.keys(rowSelection).map(rowId => getServiceDetails(rowId));
+        setSelectedServices(selectedServicesArray);
+
         let total = 0;
-        // convert rowSelection to array of selected services
-        setSelectedServices(Object.keys(rowSelection).map(rowId => getServiceDetails(rowId)));
-        selectedServices.forEach(service => total += service.price)
+        selectedServicesArray.forEach(service => total += service.price);
         setTotalPrice(total);
     }
 
@@ -134,10 +137,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     const PaymentScreen = () => {
         return (
             <div>
-                {/* <div className="flex flex-col items-center justify-center">
-                            <h1 className="text-3xl font-semibold my-5 text-left">Payment</h1>
-                        </div> */}
-
+                {/* form progress tracker */}
                 <div className="flex items-center justify-center space-x-4 pb-5">
                     <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full pl-2">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-180" viewBox="0 0 20 20" fill="currentColor">
@@ -155,65 +155,52 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 </div>
 
                 {/* Payment methods section */}
-                <div className="flex flex-col items-center justify-right mb-5">
-                    <h2 className="text-xl font-semibold mb-3">Select Payment Method:</h2>
-                    <div className="flex gap-3 w-full h-10">
-                        <button onClick={handleCardPayment} className="flex items-center justify-center w-full px-4 py-2 border rounded-md shadow-sm bg-gray-200 text-gray-700  hover:bg-white">
-                            <FaCreditCard className="mr-2" />
-                        </button>
-                        <button onClick={handleStripePayment} className="flex items-center justify-center w-full px-2 py-2 border rounded-md shadow-sm bg-gray-200 text-gray-700  hover:bg-white">
-                            <FaStripe className="mr-2" />
-                        </button>
-                        <button onClick={handlePaypalPayment} className="flex items-center justify-center w-full px-4 py-2 border rounded-md shadow-sm bg-gray-200 text-gray-700  hover:bg-white">
-                            <FaPaypal className="mr-2" />
-                        </button>
+                <h2 className="text-xl font-semibold mb-3">Select Payment Method:</h2>
+                <div className="flex items-center justify-right mb-5">
+                    <div className="flex flex-col gap-3 w-full">
+                        <div className="flex items-center border p-3 rounded-md">
+                            <input type="radio" name="paymentMethod" value="inPerson" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
+                            <label className="ml-2">In Person</label>
+                        </div>
+                        {selectedPaymentMethod === 'inPerson' && (
+                            <div>
+                                {/* Add in-person payment specific content here */}
+                                <p>In Person payment section...</p>
+                            </div>
+                        )}
+                        <div className="flex items-center border p-3 rounded-md">
+                            <input type="radio" name="paymentMethod" value="interac" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
+                            <label className="ml-2">Interac</label>
+                        </div>
+                        {selectedPaymentMethod === 'interac' && (
+                            <div>
+                                {/* Add Interac payment specific content here */}
+                                <p>Interac payment section...</p>
+                            </div>
+                        )}
+                        <div className="flex items-center border p-3 rounded-md">
+                            <input type="radio" name="paymentMethod" value="stripe" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
+                            <label className="ml-2">Stripe</label>
+                        </div>
+                        {selectedPaymentMethod === 'stripe' && (
+                            <div>
+                                {/* Add Stripe payment specific content here */}
+                                <p>Stripe payment section...</p>
+                            </div>
+                        )}
+                        <div className="flex items-center border p-3 rounded-md">
+                            <input type="radio" name="paymentMethod" value="paypal" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
+                            <label className="ml-2">PayPal</label>
+                        </div>
+                        {selectedPaymentMethod === 'paypal' && (
+                            <div>
+                                {/* Add PayPal payment specific content here */}
+                                <p>PayPal payment section...</p>
+                            </div>
+                        )}
                     </div>
                 </div>
 
-
-                {/* Payment method specific sections */}
-                {selectedPaymentMethod === 'card' && (
-                    <div className="flex flex-col items-center justify-center">
-                        {/* Add card payment specific content here */}
-                        <form className="w-full max-w-sm">
-                            <div className="mb-4">
-                                <label htmlFor="cardName" className="block text-gray-700 font-semibold mb-2">Cardholder's Name</label>
-                                <input type="text" id="cardName" name="cardName" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="Enter cardholder's name" />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="cardNumber" className="block text-gray-700 font-semibold mb-2">Card Number</label>
-                                <input type="text" id="cardNumber" name="cardNumber" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="Enter card number" />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="expiryDate" className="block text-gray-700 font-semibold mb-2">Expiry Date</label>
-                                <input type="text" id="expiryDate" name="expiryDate" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="MM/YY" />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="cvv" className="block text-gray-700 font-semibold mb-2">CVV</label>
-                                <input type="text" id="cvv" name="cvv" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="Enter CVV" />
-                            </div>
-                            <div className="flex justify-center">
-                                <button type="submit" className="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">Pay Now</button>
-                            </div>
-                        </form>
-                    </div>
-                )}
-
-                {selectedPaymentMethod === 'stripe' && (
-                    <div className="flex flex-col items-center justify-center">
-                        {/* Add Stripe payment specific content here */}
-                        <h2 className="text-lg font-semibold mb-3">Stripe Payment Section</h2>
-                        <p>Use Stripe payment gateway here...</p>
-                    </div>
-                )}
-
-                {selectedPaymentMethod === 'paypal' && (
-                    <div className="flex flex-col items-center justify-center">
-                        {/* Add Paypal payment specific content here */}
-                        <h2 className="text-lg font-semibold mb-3">Paypal Payment Section</h2>
-                        <p>Use Paypal payment gateway here...</p>
-                    </div>
-                )}
             </div>
         )
     }
