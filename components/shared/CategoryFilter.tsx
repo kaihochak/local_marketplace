@@ -45,10 +45,11 @@ const CategoryFilter = ({ onCategorySelect }: { onCategorySelect: (category: str
   };
 
   const FilterCard = ({ category }: { category: string }) => {
+
     return (
       // each card has the same width
       <div onClick={() => handleSelectCategory(category)}
-        className={`hover-scale category-filter-card ${category === selectedCategory ? "bg-secondary" : "bg-transparent hover:bg-secondary-light shadow-none xs:bg-secondary"}`}>
+        className={`hover-scale category-filter-card ${category === selectedCategory ? "bg-secondary" : "bg-transparent hover:bg-secondary-light shadow-none"}`}>
         <div className="h2-bold">{icons[category]}</div>
         <div className="p6-regular h-[20%] text-[16px] text-center leading-4 tracking-wide">{category}</div>
       </div>
@@ -57,7 +58,7 @@ const CategoryFilter = ({ onCategorySelect }: { onCategorySelect: (category: str
 
   return (
     <div className="relative [&_#card-prev-next-button]:hover:opacity-50">
-      <div className="flex gap-x-2 pl-4 pr-0 pb-2 pt-3 overflow-x-auto">
+      <div className="flex pt-3 pb-2 pl-4 pr-0 overflow-x-auto gap-x-2 scrollbar-hide">
         <FilterCard category="All" />
         {categories.map(category => (
           <FilterCard key={category._id} category={category.name} />
@@ -67,14 +68,14 @@ const CategoryFilter = ({ onCategorySelect }: { onCategorySelect: (category: str
         <button
           id="card-prev-next-button"
           onClick={() => scrollBy({ top: -400 })} // Adjust scroll amount as per your design
-          className="hidden md:block left-0"
+          className="left-0 hidden md:block"
         >
           <ArrowLeft className='text-[22px]' />
         </button>
         <button
           id="card-prev-next-button"
           onClick={() => scrollBy({ top: 400 })} // Adjust scroll amount as per your design
-          className="hidden md:block right-0"
+          className="right-0 hidden md:block"
         >
           <ArrowRight className='text-[22px]' />
         </button>
