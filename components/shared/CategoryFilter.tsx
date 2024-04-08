@@ -10,6 +10,8 @@ import { Logistic } from "@/public/assets/icons/Logistic";
 import { Collaboratory } from "@/public/assets/icons/Collaboratory";
 import { Clinic } from "@/public/assets/icons/Clinic";
 import { Tools } from "@/public/assets/icons/Tools";
+import { ArrowLeft } from "@/public/assets/icons/ArrowLeft";
+import { ArrowRight } from "@/public/assets/icons/ArrowRight";
 
 const CategoryFilter = ({ onCategorySelect }: { onCategorySelect: (category: string) => void }) => {
   const [categories, setCategories] = useState<{ _id: string; name: string }[]>([
@@ -54,11 +56,29 @@ const CategoryFilter = ({ onCategorySelect }: { onCategorySelect: (category: str
   }
 
   return (
-    <div className="flex gap-x-2 pl-4 pr-0 pb-2 pt-3 overflow-x-auto scrollbar-hide">
-      <FilterCard category="All" />
-      {categories.map(category => (
-        <FilterCard key={category._id} category={category.name} />
-      ))}
+    <div className="relative [&_#card-prev-next-button]:hover:opacity-50">
+      <div className="flex gap-x-2 pl-4 pr-0 pb-2 pt-3 overflow-x-auto">
+        <FilterCard category="All" />
+        {categories.map(category => (
+          <FilterCard key={category._id} category={category.name} />
+        ))}
+
+        {/* Next Prev button */}
+        <button
+          id="card-prev-next-button"
+          onClick={() => scrollBy({ top: -400 })} // Adjust scroll amount as per your design
+          className="hidden md:block left-0"
+        >
+          <ArrowLeft className='text-[22px]' />
+        </button>
+        <button
+          id="card-prev-next-button"
+          onClick={() => scrollBy({ top: 400 })} // Adjust scroll amount as per your design
+          className="hidden md:block right-0"
+        >
+          <ArrowRight className='text-[22px]' />
+        </button>
+      </div>
     </div>
   )
 }
