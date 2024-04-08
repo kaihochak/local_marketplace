@@ -45,6 +45,9 @@ const Collection = ({
         if (containerRef.current) { containerRef.current.scrollLeft += offset; }
     };
 
+    link = link || '/home/${title}';
+    hasViewMore = hasViewMore || true;
+
     // Card collection
     const CardCollection = () => {
         return (
@@ -94,9 +97,10 @@ const Collection = ({
                 <h2 className='pl-5 md:pl-4 lg:pl-10 h4-bold text-primary-foreground'>
                     {title}
                 </h2>
+
                 {/* View more */}
                 {hasViewMore && link &&
-                    <Link href={link} className='opacity-0 transition-all duration-300 ease-in-out'>   
+                    <Link href={link} className='opacity-0 transition-all duration-300 ease-in-out'>                       
                         <ArrowRight className='text-[24px] font-bold text-primary-foreground' />
                     </Link>
                 }
