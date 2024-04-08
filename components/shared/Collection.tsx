@@ -45,7 +45,9 @@ const Collection = ({
         if (containerRef.current) { containerRef.current.scrollLeft += offset; }
     };
 
-    link = link || '/home/${title}';
+    link = link || { pathname: '/home', query: { title } };
+    //console log link
+    console.log(link);
     hasViewMore = hasViewMore || true;
 
     // Card collection
