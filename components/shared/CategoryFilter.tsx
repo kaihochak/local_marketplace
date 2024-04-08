@@ -49,7 +49,7 @@ const CategoryFilter = ({ categories, onCategorySelect }: CateogoryFilterProps) 
       <div onClick={() => handleSelectCategory(category)}
         className={`hover-scale category-filter-card ${category.name === selectedCategory ? "bg-secondary" : "bg-transparent hover:bg-secondary-light shadow-none"}`}>
         <div className="h2-bold">{icons[category.name]}</div>
-        <div className="p6-regular h-[20%] text-[16px] text-center leading-4 tracking-wide">{category._id === "recommendations"? "All" : category.name}</div>
+        <div className="p6-regular h-[20%] text-[16px] text-center leading-4 tracking-wide">{category._id === "recommendations" ? "All" : category.name}</div>
       </div>
     )
   }
@@ -57,10 +57,9 @@ const CategoryFilter = ({ categories, onCategorySelect }: CateogoryFilterProps) 
   return (
     <div className="relative [&_#card-prev-next-button]:hover:opacity-50">
       <div className="flex pt-3 pb-2 pl-4 pr-0 overflow-x-auto gap-x-2 scrollbar-hide">
-        <FilterCard category="All" />
-      {categories.map(category => (
-        <FilterCard key={category._id} category={category} />
-      ))}
+        {categories.map(category => (
+          <FilterCard key={category._id} category={category} />
+        ))}
 
         {/* Next Prev button */}
         <button
