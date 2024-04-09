@@ -11,6 +11,12 @@ import { Modal } from '@mantine/core';
 import Confetti from 'react-confetti';
 import { useDisclosure } from '@mantine/hooks';
 import { ServiceOffered, columns } from "./columns"
+import { Cash } from '@/public/assets/icons/Cash';
+import { InteractTransfer } from '@/public/assets/icons/InteractTransfer';
+import { Stripe } from '@/public/assets/icons/Stripe';
+import { Paypal } from '@/public/assets/icons/Paypal';
+import { Phone } from '@/public/assets/icons/Phone';
+import { Mail } from '@/public/assets/icons/Mail';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -158,48 +164,60 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 <h2 className="text-xl font-semibold mb-3">Select Payment Method:</h2>
                 <div className="flex items-center justify-right mb-5">
                     <div className="flex flex-col gap-3 w-full">
-                        <div className="flex items-center border p-3 rounded-md">
-                            <input type="radio" name="paymentMethod" value="inPerson" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
+                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'inPerson' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('inPerson')}>
                             <label className="ml-2">In Person</label>
+                            <Cash className="w-6 h-6" />
                         </div>
                         {selectedPaymentMethod === 'inPerson' && (
                             <div>
                                 {/* Add in-person payment specific content here */}
-                                <p>In Person payment section...</p>
                             </div>
                         )}
-                        <div className="flex items-center border p-3 rounded-md">
-                            <input type="radio" name="paymentMethod" value="interac" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
-                            <label className="ml-2">Interac</label>
+                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'interac' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('interac')}>
+                            <label className="ml-2">E-Transfer</label>
+                            <InteractTransfer className="w-6 h-6" />
                         </div>
                         {selectedPaymentMethod === 'interac' && (
-                            <div>
+                            <div className='flex flex-col items-center'>
                                 {/* Add Interac payment specific content here */}
-                                <p>Interac payment section...</p>
+                                <p className="flex items-center">
+                                    <Phone className="mr-2" />
+                                    <span className="">+1 234 554 2343</span>
+                                </p>
+                                <p className="flex items-center">
+                                    <Mail className="mr-2" />
+                                    <span className="">chrisdojacob@gmail.com</span>
+                                </p>
                             </div>
                         )}
-                        <div className="flex items-center border p-3 rounded-md">
-                            <input type="radio" name="paymentMethod" value="stripe" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
+                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'stripe' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('stripe')}>
                             <label className="ml-2">Stripe</label>
+                            <Stripe className="w-6 h-6" />
                         </div>
                         {selectedPaymentMethod === 'stripe' && (
-                            <div>
+                            <div className='text-center'>
                                 {/* Add Stripe payment specific content here */}
                                 <p>Stripe payment section...</p>
                             </div>
                         )}
-                        <div className="flex items-center border p-3 rounded-md">
-                            <input type="radio" name="paymentMethod" value="paypal" onChange={(e) => setSelectedPaymentMethod(e.target.value)} />
+                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'paypal' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('paypal')}>
                             <label className="ml-2">PayPal</label>
+                            <Paypal className="w-6 h-6" />
                         </div>
                         {selectedPaymentMethod === 'paypal' && (
-                            <div>
+                            <div className='text-center'>
                                 {/* Add PayPal payment specific content here */}
                                 <p>PayPal payment section...</p>
                             </div>
                         )}
                     </div>
                 </div>
+
+                {/* next button  */}
+                <div className="flex">
+                    <Button className="w-full h-12 bg-black text-white hover:bg-white hover:text-black hover:border border-black" onClick={() => setStep(3)} variant="default">Next</Button>
+                </div>
+
 
             </div>
         )
