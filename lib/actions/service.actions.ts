@@ -31,6 +31,9 @@ const populateService = (query: any) => {
 // Create a new service
 export async function createService({ userId, service, path}: CreateServiceParams) {
   try {
+
+    console.log('service', service);
+    
     await connectToDatabase()
 
     const provider = await User.findById(userId)

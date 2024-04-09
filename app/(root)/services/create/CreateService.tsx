@@ -9,6 +9,11 @@ const CreateService = ({ userId } : { userId: string }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
     const [serviceItems, setServiceItems] = React.useState<ServiceItem[]>([])
 
+    useEffect(() => {
+        console.log('serviceItems', serviceItems);
+    }, [serviceItems])
+
+
     return (
         <div>
             <div className="wrapper md:py-2">
@@ -19,7 +24,7 @@ const CreateService = ({ userId } : { userId: string }) => {
                     serviceItems={serviceItems}
                 />
             </div>
-            
+{/*             
             <ServiceItemModal
                 userId={userId}
                 type="Create"
@@ -27,7 +32,7 @@ const CreateService = ({ userId } : { userId: string }) => {
                 setServiceItems={setServiceItems}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
-            />
+            /> */}
         </div>
     )
 }

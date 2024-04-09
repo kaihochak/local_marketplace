@@ -43,6 +43,7 @@ const ServiceItemModal = ({ userId, type, service, serviceId, serviceItems, setS
      // assign an _id to newServiceID
     setServiceItems && setServiceItems([...(serviceItems || []), values])
     setIsModalOpen(false)
+    form.reset()
   }
 
   return (

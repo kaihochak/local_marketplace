@@ -46,8 +46,8 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
   const [opened, { open, close }] = useDisclosure(false);
   const { startUpload } = useUploadThing('imageUploader')
   const [newServiceId, setNewServiceId] = useState<string | null>(null)
-  const [serviceItems, setServiceItems] = useState<ServiceItem[]>(parentServiceItems || [])
-
+  const [serviceItems, setServiceItems] = useState<ServiceItem[]>([])
+    
   // form setup with react-hook-form and zod
   const form = useForm<z.infer<typeof serviceFormSchema>>({
     resolver: zodResolver(serviceFormSchema),
@@ -57,32 +57,36 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
   // submit form
   async function onSubmit(values: z.infer<typeof serviceFormSchema>) {
     let uploadedImageUrl = values.imageUrl;
-    console.log('values', values);
+
+    if (files.length > 0) {
+      const uploadedImages = await startUpload(files)
+      if (!uploadedImages) { return }
+      uploadedImageUrl = uploadedImages[0].url
+    }
 
 
-    // if (files.length > 0) {
-    //   const uploadedImages = await startUpload(files)
-    //   if (!uploadedImages) { return }
-    //   uploadedImageUrl = uploadedImages[0].url
-    // }
+    console.log('Create service');
 
-    // if (type === 'Create') {
-    //   try {
-    //     const newService = await createService({
-    //       service: { ...values, imageUrl: uploadedImageUrl },
-    //       userId,
-    //       path: '/profile'
-    //     })
+    
+    if (type === 'Create') {
 
-    //     if (newService) {
-    //       form.reset();
-    //       setNewServiceId(newService._id);
-    //       open();
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
+      
+      try {
+        const newService = await createService({
+          service: { ...values, imageUrl: uploadedImageUrl },
+          userId,
+          path: '/profile'
+        })
+
+        if (newService) {
+          form.reset();
+          setNewServiceId(newService._id);
+          open();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   // if(type === 'Update') {
@@ -109,6 +113,12 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
   //   }
   // }
 
+
+  // update service items
+  useEffect(() => {
+    setServiceItems(parentServiceItems || [])
+  }, [parentServiceItems])
+  
   const confettiProps = typeof window !== 'undefined' ? {
     width: window.innerWidth,
     height: window.innerHeight
@@ -202,60 +212,11 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
                   <TableRow key={index}>
                     <TableCell>{serviceItem.title}</TableCell>
                     <TableCell>{serviceItem.description}</TableCell>
-                    <TableCell className="text-right">CA${serviceItem.price}</TableCell>
+                    <TableCell className="text-right">{serviceItem.price ? "CA$" + serviceItem.price : "n/a"}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
-          </div>
-
-          {/* Service */}
-          <div className="flex flex-col gap-5 md:flex-row">
-            <FormField
-              control={form.control}
-              name="price"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormControl>
-                    <div className="flex-center h-[54px] w-full overflow-hidden rounded-sml bg-grey-50 px-4 py-2">
-                      <Image
-                        src="/assets/icons/dollar.svg"
-                        alt="dollar"
-                        width={24}
-                        height={24}
-                        className="filter-grey"
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Price" {...field}
-                        className="border-0 p6-regular bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                      />
-                      <FormField
-                        control={form.control}
-                        name="isFree"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <div className="flex items-center">
-                                <label htmlFor="isFree" className="pr-3 leading-none whitespace-nowrap peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Free Service</label>
-                                <Checkbox
-                                  onCheckedChange={field.onChange}
-                                  checked={field.value}
-                                  id="isFree" className="w-5 h-5 mr-2 border-2 border-primary-500" />
-                              </div>
-
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </div>
 
           {/* Location & Website */}
@@ -274,7 +235,7 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
                         width={24}
                         height={24}
                       />
-                      <Input placeholder="Service location or Online" {...field} className="input-field" />
+                      <Input placeholder="Service location" {...field} className="input-field" />
                     </div>
 
                   </FormControl>
