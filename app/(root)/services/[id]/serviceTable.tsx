@@ -17,6 +17,9 @@ import { Stripe } from '@/public/assets/icons/Stripe';
 import { Paypal } from '@/public/assets/icons/Paypal';
 import { Phone } from '@/public/assets/icons/Phone';
 import { Mail } from '@/public/assets/icons/Mail';
+import { Checkmark } from '@/public/assets/icons/Checkmark';
+import ReactCurvedText from "react-curved-text";
+import { Sloth } from '@/public/assets/icons/Sloth';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -145,14 +148,8 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
             <div>
                 {/* form progress tracker */}
                 <div className="flex items-center justify-center space-x-4 pb-5">
-                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full pl-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-180" viewBox="0 0 20 20" fill="currentColor">
-                            <path
-                                fillRule="evenodd"
-                                d="M16.707 4.293a1 1 0 00-1.414 0l-8 8a1 1 0 001.414 1.414l7.293-7.293 7.293 7.293a1 1 0 001.414-1.414l-8-8z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
+                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full">
+                        <Checkmark className="w-4 h-4" />
                     </div>
                     <div className="w-12 h-0.5 bg-gray-200"></div>
                     <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">2</div>
@@ -169,8 +166,9 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                             <Cash className="w-6 h-6" />
                         </div>
                         {selectedPaymentMethod === 'inPerson' && (
-                            <div>
+                            <div className=''>
                                 {/* Add in-person payment specific content here */}
+                                <p className='text-center'>Pay in person at the service location</p>
                             </div>
                         )}
                         <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'interac' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('interac')}>
@@ -229,28 +227,70 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         calculateTotalPrice();
     }
 
-    const handleCardPayment = () => {
-        setSelectedPaymentMethod('card');
-    }
-
-    const handleStripePayment = () => {
-        setSelectedPaymentMethod('stripe');
-    }
-
-    const handlePaypalPayment = () => {
-        setSelectedPaymentMethod('paypal');
-    }
-
-
     /**************************************************************************
      *  Step 3: Payment Success
      **************************************************************************/
     const PaymentSuccess = () => {
+        let paymentSuccessMessage = "";
+        let setrx = 140;
+
+        // Generate different success messages based on the selected payment method
+        switch (selectedPaymentMethod) {
+            case "inPerson":
+                paymentSuccessMessage = "Thank you for supporting this service";
+                setrx = 200;
+                break;
+            case "interac":
+                paymentSuccessMessage = "Waiting for you Interac payment...";
+                setrx = 200;
+                break;
+            case "stripe":
+                paymentSuccessMessage = "Payment Success through Stripe";
+                setrx = 180;
+                break;
+            case "paypal":
+                paymentSuccessMessage = "Payment Success through PayPal";
+                setrx = 180;
+                break;
+            default:
+                paymentSuccessMessage = "Reservation Confirmed!";
+        }
+
         return (
+
             <div>
-                Payment Success
+                <div className="flex items-center justify-center space-x-4 pb-5">
+                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full">
+                        <Checkmark className="w-4 h-4" />
+                    </div>
+                    <div className="w-12 h-0.5 bg-gray-200"></div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full">
+                        <Checkmark className="w-4 h-4" />
+                    </div>
+                    <div className="w-12 h-0.5 bg-gray-200"></div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">3</div>
+                </div>
+
+                <div className="flex flex-col items-center justify-center">
+                    <div className="text-xl font-bold text-center">
+                        <ReactCurvedText
+                            width={370}
+                            height={100}
+                            cx={160}
+                            cy={120}
+                            rx={setrx}
+                            ry={80}
+                            startOffset={80}
+                            reversed={true}
+                            text={paymentSuccessMessage}
+                        />
+                    </div>
+                    <div className="mt-4">
+                        <Sloth className="w-12 h-12" />
+                    </div>
+                </div>
             </div>
-        )
+        );
     }
 
 
