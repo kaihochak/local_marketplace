@@ -13,7 +13,6 @@ const CreateService = ({ userId } : { userId: string }) => {
         console.log('serviceItems', serviceItems);
     }, [serviceItems])
 
-
     return (
         <div>
             <div className="wrapper md:py-2">
@@ -22,9 +21,10 @@ const CreateService = ({ userId } : { userId: string }) => {
                     type="Create"
                     setIsModalOpen={setIsModalOpen}
                     serviceItems={serviceItems}
+                    setServiceItems={setServiceItems}
                 />
             </div>
-{/*             
+            
             <ServiceItemModal
                 userId={userId}
                 type="Create"
@@ -32,7 +32,7 @@ const CreateService = ({ userId } : { userId: string }) => {
                 setServiceItems={setServiceItems}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
-            /> */}
+            />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import CommonHeader from "@/components/shared/CommonHeader";
 import { auth } from "@clerk/nextjs";
-import CreateService from "./CreateService";
+import CreateService from "@/components/shared/CreateService";
 
 const page = () => {
   const { sessionClaims } = auth();

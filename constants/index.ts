@@ -4,8 +4,7 @@ export const serviceDefaultValues = {
   location: '',
   imageUrl: '',
   categoryId: '',
-  price: '',
-  isFree: false,
+  servicesOffered: [],
   url: '',
 }
 

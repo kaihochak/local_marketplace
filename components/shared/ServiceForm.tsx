@@ -9,8 +9,8 @@ import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/createServiceTable"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { FileUploader } from "../../../../components/shared/FileUploader"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import { FileUploader } from "@/components/shared/FileUploader"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { serviceFormSchema } from "@/lib/validator"
@@ -28,6 +28,8 @@ import Dropdown from "@/components/shared/Dropdown";
 import Confetti from 'react-confetti';
 import dummyServices from "@/constants/dummyServices"
 import { ServiceItem } from "@/types";
+import { MdOutlineModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 type ServiceFormProps = {
   userId: string
@@ -35,19 +37,24 @@ type ServiceFormProps = {
   service?: IService,
   serviceId?: string
   serviceItems?: ServiceItem[]
+  setServiceItems: (serviceItems: ServiceItem[]) => void
   setIsModalOpen: (isOpen: boolean) => void
 }
 
-const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentServiceItems, setIsModalOpen }: ServiceFormProps) => {
+const ServiceForm = ({ userId, type, service, serviceId,
+  serviceItems: parentServiceItems, setServiceItems: parentSetServiceItems, setIsModalOpen }: ServiceFormProps) => {
   const [files, setFiles] = useState<File[]>([])
   const initialValues = service && type === 'Update'
-    ? { ...service }
+    ? { ...service, servicesOffered: Array.from(service.servicesOffered.values()) }
     : serviceDefaultValues;
-  const [opened, { open, close }] = useDisclosure(false);
+  const [opened, { open, close }] = useDisclosure(false); // for confetti
+  const [alertOpen, setAlertOpen] = useState(false) // for alert dialog
+  const [deleteItem, setDeleteItem] = useState<number>(0) // for deleting service item
   const { startUpload } = useUploadThing('imageUploader')
   const [newServiceId, setNewServiceId] = useState<string | null>(null)
   const [serviceItems, setServiceItems] = useState<ServiceItem[]>([])
-    
+  const [noServiceItem, setNoServiceItem] = useState<boolean>(false)
+
   // form setup with react-hook-form and zod
   const form = useForm<z.infer<typeof serviceFormSchema>>({
     resolver: zodResolver(serviceFormSchema),
@@ -56,6 +63,13 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
 
   // submit form
   async function onSubmit(values: z.infer<typeof serviceFormSchema>) {
+
+    // manually check whether we have at least one service item
+    if (serviceItems.length === 0) {
+      setNoServiceItem(true)
+      return;
+    }
+
     let uploadedImageUrl = values.imageUrl;
 
     if (files.length > 0) {
@@ -64,16 +78,15 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
       uploadedImageUrl = uploadedImages[0].url
     }
 
-
-    console.log('Create service');
-
-    
     if (type === 'Create') {
 
-      
       try {
         const newService = await createService({
-          service: { ...values, imageUrl: uploadedImageUrl },
+          service: {
+            ...values,
+            servicesOffered: serviceItems,
+            imageUrl: uploadedImageUrl
+          },
           userId,
           path: '/profile'
         })
@@ -118,7 +131,43 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
   useEffect(() => {
     setServiceItems(parentServiceItems || [])
   }, [parentServiceItems])
-  
+
+
+  // delete service item
+  const deleteServiceItem = (index: number) => {
+    setAlertOpen(true);
+    setDeleteItem(index);
+  }
+
+  // delete alert
+  const DeleteAlert = () => {
+    return (
+      <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
+        <AlertDialogContent className='text-black bg-primary'>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your service item.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDelete}>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    )
+  }
+
+  // confirm delete
+  const confirmDelete = () => {
+    setAlertOpen(false);
+    const newServiceItems = serviceItems.filter((_, i) => i !== deleteItem);
+    setServiceItems(newServiceItems);
+    parentSetServiceItems(newServiceItems)
+  }
+
+  // confetti props
   const confettiProps = typeof window !== 'undefined' ? {
     width: window.innerWidth,
     height: window.innerHeight
@@ -205,16 +254,28 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
                   <TableHead className='w-[30%]'>Service Item</TableHead>
                   <TableHead className='w-[50%]'>Description</TableHead>
                   <TableHead className="text-right">Price</TableHead>
+                  <TableHead></TableHead>
+                  <TableHead></TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {serviceItems.map((serviceItem, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{serviceItem.title}</TableCell>
-                    <TableCell>{serviceItem.description}</TableCell>
-                    <TableCell className="text-right">{serviceItem.price ? "CA$" + serviceItem.price : "n/a"}</TableCell>
+                {serviceItems.length > 0 ? (
+                  serviceItems.map((serviceItem, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{serviceItem.title}</TableCell>
+                      <TableCell>{serviceItem.description}</TableCell>
+                      <TableCell className="text-right">{serviceItem.price ? "CA$" + serviceItem.price : "n/a"}</TableCell>
+                      <TableCell className="cursor-pointer" onClick={() => deleteServiceItem(index)}><MdOutlineModeEdit /></TableCell>
+                      <TableCell className="cursor-pointer" onClick={() => deleteServiceItem(index)}><MdDelete /></TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={3} className={`${noServiceItem ? "text-red-500" : "text-black/70"}`}>
+                      No service items provided.
+                    </TableCell>
                   </TableRow>
-                ))}
+                )}
               </TableBody>
             </Table>
           </div>
@@ -279,6 +340,10 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
             ) : `${type} `}
           </Button>
 
+
+          {/* Delete Alert */}
+          <DeleteAlert />
+
           {/* successful confetti */}
           <Modal
             opened={opened}
@@ -322,7 +387,7 @@ const ServiceForm = ({ userId, type, service, serviceId, serviceItems: parentSer
           </Modal>
         </form>
       </Form>
-    </section>
+    </section >
   )
 }
 

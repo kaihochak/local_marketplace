@@ -12,10 +12,8 @@ export const serviceFormSchema = z.object({
   location: z.string().min(3, 'Location must be at least 3 characters').max(400, 'Location must be less than 400 characters'),
   imageUrl: z.union([z.string().url(), z.literal("")]),
   categoryId: z.string().min(1, 'Category is required'),
-  // serviceItems: z.array(serviceItemSchema).min(1, 'At least one service item is required'),
-  price: z.string().min(1, 'Price must be at least 0').max(400, 'Price must be less than 400 characters'),
-  isFree: z.boolean(),
   url: z.union([z.string().url(), z.literal("")]),
+  // servicesOffered: z.array(serviceItemSchema).min(1, 'At least one service item is required'),
 })
 
 export const reviewFormSchema = z.object({
