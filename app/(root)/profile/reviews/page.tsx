@@ -19,6 +19,7 @@ const ProfileReviews = () => {
           itemType='review'
           items={reviews}
           hasButton={true}
+          link={'reviews/edit'}
         />
       </div>
     </div>
