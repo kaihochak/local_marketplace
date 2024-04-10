@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { BookmarkEmpty } from '@/public/assets/icons/BookmarkEmpty';
 import { Clock } from '@/public/assets/icons/Clock';
 import { StarEmpty } from '@/public/assets/icons/StarEmpty';
-import { ServiceItem } from '@/lib/database/models/service.model';
+import { IService } from '@/lib/database/models/service.model';
 import Link from 'next/link';
 import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
@@ -19,7 +19,7 @@ import { useDisclosure } from '@mantine/hooks';
 type CardProps = {
     direction?: 'horizontal' | 'vertical'
     itemType?: 'service' | 'reservation' | 'review'
-    item?: ServiceItem | RatingReviewItem | ReservationItem
+    item?: IService | RatingReviewItem | ReservationItem
     hasButton?: boolean
     bookmarked?: boolean
 };
@@ -32,7 +32,7 @@ const Card = ({
     bookmarked,
 }: CardProps) => {
 
-    let service = itemType === "service" ? item as ServiceItem : null;
+    let service = itemType === "service" ? item as IService : null;
     let bookmarkedItem = itemType === "service" ? service?.bookmarked : null;
     let reservation = itemType === "reservation" ? item as ReservationItem : null;
     let review = itemType === "review" ? item as RatingReviewItem : null;

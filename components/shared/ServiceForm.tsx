@@ -42,12 +42,12 @@ type ServiceFormProps = {
   setIsModalOpen: (isOpen: boolean) => void
 }
 
-const ServiceForm = ({ 
+const ServiceForm = ({
   userId, type, service, serviceId, setIsModalOpen,
   serviceItem: parentServiceItem,
-  serviceItems: parentServiceItems, 
+  serviceItems: parentServiceItems,
   setServiceItems: parentSetServiceItems }: ServiceFormProps) => {
-    
+
   const [files, setFiles] = useState<File[]>([])
   const initialValues = service && type === 'Update'
     ? { ...service, servicesOffered: Array.from(service.servicesOffered.values()) }
@@ -56,7 +56,7 @@ const ServiceForm = ({
   const [alertOpen, setAlertOpen] = useState(false) // for alert dialog
   const [deleteItem, setDeleteItem] = useState<number>(0) // for deleting service item
   const { startUpload } = useUploadThing('imageUploader')
-  const [newServiceId, setNewServiceId] = useState<string | null>(null)
+  const [newService, setNewService] = useState<IService>(null)
   const [serviceItems, setServiceItems] = useState<ServiceItem[]>([])
   const [noServiceItem, setNoServiceItem] = useState<boolean>(false)
 
@@ -86,7 +86,7 @@ const ServiceForm = ({
     if (type === 'Create') {
 
       try {
-        const newService = await createService({
+        const createdService = await createService({
           service: {
             ...values,
             servicesOffered: serviceItems,
@@ -96,9 +96,9 @@ const ServiceForm = ({
           path: '/profile'
         })
 
-        if (newService) {
+        if (createdService) {
           form.reset();
-          setNewServiceId(newService._id);
+          setNewService(createdService);
           open();
         }
       } catch (error) {
@@ -172,11 +172,50 @@ const ServiceForm = ({
     parentSetServiceItems(newServiceItems)
   }
 
-  // confetti props
-  const confettiProps = typeof window !== 'undefined' ? {
-    width: window.innerWidth,
-    height: window.innerHeight
-  } : {};
+
+  /***********************************************************************************
+   * Success Modal
+   **********************************************************************************/
+
+  const SuccessModal = () => {
+    // confetti props
+    const confettiProps = typeof window !== 'undefined' ? {
+      width: window.innerWidth,
+      height: window.innerHeight
+    } : {};
+
+    return (
+      <Modal
+        opened={opened}
+        onClose={close}
+        title=""
+        transitionProps={{ transition: 'fade', duration: 200 }}
+      >
+        <div className='flex-center'>
+          <h1 className="h4-medium text-center">Service created successfully!</h1>
+          <Link href={`/services/${newService?._id}`}>
+            <Button variant="default">View Service</Button>
+          </Link>
+        </div>
+
+        {/* show confetti */}
+        <Confetti
+          {...confettiProps}
+          numberOfPieces={500}
+          recycle={false}
+          initialVelocityY={10}
+          initialVelocityX={10}
+          colors={['#f44336', '#2196f3', '#ffeb3b', '#4caf50']}
+        />
+
+      </Modal>
+
+    )
+  }
+
+  /***********************************************************************************
+   * Render
+   **********************************************************************************/
 
   return (
     <section className="px-4 pt-2 md:px-20">
@@ -349,47 +388,9 @@ const ServiceForm = ({
           {/* Delete Alert */}
           <DeleteAlert />
 
-          {/* successful confetti */}
-          <Modal
-            opened={opened}
-            onClose={close}
-            title=""
-            transitionProps={{ transition: 'fade', duration: 200 }}
-          >
+          {/* Successful Modal */}
+          <SuccessModal />
 
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="mt-5 text-3xl font-semibold text-left">Service Created Successfully!</h1>
-
-              <div className="my-20">
-                {/* Display the card of the new service */}
-                <Card
-                  direction="vertical"
-                  itemType="service"
-                  item={dummyServices[0]}
-                  hasButton={false}
-                />
-              </div>
-
-              {/* Find the service under profile > services */}
-              <h3 className="mt-5 text-3xl font-semibold text-center">
-                Find the service under <br />
-                <Link href={`/services/${newServiceId}`} className="underline text-accent-light">
-                  profile {'>'} services
-                </Link>
-              </h3>
-            </div>
-
-            {/* show confetti */}
-            <Confetti
-              {...confettiProps}
-              numberOfPieces={500}
-              recycle={false}
-              initialVelocityY={10}
-              initialVelocityX={10}
-              colors={['#f44336', '#2196f3', '#ffeb3b', '#4caf50']}
-            />
-
-          </Modal>
         </form>
       </Form>
     </section >

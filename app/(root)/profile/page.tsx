@@ -51,7 +51,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           {/* name */}
           <h3 className='h3-bold text-center sm:text-left my-2'>{profile.firstName} {profile.lastName}</h3>
           <h3 className='text-center sm:text-left font-thin text-xl'>@{profile.username}</h3>
-          <h3 className='text-center sm:text-left font-thin text-xl'>{profile.location}, Since {profile.createdAt.slice(0, 4)}</h3>
+          <h3 className='text-center sm:text-left font-thin text-xl'>{profile.location}, since {profile.createdAt.slice(0, 4)}</h3>
         </div>
       </section>
 

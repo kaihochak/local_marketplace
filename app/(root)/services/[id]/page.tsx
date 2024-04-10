@@ -13,12 +13,11 @@ import ServiceReviews from '@/components/shared/ServiceReviews';
 import CommonHeader from '@/components/shared/CommonHeader';
 import { Slash } from "lucide-react"
 import ServiceAndReservation from './ServiceAndReservation';
-// import { getServiceById } from '@/lib/actions/service.actions';
+import { getServiceById } from '@/lib/actions/service.actions';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
-  // const service = await getServiceById(id);
-  const service = dummyServices.find((service) => service?._id === id);
+  const service = await getServiceById(id);
 
   const BreadcrumbBar = () => {
     return (

@@ -18,31 +18,32 @@ export const dummyServices: any[] = [
             email: "chrisdojacob@gmail.com",
             website: "chrisd.com",
         },
-        servicesOffered: {
-            lesson1: {
-                title: "Guitar Tutor",
-                price: "100",
+        servicesOffered: [
+            {
+                id: "1",
+                title: "Beginner Guitar Lessons",
+                description: "Learn the basics of guitar playing, including chords, strumming, and fingerpicking.",
+                price: "50",
             },
-            lesson2: {
-                title: "Guitar Tutor",
-                price: "200",
+            {
+                id: "2",
+                title: "Intermediate Guitar Lessons",
+                description: "Build on your existing guitar skills with more advanced techniques and music theory.",
+                price: "60",
             },
-            lesson3: {
-                title: "Guitar Tutor",
-                price: "300",
-            },
-            lesson4: {
-                title: "Guitar Tutor",
-                price: "400",
-            },
-        },
+            {
+                id: "3",
+                title: "Advanced Guitar Lessons",
+                description: "Master complex guitar techniques, including soloing, improvisation, and songwriting.",
+                price: "70",
+            }
+        ],
         averageRating: 3.2,
         totalReviews: 12,
         ratingReviewIDs: [],
         category: { _id: "66139dbbef3d91706ad1d17e", name: "Tutor" },
         bookmarked: true,
     },
-
     {
         _id: "2",
         title: "Cooking Classes",
@@ -60,24 +61,80 @@ export const dummyServices: any[] = [
             email: "julia@culinarydelights.com",
             website: "culinarydelights.com",
         },
-        servicesOffered: {
-            lesson1: {
-                title: "Italian Cuisine Masterclass",
+        servicesOffered: [
+            {
+                id: "1",
+                title: "Italian Cuisine",
+                description: "Learn to make classic Italian dishes, including pasta, pizza, and risotto.",
+                price: "60",
+            },
+            {
+                id: "2",
+                title: "French Pastry",
+                description: "Master the art of French pastry making, from croissants to macarons.",
+                price: "70",
+            },
+            {
+                id: "3",
+                title: "Asian Fusion",
+                description: "Explore the flavors of Asia with dishes from Japan, China, and Thailand.",
                 price: "80",
             },
-            lesson2: {
-                title: "Asian Fusion Cooking",
-                price: "85",
-            },
-            lesson3: {
-                title: "French Pastry Workshop",
+            {
+                id: "4",
+                title: "Vegan Cooking",
+                description: "Discover delicious plant-based recipes that are healthy and sustainable.",
                 price: "90",
             },
-            lesson4: {
-                title: "Vegetarian Cooking Essentials",
+            {
+                id: "5",
+                title: "Baking Basics",
+                description: "Learn the fundamentals of baking, from cakes and cookies to breads and pastries.",
+                price: "50",
+            },
+            {
+                id: "6",
+                title: "Healthy Eating",
+                description: "Get tips and recipes for healthy eating, including meal planning and nutrition advice.",
+                price: "55",
+            },
+            {
+                id: "7",
+                title: "Kids Cooking",
+                description: "Introduce your kids to the joys of cooking with fun and easy recipes they'll love.",
+                price: "45",
+            },
+            {
+                id: "8",
+                title: "Date Night Dinners",
+                description: "Plan a romantic dinner at home with our special date night recipes and tips.",
+                price: "65",
+            },
+            {
+                id: "9",
+                title: "Holiday Cooking",
+                description: "Celebrate the holidays with festive recipes for Thanksgiving, Christmas, and more.",
                 price: "75",
             },
-        },
+            {
+                id: "10",
+                title: "Cooking Basics",
+                description: "Learn essential cooking techniques, knife skills, and kitchen tips for beginners.",
+                price: "40",
+            },
+            {
+                id: "11",
+                title: "Meal Prep",
+                description: "Simplify your week with meal prep recipes and tips for healthy and delicious meals.",
+                price: "85",
+            },
+            {
+                id: "12",
+                title: "Dessert Making",
+                description: "Indulge your sweet tooth with decadent dessert recipes, from cakes and pies to cookies and ice cream.",
+                price: "65",
+            },
+        ],
         averageRating: 4.9,
         totalReviews: 30,
         ratingReviewIDs: [],
@@ -101,24 +158,7 @@ export const dummyServices: any[] = [
             email: "max@fitforyou.com",
             website: "fitforyou.com",
         },
-        servicesOffered: {
-            lesson1: {
-                title: "Strength Training",
-                price: "70",
-            },
-            lesson2: {
-                title: "HIIT Workouts",
-                price: "75",
-            },
-            lesson3: {
-                title: "Weight Loss Programs",
-                price: "80",
-            },
-            lesson4: {
-                title: "Functional Fitness Training",
-                price: "85",
-            },
-        },
+        servicesOffered: [],
         averageRating: 4.7,
         totalReviews: 28,
         ratingReviewIDs: [],
@@ -142,24 +182,7 @@ export const dummyServices: any[] = [
             email: "sophie@languagemasters.com",
             website: "languagemasters.com",
         },
-        servicesOffered: {
-            lesson1: {
-                title: "Beginner Spanish",
-                price: "40",
-            },
-            lesson2: {
-                title: "Intermediate French",
-                price: "50",
-            },
-            lesson3: {
-                title: "Advanced German",
-                price: "60",
-            },
-            lesson4: {
-                title: "Conversation Practice",
-                price: "45",
-            },
-        },
+        servicesOffered: [],
         averageRating: 4.6,
         totalReviews: 22,
         ratingReviewIDs: [],
@@ -183,24 +206,7 @@ export const dummyServices: any[] = [
             email: "alex@shuttermasters.com",
             website: "shuttermasters.com",
         },
-        servicesOffered: {
-            lesson1: {
-                title: "Introduction to Photography",
-                price: "60",
-            },
-            lesson2: {
-                title: "Portrait Photography",
-                price: "70",
-            },
-            lesson3: {
-                title: "Landscape Photography",
-                price: "75",
-            },
-            lesson4: {
-                title: "Photo Editing Techniques",
-                price: "80",
-            },
-        },
+        servicesOffered: [],
         averageRating: 4.9,
         totalReviews: 35,
         ratingReviewIDs: [],

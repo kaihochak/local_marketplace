@@ -9,32 +9,38 @@ import { createCategory } from '@/lib/actions/category.actions';
 import { createUser } from '@/lib/actions/user.actions';
 import { createService } from '@/lib/actions/service.actions';
 
-import { dummyCategories } from '@/constants/dummyCategories';
-import { dummyUsers } from '@/constants/dummyUsersSeeding';
-import { dummyServices } from '@/constants/dummyServicesSeeding';
+// import { dummyCategories } from '@/constants/dummyCategories';
+// import { dummyUsers } from '@/constants/dummyUsersSeeding';
+import { dummyServices } from '@/constants/dummyServices';
 
 // main function
 export async function POST(req: Request) {
     console.log('Seeding database');
 
     // Categories
-    await deleteAllCategories();
-    await createAllCategories(dummyCategories);
+    // await deleteAllCategories();
+    // await createAllCategories(dummyCategories);
 
     // Users
-    await deleteAllUsers();
-    await createAllUsers(dummyUsers);
+    // await deleteAllUsers();
+    // await createAllUsers(dummyUsers);
 
     // Services
     await deleteAllServices();
     await createAllServices(dummyServices);
 
+    // Reviews
+
+
+    // Reservations
+
+
     return NextResponse.json({ message: 'OK' });
 }
 
-/**
+/*******************************************************************
  *  Users
- */
+ *******************************************************************/
 const createAllUsers = async (dummyUsers: any[]) => {
     console.log('Creating all users');
 
@@ -50,7 +56,6 @@ const deleteAllUsers = async () => {
     console.log('Deleting all users except for the first user');
     // const firstUser = getUserById('65fe1d847fd96b71a061aaff');
 
-
     try {
         await connectToDatabase();
         // delete all users except for the first user
@@ -65,9 +70,9 @@ const deleteAllUsers = async () => {
     }
 }
 
-/**
- * Services
- */
+/*******************************************************************
+ *  Services
+ *******************************************************************/
 const createAllServices = async (dummyServices: any[]) => {
     console.log('Creating all services');
     // create services
@@ -93,9 +98,9 @@ const deleteAllServices = async () => {
     }
 }
 
-/**
+/*******************************************************************
  *  Categories
- */
+ *******************************************************************/
 const createAllCategories = async (dummyCategories: any[]) => {
     console.log('Creating all categories');
     // create categories

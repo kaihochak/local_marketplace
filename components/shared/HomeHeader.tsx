@@ -8,6 +8,7 @@ import ProfileButton from "./ProfileButton"
 import { Message } from "@/public/assets/icons/Message"
 import { Add } from "@/public/assets/icons/Add"
 import { useMediaQuery } from "@mantine/hooks"
+import SeedButton from "@/lib/SeedButton"
 
 const HomeHeader = () => {
 
@@ -30,6 +31,9 @@ const HomeHeader = () => {
                         <div>LOCAL MARKETPLACE</div>
                     </div>
                 </Link>
+
+                 {/* Seeding Button */}
+                <SeedButton />
 
                 {/* Signin or "Create & Profile" */}
                 <div className="flex gap-3">
