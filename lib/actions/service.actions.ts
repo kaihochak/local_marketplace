@@ -8,14 +8,7 @@ import User from '@/lib/database/models/user.model'
 import Category from '@/lib/database/models/category.model'
 import { handleError } from '@/lib/utils'
 
-import {
-  CreateServiceParams,
-  UpdateServiceParams,
-  DeleteServiceParams,
-  GetAllServicesParams,
-  GetServicesByUserParams,
-  GetRelatedServicesByCategoryParams,
-} from '@/types'
+import { CreateServiceParams, UpdateServiceParams, DeleteServiceParams, GetAllServicesParams, GetServicesByUserParams, GetRelatedServicesByCategoryParams } from '@/types'
 
 const getCategoryByName = async (name: string) => {
   return Category.findOne({ name: { $regex: name, $options: 'i' } })
@@ -33,7 +26,6 @@ export async function createService({ userId, service, path}: CreateServiceParam
 
   console.log('createService', userId, service, path);
   
-
   try {
     await connectToDatabase()
 

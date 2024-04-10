@@ -6,11 +6,11 @@ import User from '@/lib/database/models/user.model';
 import Service from '@/lib/database/models/service.model';
 
 import { createCategory } from '@/lib/actions/category.actions';
-import { createUser } from '@/lib/actions/user.actions';
+import { createUser, getUserById } from '@/lib/actions/user.actions';
 import { createService } from '@/lib/actions/service.actions';
 
-// import { dummyCategories } from '@/constants/dummyCategories';
-// import { dummyUsers } from '@/constants/dummyUsersSeeding';
+import { dummyCategories } from '@/constants/dummyCategories';
+import { dummyUsers } from '@/constants/dummyUsers';
 import { dummyServices } from '@/constants/dummyServices';
 
 // main function
@@ -18,16 +18,13 @@ export async function POST(req: Request) {
     console.log('Seeding database');
 
     // Categories
-    // await deleteAllCategories();
-    // await createAllCategories(dummyCategories);
+    await deleteAllCategories();
+    await createAllCategories(dummyCategories);
 
-    // Users
-    // await deleteAllUsers();
-    // await createAllUsers(dummyUsers);
-
-    // Services
+    // Users & Services
+    await deleteAllUsers();
     await deleteAllServices();
-    await createAllServices(dummyServices);
+    await createAllUsers(dummyUsers);
 
     // Reviews
 
@@ -36,6 +33,35 @@ export async function POST(req: Request) {
 
 
     return NextResponse.json({ message: 'OK' });
+}
+
+/*******************************************************************
+ *  Categories
+ *******************************************************************/
+const createAllCategories = async (dummyCategories: any[]) => {
+    console.log('Creating all categories');
+    // create categories
+    for (let i = 0; i < dummyCategories.length; i++) {
+        
+        const categoryName = dummyCategories[i].name;
+        await createCategory({categoryName});
+    }
+    return NextResponse.json({ message: 'OK', category: dummyCategories });
+}
+
+const deleteAllCategories = async () => {
+    console.log('Deleting all categories');
+    try {
+        await connectToDatabase();
+        const deleted = await Category.deleteMany({});
+        if (deleted) {
+            console.log('Deleted all categories', deleted);
+        }
+        return NextResponse.json({ message: 'OK', category: deleted })
+    } catch (error) {
+        console.error('Error deleting all categories:', error);
+        return NextResponse.json({ message: 'Error', error: error })
+    }
 }
 
 /*******************************************************************
@@ -54,7 +80,6 @@ const createAllUsers = async (dummyUsers: any[]) => {
 
 const deleteAllUsers = async () => {
     console.log('Deleting all users except for the first user');
-    // const firstUser = getUserById('65fe1d847fd96b71a061aaff');
 
     try {
         await connectToDatabase();
@@ -94,35 +119,6 @@ const deleteAllServices = async () => {
         return NextResponse.json({ message: 'OK', service: deleted })
     } catch (error) {
         console.error('Error deleting all services:', error);
-        return NextResponse.json({ message: 'Error', error: error })
-    }
-}
-
-/*******************************************************************
- *  Categories
- *******************************************************************/
-const createAllCategories = async (dummyCategories: any[]) => {
-    console.log('Creating all categories');
-    // create categories
-    for (let i = 0; i < dummyCategories.length; i++) {
-        
-        const categoryName = dummyCategories[i].name;
-        await createCategory({categoryName});
-    }
-    return NextResponse.json({ message: 'OK', category: dummyCategories });
-}
-
-const deleteAllCategories = async () => {
-    console.log('Deleting all categories');
-    try {
-        await connectToDatabase();
-        const deleted = await Category.deleteMany({});
-        if (deleted) {
-            console.log('Deleted all categories', deleted);
-        }
-        return NextResponse.json({ message: 'OK', category: deleted })
-    } catch (error) {
-        console.error('Error deleting all categories:', error);
         return NextResponse.json({ message: 'Error', error: error })
     }
 }

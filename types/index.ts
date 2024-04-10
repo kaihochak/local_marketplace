@@ -1,3 +1,21 @@
+// ====== DUMMY PARAMS
+export type DummyUser = {
+  clerkId: string;
+  email: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
+  serviceIDs: string[];
+  ratingReviewIDs: string[];
+  website: string;
+  location: string;
+  contactNumber: string;
+};
+
+
+
+
 // ====== USER PARAMS
 export type CreateUserParams = {
   clerkId: string;
