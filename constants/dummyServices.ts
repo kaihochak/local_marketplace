@@ -39,7 +39,7 @@ export const dummyServices: any[] = [
         averageRating: 3.2,
         totalReviews: 12,
         ratingReviewIDs: [],
-        category: { _id: "65fe8fbcfb55d63b100a4d28", name: "Music" },
+        category: { _id: "66139dbbef3d91706ad1d17e", name: "Tutor" },
         bookmarked: true,
     },
 
@@ -81,7 +81,7 @@ export const dummyServices: any[] = [
         averageRating: 4.9,
         totalReviews: 30,
         ratingReviewIDs: [],
-        category: { _id: "65fe8fbcfb55d63b100a4d2a", name: "Food & Cooking" },
+        category: { _id: "66139dbbef3d91706ad1d17e", name: "Tutor" },
         bookmarked: true,
     },
     {
@@ -122,7 +122,7 @@ export const dummyServices: any[] = [
         averageRating: 4.7,
         totalReviews: 28,
         ratingReviewIDs: [],
-        category: { _id: "65fe8fbcfb55d63b100a4d29", name: "Fitness & Wellness" },
+        category: { _id: "65fe8fbcfb55d63b100a4d1e", name: "Personal" },
         bookmarked: true,
     },
     {
@@ -163,7 +163,7 @@ export const dummyServices: any[] = [
         averageRating: 4.6,
         totalReviews: 22,
         ratingReviewIDs: [],
-        category: { _id: "65fe8fbcfb55d63b100a4d2b", name: "Education & Tutoring" },
+        category: { _id: "65fe8fbcfb55d63b100a4d24", name: "Creative" },
         bookmarked: true,
     },
     {
@@ -204,7 +204,7 @@ export const dummyServices: any[] = [
         averageRating: 4.9,
         totalReviews: 35,
         ratingReviewIDs: [],
-        category: { _id: "65fe8fbcfb55d63b100a4d2c", name: "Arts & Crafts" },
+        category: { _id: "65fe8fbcfb55d63b100a4d24", name: "Arts & Crafts" },
         bookmarked: true,
     }
 ];

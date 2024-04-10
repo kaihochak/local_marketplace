@@ -364,17 +364,25 @@ body {
   
   /* Bottom bar */
   .bottom-bar-container {
-    @apply md:hidden z-50 w-full sticky bottom-0 bg-white px-5 py-4 rounded-t-3xl shadow-t-md;
+    @apply md:hidden z-50 w-full sticky bottom-0 bg-white px-2 py-2 rounded-t-3xl shadow-t-md; 
   }
-
+  
   .bottom-bar {
-    @apply flex justify-evenly bg-primary rounded-2xl ;
+    @apply flex justify-evenly bg-primary rounded-2xl items-center;
   }
+  
 
   .category-filter-card {
     @apply flex flex-col p-2 pb-2 gap-y-2 rounded-md cursor-pointer place-items-center justify-center;
     @apply min-w-[90px] lg:min-w-[100px] min-h-[100px] lg:min-h-[120px]  sm:items-center h-full;
   }
+  
+  /* For screen sizes equivalent to iPhone SE */
+  @media (max-width: 414px) {
+    .category-filter-card {
+      @apply min-w-[70px] min-h-[85px];
+    }
+  }  
 
   #card-prev-next-button {
     @apply absolute z-40 top-1/2 transform -translate-y-1/2 px-0 hover:px-2 rounded-md bg-grey-400/60 h-[85%];
