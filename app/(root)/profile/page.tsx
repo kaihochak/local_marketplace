@@ -10,7 +10,7 @@ import React from 'react'
 import CommonHeader from '@/components/shared/CommonHeader'
 import { Pen } from '@/public/assets/icons/Pen'
 import { auth } from '@clerk/nextjs'
-import { getUserById } from '@/lib/actions/user.actions'
+import { createUser, getUserById } from '@/lib/actions/user.actions'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
@@ -26,6 +26,8 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const reviews = profile.reviews;
 
   const services = dummyServices.filter(service => profile.serviceIDs.includes(service._id));
+  // reviews
+  console.log('profile: ', profile);  
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
@@ -47,8 +49,9 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
             />
           </div>
           {/* name */}
-          <h3 className='my-2 text-center h3-bold sm:text-left'>{profile.firstName} {profile.lastName}</h3>
-          <h3 className='text-xl font-thin text-center sm:text-left'>@{profile.username}</h3>
+          <h3 className='h3-bold text-center sm:text-left my-2'>{profile.firstName} {profile.lastName}</h3>
+          <h3 className='text-center sm:text-left font-thin text-xl'>@{profile.username}</h3>
+          <h3 className='text-center sm:text-left font-thin text-xl'>{profile.location}, Since {profile.createdAt.slice(0, 4)}</h3>
         </div>
       </section>
 
