@@ -7,7 +7,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "65fe9a5396346912b7163240",
         clerkId: "clerkId1",
-        imageUrl: "https://source.unsplash.com/plumber-fixing-pipe-AGYCFDdheQI",
+        imageUrl: "https://source.unsplash.com/man-in-orange-and-white-striped-crew-neck-shirt-UpjtG9zkqdc",
         email: "jack@plumbingforyou.com",
         website: "plumbingforyou.com",
         username: "jackplumber",
@@ -15,14 +15,14 @@ export const dummyUsers: UserItem[] = [
         lastName: "Plumber",
         location: "New York, NY",
         contactNumber: "123-456-7890",
-        serviceIDs: [],
+        serviceIDs: ["1"],
         ratingReviewIDs: [],
     },
     // Soph Cleaning
     {
         _id: "65fe9a5396346912b7163242",
         clerkId: "clerkId2",
-        imageUrl: "https://source.unsplash.com/house-cleaning-services-NI8AefHBKbY",
+        imageUrl: "https://source.unsplash.com/smiling-woman-sitting-in-vehicle-OH3AKVadoxE",
         email: "sophia@cleaningforyou.com",
         website: "cleaningforyou.com",
         username: "sophcleaner",
@@ -30,14 +30,14 @@ export const dummyUsers: UserItem[] = [
         lastName: "Cleaner",
         location: "Chicago, IL",
         contactNumber: "345-678-9012",
-        serviceIDs: [],
+        serviceIDs: ["2"],
         ratingReviewIDs: [],
     },
     // Noah Lawns
     {
         _id: "65fe9a5396346912b7163243",
         clerkId: "clerkId3",
-        imageUrl: "https://source.unsplash.com/lawn-mowing-services-nzj3vSnjJnM",
+        imageUrl: "https://source.unsplash.com/man-in-white-crew-neck-t-shirt-with-tattoo-on-arm-nMv8DMdM4Z8",
         email: "noah@lawnforyou.com",
         website: "lawnforyou.com",
         username: "noahlawn",
@@ -45,14 +45,14 @@ export const dummyUsers: UserItem[] = [
         lastName: "Lawn",
         location: "Houston, TX",
         contactNumber: "456-789-0123",
-        serviceIDs: [],
+        serviceIDs: ["3"],
         ratingReviewIDs: [],
     },
     // Home Security System
     {
         _id: "65fe9a5396346912b7163244",
         clerkId: "clerkId4",
-        imageUrl: "https://source.unsplash.com/home-security-system-installation-MNzO4aDZPd4",
+        imageUrl: "https://source.unsplash.com/smiling-woman-in-white-tank-top-mx-ukEhDpHo",
         contactNumber: "567-890-1234",
         email: "olivia@securityforyou.com",
         website: "securityforyou.com",
@@ -60,14 +60,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Olivia",
         lastName: "Security",
         location: "Seattle, WA",
-        serviceIDs: [],
+        serviceIDs: ["4"],
         ratingReviewIDs: [],
     },
     // Home Organizer
     {
         _id: "65fe9a5396346912b7163245",
         clerkId: "clerkId5",
-        imageUrl: "https://source.unsplash.com/home-organizing-services-3XyZxQ3V9gY",
+        imageUrl: "https://source.unsplash.com/man-taking-selfie-tidSLv-UaNs",
         contactNumber: "678-901-2345",
         email: "liam@organizingforyou.com",
         website: "organizingforyou.com",
@@ -75,7 +75,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Liam",
         lastName: "Organizer",
         location: "San Francisco, CA",
-        serviceIDs: [],
+        serviceIDs: ["5"],
         ratingReviewIDs: [],
     },
 
@@ -92,14 +92,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Max",
         lastName: "Fit",
         location: "Miami, FL",
-        serviceIDs: [],
+        serviceIDs: ["6"],
         ratingReviewIDs: [],
     },
     // Yoga Instructor
     {
         _id: "65fe9a5396346912b7163256",
         clerkId: "clerkId7",
-        imageUrl: "https://source.unsplash.com/woman-in-yoga-pose-beside-body-of-water-Y7H4BMB0gwg",
+        imageUrl: "https://source.unsplash.com/a-woman-holding-a-piece-of-luggage-o2hPCfwPPkw",
         contactNumber: "456-789-1230",
         email: "ava@yogaforyou.com",
         website: "yogaforyou.com",
@@ -107,14 +107,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Ava",
         lastName: "Yogi",
         location: "Los Angeles, CA",
-        serviceIDs: [],
+        serviceIDs: ["7"],
         ratingReviewIDs: [],
     },
     // Personal Nutritionist
     {
         _id: "65fe9a5396346912b7163257",
         clerkId: "clerkId8",
-        imageUrl: "https://source.unsplash.com/woman-in-blue-long-sleeved-shirt-wearing-eyeglasses-b6odc9GFyDY",
+        imageUrl: "https://source.unsplash.com/woman-in-black-long-sleeve-shirt-sitting-on-white-couch-n1B6ftPB5Eg",
         contactNumber: "789-123-4560",
         email: "emma@nutritionforyou.com",
         website: "nutritionforyou.com",
@@ -122,14 +122,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Emma",
         lastName: "Nutri",
         location: "New York, NY",
-        serviceIDs: [],
+        serviceIDs: ["8"],
         ratingReviewIDs: [],
     },
     // Life Coach
     {
         _id: "65fe9a5396346912b7163258",
         clerkId: "clerkId9",
-        imageUrl: "https://source.unsplash.com/man-in-blue-shirt-sitting-on-chair-beside-table-Z4wN9ns-WIY",
+        imageUrl: "https://source.unsplash.com/woman-with-red-lipstick-and-black-mascara-7tz7I7naQ8c",
         contactNumber: "234-567-8901",
         email: "ethan@lifecoaching.com",
         website: "lifecoaching.com",
@@ -137,7 +137,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Ethan",
         lastName: "Coach",
         location: "Chicago, IL",
-        serviceIDs: [],
+        serviceIDs: ["9"],
         ratingReviewIDs: [],
     },
     // Beauty Consultant
@@ -152,14 +152,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Olivia",
         lastName: "Beauty",
         location: "San Francisco, CA",
-        serviceIDs: [],
+        serviceIDs: ["10"],
         ratingReviewIDs: [],
     },
     // Finance Advisor
     {
         _id: "65fe9a5396346912b7163260",
         clerkId: "clerkId11",
-        imageUrl: "https://source.unsplash.com/man-in-black-suit-6QlHLVg9u7o",
+        imageUrl: "https://source.unsplash.com/man-wearing-black-and-teal-dress-suit-standing-near-gray-wall-h5cd51KXmRQ",
         contactNumber: "456-789-0123",
         email: "noah@financeforyou.com",
         website: "financeforyou.com",
@@ -167,7 +167,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Noah",
         lastName: "Finance",
         location: "Houston, TX",
-        serviceIDs: [],
+        serviceIDs: ["11"],
         ratingReviewIDs: [],
     },
 
@@ -176,7 +176,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "65fe9a5396346912b7163290",
         clerkId: "clerkId12",
-        imageUrl: "https://source.unsplash.com/editor-editing-texts-on-laptop-gfSUSlVmtC8",
+        imageUrl: "https://source.unsplash.com/woman-in-green-shirt-sitting-in-front-of-computer-64YrPKiguAE",
         contactNumber: "123-456-7890",
         email: "emily@editingforyou.com",
         website: "editingforyou.com",
@@ -184,14 +184,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Emily",
         lastName: "Editor",
         location: "New York, NY",
-        serviceIDs: [],
+        serviceIDs: ["12"],
         ratingReviewIDs: [],
     },
     // IT Support by David
     {
         _id: "65fe9a5396346912b7163291",
         clerkId: "clerkId13",
-        imageUrl: "https://source.unsplash.com/it-support-specialist-at-work-37Y2h5kQxXg",
+        imageUrl: "https://source.unsplash.com/man-in-gray-button-up-shirt-EZ4TYgXPNWk",
         contactNumber: "234-567-8901",
         email: "david@itsupportforyou.com",
         website: "itsupportforyou.com",
@@ -199,14 +199,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "David",
         lastName: "IT",
         location: "Los Angeles, CA",
-        serviceIDs: [],
+        serviceIDs: ["13"],
         ratingReviewIDs: [],
     },
     // Michael Developments
     {
         _id: "65fe9a5396346912b7163292",
         clerkId: "clerkId14",
-        imageUrl: "https://source.unsplash.com/developer-at-work-PrwC08Um7X4",
+        imageUrl: "https://source.unsplash.com/a-man-in-blue-overalls-working-on-cement-nZZfP9QiQ6w",
         contactNumber: "345-678-9012",
         email: "michael@developmentforyou.com",
         website: "developmentforyou.com",
@@ -214,14 +214,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Michael",
         lastName: "Developer",
         location: "Chicago, IL",
-        serviceIDs: [],
+        serviceIDs: ["14"],
         ratingReviewIDs: [],
     },
     // Ethan Cyber Consultancy
     {
         _id: "65fe9a5396346912b7163294",
         clerkId: "clerkId15",
-        imageUrl: "https://source.unsplash.com/cybersecurity-consultant-at-work-wbuM2D2YBSw",
+        imageUrl: "https://source.unsplash.com/man-wearing-headphones-while-sitting-on-chair-in-front-of-macbook-4-EeTnaC1S4",
         contactNumber: "567-890-1234",
         email: "ethan@cybersecurityforyou.com",
         website: "cybersecurityforyou.com",
@@ -229,14 +229,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Ethan",
         lastName: "Cybersecurity",
         location: "Houston, TX",
-        serviceIDs: [],
+        serviceIDs: ["15"],
         ratingReviewIDs: [],
     },
     // Cloud Solutions and Aid
     {
         _id: "65fe9a5396346912b7163295",
         clerkId: "clerkId16",
-        imageUrl: "https://source.unsplash.com/cloud-solutions-architecture-f8l4VCfCQ3c",
+        imageUrl: "https://source.unsplash.com/smiling-man-using-laptop-computer-while-sitting-on-black-leather-sofa-LCcFI_26diA",
         contactNumber: "678-901-2345",
         email: "aiden@cloudsolutionsforyou.com",
         website: "cloudsolutionsforyou.com",
@@ -244,14 +244,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Aiden",
         lastName: "Architect",
         location: "Boston, MA",
-        serviceIDs: [],
+        serviceIDs: ["16"],
         ratingReviewIDs: [],
     },
     // Analysis Freelance Soph
     {
         _id: "65fe9a5396346912b7163293",
         clerkId: "clerkId17",
-        imageUrl: "https://source.unsplash.com/data-analysis-mltF7xsLvAI",
+        imageUrl: "https://source.unsplash.com/shallow-focus-photo-of-woman-in-gray-jacket-0Zx1bDv5BNY",
         contactNumber: "456-789-0123",
         email: "sophia@dataanalysisforyou.com",
         website: "dataanalysisforyou.com",
@@ -259,7 +259,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Sophia",
         lastName: "Analyst",
         location: "San Diego, CA",
-        serviceIDs: [],
+        serviceIDs: ["17"],
         ratingReviewIDs: [],
     },
 
@@ -268,7 +268,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "65fe9a5396346912b7163296",
         clerkId: "clerkId18",
-        imageUrl: "https://source.unsplash.com/lawyer-legal-advice-Xp5gUHjTprg",
+        imageUrl: "https://source.unsplash.com/five-person-by-table-watching-turned-on-white-imac-vbxyFxlgpjM",
         contactNumber: "789-012-3456",
         email: "olivia@legaladviceforyou.com",
         website: "legaladviceforyou.com",
@@ -276,14 +276,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Olivia",
         lastName: "Legal",
         location: "Washington, DC",
-        serviceIDs: [],
+        serviceIDs: ["18"],
         ratingReviewIDs: [],
     },
     // Elijah Business
     {
         _id: "65fe9a5396346912b7163297",
         clerkId: "clerkId19",
-        imageUrl: "https://source.unsplash.com/business-consulting-at-work-I4I-M8P56e8",
+        imageUrl: "https://source.unsplash.com/man-sitting-on-chair-E9PFbdhZmus",
         contactNumber: "890-123-4567",
         email: "elijah@businessconsultingforyou.com",
         website: "businessconsultingforyou.com",
@@ -291,14 +291,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Elijah",
         lastName: "Consultant",
         location: "San Francisco, CA",
-        serviceIDs: [],
+        serviceIDs: ["19"],
         ratingReviewIDs: [],
     },
     // Ava Fiscal
     {
         _id: "65fe9a5396346912b7163298",
         clerkId: "clerkId20",
-        imageUrl: "https://source.unsplash.com/financial-advisor-talking-to-client-Ox1Hc4-0twM",
+        imageUrl: "https://source.unsplash.com/a-person-holding-a-laptop-7mBictB_urk",
         contactNumber: "901-234-5678",
         email: "ava@financialadvisorforyou.com",
         website: "financialadvisorforyou.com",
@@ -306,14 +306,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Ava",
         lastName: "Financial",
         location: "New York, NY",
-        serviceIDs: [],
+        serviceIDs: ["20"],
         ratingReviewIDs: [],
     },
     // Marketing by Liam
     {
         _id: "65fe9a5396346912b7163299",
         clerkId: "clerkId21",
-        imageUrl: "https://source.unsplash.com/marketing-consulting-at-work-ZdplXik2dpo",
+        imageUrl: "https://source.unsplash.com/a-man-talking-on-a-cell-phone-dxnEyQszbUo",
         contactNumber: "012-345-6789",
         email: "liam@marketingconsultingforyou.com",
         website: "marketingconsultingforyou.com",
@@ -321,14 +321,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Liam",
         lastName: "Marketing",
         location: "Chicago, IL",
-        serviceIDs: [],
+        serviceIDs: ["21"],
         ratingReviewIDs: [],
     },
     // Mia's Advisory
     {
         _id: "65fe9a5396346912b7163300",
         clerkId: "clerkId22",
-        imageUrl: "https://source.unsplash.com/investment-advisor-at-work-XkwF7y-LH38",
+        imageUrl: "https://source.unsplash.com/a-woman-and-a-girl-looking-at-a-laptop-coCGW4SsxX4",
         contactNumber: "345-678-9012",
         email: "mia@investmentadvisorforyou.com",
         website: "investmentadvisorforyou.com",
@@ -336,14 +336,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Mia",
         lastName: "Investment",
         location: "Los Angeles, CA",
-        serviceIDs: [],
+        serviceIDs: ["22"],
         ratingReviewIDs: [],
     },
     // HR Consultancy 
     {
         _id: "65fe9a5396346912b7163301",
         clerkId: "clerkId23",
-        imageUrl: "https://source.unsplash.com/human-resources-consulting-at-work-41mBBXyr9Xo",
+        imageUrl: "https://source.unsplash.com/man-in-black-dress-shirt-K2sjNLfJpc4",
         contactNumber: "456-789-0123",
         email: "noah@hrconsultingforyou.com",
         website: "hrconsultingforyou.com",
@@ -351,7 +351,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Noah",
         lastName: "HR",
         location: "Seattle, WA",
-        serviceIDs: [],
+        serviceIDs: ["23"],
         ratingReviewIDs: [],
     },
 
@@ -360,7 +360,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "65fe9a5396346912b7163302",
         clerkId: "clerkId24",
-        imageUrl: "https://source.unsplash.com/painting-artist",
+        imageUrl: "https://source.unsplash.com/woman-in-white-and-black-striped-long-sleeve-shirt-and-blue-denim-jeans-sitting-on-bed-aYwJeBcFEQQ",
         contactNumber: "123-456-7890",
         email: "artist@example.com",
         website: "artistwebsite.com",
@@ -368,14 +368,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Alice",
         lastName: "Artist",
         location: "New York, NY",
-        serviceIDs: [],
+        serviceIDs: ["24"],
         ratingReviewIDs: []
     },
     // Professional Photography
     {
         _id: "65fe9a5396346912b7163303",
         clerkId: "clerkId25",
-        imageUrl: "https://source.unsplash.com/photographer",
+        imageUrl: "https://source.unsplash.com/man-looking-up-bQ0TogIULCM",
         contactNumber: "234-567-8901",
         email: "photographer@example.com",
         website: "photographerwebsite.com",
@@ -383,14 +383,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Bob",
         lastName: "Photographer",
         location: "Los Angeles, CA",
-        serviceIDs: [],
+        serviceIDs: ["25"],
         ratingReviewIDs: []
     },
     // Sculpture Art
     {
         _id: "65fe9a5396346912b7163304",
         clerkId: "clerkId26",
-        imageUrl: "https://source.unsplash.com/sculpture-artist",
+        imageUrl: "https://source.unsplash.com/man-painting-ceramic-mug-mBbHdcpn3eM",
         contactNumber: "345-678-9012",
         email: "sculptor@example.com",
         website: "sculptorwebsite.com",
@@ -398,14 +398,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Charlie",
         lastName: "Sculptor",
         location: "Chicago, IL",
-        serviceIDs: [],
+        serviceIDs: ["26"],
         ratingReviewIDs: []
     },
     // Nature Photography
     {
         _id: "65fe9a5396346912b7163305",
         clerkId: "clerkId27",
-        imageUrl: "https://source.unsplash.com/nature-photographer",
+        imageUrl: "https://source.unsplash.com/man-wearing-black-sweater-and-red-knitted-cap-D6MmPV6SHqg",
         contactNumber: "456-789-0123",
         email: "naturephotographer@example.com",
         website: "naturephotographerwebsite.com",
@@ -413,14 +413,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Diana",
         lastName: "Photographer",
         location: "San Francisco, CA",
-        serviceIDs: [],
+        serviceIDs: ["27"],
         ratingReviewIDs: []
     },
     // Graphic Design
     {
         _id: "65fe9a5396346912b7163306",
         clerkId: "clerkId28",
-        imageUrl: "https://source.unsplash.com/graphic-designer",
+        imageUrl: "https://source.unsplash.com/woman-standing-near-white-petaled-flowers-MLOZe7YyVnY",
         contactNumber: "567-890-1234",
         email: "designer@example.com",
         website: "designerwebsite.com",
@@ -428,14 +428,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Emily",
         lastName: "Designer",
         location: "New York, NY",
-        serviceIDs: [],
+        serviceIDs: ["28"],
         ratingReviewIDs: []
     },
     // Music Lessons 
     {
         _id: "65fe9a5396346912b7163307",
         clerkId: "clerkId29",
-        imageUrl: "https://source.unsplash.com/music-teacher",
+        imageUrl: "https://source.unsplash.com/man-in-black-hoodie-wearing-black-framed-eyeglasses-3JmfENcL24M",
         contactNumber: "678-901-2345",
         email: "musician@example.com",
         website: "musicianwebsite.com",
@@ -443,7 +443,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Alex",
         lastName: "Musician",
         location: "Los Angeles, CA",
-        serviceIDs: [],
+        serviceIDs: ["29"],
         ratingReviewIDs: []
     },
 
@@ -452,7 +452,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "65fe9a5396346912b7163308",
         clerkId: "clerkId30",
-        imageUrl: "https://source.unsplash.com/moving-company",
+        imageUrl: "https://source.unsplash.com/smiling-man-stands-behind-delivery-truck-t0Aio60jD4Q",
         contactNumber: "789-012-3456",
         email: "movingcompany@example.com",
         website: "movingcompanywebsite.com",
@@ -460,14 +460,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Mike",
         lastName: "Mover",
         location: "Chicago, IL",
-        serviceIDs: [],
+        serviceIDs: ["30"],
         ratingReviewIDs: []
     },
     // Courier Services
     {
         _id: "65fe9a5396346912b7163309",
         clerkId: "clerkId31",
-        imageUrl: "https://source.unsplash.com/courier-delivery",
+        imageUrl: "https://source.unsplash.com/youve-got-mail-printed-pack-BPxkU4uPq6Y",
         contactNumber: "890-123-4567",
         email: "courierservice@example.com",
         website: "courierservicewebsite.com",
@@ -475,7 +475,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Emma",
         lastName: "Courier",
         location: "Houston, TX",
-        serviceIDs: [],
+        serviceIDs: ["31"],
         ratingReviewIDs: []
     },
     // Equipment Rental
@@ -490,14 +490,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Oliver",
         lastName: "Rental",
         location: "Phoenix, AZ",
-        serviceIDs: [],
+        serviceIDs: ["32"],
         ratingReviewIDs: []
     },
     // Driver Services
     {
         _id: "65fe9a5396346912b7163313",
         clerkId: "clerkId33",
-        imageUrl: "https://source.unsplash.com/driver-service",
+        imageUrl: "https://source.unsplash.com/man-using-smartphone-eiDw0oX8YQQ",
         contactNumber: "456-789-0123",
         email: "driver@example.com",
         website: "driverservice.com",
@@ -505,14 +505,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Emma",
         lastName: "Driver",
         location: "Miami, FL",
-        serviceIDs: [],
+        serviceIDs: ["33"],
         ratingReviewIDs: []
     },
     // Catering Service
     {
         _id: "65fe9a5396346912b7163319",
         clerkId: "clerkId34",
-        imageUrl: "https://source.unsplash.com/catering-service",
+        imageUrl: "https://source.unsplash.com/cooked-food-on-stainless-steel-tray-7a--Ad6mkNE",
         contactNumber: "912-345-6789",
         email: "cateringservice@example.com",
         website: "cateringserviceprovider.com",
@@ -520,14 +520,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Liam",
         lastName: "Cater",
         location: "Houston, TX",
-        serviceIDs: [],
+        serviceIDs: ["34"],
         ratingReviewIDs: []
     },
     // Pet Sitting Service
     {
         _id: "65fe9a5396346912b7163320",
         clerkId: "clerkId35",
-        imageUrl: "https://source.unsplash.com/pet-sitting-service-1",
+        imageUrl: "https://source.unsplash.com/toddler-hugging-siberian-husky-N_INAlQoO6Y",
         contactNumber: "923-456-7890",
         email: "petsitter@example.com",
         website: "petsittingserviceprovider.com",
@@ -535,7 +535,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Emma",
         lastName: "PetCare",
         location: "Chicago, IL",
-        serviceIDs: [],
+        serviceIDs: ["35"],
         ratingReviewIDs: []
     },
 
@@ -544,7 +544,7 @@ export const dummyUsers: UserItem[] = [
     {
         _id: "65fe9a5396346912b7163328",
         clerkId: "clerkId36",
-        imageUrl: "https://source.unsplash.com/application-development",
+        imageUrl: "https://source.unsplash.com/person-sitting-on-gaming-chair-while-playing-video-game-Mf23RF8xArY",
         contactNumber: "123-456-7890",
         email: "john@example.com",
         website: "example.com",
@@ -552,14 +552,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "John",
         lastName: "Doe",
         location: "New York, NY",
-        serviceIDs: ["1", "2", "3"],
+        serviceIDs: ["36"],
         ratingReviewIDs: []
     },
     // Cake Baking Workshop
     {
         _id: "65fe9a5396346912b7163329",
         clerkId: "clerkId37",
-        imageUrl: "https://source.unsplash.com/cake-baking-workshop",
+        imageUrl: "https://source.unsplash.com/a-person-kneading-dough-on-top-of-a-counter-zTG8dSz10tQ",
         contactNumber: "987-654-3210",
         email: "jane@example.com",
         website: "example.com",
@@ -567,14 +567,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Jane",
         lastName: "Smith",
         location: "Los Angeles, CA",
-        serviceIDs: ["1", "2", "3"],
+        serviceIDs: ["37"],
         ratingReviewIDs: []
     },
     // Data Science Bootcamp
     {
         _id: "65fe9a5396346912b7163327",
         clerkId: "clerkId38",
-        imageUrl: "https://source.unsplash.com/data-science-bootcamp",
+        imageUrl: "https://source.unsplash.com/three-men-sitting-on-chair-beside-tables-mpN7xjKQ_Ns",
         contactNumber: "456-789-0123",
         email: "noah@example.com",
         website: "example.com",
@@ -582,14 +582,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Noah",
         lastName: "Johnson",
         location: "San Francisco, CA",
-        serviceIDs: ["1", "2", "3"],
+        serviceIDs: ["38"],
         ratingReviewIDs: []
     },
     // Photography Workshop
     {
         _id: "65fe9a5396346912b7163326",
         clerkId: "clerkId39",
-        imageUrl: "https://source.unsplash.com/photography-workshop",
+        imageUrl: "https://source.unsplash.com/person-taking-photo-using-canon-camera-in-shallow-focus-lens-jkZs3Oi9pq0",
         contactNumber: "789-012-3456",
         email: "mike@example.com",
         website: "example.com",
@@ -597,14 +597,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Mike",
         lastName: "Williams",
         location: "Chicago, IL",
-        serviceIDs: ["1", "2", "3"],
+        serviceIDs: ["39"],
         ratingReviewIDs: []
     },
     // Web Development Bootcamp
     {
         _id: "65fe9a5396346912b7163325",
         clerkId: "clerkId40",
-        imageUrl: "https://source.unsplash.com/web-development-bootcamp",
+        imageUrl: "https://source.unsplash.com/three-person-sitting-in-front-of-table-with-laptop-computers-RDYdOvk8ats",
         contactNumber: "321-654-9870",
         email: "sara@example.com",
         website: "example.com",
@@ -612,14 +612,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Sara",
         lastName: "Brown",
         location: "Austin, TX",
-        serviceIDs: ["1", "2", "3"],
+        serviceIDs: ["40"],
         ratingReviewIDs: []
     },
     // Graphic Design Workshop
     {
         _id: "65fe9a5396346912b7163324",
         clerkId: "clerkId41",
-        imageUrl: "https://source.unsplash.com/graphic-design-workshop",
+        imageUrl: "https://source.unsplash.com/two-women-talking-while-looking-at-laptop-computer-7okkFhxrxNw",
         contactNumber: "012-345-6789",
         email: "alex@example.com",
         website: "example.com",
@@ -627,100 +627,100 @@ export const dummyUsers: UserItem[] = [
         firstName: "Alex",
         lastName: "Davis",
         location: "Seattle, WA",
-        serviceIDs: ["1", "2", "3"],
+        serviceIDs: ["41"],
         ratingReviewIDs: []
     },
 
     // Health
     // General Physician
     {
-        "_id": "65fe9a5396346912b716332a",
-        "clerkId": "clerkId42",
-        "imageUrl": "https://source.unsplash.com/general-physician",
-        "contactNumber": "123-456-7890",
-        "email": "john@example.com",
-        "website": "https://www.example.com/john",
-        "username": "john",
-        "firstName": "John",
-        "lastName": "Doe",
-        "location": "Anycity, USA",
-        "serviceIDs": [],
-        "ratingReviewIDs": []
+        _id: "65fe9a5396346912b716332a",
+        clerkId: "clerkId42",
+        imageUrl: "https://source.unsplash.com/man-sitting-on-grey-sofa-dJzJkNdp9wc",
+        contactNumber: "123-456-7890",
+        email: "john@example.com",
+        website: "https://www.example.com/john",
+        username: "john",
+        firstName: "John",
+        lastName: "Doe",
+        location: "Anycity, USA",
+        serviceIDs: ["42"],
+        ratingReviewIDs: []
     },
     // Dentist
     {
-        "_id": "65fe9a5396346912b716332b",
-        "clerkId": "clerkId43",
-        "imageUrl": "https://source.unsplash.com/dentist",
-        "contactNumber": "456-789-0123",
-        "email": "emma@example.com",
-        "website": "https://www.example.com/emma",
-        "username": "emma",
-        "firstName": "Emma",
-        "lastName": "Smith",
-        "location": "Anycity, USA",
-        "serviceIDs": [],
-        "ratingReviewIDs": []
+        _id: "65fe9a5396346912b716332b",
+        clerkId: "clerkId43",
+        imageUrl: "https://source.unsplash.com/woman-with-silver-and-yellow-hoop-earrings-8BkF0sTC6Uo",
+        contactNumber: "456-789-0123",
+        email: "emma@example.com",
+        website: "https://www.example.com/emma",
+        username: "emma",
+        firstName: "Emma",
+        lastName: "Smith",
+        location: "Anycity, USA",
+        serviceIDs: ["43"],
+        ratingReviewIDs: []
     },
     // Pediatrician
     {
-        "_id": "65fe9a5396346912b716332b",
-        "clerkId": "clerkId43",
-        "imageUrl": "https://source.unsplash.com/dentist",
-        "contactNumber": "456-789-0123",
-        "email": "emma@example.com",
-        "website": "https://www.example.com/emma",
-        "username": "emma",
-        "firstName": "Emma",
-        "lastName": "Smith",
-        "location": "Anycity, USA",
-        "serviceIDs": [],
-        "ratingReviewIDs": []
-    },
+        _id: "65fe9a5396346912b716332c",
+        clerkId: "clerkId44",
+        imageUrl: "https://source.unsplash.com/a-woman-holding-a-baby-on-top-of-a-table-DjG-B1lqT90",
+        contactNumber: "789-012-3456",
+        email: "susan@example.com",
+        website: "https://www.example.com/susan",
+        username: "susan",
+        firstName: "Susan",
+        lastName: "Johnson",
+        location: "Anycity, USA",
+        serviceIDs: ["44"],
+        ratingReviewIDs: []
+    },      
     // Optometrist
     {
-        "_id": "65fe9a5396346912b716332d",
-        "clerkId": "clerkId45",
-        "imageUrl": "https://source.unsplash.com/optometrist",
-        "contactNumber": "890-123-4567",
-        "email": "michael@example.com",
-        "website": "https://www.example.com/michael",
-        "username": "michael",
-        "firstName": "Michael",
-        "lastName": "Brown",
-        "location": "Anycity, USA",
-        "serviceIDs": [],
-        "ratingReviewIDs": []
+        _id: "65fe9a5396346912b716332d",
+        clerkId: "clerkId45",
+        imageUrl: "https://source.unsplash.com/a-close-up-of-a-pair-of-medical-equipment--OpWKFHA_yQ",
+        contactNumber: "890-123-4567",
+        email: "michael@example.com",
+        website: "https://www.example.com/michael",
+        username: "michael",
+        firstName: "Michael",
+        lastName: "Brown",
+        location: "Anycity, USA",
+        serviceIDs: ["45"],
+        ratingReviewIDs: []
     },
     // Dermatologist
     {
-        "_id": "65fe9a5396346912b716332e",
-        "clerkId": "clerkId46",
-        "imageUrl": "https://source.unsplash.com/dermatologist",
-        "contactNumber": "901-234-5678",
-        "email": "olivia@example.com",
-        "website": "https://www.example.com/olivia",
-        "username": "olivia",
-        "firstName": "Olivia",
-        "lastName": "Wilson",
-        "location": "Anycity, USA",
-        "serviceIDs": [],
-        "ratingReviewIDs": []
+        _id: "65fe9a5396346912b716332e",
+        clerkId: "clerkId46",
+        imageUrl: "https://source.unsplash.com/woman-doing-liposuction-on-her-face-PqyzuzFiQfY",
+        contactNumber: "901-234-5678",
+        email: "olivia@example.com",
+        website: "https://www.example.com/olivia",
+        username: "olivia",
+        firstName: "Olivia",
+        lastName: "Wilson",
+        location: "Anycity, USA",
+        serviceIDs: ["46"],
+        ratingReviewIDs: []
     },
     // Chiropractor
     {
-        "_id": "65fe9a5396346912b716332f",
-        "clerkId": "clerkId47",
-        "imageUrl": "https://source.unsplash.com/chiropractor",
-        "contactNumber": "012-345-6789",
-        "email": "david@example.com",
-        "website": "https://www.example.com/david",
-        "username": "david",
-        "firstName": "David",
-        "lastName": "Jones",
-        "location": "Anycity, USA",
-        "serviceIDs": [],
-        "ratingReviewIDs": []
+        _id: "65fe9a5396346912b716332f",
+        clerkId: "clerkId47",
+        imageUrl: "https://source.unsplash.com/mans-face-KVIlNRoGwxk",
+        contactNumber: "012-345-6789",
+        email: "david@example.com",
+        website: "https://www.example.com/david",
+        username: "david",
+        firstName: "David",
+        lastName: "Jones",
+        location: "Anycity, USA",
+        serviceIDs: ["47"],
+        ratingReviewIDs: []
     },
 
     // Tutor
@@ -736,7 +736,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Chris do",
         lastName: "Jake",
         location: "Calgary, AB",
-        serviceIDs: [],
+        serviceIDs: ["48"],
         ratingReviewIDs: [],
     },
     // Cooking Classes
@@ -751,7 +751,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Julia",
         lastName: "Cook",
         location: "Chicago, IL",
-        serviceIDs: [],
+        serviceIDs: ["49"],
         ratingReviewIDs: [],
     },
     // Language Tutor
@@ -766,7 +766,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Sophie",
         lastName: "Linguist",
         location: "Seattle, WA",
-        serviceIDs: [],
+        serviceIDs: ["50"],
         ratingReviewIDs: [],
     },
     // Photography Lessons
@@ -781,14 +781,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Alex",
         lastName: "Shutter",
         location: "San Francisco, CA",
-        serviceIDs: [],
+        serviceIDs: ["51"],
         ratingReviewIDs: [],
     },
     // // Yoga Instructor
     {
         _id: "65fe9a5396346912b7163258",
         clerkId: "clerkId52",
-        imageUrl: "https://source.unsplash.com/yoga-instructor",
+        imageUrl: "https://source.unsplash.com/woman-wearing-black-sports-bra-4gcqRf3-f2I",
         contactNumber: "789-456-1230",
         email: "emma@yogamasters.com",
         website: "yogamasters.com",
@@ -796,14 +796,14 @@ export const dummyUsers: UserItem[] = [
         firstName: "Emma",
         lastName: "Yoga",
         location: "Los Angeles, CA",
-        serviceIDs: [],
+        serviceIDs: ["52"],
         ratingReviewIDs: []
     },
     // Math Tutor
     {
         _id: "65fe9a5396346912b7163259",
         clerkId: "clerkId53",
-        imageUrl: "https://source.unsplash.com/math-tutor",
+        imageUrl: "https://source.unsplash.com/mens-white-dress-shirt-standing-beside-woman-holding-white-book-close-up-photography-OfbyslkgjNg",
         contactNumber: "123-456-7890",
         email: "jason@mathgenius.com",
         website: "mathgenius.com",
@@ -811,7 +811,7 @@ export const dummyUsers: UserItem[] = [
         firstName: "Jason",
         lastName: "Math",
         location: "New York, NY",
-        serviceIDs: [],
+        serviceIDs: ["53"],
         ratingReviewIDs: []
     },
 
