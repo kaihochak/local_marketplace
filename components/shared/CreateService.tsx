@@ -8,11 +8,8 @@ import { ServiceItem } from "@/types";
 const CreateService = ({ userId } : { userId: string }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
     const [serviceItems, setServiceItems] = React.useState<ServiceItem[]>([])
-
-    useEffect(() => {
-        console.log('serviceItems', serviceItems);
-    }, [serviceItems])
-
+    const [updateItem, setUpdateItem] = React.useState<ServiceItem | null>(null)
+    
     return (
         <div>
             <div className="wrapper md:py-2">
@@ -20,14 +17,15 @@ const CreateService = ({ userId } : { userId: string }) => {
                     userId={userId}
                     type="Create"
                     setIsModalOpen={setIsModalOpen}
+                    serviceItem={updateItem}
                     serviceItems={serviceItems}
                     setServiceItems={setServiceItems}
                 />
             </div>
             
             <ServiceItemModal
-                userId={userId}
                 type="Create"
+                serviceItem={updateItem}
                 serviceItems={serviceItems}
                 setServiceItems={setServiceItems}
                 isModalOpen={isModalOpen}

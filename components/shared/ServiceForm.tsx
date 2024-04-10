@@ -36,13 +36,18 @@ type ServiceFormProps = {
   type: "Create" | "Update"
   service?: IService,
   serviceId?: string
+  serviceItem?: ServiceItem | null
   serviceItems?: ServiceItem[]
   setServiceItems: (serviceItems: ServiceItem[]) => void
   setIsModalOpen: (isOpen: boolean) => void
 }
 
-const ServiceForm = ({ userId, type, service, serviceId,
-  serviceItems: parentServiceItems, setServiceItems: parentSetServiceItems, setIsModalOpen }: ServiceFormProps) => {
+const ServiceForm = ({ 
+  userId, type, service, serviceId, setIsModalOpen,
+  serviceItem: parentServiceItem,
+  serviceItems: parentServiceItems, 
+  setServiceItems: parentSetServiceItems }: ServiceFormProps) => {
+    
   const [files, setFiles] = useState<File[]>([])
   const initialValues = service && type === 'Update'
     ? { ...service, servicesOffered: Array.from(service.servicesOffered.values()) }

@@ -15,21 +15,19 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { serviceFormSchema } from "@/lib/validator"
 import { ServiceItem } from "@/types";
 
-type ServiceFormProps = {
-  userId: string
+type ServiceItemModalProps = {
   type: "Create" | "Update"
-  service?: ServiceItem,
-  serviceId?: string
-  serviceItems?: ServiceItem[]
-  setServiceItems?: (serviceItems: ServiceItem[]) => void
+  serviceItem?: ServiceItem | null
+  serviceItems: ServiceItem[]
+  setServiceItems: (serviceItems: ServiceItem[]) => void
   setIsModalOpen: (isOpen: boolean) => void
   isModalOpen?: boolean
 }
 
-const ServiceItemModal = ({ userId, type, service, serviceId, serviceItems, setServiceItems, setIsModalOpen, isModalOpen }: ServiceFormProps) => {
+const ServiceItemModal = ({ type, serviceItem, serviceItems, setServiceItems, setIsModalOpen, isModalOpen }: ServiceItemModalProps) => {
   const [files, setFiles] = useState<File[]>([])
-  const initialValues = service && type === 'Update'
-    ? { ...service }
+  const initialValues = serviceItem && type === 'Update'
+    ? { ...serviceItem }
     : serviceItemDefaultValues;
 
   // form setup with react-hook-form and zod
@@ -41,7 +39,7 @@ const ServiceItemModal = ({ userId, type, service, serviceId, serviceItems, setS
   // submit form
   function onSubmit(values: z.infer<typeof serviceItemSchema>) {
      // assign an _id to newServiceID
-    setServiceItems && setServiceItems([...(serviceItems || []), values])
+    setServiceItems && setServiceItems([...serviceItems, { ...values, id: Math.random().toString() }])
     setIsModalOpen(false)
     form.reset()
   }

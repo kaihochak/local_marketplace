@@ -30,6 +30,10 @@ const populateService = (query: any) => {
 
 // Create a new service
 export async function createService({ userId, service, path}: CreateServiceParams) {
+
+  console.log('createService', userId, service, path);
+  
+
   try {
     await connectToDatabase()
 

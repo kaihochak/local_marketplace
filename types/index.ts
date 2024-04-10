@@ -27,11 +27,7 @@ export type CreateServiceParams = {
     location: string
     imageUrl: string
     categoryId: string
-    servicesOffered: {
-      title: string
-      description: string
-      price: string
-    }[]
+    servicesOffered: Array<ServiceItem>
     url: string
   }
   path: string
@@ -105,7 +101,7 @@ export type Service = {
 }
 
 export type ServiceItem = {
-  // _id: string
+  id: string
   title: string
   description: string
   price: string

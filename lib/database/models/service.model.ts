@@ -8,7 +8,7 @@ export interface IService extends Document {
   url?: string;
   provider: { _id: string, firstName: string, lastName: string }; 
   category: { _id: string, name: string }
-  servicesOffered: Map<string, { title: string; description: string; price: string }>;
+  servicesOffered: { id: string, title: string, description: string, price: string }[]; 
   ratingReviewIDs: string[]; 
   averageRating?: number;
   totalReviews?: number;
@@ -23,14 +23,7 @@ const ServiceSchema = new Schema({
   url: { type: String },
   provider: { type: Schema.Types.ObjectId, ref: 'User' },
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
-  servicesOffered: {
-    type: Map,
-    of: {
-      title: { type: String, required: true },
-      description: { type: String, required: true},
-      price: { type: String},
-    }
-  },
+  servicesOffered: [{ id: String, title: String, description: String, price: String }],
   ratingReviewIDs: [{ type: String, ref: 'RatingReview' }],
   averageRating: { type: Number, required: false },
   totalReviews: { type: Number, required: false },
