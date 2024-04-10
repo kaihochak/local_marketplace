@@ -88,11 +88,11 @@ export default function Home() {
         </div>
         {/* Search */}
         <div className='wrapper lg:pt-0 '>
-          <div className='flex justify-between md:pb-2'>
+          {/* <div className='flex justify-between md:pb-2'>
             <Link href={"/search"} className='hidden w-full mx-4 sm:block '>
               <Search disabled={true} />
             </Link>
-          </div>
+          </div> */}
           <CategoryFilter
             categories={categories}
             onCategorySelect={(categoryId: string) => {
