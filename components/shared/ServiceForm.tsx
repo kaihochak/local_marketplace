@@ -191,9 +191,9 @@ const ServiceForm = ({
         title=""
         transitionProps={{ transition: 'fade', duration: 200 }}
       >
-        <div className='flex-center'>
+        <div className='flex-center flex-col gap-7'>
           <h1 className="h4-medium text-center">Service created successfully!</h1>
-          <Link href={`/services/${newService?._id}`}>
+          <Link href={`/services/${newService?._id}`} className='mb-7'>
             <Button variant="default">View Service</Button>
           </Link>
         </div>
