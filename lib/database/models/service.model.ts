@@ -4,11 +4,11 @@ export interface IService extends Document {
   title: string;
   description?: string;
   location?: string;
-  imageUrl: string;
+  imageUrl?: string;
   url?: string;
   provider: { _id: string, firstName: string, lastName: string }; 
   category: { _id: string, name: string }
-  servicesOffered: Map<string, { title: string; price: string }>;
+  servicesOffered: { id: string, title: string, description: string, price: string }[]; 
   ratingReviewIDs: string[]; 
   averageRating?: number;
   totalReviews?: number;
@@ -19,17 +19,11 @@ const ServiceSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   location: { type: String },
-  imageUrl: { type: String, required: true },
+  imageUrl: { type: String, required: false },
   url: { type: String },
   provider: { type: Schema.Types.ObjectId, ref: 'User' },
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
-  servicesOffered: {
-    type: Map,
-    of: {
-      title: { type: String, required: true },
-      price: { type: String, required: true }
-    }
-  },
+  servicesOffered: [{ id: String, title: String, description: String, price: String }],
   ratingReviewIDs: [{ type: String, ref: 'RatingReview' }],
   averageRating: { type: Number, required: false },
   totalReviews: { type: Number, required: false },
