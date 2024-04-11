@@ -48,6 +48,9 @@ export async function getServiceById(serviceId: string) {
     await connectToDatabase()
 
     const service = await populateService(Service.findById(serviceId))
+
+    console.log('service:', service);
+    
     if (!service) throw new Error('Service not found')
 
     return JSON.parse(JSON.stringify(service))
@@ -57,18 +60,18 @@ export async function getServiceById(serviceId: string) {
 }
 
 // GET ALL SERVICES
-export async function getAllServices({ query, limit = 12, page, category, rating, distance }: GetAllServicesParams) {
+export async function getAllServices({ query, limit = 12, page, category }: GetAllServicesParams) {
   try {
     await connectToDatabase()
 
     const titleCondition = query ? { title: { $regex: query, $options: 'i' } } : {}
     const categoryCondition = category ? await getCategoryByName(category) : null
-    const ratingCondition = rating ? { rating: { $gte: rating } } : {}
-    const distanceCondition = distance ? { distance: { $lte: distance } } : {}
-    const conditions = {
-      $and: [titleCondition, categoryCondition, ratingCondition, distanceCondition
-        ? { category: categoryCondition._id } : {}],
-    }
+    // const ratingCondition = rating ? { rating: { $gte: rating } } : {}
+    // const distanceCondition = distance ? { distance: { $lte: distance } } : {}
+
+    // if there is no category, just return all services
+    const conditions = categoryCondition ? 
+      { ...titleCondition, category: categoryCondition._id } : titleCondition
 
     // Calculate skip amount for pagination
     const skipAmount = (Number(page) - 1) * limit
@@ -79,8 +82,11 @@ export async function getAllServices({ query, limit = 12, page, category, rating
       .skip(skipAmount)
       .limit(limit)
 
+      console.log('servicesQuery:', servicesQuery);
+
     // Populate provider and category
     const services = await populateService(servicesQuery)
+
     const servicesCount = await Service.countDocuments(conditions)
 
     return {

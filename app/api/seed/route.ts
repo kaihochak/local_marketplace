@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     console.log('Seeding database');
 
     // Delete everything
-    await deleteAllCategories();
+    // await deleteAllCategories();
     await deleteAllServices();
     await deleteAllUsers();
 
@@ -45,12 +45,12 @@ const createAllUsers = async (dummyUsers: any[]) => {
         const createdUser = await createUser(user);
 
         console.log('createdUser:', createdUser);
-        
+
         // create services based on the user
         if (createdUser.serviceIDs.length > 0) {
             for (let j = 0; j < createdUser.serviceIDs.length; j++) {
                 const service = dummyServices.find(service => service._id === createdUser.serviceIDs[j]);
-                
+
                 const createdService = await createService({
                     service: service.params,
                     userId: createdUser._id,
@@ -58,25 +58,18 @@ const createAllUsers = async (dummyUsers: any[]) => {
                 })
 
                 console.log('createdService:', createdService);
-            
+
                 // create categories
-                if (createdService) {
-                    const category: any = dummyCategories.find(category => {
-                        return (category._id === createdService.category);
-                    });
+                // if (createdService) {
+                //     const category: any = dummyCategories.find(category => category._id === createdService.category);
 
-                    console.log('category:', category);
-                    
-
-                    // create category if it doesn't exist
-                    if (category) {
-                        const createdCategory: any = await createCategory({ categoryName: category.name });
-                        if (createdCategory && categoriesMade.indexOf(createdCategory) === -1) {
-                            categoriesMade.push(createdCategory);
-                            console.log('createdCategory:', createdCategory);
-                        }
-                    }
-                }
+                //     // create category if it doesn't exist
+                //     if (category && categoriesMade.indexOf(category._id) === -1) {
+                //         const createdCategory: any = await createCategory({ categoryName: category.name });
+                //         categoriesMade.push(category._id);
+                //         console.log('createdCategory:', createdCategory);
+                //     }
+                // }
             }
         }
     }

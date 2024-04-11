@@ -13,9 +13,6 @@ export type DummyUser = {
   contactNumber: string;
 };
 
-
-
-
 // ====== USER PARAMS
 export type CreateUserParams = {
   clerkId: string;
@@ -79,8 +76,6 @@ export type GetAllServicesParams = {
   category: string
   limit: number
   page: number
-  rating: number
-  distance: number
 }
 
 export type GetServicesByUserParams = {

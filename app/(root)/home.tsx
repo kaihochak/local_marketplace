@@ -6,7 +6,6 @@ import CategoryFilter from "@/components/shared/CategoryFilter";
 import { categories } from "@/constants";
 import HomeHeader from '@/components/shared/HomeHeader';
 import dummyServices from '@/constants/dummyServices';
-import { ServiceItem } from '@/lib/database/models/service.model';
 import Search from '@/components/shared/Search';
 import Link from 'next/link';
 import { useDisclosure } from '@mantine/hooks';
@@ -14,8 +13,10 @@ import { Modal } from '@mantine/core';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-import { getAllCategories } from '@/lib/actions/category.actions';
 import { ICategory } from '@/lib/database/models/category.model';
+import { getAllCategories } from '@/lib/actions/category.actions';
+import { ServiceItem } from '@/lib/database/models/service.model';
+import { getAllServices, getServiceById } from '@/lib/actions/service.actions';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Recommendations");
@@ -40,7 +41,21 @@ export default function Home() {
       categoryList && setCategories([recommendationCategory, ...categoryList]);
     }
 
+    const getServices = async () => {
+
+      const services = await getAllServices({
+        query: '',
+        limit: 100,
+        page: 1,
+        category: '',
+      });
+      console.log('services:', services?.data);
+
+      services && setServices(services?.data);
+    }
+
     getCategories();
+    getServices();
   }, [])
 
   // Refs for scrolling to selected category
@@ -105,6 +120,7 @@ export default function Home() {
       {/* Collections */}
       <section className="pt-4 pb-2 wrapper lg:pr-0 lg:pb-0">
         <div className="flex flex-col gap-y-0">
+
           {categories.map((category) => (
             <div
               ref={el => setCategoryRef(category._id, el)}
@@ -116,7 +132,12 @@ export default function Home() {
                 title={category.name}
                 direction="horizontal"
                 itemType="service"
-                items={services.filter(service => service?.category._id === category._id)} // Adjust based on how you link services to categories
+                items={services.filter(service => {
+                  if (category._id === 'recommendations') {
+                    return services;
+                  }
+                  return service?.category._id === category._id
+                })}
                 nextPrevButton={true}
                 hasViewMore={true}
               />

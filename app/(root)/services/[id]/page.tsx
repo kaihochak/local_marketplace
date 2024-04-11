@@ -12,7 +12,7 @@ import { Globe } from '@/public/assets/icons/Globe';
 import ServiceReviews from '@/components/shared/ServiceReviews';
 import CommonHeader from '@/components/shared/CommonHeader';
 import { Slash } from "lucide-react"
-import ServiceAndReservation from './ServiceAndReservation';
+import ServiceAndReservation from '@/components/shared/services/ServiceAndReservation';
 import { getServiceById } from '@/lib/actions/service.actions';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
@@ -131,7 +131,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             {/* Services & Reservation */}
             <section className="flex flex-col pt-6">
               <h2 className="h4-semibold">Services Offered</h2>
-              <ServiceAndReservation />
+              <ServiceAndReservation servicesOffered={service?.servicesOffered} />
             </section>
 
             {/* Reviews */}

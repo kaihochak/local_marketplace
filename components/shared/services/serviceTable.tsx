@@ -8,7 +8,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Modal } from '@mantine/core';
-import Confetti from 'react-confetti';
 import { useDisclosure } from '@mantine/hooks';
 import { ServiceOffered, columns } from "./columns"
 import { Cash } from '@/public/assets/icons/Cash';
@@ -91,15 +90,15 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                     <TableHeader>
                         <TableRow>
                             <TableHead>Service</TableHead>
-                            <TableHead>Rating</TableHead>
+                            {/* <TableHead>Rating</TableHead> */}
                             <TableHead>Price</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {selectedServices.map((service, index) => (
                             <TableRow key={index}>
-                                <TableCell>{service.service}</TableCell>
-                                <TableCell>{service.rating}</TableCell>
+                                <TableCell>{service.title}</TableCell>
+                                {/* <TableCell>{service.rating}</TableCell> */}
                                 <TableCell>{service.price}</TableCell>
                             </TableRow>
                         ))}
@@ -339,9 +338,9 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 {/* Search bar */}
                 <Input
                     placeholder="Find services..."
-                    value={(table.getColumn("service")?.getFilterValue() as string) ?? ""}
+                    value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("service")?.setFilterValue(event.target.value)
+                        table.getColumn("title")?.setFilterValue(event.target.value)
                     }
                     className="w-full"
                 />
