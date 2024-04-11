@@ -18,7 +18,7 @@ export const dummyUsers: DummyUser[] = [
     },
 
     {
-        _id: '6617090d243d9fb389275f9f',
+        // _id: '6617090d243d9fb389275f9f',
         clerkId: 'user_2evWkTH1qOVnTGTNXG239D1hfgO',
         email: 'hihijojo796@gmail.com',
         username: 'hihijojo',
