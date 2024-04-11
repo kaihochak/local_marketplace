@@ -17,18 +17,15 @@ import { dummyServices } from '@/constants/dummyServices';
 export async function POST(req: Request) {
     console.log('Seeding database');
 
-    // Categories
+    // Delete everything
     await deleteAllCategories();
-    await createAllCategories(dummyCategories);
-
-    // Users & Services
-    await deleteAllUsers();
     await deleteAllServices();
+    await deleteAllUsers();
+
+    // Create everything
     await createAllUsers(dummyUsers);
 
     // Reviews
-
-
     // Reservations
 
 
@@ -36,44 +33,52 @@ export async function POST(req: Request) {
 }
 
 /*******************************************************************
- *  Categories
- *******************************************************************/
-const createAllCategories = async (dummyCategories: any[]) => {
-    console.log('Creating all categories');
-    // create categories
-    for (let i = 0; i < dummyCategories.length; i++) {
-        
-        const categoryName = dummyCategories[i].name;
-        await createCategory({categoryName});
-    }
-    return NextResponse.json({ message: 'OK', category: dummyCategories });
-}
-
-const deleteAllCategories = async () => {
-    console.log('Deleting all categories');
-    try {
-        await connectToDatabase();
-        const deleted = await Category.deleteMany({});
-        if (deleted) {
-            console.log('Deleted all categories', deleted);
-        }
-        return NextResponse.json({ message: 'OK', category: deleted })
-    } catch (error) {
-        console.error('Error deleting all categories:', error);
-        return NextResponse.json({ message: 'Error', error: error })
-    }
-}
-
-/*******************************************************************
  *  Users
  *******************************************************************/
 const createAllUsers = async (dummyUsers: any[]) => {
     console.log('Creating all users');
+    let categoriesMade = [];
 
     // create users
     for (let i = 0; i < dummyUsers.length; i++) {
         const user = dummyUsers[i];
-        await createUser(user);
+        const createdUser = await createUser(user);
+
+        console.log('createdUser:', createdUser);
+        
+        // create services based on the user
+        if (createdUser.serviceIDs.length > 0) {
+            for (let j = 0; j < createdUser.serviceIDs.length; j++) {
+                const service = dummyServices.find(service => service._id === createdUser.serviceIDs[j]);
+                
+                const createdService = await createService({
+                    service: service.params,
+                    userId: createdUser._id,
+                    path: '/profile'
+                })
+
+                console.log('createdService:', createdService);
+            
+                // create categories
+                if (createdService) {
+                    const category: any = dummyCategories.find(category => {
+                        return (category._id === createdService.category);
+                    });
+
+                    console.log('category:', category);
+                    
+
+                    // create category if it doesn't exist
+                    if (category) {
+                        const createdCategory: any = await createCategory({ categoryName: category.name });
+                        if (createdCategory && categoriesMade.indexOf(createdCategory) === -1) {
+                            categoriesMade.push(createdCategory);
+                            console.log('createdCategory:', createdCategory);
+                        }
+                    }
+                }
+            }
+        }
     }
     return NextResponse.json({ message: 'OK', user: dummyUsers });
 }
@@ -119,6 +124,35 @@ const deleteAllServices = async () => {
         return NextResponse.json({ message: 'OK', service: deleted })
     } catch (error) {
         console.error('Error deleting all services:', error);
+        return NextResponse.json({ message: 'Error', error: error })
+    }
+}
+
+/*******************************************************************
+ *  Categories
+ *******************************************************************/
+const createAllCategories = async (dummyCategories: any[]) => {
+    console.log('Creating all categories');
+    // create categories
+    for (let i = 0; i < dummyCategories.length; i++) {
+
+        const categoryName = dummyCategories[i].name;
+        await createCategory({ categoryName });
+    }
+    return NextResponse.json({ message: 'OK', category: dummyCategories });
+}
+
+const deleteAllCategories = async () => {
+    console.log('Deleting all categories');
+    try {
+        await connectToDatabase();
+        const deleted = await Category.deleteMany({});
+        if (deleted) {
+            console.log('Deleted all categories', deleted);
+        }
+        return NextResponse.json({ message: 'OK', category: deleted })
+    } catch (error) {
+        console.error('Error deleting all categories:', error);
         return NextResponse.json({ message: 'Error', error: error })
     }
 }

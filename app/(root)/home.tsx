@@ -19,7 +19,7 @@ import { ICategory } from '@/lib/database/models/category.model';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Recommendations");
-  const [services, setServices] = useState<ServiceItem[]>(dummyServices);
+  const [services, setServices] = useState<ServiceItem[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [opened, { open, close }] = useDisclosure(true);
 
@@ -116,7 +116,7 @@ export default function Home() {
                 title={category.name}
                 direction="horizontal"
                 itemType="service"
-                items={services.filter(service => service.category._id === category._id)} // Adjust based on how you link services to categories
+                items={services.filter(service => service?.category._id === category._id)} // Adjust based on how you link services to categories
                 nextPrevButton={true}
                 hasViewMore={true}
               />
