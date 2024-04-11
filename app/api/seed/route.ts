@@ -6,32 +6,26 @@ import User from '@/lib/database/models/user.model';
 import Service from '@/lib/database/models/service.model';
 
 import { createCategory } from '@/lib/actions/category.actions';
-import { createUser } from '@/lib/actions/user.actions';
+import { createUser, getUserById } from '@/lib/actions/user.actions';
 import { createService } from '@/lib/actions/service.actions';
 
-// import { dummyCategories } from '@/constants/dummyCategories';
-// import { dummyUsers } from '@/constants/dummyUsersSeeding';
+import { dummyCategories } from '@/constants/dummyCategories';
+import { dummyUsers } from '@/constants/dummyUsers';
 import { dummyServices } from '@/constants/dummyServices';
 
 // main function
 export async function POST(req: Request) {
     console.log('Seeding database');
 
-    // Categories
-    // await deleteAllCategories();
-    // await createAllCategories(dummyCategories);
-
-    // Users
-    // await deleteAllUsers();
-    // await createAllUsers(dummyUsers);
-
-    // Services
+    // Delete everything
+    await deleteAllCategories();
     await deleteAllServices();
-    await createAllServices(dummyServices);
+    await deleteAllUsers();
+
+    // Create everything
+    await createAllUsers(dummyUsers);
 
     // Reviews
-
-
     // Reservations
 
 
@@ -43,18 +37,54 @@ export async function POST(req: Request) {
  *******************************************************************/
 const createAllUsers = async (dummyUsers: any[]) => {
     console.log('Creating all users');
+    let categoriesMade = [];
 
     // create users
     for (let i = 0; i < dummyUsers.length; i++) {
         const user = dummyUsers[i];
-        await createUser(user);
+        const createdUser = await createUser(user);
+
+        console.log('createdUser:', createdUser);
+        
+        // create services based on the user
+        if (createdUser.serviceIDs.length > 0) {
+            for (let j = 0; j < createdUser.serviceIDs.length; j++) {
+                const service = dummyServices.find(service => service._id === createdUser.serviceIDs[j]);
+                
+                const createdService = await createService({
+                    service: service.params,
+                    userId: createdUser._id,
+                    path: '/profile'
+                })
+
+                console.log('createdService:', createdService);
+            
+                // create categories
+                if (createdService) {
+                    const category: any = dummyCategories.find(category => {
+                        return (category._id === createdService.category);
+                    });
+
+                    console.log('category:', category);
+                    
+
+                    // create category if it doesn't exist
+                    if (category) {
+                        const createdCategory: any = await createCategory({ categoryName: category.name });
+                        if (createdCategory && categoriesMade.indexOf(createdCategory) === -1) {
+                            categoriesMade.push(createdCategory);
+                            console.log('createdCategory:', createdCategory);
+                        }
+                    }
+                }
+            }
+        }
     }
     return NextResponse.json({ message: 'OK', user: dummyUsers });
 }
 
 const deleteAllUsers = async () => {
     console.log('Deleting all users except for the first user');
-    // const firstUser = getUserById('65fe1d847fd96b71a061aaff');
 
     try {
         await connectToDatabase();
@@ -105,9 +135,9 @@ const createAllCategories = async (dummyCategories: any[]) => {
     console.log('Creating all categories');
     // create categories
     for (let i = 0; i < dummyCategories.length; i++) {
-        
+
         const categoryName = dummyCategories[i].name;
-        await createCategory({categoryName});
+        await createCategory({ categoryName });
     }
     return NextResponse.json({ message: 'OK', category: dummyCategories });
 }

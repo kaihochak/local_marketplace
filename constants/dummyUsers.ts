@@ -1,6 +1,21 @@
-import { UserItem } from '@/lib/database/models/user.model';
+import { DummyUser } from '@/types';
 
-export const dummyUsers: UserItem[] = [
+export const dummyUsers: DummyUser[] = [
+
+    {
+        // _id: '6617090d243d9fb389275f9f',
+        clerkId: 'user_2evWkTH1qOVnTGTNXG239D1hfgO',
+        email: 'hihijojo796@gmail.com',
+        username: 'hihijojo',
+        firstName: 'hihi',
+        lastName: 'jojo',
+        imageUrl: 'https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yZXZXa1VDbXozdGNrTXp0eUY4NWM3dlE3RncifQ',
+        serviceIDs: [],
+        ratingReviewIDs: [],
+        website: 'https://www.hihijojo.com', // 
+        location: 'New York, NY', // 
+        contactNumber: '123-456-7899', //
+    },
 
     {
         _id: '6617090d243d9fb389275f9f',
@@ -20,7 +35,7 @@ export const dummyUsers: UserItem[] = [
     // Home
     // ASAP Plumbers
     {
-        _id: "65fe9a5396346912b7163240",
+        // _id: "65fe9a5396346912b7163240",
         clerkId: "clerkId1",
         imageUrl: "https://source.unsplash.com/man-in-orange-and-white-striped-crew-neck-shirt-UpjtG9zkqdc",
         email: "jack@plumbingforyou.com",
@@ -29,13 +44,13 @@ export const dummyUsers: UserItem[] = [
         firstName: "Jack",
         lastName: "Plumber",
         location: "New York, NY",
-        contactNumber: "123-456-7890",
+        contactNumber: "333-456-7890",
         serviceIDs: ["1"],
         ratingReviewIDs: [],
     },
     // Soph Cleaning
     {
-        _id: "65fe9a5396346912b7163242",
+        // _id: "65fe9a5396346912b7163242",
         clerkId: "clerkId2",
         imageUrl: "https://source.unsplash.com/smiling-woman-sitting-in-vehicle-OH3AKVadoxE",
         email: "sophia@cleaningforyou.com",
@@ -50,7 +65,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Noah Lawns
     {
-        _id: "65fe9a5396346912b7163243",
+        // _id: "65fe9a5396346912b7163243",
         clerkId: "clerkId3",
         imageUrl: "https://source.unsplash.com/man-in-white-crew-neck-t-shirt-with-tattoo-on-arm-nMv8DMdM4Z8",
         email: "noah@lawnforyou.com",
@@ -65,10 +80,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Home Security System
     {
-        _id: "65fe9a5396346912b7163244",
+        // _id: "65fe9a5396346912b7163244",
         clerkId: "clerkId4",
         imageUrl: "https://source.unsplash.com/smiling-woman-in-white-tank-top-mx-ukEhDpHo",
-        contactNumber: "567-890-1234",
+        contactNumber: "567-890-1434",
         email: "olivia@securityforyou.com",
         website: "securityforyou.com",
         username: "oliviasecurity",
@@ -80,7 +95,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Home Organizer
     {
-        _id: "65fe9a5396346912b7163245",
+        // _id: "65fe9a5396346912b7163245",
         clerkId: "clerkId5",
         imageUrl: "https://source.unsplash.com/man-taking-selfie-tidSLv-UaNs",
         contactNumber: "678-901-2345",
@@ -97,7 +112,7 @@ export const dummyUsers: UserItem[] = [
     // Personal
     // Personal Trainer
     {
-        _id: "65fe9a5396346912b7163255",
+        // _id: "65fe9a5396346912b7163255",
         clerkId: "clerkId6",
         imageUrl: "https://source.unsplash.com/man-in-blue-crew-neck-shirt-4uj3iZ5m084",
         contactNumber: "123-789-4560",
@@ -112,7 +127,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Yoga Instructor
     {
-        _id: "65fe9a5396346912b7163256",
+        // _id: "65fe9a5396346912b7163250",
         clerkId: "clerkId7",
         imageUrl: "https://source.unsplash.com/a-woman-holding-a-piece-of-luggage-o2hPCfwPPkw",
         contactNumber: "456-789-1230",
@@ -127,7 +142,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Personal Nutritionist
     {
-        _id: "65fe9a5396346912b7163257",
+        // _id: "65fe9a5396346912c7163257",
         clerkId: "clerkId8",
         imageUrl: "https://source.unsplash.com/woman-in-black-long-sleeve-shirt-sitting-on-white-couch-n1B6ftPB5Eg",
         contactNumber: "789-123-4560",
@@ -142,10 +157,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Life Coach
     {
-        _id: "65fe9a5396346912b7163258",
+        // _id: "65fe9a5396346912b7133258",
         clerkId: "clerkId9",
         imageUrl: "https://source.unsplash.com/woman-with-red-lipstick-and-black-mascara-7tz7I7naQ8c",
-        contactNumber: "234-567-8901",
+        contactNumber: "534-567-8901",
         email: "ethan@lifecoaching.com",
         website: "lifecoaching.com",
         username: "ethancoach",
@@ -157,10 +172,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Beauty Consultant
     {
-        _id: "65fe9a5396346912b7163259",
+        // _id: "65fe9z5396346912b7163259",
         clerkId: "clerkId10",
         imageUrl: "https://source.unsplash.com/woman-doing-her-makeup-eN34gxd3-1w",
-        contactNumber: "345-678-9012",
+        contactNumber: "345-678-9013",
         email: "olivia@beautyforyou.com",
         website: "beautyforyou.com",
         username: "oliviabeauty",
@@ -172,10 +187,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Finance Advisor
     {
-        _id: "65fe9a5396346912b7163260",
+        // _id: "65fe9a5396346912b7163260",
         clerkId: "clerkId11",
         imageUrl: "https://source.unsplash.com/man-wearing-black-and-teal-dress-suit-standing-near-gray-wall-h5cd51KXmRQ",
-        contactNumber: "456-789-0123",
+        contactNumber: "456-789-0124",
         email: "noah@financeforyou.com",
         website: "financeforyou.com",
         username: "noahfinance",
@@ -189,10 +204,10 @@ export const dummyUsers: UserItem[] = [
     // Tech
     // Emily Types
     {
-        _id: "65fe9a5396346912b7163290",
+        // _id: "65fe9a5396346912b7163290",
         clerkId: "clerkId12",
         imageUrl: "https://source.unsplash.com/woman-in-green-shirt-sitting-in-front-of-computer-64YrPKiguAE",
-        contactNumber: "123-456-7890",
+        contactNumber: "444-456-7890",
         email: "emily@editingforyou.com",
         website: "editingforyou.com",
         username: "emilyeditor",
@@ -204,10 +219,10 @@ export const dummyUsers: UserItem[] = [
     },
     // IT Support by David
     {
-        _id: "65fe9a5396346912b7163291",
+        // _id: "65fe9a5396346912b7163291",
         clerkId: "clerkId13",
         imageUrl: "https://source.unsplash.com/man-in-gray-button-up-shirt-EZ4TYgXPNWk",
-        contactNumber: "234-567-8901",
+        contactNumber: "239-567-8901",
         email: "david@itsupportforyou.com",
         website: "itsupportforyou.com",
         username: "davidit",
@@ -219,10 +234,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Michael Developments
     {
-        _id: "65fe9a5396346912b7163292",
+        // _id: "65fe9a5396346912b7163292",
         clerkId: "clerkId14",
         imageUrl: "https://source.unsplash.com/a-man-in-blue-overalls-working-on-cement-nZZfP9QiQ6w",
-        contactNumber: "345-678-9012",
+        contactNumber: "345-678-9014",
         email: "michael@developmentforyou.com",
         website: "developmentforyou.com",
         username: "michaeldev",
@@ -234,7 +249,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Ethan Cyber Consultancy
     {
-        _id: "65fe9a5396346912b7163294",
+        // _id: "65fe9a5396346912b7163294",
         clerkId: "clerkId15",
         imageUrl: "https://source.unsplash.com/man-wearing-headphones-while-sitting-on-chair-in-front-of-macbook-4-EeTnaC1S4",
         contactNumber: "567-890-1234",
@@ -249,10 +264,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Cloud Solutions and Aid
     {
-        _id: "65fe9a5396346912b7163295",
+        // _id: "65fe9a5396346912b7163295",
         clerkId: "clerkId16",
         imageUrl: "https://source.unsplash.com/smiling-man-using-laptop-computer-while-sitting-on-black-leather-sofa-LCcFI_26diA",
-        contactNumber: "678-901-2345",
+        contactNumber: "678-902-2345",
         email: "aiden@cloudsolutionsforyou.com",
         website: "cloudsolutionsforyou.com",
         username: "aidencloud",
@@ -264,10 +279,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Analysis Freelance Soph
     {
-        _id: "65fe9a5396346912b7163293",
+        // _id: "65fe9a5396346912b7163293",
         clerkId: "clerkId17",
         imageUrl: "https://source.unsplash.com/shallow-focus-photo-of-woman-in-gray-jacket-0Zx1bDv5BNY",
-        contactNumber: "456-789-0123",
+        contactNumber: "456-789-0125",
         email: "sophia@dataanalysisforyou.com",
         website: "dataanalysisforyou.com",
         username: "sophiaanalyst",
@@ -281,7 +296,7 @@ export const dummyUsers: UserItem[] = [
     // Advisory
     // Liv Leagal
     {
-        _id: "65fe9a5396346912b7163296",
+        // _id: "65fe9a5396346912b7163296",
         clerkId: "clerkId18",
         imageUrl: "https://source.unsplash.com/five-person-by-table-watching-turned-on-white-imac-vbxyFxlgpjM",
         contactNumber: "789-012-3456",
@@ -296,7 +311,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Elijah Business
     {
-        _id: "65fe9a5396346912b7163297",
+        // _id: "65fe9a5396346912b7163297",
         clerkId: "clerkId19",
         imageUrl: "https://source.unsplash.com/man-sitting-on-chair-E9PFbdhZmus",
         contactNumber: "890-123-4567",
@@ -311,7 +326,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Ava Fiscal
     {
-        _id: "65fe9a5396346912b7163298",
+        // _id: "65fe9a5396346912b7163298",
         clerkId: "clerkId20",
         imageUrl: "https://source.unsplash.com/a-person-holding-a-laptop-7mBictB_urk",
         contactNumber: "901-234-5678",
@@ -326,10 +341,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Marketing by Liam
     {
-        _id: "65fe9a5396346912b7163299",
+        // _id: "65fe9a5396346912b7163299",
         clerkId: "clerkId21",
         imageUrl: "https://source.unsplash.com/a-man-talking-on-a-cell-phone-dxnEyQszbUo",
-        contactNumber: "012-345-6789",
+        contactNumber: "312-345-6789",
         email: "liam@marketingconsultingforyou.com",
         website: "marketingconsultingforyou.com",
         username: "liammarketing",
@@ -341,10 +356,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Mia's Advisory
     {
-        _id: "65fe9a5396346912b7163300",
+        // _id: "65fe9a5396346912b7163300",
         clerkId: "clerkId22",
         imageUrl: "https://source.unsplash.com/a-woman-and-a-girl-looking-at-a-laptop-coCGW4SsxX4",
-        contactNumber: "345-678-9012",
+        contactNumber: "345-678-9015",
         email: "mia@investmentadvisorforyou.com",
         website: "investmentadvisorforyou.com",
         username: "miainvestment",
@@ -356,10 +371,10 @@ export const dummyUsers: UserItem[] = [
     },
     // HR Consultancy 
     {
-        _id: "65fe9a5396346912b7163301",
+        // _id: "65fe9a5396346912b7163301",
         clerkId: "clerkId23",
         imageUrl: "https://source.unsplash.com/man-in-black-dress-shirt-K2sjNLfJpc4",
-        contactNumber: "456-789-0123",
+        contactNumber: "456-789-0135",
         email: "noah@hrconsultingforyou.com",
         website: "hrconsultingforyou.com",
         username: "noahhr",
@@ -373,10 +388,10 @@ export const dummyUsers: UserItem[] = [
     // Creative
     // Fine Art Painting
     {
-        _id: "65fe9a5396346912b7163302",
+        // _id: "65fe9a5396346912b7163302",
         clerkId: "clerkId24",
         imageUrl: "https://source.unsplash.com/woman-in-white-and-black-striped-long-sleeve-shirt-and-blue-denim-jeans-sitting-on-bed-aYwJeBcFEQQ",
-        contactNumber: "123-456-7890",
+        contactNumber: "555-456-7890",
         email: "artist@example.com",
         website: "artistwebsite.com",
         username: "artist123",
@@ -388,7 +403,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Professional Photography
     {
-        _id: "65fe9a5396346912b7163303",
+        // _id: "65fe9a5396346912b7163303",
         clerkId: "clerkId25",
         imageUrl: "https://source.unsplash.com/man-looking-up-bQ0TogIULCM",
         contactNumber: "234-567-8901",
@@ -403,10 +418,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Sculpture Art
     {
-        _id: "65fe9a5396346912b7163304",
+        // _id: "65fe9a5396346912b7163304",
         clerkId: "clerkId26",
         imageUrl: "https://source.unsplash.com/man-painting-ceramic-mug-mBbHdcpn3eM",
-        contactNumber: "345-678-9012",
+        contactNumber: "345-678-9017",
         email: "sculptor@example.com",
         website: "sculptorwebsite.com",
         username: "sculptor456",
@@ -418,10 +433,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Nature Photography
     {
-        _id: "65fe9a5396346912b7163305",
+        // _id: "65fe9a5396346912b7163305",
         clerkId: "clerkId27",
         imageUrl: "https://source.unsplash.com/man-wearing-black-sweater-and-red-knitted-cap-D6MmPV6SHqg",
-        contactNumber: "456-789-0123",
+        contactNumber: "456-789-0139",
         email: "naturephotographer@example.com",
         website: "naturephotographerwebsite.com",
         username: "naturelover789",
@@ -433,10 +448,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Graphic Design
     {
-        _id: "65fe9a5396346912b7163306",
+        // _id: "65fe9a5396346912b7163306",
         clerkId: "clerkId28",
         imageUrl: "https://source.unsplash.com/woman-standing-near-white-petaled-flowers-MLOZe7YyVnY",
-        contactNumber: "567-890-1234",
+        contactNumber: "567-999-1234",
         email: "designer@example.com",
         website: "designerwebsite.com",
         username: "designer123",
@@ -448,10 +463,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Music Lessons 
     {
-        _id: "65fe9a5396346912b7163307",
+        // _id: "65fe9a5396346912b7163307",
         clerkId: "clerkId29",
         imageUrl: "https://source.unsplash.com/man-in-black-hoodie-wearing-black-framed-eyeglasses-3JmfENcL24M",
-        contactNumber: "678-901-2345",
+        contactNumber: "678-944-2345",
         email: "musician@example.com",
         website: "musicianwebsite.com",
         username: "musiclover456",
@@ -465,10 +480,10 @@ export const dummyUsers: UserItem[] = [
     // Logistic
     // Moving Services
     {
-        _id: "65fe9a5396346912b7163308",
+        // _id: "65fe9a5396346912b7163308",
         clerkId: "clerkId30",
         imageUrl: "https://source.unsplash.com/smiling-man-stands-behind-delivery-truck-t0Aio60jD4Q",
-        contactNumber: "789-012-3456",
+        contactNumber: "789-012-1111",
         email: "movingcompany@example.com",
         website: "movingcompanywebsite.com",
         username: "mover123",
@@ -480,10 +495,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Courier Services
     {
-        _id: "65fe9a5396346912b7163309",
+        // _id: "65fe9a5396346912b7163309",
         clerkId: "clerkId31",
         imageUrl: "https://source.unsplash.com/youve-got-mail-printed-pack-BPxkU4uPq6Y",
-        contactNumber: "890-123-4567",
+        contactNumber: "890-123-4562",
         email: "courierservice@example.com",
         website: "courierservicewebsite.com",
         username: "courier456",
@@ -495,10 +510,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Equipment Rental
     {
-        _id: "65fe9a5396346912b7163310",
+        // _id: "65fe9a5396346912b7163310",
         clerkId: "clerkId32",
         imageUrl: "https://source.unsplash.com/equipment-rental",
-        contactNumber: "901-234-5678",
+        contactNumber: "902-234-5678",
         email: "rentalservice@example.com",
         website: "rentalservicewebsite.com",
         username: "rental789",
@@ -510,10 +525,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Driver Services
     {
-        _id: "65fe9a5396346912b7163313",
+        // _id: "65fe9a5396346912b7163313",
         clerkId: "clerkId33",
         imageUrl: "https://source.unsplash.com/man-using-smartphone-eiDw0oX8YQQ",
-        contactNumber: "456-789-0123",
+        contactNumber: "456-123-0123",
         email: "driver@example.com",
         website: "driverservice.com",
         username: "driverpro",
@@ -525,7 +540,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Catering Service
     {
-        _id: "65fe9a5396346912b7163319",
+        // _id: "65fe9a5396346912b7163319",
         clerkId: "clerkId34",
         imageUrl: "https://source.unsplash.com/cooked-food-on-stainless-steel-tray-7a--Ad6mkNE",
         contactNumber: "912-345-6789",
@@ -540,7 +555,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Pet Sitting Service
     {
-        _id: "65fe9a5396346912b7163320",
+        // _id: "65fe9a5396346912b7163320",
         clerkId: "clerkId35",
         imageUrl: "https://source.unsplash.com/toddler-hugging-siberian-husky-N_INAlQoO6Y",
         contactNumber: "923-456-7890",
@@ -557,7 +572,7 @@ export const dummyUsers: UserItem[] = [
     // Collab
     // Application Development
     {
-        _id: "65fe9a5396346912b7163328",
+        // _id: "65fe9a5396346912b7163328",
         clerkId: "clerkId36",
         imageUrl: "https://source.unsplash.com/person-sitting-on-gaming-chair-while-playing-video-game-Mf23RF8xArY",
         contactNumber: "123-456-7890",
@@ -572,7 +587,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Cake Baking Workshop
     {
-        _id: "65fe9a5396346912b7163329",
+        // _id: "65fe9a5396346912b7163329",
         clerkId: "clerkId37",
         imageUrl: "https://source.unsplash.com/a-person-kneading-dough-on-top-of-a-counter-zTG8dSz10tQ",
         contactNumber: "987-654-3210",
@@ -587,10 +602,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Data Science Bootcamp
     {
-        _id: "65fe9a5396346912b7163327",
+        // _id: "65fe9a5396346912b7163327",
         clerkId: "clerkId38",
         imageUrl: "https://source.unsplash.com/three-men-sitting-on-chair-beside-tables-mpN7xjKQ_Ns",
-        contactNumber: "456-789-0123",
+        contactNumber: "456-333-0123",
         email: "noah@example.com",
         website: "example.com",
         username: "noahdatascience",
@@ -602,10 +617,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Photography Workshop
     {
-        _id: "65fe9a5396346912b7163326",
+        // _id: "65fe9a5396346912b7163326",
         clerkId: "clerkId39",
         imageUrl: "https://source.unsplash.com/person-taking-photo-using-canon-camera-in-shallow-focus-lens-jkZs3Oi9pq0",
-        contactNumber: "789-012-3456",
+        contactNumber: "789-012-2222",
         email: "mike@example.com",
         website: "example.com",
         username: "mikephotography",
@@ -617,7 +632,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Web Development Bootcamp
     {
-        _id: "65fe9a5396346912b7163325",
+        // _id: "65fe9a5396346912b7163325",
         clerkId: "clerkId40",
         imageUrl: "https://source.unsplash.com/three-person-sitting-in-front-of-table-with-laptop-computers-RDYdOvk8ats",
         contactNumber: "321-654-9870",
@@ -632,7 +647,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Graphic Design Workshop
     {
-        _id: "65fe9a5396346912b7163324",
+        // _id: "65fe9a5396346912b7163324",
         clerkId: "clerkId41",
         imageUrl: "https://source.unsplash.com/two-women-talking-while-looking-at-laptop-computer-7okkFhxrxNw",
         contactNumber: "012-345-6789",
@@ -649,11 +664,11 @@ export const dummyUsers: UserItem[] = [
     // Health
     // General Physician
     {
-        _id: "65fe9a5396346912b716332a",
+        // _id: "65fe9a5396346912b716332a",
         clerkId: "clerkId42",
         imageUrl: "https://source.unsplash.com/man-sitting-on-grey-sofa-dJzJkNdp9wc",
-        contactNumber: "123-456-7890",
-        email: "john@example.com",
+        contactNumber: "126-456-7890",
+        email: "john2@example.com",
         website: "https://www.example.com/john",
         username: "john",
         firstName: "John",
@@ -664,10 +679,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Dentist
     {
-        _id: "65fe9a5396346912b716332b",
+        // _id: "65fe9a5396346912b716332b",
         clerkId: "clerkId43",
         imageUrl: "https://source.unsplash.com/woman-with-silver-and-yellow-hoop-earrings-8BkF0sTC6Uo",
-        contactNumber: "456-789-0123",
+        contactNumber: "456-999-0123",
         email: "emma@example.com",
         website: "https://www.example.com/emma",
         username: "emma",
@@ -679,10 +694,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Pediatrician
     {
-        _id: "65fe9a5396346912b716332c",
+        // _id: "65fe9a5396346912b716332c",
         clerkId: "clerkId44",
         imageUrl: "https://source.unsplash.com/a-woman-holding-a-baby-on-top-of-a-table-DjG-B1lqT90",
-        contactNumber: "789-012-3456",
+        contactNumber: "789-012-3333",
         email: "susan@example.com",
         website: "https://www.example.com/susan",
         username: "susan",
@@ -694,10 +709,10 @@ export const dummyUsers: UserItem[] = [
     },      
     // Optometrist
     {
-        _id: "65fe9a5396346912b716332d",
+        // _id: "65fe9a5396346912b716332d",
         clerkId: "clerkId45",
         imageUrl: "https://source.unsplash.com/a-close-up-of-a-pair-of-medical-equipment--OpWKFHA_yQ",
-        contactNumber: "890-123-4567",
+        contactNumber: "890-123-4367",
         email: "michael@example.com",
         website: "https://www.example.com/michael",
         username: "michael",
@@ -709,10 +724,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Dermatologist
     {
-        _id: "65fe9a5396346912b716332e",
+        // _id: "65fe9a5396346912b716332e",
         clerkId: "clerkId46",
         imageUrl: "https://source.unsplash.com/woman-doing-liposuction-on-her-face-PqyzuzFiQfY",
-        contactNumber: "901-234-5678",
+        contactNumber: "903-234-5678",
         email: "olivia@example.com",
         website: "https://www.example.com/olivia",
         username: "olivia",
@@ -724,10 +739,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Chiropractor
     {
-        _id: "65fe9a5396346912b716332f",
+        // _id: "65fe9a5396346912b716332f",
         clerkId: "clerkId47",
         imageUrl: "https://source.unsplash.com/mans-face-KVIlNRoGwxk",
-        contactNumber: "012-345-6789",
+        contactNumber: "212-345-6789",
         email: "david@example.com",
         website: "https://www.example.com/david",
         username: "david",
@@ -741,7 +756,7 @@ export const dummyUsers: UserItem[] = [
     // Tutor
     // Guitar Tutor
     {
-        _id: "65fe9a5396346912b7163251",
+        // _id: "65fe9a5396346912b7163251",
         clerkId: "clerkId48",
         imageUrl: "https://source.unsplash.com/building-beside-body-of-water-during-golden-hour-aNoP6f4P_nY",
         contactNumber: "587-587-5877",
@@ -756,7 +771,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Cooking Classes
     {
-        _id: "65fe9a5396346912b7163254",
+        // _id: "65fe9a5396346912b7163254",
         clerkId: "clerkId49",
         imageUrl: "https://source.unsplash.com/woman-in-black-long-sleeve-shirt-carrying-girl-in-pink-jacket-tHLCjhDCw3M",
         contactNumber: "555-123-4567",
@@ -771,10 +786,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Language Tutor
     {
-        _id: "65fe9a5396346912b7163256",
+        // _id: "65fe9a5396346912b7163256",
         clerkId: "clerkId50",
         imageUrl: "https://source.unsplash.com/woman-in-blue-tank-top-standing-beside-white-wall-TXxiFuQLBKQ",
-        contactNumber: "987-654-3210",
+        contactNumber: "987-654-3910",
         email: "sophie@languagemasters.com",
         website: "languagemasters.com",
         username: "sophieling",
@@ -786,7 +801,7 @@ export const dummyUsers: UserItem[] = [
     },
     // Photography Lessons
     {
-        _id: "65fe9a5396346912b7163257",
+        // _id: "65fe9a5396346912b7163257",
         clerkId: "clerkId51",
         imageUrl: "https://source.unsplash.com/man-holding-up-canon-dslr-camera-jUAcCtbMb0k",
         contactNumber: "555-123-7890",
@@ -801,7 +816,7 @@ export const dummyUsers: UserItem[] = [
     },
     // // Yoga Instructor
     {
-        _id: "65fe9a5396346912b7163258",
+        // _id: "65fe9a5396346912b7163258",
         clerkId: "clerkId52",
         imageUrl: "https://source.unsplash.com/woman-wearing-black-sports-bra-4gcqRf3-f2I",
         contactNumber: "789-456-1230",
@@ -816,10 +831,10 @@ export const dummyUsers: UserItem[] = [
     },
     // Math Tutor
     {
-        _id: "65fe9a5396346912b7163259",
+        // _id: "65fe9a5396346912b7163259",
         clerkId: "clerkId53",
         imageUrl: "https://source.unsplash.com/mens-white-dress-shirt-standing-beside-woman-holding-white-book-close-up-photography-OfbyslkgjNg",
-        contactNumber: "123-456-7890",
+        contactNumber: "222-456-7890",
         email: "jason@mathgenius.com",
         website: "mathgenius.com",
         username: "jason_math",
