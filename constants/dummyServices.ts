@@ -138,24 +138,28 @@ export const dummyServices: any[] = [
             url: "https://www.securityforyou.com",
             location: "456 Cedar Street, Anycity, USA",
             provider: "65fe9a5396346912b7163244",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Security System Installation",
                     price: "200",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Camera Installation",
                     price: "150",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Alarm System Setup",
                     price: "180",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Smart Home Integration",
                     price: "250",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 45,
             ratingReviewIDs: [],
@@ -174,24 +178,27 @@ export const dummyServices: any[] = [
             url: "https://www.organizingforyou.com",
             location: "789 Walnut Street, Anycity, USA",
             provider: "65fe9a5396346912b7163245",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Closet Organization",
                     price: "90",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Kitchen Organization",
                     price: "100",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Home Office Setup",
-                    price: "110",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Garage Organization",
                     price: "120",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -212,24 +219,28 @@ export const dummyServices: any[] = [
             url: "https://www.fitforyou.com",
             location: "456 Pine Street, Anycity, USA",
             provider: "65fe9a5396346912b7163255",
-            servicesOffered: {
-                lesson1: {
+            servicesOffered: [
+                {
                     title: "Strength Training",
                     price: "70",
+                    id: "1"
                 },
-                lesson2: {
+                {
                     title: "HIIT Workouts",
                     price: "75",
+                    id: "2"
                 },
-                lesson3: {
+                {
                     title: "Weight Loss Programs",
                     price: "80",
+                    id: "3"
                 },
-                lesson4: {
+                {
                     title: "Functional Fitness Training",
                     price: "85",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 28,
             ratingReviewIDs: [],
@@ -248,24 +259,28 @@ export const dummyServices: any[] = [
             url: "https://www.yogaforyou.com",
             location: "789 Oak Avenue, Anytown, USA",
             provider: "65fe9a5396346912b7163256",
-            servicesOffered: {
-                lesson1: {
+            servicesOffered: [
+                {
                     title: "Beginner's Yoga",
                     price: "60",
+                    id: "1"
                 },
-                lesson2: {
+                {
                     title: "Vinyasa Flow",
                     price: "65",
+                    id: "2"
                 },
-                lesson3: {
+                {
                     title: "Yoga for Stress Relief",
                     price: "70",
+                    id: "3"
                 },
-                lesson4: {
+                {
                     title: "Advanced Asanas",
                     price: "75",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 35,
             ratingReviewIDs: [],
@@ -284,24 +299,28 @@ export const dummyServices: any[] = [
             url: "https://www.nutritionforyou.com",
             location: "123 Maple Street, Anycity, USA",
             provider: "65fe9a5396346912b7163257",
-            servicesOffered: {
-                consultation: {
+            servicesOffered: [
+                {
                     title: "Nutritional Consultation",
                     price: "90",
+                    id: "1"
                 },
-                mealPlan: {
+                {
                     title: "Custom Meal Plans",
                     price: "100",
+                    id: "2"
                 },
-                groceryList: {
+                {
                     title: "Grocery Shopping Lists",
                     price: "110",
+                    id: "3"
                 },
-                followup: {
+                {
                     title: "Follow-up Sessions",
                     price: "120",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 42,
             ratingReviewIDs: [],
@@ -320,24 +339,28 @@ export const dummyServices: any[] = [
             url: "https://www.lifecoaching.com",
             location: "456 Cedar Street, Anycity, USA",
             provider: "65fe9a5396346912b7163258",
-            servicesOffered: {
-                session1: {
+            servicesOffered: [
+                {
                     title: "Goal Setting",
                     price: "80",
+                    id: "1"
                 },
-                session2: {
+                {
                     title: "Career Coaching",
                     price: "85",
+                    id: "2"
                 },
-                session3: {
+                {
                     title: "Relationship Counseling",
                     price: "90",
+                    id: "3"
                 },
-                session4: {
+                {
                     title: "Personal Development",
                     price: "95",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.6,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -356,24 +379,28 @@ export const dummyServices: any[] = [
             url: "https://www.beautyforyou.com",
             location: "789 Elm Street, Anycity, USA",
             provider: "65fe9a5396346912b7163259",
-            servicesOffered: {
-                consultation: {
+            servicesOffered: [
+                {
                     title: "Beauty Consultation",
                     price: "70",
+                    id: "1"
                 },
-                skincare: {
+                {
                     title: "Skincare Routine",
                     price: "75",
+                    id: "2"
                 },
-                makeup: {
+                {
                     title: "Makeup Tips",
                     price: "80",
+                    id: "3"
                 },
-                haircare: {
+                {
                     title: "Hair Care Advice",
                     price: "85",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.9,
             totalReviews: 45,
             ratingReviewIDs: [],
@@ -392,24 +419,28 @@ export const dummyServices: any[] = [
             url: "https://www.financeforyou.com",
             location: "123 Oak Street, Anycity, USA",
             provider: "65fe9a5396346912b7163260",
-            servicesOffered: {
-                consultation: {
+            servicesOffered: [
+                {
                     title: "Financial Consultation",
                     price: "100",
+                    id: "1"
                 },
-                budgeting: {
+                {
                     title: "Budget Planning",
                     price: "110",
+                    id: "2"
                 },
-                investment: {
+                {
                     title: "Investment Strategies",
                     price: "120",
+                    id: "3"
                 },
-                retirement: {
+                {
                     title: "Retirement Planning",
                     price: "130",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 40,
             ratingReviewIDs: [],
@@ -430,24 +461,28 @@ export const dummyServices: any[] = [
             url: "https://www.editingforyou.com",
             location: "123 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163290",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Copy Editing",
                     price: "50",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Proofreading",
                     price: "40",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Manuscript Evaluation",
                     price: "100",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Content Development",
                     price: "80",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 42,
             ratingReviewIDs: [],
@@ -466,24 +501,28 @@ export const dummyServices: any[] = [
             url: "https://www.itsupportforyou.com",
             location: "456 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163291",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Troubleshooting",
                     price: "80",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Network Setup",
                     price: "100",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Data Backup",
                     price: "120",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Software Installation",
                     price: "70",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 36,
             ratingReviewIDs: [],
@@ -502,24 +541,28 @@ export const dummyServices: any[] = [
             url: "https://www.developmentforyou.com",
             location: "789 Pine Street, Anytown, USA",
             provider: "65fe9a5396346912b7163292",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Website Development",
                     price: "150",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Mobile App Development",
                     price: "200",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Custom Software Solutions",
                     price: "250",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "E-commerce Platforms",
                     price: "180",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -538,24 +581,28 @@ export const dummyServices: any[] = [
             url: "https://www.cybersecurityforyou.com",
             location: "456 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163294",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Security Assessments",
                     price: "180",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Penetration Testing",
                     price: "200",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Incident Response",
                     price: "220",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Security Training",
                     price: "160",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 40,
             ratingReviewIDs: [],
@@ -574,24 +621,28 @@ export const dummyServices: any[] = [
             url: "https://www.cloudsolutionsforyou.com",
             location: "789 Cedar Street, Anytown, USA",
             provider: "65fe9a5396346912b7163295",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Cloud Migration",
                     price: "250",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Infrastructure Design",
                     price: "300",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Cost Optimization",
                     price: "200",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Disaster Recovery Planning",
                     price: "280",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 36,
             ratingReviewIDs: [],
@@ -610,24 +661,28 @@ export const dummyServices: any[] = [
             url: "https://www.dataanalysisforyou.com",
             location: "123 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163293",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Data Visualization",
                     price: "120",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Statistical Analysis",
                     price: "140",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Predictive Modeling",
                     price: "160",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Data Cleaning",
                     price: "100",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.6,
             totalReviews: 34,
             ratingReviewIDs: [],
@@ -648,24 +703,28 @@ export const dummyServices: any[] = [
             url: "https://www.legaladviceforyou.com",
             location: "123 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163296",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Contract Review",
                     price: "200",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Legal Consultation",
                     price: "250",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Litigation Support",
                     price: "300",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Intellectual Property Advice",
                     price: "280",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 42,
             ratingReviewIDs: [],
@@ -684,24 +743,28 @@ export const dummyServices: any[] = [
             url: "https://www.businessconsultingforyou.com",
             location: "456 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163297",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Strategic Planning",
                     price: "300",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Market Research",
                     price: "250",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Financial Analysis",
                     price: "280",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Business Process Optimization",
                     price: "320",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 36,
             ratingReviewIDs: [],
@@ -720,24 +783,28 @@ export const dummyServices: any[] = [
             url: "https://www.financialadvisorforyou.com",
             location: "789 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163298",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Retirement Planning",
                     price: "350",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Investment Portfolio Management",
                     price: "400",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Tax Planning",
                     price: "320",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Estate Planning",
                     price: "380",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -756,24 +823,28 @@ export const dummyServices: any[] = [
             url: "https://www.marketingconsultingforyou.com",
             location: "123 Pine Street, Anytown, USA",
             provider: "65fe9a5396346912b7163299",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Brand Strategy",
                     price: "280",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Digital Marketing Campaigns",
                     price: "320",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Social Media Management",
                     price: "300",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Content Marketing",
                     price: "270",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.6,
             totalReviews: 34,
             ratingReviewIDs: [],
@@ -792,24 +863,28 @@ export const dummyServices: any[] = [
             url: "https://www.investmentadvisorforyou.com",
             location: "456 Cedar Street, Anytown, USA",
             provider: "65fe9a5396346912b7163300",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Portfolio Management",
                     price: "400",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Wealth Planning",
                     price: "380",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Risk Assessment",
                     price: "350",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Retirement Planning",
                     price: "360",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.9,
             totalReviews: 40,
             ratingReviewIDs: [],
@@ -828,24 +903,28 @@ export const dummyServices: any[] = [
             url: "https://www.hrconsultingforyou.com",
             location: "789 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163301",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Talent Acquisition",
                     price: "320",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Employee Relations",
                     price: "280",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Performance Management",
                     price: "300",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "HR Compliance",
                     price: "340",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.7,
             totalReviews: 38,
             ratingReviewIDs: [],
