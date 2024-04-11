@@ -16,6 +16,8 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
+
+  console.log('userId', userId);
   // const profile = dummyUsers[0]; // 
   const profile = await getUserById(userId)
   if (!profile) return null;

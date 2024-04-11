@@ -42,7 +42,7 @@ export const dummyServices: any[] = [
             ],
             averageRating: 4.8,
             totalReviews: 35,
-            ratingReviewIDs: [],
+            ratingReviewIDs: [1,2,3],
             categoryId: "65fe8fbcfb55d63b100a4d1c",
             bookmarked: true,
         },

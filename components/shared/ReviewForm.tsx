@@ -108,7 +108,7 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
 
     return (
 
-        <div className="mx-6">
+        <div className="wrapper mx-6">
 
             {/* Service Image */}
             <div className="border border-gray-200 rounded-lg overflow-hidden h-[210px] relative">
@@ -132,8 +132,6 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
                     {/* Rating Slider */}
                     <div>
                         <h3 className="font-medium pb-3">Rating</h3>
-                        {/* Display current rating */}
-                        <p>{rating}</p>
                         {/* Slider for editing rating */}
                         <div className="mx-2">
 
@@ -208,13 +206,6 @@ const ReviewForm = ({ userId, type, review, reviewId }: ReviewFormProps) => {
                         ) : `${type} `}</Button>
                 </form>
             </Form>
-
-            {/* Edit review Button */}
-            <div className="flex justify-center items-center mt-2 mb-5">
-                <button className="px-4 py-4 border border-black rounded-md bg-black text-white w-full">
-                    Edit Review
-                </button>
-            </div>
         </div>
     )
 }

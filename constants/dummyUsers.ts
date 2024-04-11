@@ -1,6 +1,6 @@
 import { DummyUser } from '@/types';
 
-export const dummyUsers: DummyUser[] = [
+export const dummyUsers: any[] = [
 
     {
         // _id: '6617090d243d9fb389275f9f',
@@ -12,21 +12,7 @@ export const dummyUsers: DummyUser[] = [
         imageUrl: 'https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yZXZXa1VDbXozdGNrTXp0eUY4NWM3dlE3RncifQ',
         serviceIDs: [],
         ratingReviewIDs: [],
-        website: 'https://www.hihijojo.com', // 
-        location: 'New York, NY', // 
-        contactNumber: '123-456-7899', //
-    },
-
-    {
-        // _id: '6617090d243d9fb389275f9f',
-        clerkId: 'user_2evWkTH1qOVnTGTNXG239D1hfgO',
-        email: 'hihijojo796@gmail.com',
-        username: 'hihijojo',
-        firstName: 'hihi',
-        lastName: 'jojo',
-        imageUrl: 'https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yZXZXa1VDbXozdGNrTXp0eUY4NWM3dlE3RncifQ',
-        serviceIDs: [],
-        ratingReviewIDs: [],
+        reservationIDs: [],
         website: 'https://www.hihijojo.com', // 
         location: 'New York, NY', // 
         contactNumber: '123-456-7899', //
@@ -47,6 +33,7 @@ export const dummyUsers: DummyUser[] = [
         contactNumber: "333-456-7890",
         serviceIDs: ["1"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Soph Cleaning
     {
@@ -62,6 +49,7 @@ export const dummyUsers: DummyUser[] = [
         contactNumber: "345-678-9012",
         serviceIDs: ["2"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Noah Lawns
     {
@@ -77,6 +65,7 @@ export const dummyUsers: DummyUser[] = [
         contactNumber: "456-789-0123",
         serviceIDs: ["3"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Home Security System
     {
@@ -92,6 +81,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Seattle, WA",
         serviceIDs: ["4"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Home Organizer
     {
@@ -107,6 +97,7 @@ export const dummyUsers: DummyUser[] = [
         location: "San Francisco, CA",
         serviceIDs: ["5"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
 
     // Personal
@@ -124,6 +115,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Miami, FL",
         serviceIDs: ["6"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Yoga Instructor
     {
@@ -139,6 +131,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Los Angeles, CA",
         serviceIDs: ["7"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Personal Nutritionist
     {
@@ -154,6 +147,7 @@ export const dummyUsers: DummyUser[] = [
         location: "New York, NY",
         serviceIDs: ["8"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Life Coach
     {
@@ -169,6 +163,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Chicago, IL",
         serviceIDs: ["9"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Beauty Consultant
     {
@@ -184,6 +179,7 @@ export const dummyUsers: DummyUser[] = [
         location: "San Francisco, CA",
         serviceIDs: ["10"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Finance Advisor
     {
@@ -199,6 +195,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Houston, TX",
         serviceIDs: ["11"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
 
     // Tech
@@ -216,6 +213,7 @@ export const dummyUsers: DummyUser[] = [
         location: "New York, NY",
         serviceIDs: ["12"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // IT Support by David
     {
@@ -231,6 +229,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Los Angeles, CA",
         serviceIDs: ["13"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Michael Developments
     {
@@ -246,6 +245,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Chicago, IL",
         serviceIDs: ["14"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Ethan Cyber Consultancy
     {
@@ -261,6 +261,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Houston, TX",
         serviceIDs: ["15"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Cloud Solutions and Aid
     {
@@ -276,6 +277,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Boston, MA",
         serviceIDs: ["16"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Analysis Freelance Soph
     {
@@ -291,6 +293,7 @@ export const dummyUsers: DummyUser[] = [
         location: "San Diego, CA",
         serviceIDs: ["17"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
 
     // Advisory
@@ -308,6 +311,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Washington, DC",
         serviceIDs: ["18"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Elijah Business
     {
@@ -323,6 +327,7 @@ export const dummyUsers: DummyUser[] = [
         location: "San Francisco, CA",
         serviceIDs: ["19"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Ava Fiscal
     {
@@ -338,6 +343,7 @@ export const dummyUsers: DummyUser[] = [
         location: "New York, NY",
         serviceIDs: ["20"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Marketing by Liam
     {
@@ -353,6 +359,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Chicago, IL",
         serviceIDs: ["21"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Mia's Advisory
     {
@@ -368,6 +375,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Los Angeles, CA",
         serviceIDs: ["22"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // HR Consultancy 
     {
@@ -383,6 +391,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Seattle, WA",
         serviceIDs: ["23"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
 
     // Creative
@@ -768,6 +777,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Calgary, AB",
         serviceIDs: ["48"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Cooking Classes
     {
@@ -783,6 +793,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Chicago, IL",
         serviceIDs: ["49"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Language Tutor
     {
@@ -798,6 +809,7 @@ export const dummyUsers: DummyUser[] = [
         location: "Seattle, WA",
         serviceIDs: ["50"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // Photography Lessons
     {
@@ -813,6 +825,7 @@ export const dummyUsers: DummyUser[] = [
         location: "San Francisco, CA",
         serviceIDs: ["51"],
         ratingReviewIDs: [],
+        reservationIDs: [],
     },
     // // Yoga Instructor
     {
