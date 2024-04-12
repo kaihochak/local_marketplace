@@ -34,7 +34,7 @@ const HomeHeader = () => {
                 </Link>
 
                 {/* Seeding Button */}
-                <SeedButton />
+                {/* <SeedButton /> */}
 
                 {/* Signin or "Create & Profile" */}
                 <div className="flex gap-3">
