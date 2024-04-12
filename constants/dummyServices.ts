@@ -43,7 +43,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 35,
             ratingReviewIDs: [1,2,3],
-            categoryId: "65fe8fbcfb55d63b100a4d1c",
+            categoryId: "661753e13910d3561b47392d",
             bookmarked: true,
         },
     },

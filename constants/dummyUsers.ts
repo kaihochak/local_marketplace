@@ -2,23 +2,6 @@ import { DummyUser } from '@/types';
 
 export const dummyUsers: any[] = [
 
-    {
-        // _id: '6617090d243d9fb389275f9f',
-        clerkId: 'user_2evWkTH1qOVnTGTNXG239D1hfgO',
-        email: 'hihijojo796@gmail.com',
-        username: 'hihijojo',
-        firstName: 'hihi',
-        lastName: 'jojo',
-        imageUrl: 'https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yZXZXa1VDbXozdGNrTXp0eUY4NWM3dlE3RncifQ',
-        serviceIDs: [],
-        ratingReviewIDs: [],
-        reservationIDs: [],
-        website: 'https://www.hihijojo.com', // 
-        location: 'New York, NY', // 
-        contactNumber: '123-456-7899', //
-    },
-
-
     // Home
     // ASAP Plumbers
     {
