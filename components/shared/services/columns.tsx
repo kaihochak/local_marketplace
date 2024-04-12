@@ -121,8 +121,8 @@ export const columns: ColumnDef<ServiceOffered>[] = [
                 style: "currency",
                 currency: "CAD",
             }).format(amount)
-
-            return <div className="text-right font-medium">{formatted}</div>
+            
+            return <div className="text-right font-medium">{formatted === "CA$NaN"? "" : formatted}</div>
         },
     },
     {

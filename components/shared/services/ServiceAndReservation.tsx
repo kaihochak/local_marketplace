@@ -33,11 +33,6 @@ async function getData(): Promise<ServiceOffered[]> {
 }
 
 export default async function ServiceAndReservation({ servicesOffered }: { servicesOffered: ServiceOffered[] }) {
-  // const data = await getData(serviceItems)
-
-  console.log(servicesOffered);
-  
-
   return (
     <div className="pt-6 pb-3">
       <ServiceTable columns={columns} data={servicesOffered} />
