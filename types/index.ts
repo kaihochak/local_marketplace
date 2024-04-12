@@ -125,29 +125,33 @@ export type CreateCategoryParams = {
   categoryName: string
 }
 
-// ====== ORDER PARAMS
-export type CheckoutOrderParams = {
+// ====== RESERVATION PARAMS
+export type CheckoutReservationParams = {
   serviceTitle: string
   serviceId: string
   price: string
   isFree: boolean
-  buyerId: string
+  clientId: string
 }
 
-export type CreateOrderParams = {
-  stripeId: string
+export type CreateReservationParams = {
+  userId: string
   serviceId: string
-  buyerId: string
-  totalAmount: string
-  createdAt: Date
+  reservation: {
+    // stripeId: string
+    serviceId: string
+    // totalAmount: string
+    createdAt: Date
+  }
+  path: string
 }
 
-export type GetOrdersByServiceParams = {
+export type GetReservationsByServiceParams = {
   serviceId: string
   searchString: string
 }
 
-export type GetOrdersByUserParams = {
+export type GetReservationsByUserParams = {
   userId: string | null
   limit?: number
   page: string | number | null

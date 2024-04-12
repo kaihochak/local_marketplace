@@ -92,7 +92,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       {/* My Reservations */}
       <section className="my-5 wrapper">
         <Collection
-          title='My Reservations'
+          title={{_id: "My Reservations", name: "My Reservations"}}
           direction='horizontal'
           itemType='reservation'
           items={myReservations}
@@ -106,7 +106,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       {/* My Services */}
       <section className="my-5 wrapper">
         <Collection
-          title='My Services'
+          title={{_id: "My Services", name: "My Services"}}
           direction='horizontal'
           itemType='service'
           items={myServices}

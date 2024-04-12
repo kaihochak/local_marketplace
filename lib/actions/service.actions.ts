@@ -97,6 +97,22 @@ export async function getRelatedServicesByCategory({ categoryId, serviceId }: Ge
   }
 }
 
+// Get services by title
+export async function getServiceByTitle(title: string) {
+  try {
+    await connectToDatabase()
+
+    const condition = { title }
+    const service = await Service.findOne(condition)
+
+    if (!service) throw new Error('Service not found')
+
+    return JSON.parse(JSON.stringify(service))
+  } catch (error) {
+    handleError(error)
+  }
+}
+
 // GET ALL SERVICES
 export async function getAllServices({ query, limit = 12, page, category }: GetAllServicesParams) {
   try {
