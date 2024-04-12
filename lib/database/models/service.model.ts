@@ -21,7 +21,7 @@ const ServiceSchema = new Schema({
   location: { type: String },
   imageUrl: { type: String, required: false },
   url: { type: String },
-  provider: { type: Schema.Types.ObjectId, ref: 'User' },
+  provider: { type: Schema.Types.ObjectId, ref: 'User', index: true },
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   servicesOffered: [{ id: String, title: String, description: String, price: String }],
   reviewIDs: [{ type: String, ref: 'Review' }],
