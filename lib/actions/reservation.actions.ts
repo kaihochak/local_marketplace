@@ -1,46 +1,30 @@
-import { Schema, model, models, Document } from 'mongoose'
+"use server"
 
-export interface IReservation extends Document {
-  createdAt: Date
-  totalAmount: string
-  event: {
-    _id: string
-    title: string
-  }
-  buyer: {
-    _id: string
-    firstName: string
-    lastName: string
+import { CreateReservationParams } from "@/types"
+import { redirect } from 'next/navigation';
+import { handleError } from '../utils';
+import { connectToDatabase } from '../database';
+import Reservation from '../database/models/reservation.model';
+import User from '../database/models/user.model';
+import { revalidatePath } from "next/cache";
+
+// Get all reservations for a service
+export async function createReservation({ userId, serviceId, reservation, path}: CreateReservationParams) {
+  try {
+    await connectToDatabase();
+
+    const client = await User.findById(userId);
+    if (!client) throw new Error('Client not found');
+
+    const newReservation = await Reservation.create({
+      ...reservation,
+      serviceId: serviceId,
+      clientId: userId
+    });
+    revalidatePath(path);
+
+    return JSON.parse(JSON.stringify(newReservation));
+  } catch (error) {
+    handleError(error);
   }
 }
-
-export type IReservationItem = {
-  _id: string
-  totalAmount: string
-  createdAt: Date
-  eventTitle: string
-  eventId: string
-  buyer: string
-}
-
-const ReservationSchema = new Schema({
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  serviceItems: {
-    type: String,
-  },
-  service: {
-    type: Schema.Types.ObjectId,
-    ref: 'Service',
-  },
-  buyer: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
-})
-
-const Reservation = models.Reservation || model('Reservation', ReservationSchema)
-
-export default Reservation

@@ -6,12 +6,14 @@ import User from '@/lib/database/models/user.model';
 import Service from '@/lib/database/models/service.model';
 
 import { createCategory } from '@/lib/actions/category.actions';
-import { createUser, getUserById } from '@/lib/actions/user.actions';
-import { createService } from '@/lib/actions/service.actions';
+import { createUser, getAllUsers, getUserById } from '@/lib/actions/user.actions';
+import { createService, getServiceByName, getServiceByTitle } from '@/lib/actions/service.actions';
+import { createReservation } from '@/lib/actions/reservation.actions';
 
 import { dummyCategories } from '@/constants/dummyCategories';
 import { dummyUsers } from '@/constants/dummyUsers';
 import { dummyServices } from '@/constants/dummyServices';
+import { dummyReservations } from '@/constants/dummyReservations';
 
 let adminID = "6618e3348cdeb4b036e920c2";
 
@@ -57,6 +59,34 @@ const createAllUsers = async (dummyUsers: any[]) => {
         }
     }
 
+    
+    // create reservations based on the user
+    const usersFromDB = await getAllUsers();
+    for (let i = 0; i < usersFromDB.length; i++) {
+
+        const user = usersFromDB[i];
+
+        console.log('user:', user);
+        
+
+        if (user.reservationIDs.length > 0) {
+            for (let j = 0; j < user.reservationIDs.length; j++) {
+                const reservation = dummyReservations.find(reservation => reservation._id === user.reservationIDs[j]);
+                const serviceTitle = dummyServices.find(service => service._id === reservation.params.serviceId).params.title;
+                const service = await getServiceByTitle(serviceTitle); // Await the getServiceByTitle function call
+
+                const createdReservation = await createReservation({
+                    reservation: reservation.params,
+                    serviceId: service._id, // Access the _id property after awaiting the getServiceByTitle function call
+                    userId: user._id,
+                    path: '/user'
+                })
+
+                console.log('createdReservation:', createdReservation);
+            }
+        }
+    }
+
     // create admins' services
     const admin = await getUserById(adminID);
     if (admin && admin.serviceIDs.length > 0) {
@@ -67,7 +97,6 @@ const createAllUsers = async (dummyUsers: any[]) => {
                 userId: adminID,
                 path: '/profile'
             })
-
             console.log('createdService:', createdService);
         }
     }

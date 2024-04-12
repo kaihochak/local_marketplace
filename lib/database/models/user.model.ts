@@ -12,6 +12,7 @@ const UserSchema = new Schema({
   contactNumber: { type: String, required: false, unique: true },
   serviceIDs: [{ type: String,  required: false, ref: 'Service' }],
   reviewIDs: [{ type: String, required: false, ref: 'Review' }],
+  reservationIDs: [{ type: String, required: false, ref: 'Reservation' }],
 }, { timestamps: true }); // Automatically add createdAt and updatedAt fields
 
 const User = models.User || model('User', UserSchema);
@@ -29,8 +30,9 @@ export type UserItem = {
   website: string; 
   location: string;
   contactNumber: string;
-  serviceIDs: string[]; // Assuming conversion to string IDs for external use
-  reviewIDs: string[]; // Assuming conversion to string IDs for external use
+  serviceIDs: string[]; // for seeding script only, won't be needed in production
+  reviewIDs: string[]; // for seeding script only, won't be needed in production
+  reservationIDs: string[]; // for seeding script only, won't be needed in production
 };
 
 export default User;
