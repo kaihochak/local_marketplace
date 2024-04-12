@@ -45,7 +45,35 @@ const Card = ({
 
     };
 
+    // const getRandomLandscapeImage = async () => {
+    //     try {
+    //         const response = await fetch('https://source.unsplash.com/featured/landscape');
+    //         if (response.ok) {
+    //             return response.url;
+    //         } else {
+    //             throw new Error('Failed to fetch image');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //         return ''; // Return an empty string if fetching the image fails
+    //     }
+    // };
+
     const ImageBanner = () => {
+
+        // const [randomImageUrl, setRandomImageUrl] = useState('');
+
+        // useEffect(() => {
+        //     const fetchRandomImage = async () => {
+        //         if (!service?.imageUrl) {
+        //             const imageUrl = await getRandomLandscapeImage();
+        //             setRandomImageUrl(imageUrl);
+        //         }
+        //     };
+        //     fetchRandomImage();
+        // }, [service]);
+
+
         // for reservation
         if (itemType === "reservation") {
             return (
@@ -84,10 +112,31 @@ const Card = ({
                         <BookmarkFilled className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                         : <BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     } */}
-                    {service && (
-                        <Image priority className="object-cover w-full h-full"
-                            width={5000} height={5000}
-                            src={service?.imageUrl ?? ''} alt={service?.title}
+                    {/* {service && service?.imageUrl ? (
+
+                        <Image
+                            priority
+                            className="object-cover w-full h-full"
+                            width={5000}
+                            height={5000}
+                            src={service.imageUrl}
+                            alt={service.title}
+                        />
+                    ) : (
+                        <img
+                            src={randomImageUrl}
+                            alt="Random Landscape"
+                            className="object-cover w-full h-full"
+                        />
+                    )} */}
+                    {service && service.imageUrl && (
+                        <Image
+                            priority
+                            className="object-cover w-full h-full"
+                            width={5000}
+                            height={5000}
+                            src={service.imageUrl}
+                            alt={service.title}
                         />
                     )}
                 </div>
@@ -117,26 +166,26 @@ const Card = ({
             return (
                 <div className='flex flex-col gap-y-1 lg:gap-y-2'>
                     {/* Service Titile */}
+                    <div className="p5-semibold line-clamp-1">{service?.title}</div>
+                    {/* Provider */}
                     <div className='flex justify-between'>
-                        <div className="p5-semibold">{service?.title}</div>
+                        <div className="flex items-center gap-x-2 ml-1 ">
+                            <div className='w-5 h-5 lg:w-7 lg:h-7 overflow-hidden'>
+                                <Image priority className="w-full h-full rounded-full mr-2 object-cover"
+                                    src={service?.provider?.imageUrl ?? ''}
+                                    alt={service?.provider?.name ?? ''}
+                                    width={5000} height={5000}
+                                />
+                            </div>
+                            <p className="p6-medium">
+                                {service?.provider?.firstName ?? ''} {service?.provider?.lastName ?? ''}
+                            </p>
+                        </div>
                         <div className='flex flex-center text-xs text-gray-500 gap-x-1 mr-2'>
                             <p>(12)</p>
                             <p>3.2</p>
                             <StarEmpty className='w-3 h-3' />
                         </div>
-                    </div>
-                    {/* Provider */}
-                    <div className="flex items-center gap-x-2 ml-1 ">
-                        <div className='w-5 h-5 lg:w-7 lg:h-7 overflow-hidden'>
-                            <Image priority className="w-full h-full rounded-full mr-2 object-cover"
-                                src={service?.provider?.imageUrl ?? ''}
-                                alt={service?.provider?.name ?? ''}
-                                width={5000} height={5000}
-                            />
-                        </div>
-                        <p className="p6-medium">
-                            {service?.provider?.firstName ?? ''} {service?.provider?.lastName ?? ''}
-                        </p>
                     </div>
                     {/* description */}
                     <p className="p7-regular line-clamp-1 text-primary-foreground pt-1 sm:pt-0">

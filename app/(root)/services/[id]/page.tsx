@@ -55,17 +55,19 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
             {/* Provider Info */}
             <section className="flex justify-center bg-dotted-pattern bg-contain pb-4 md:py-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl gap-y-4 gap-x-4">
+              <div className={` ${service?.imageUrl ? 'grid grid-cols-1 md:grid-cols-2' : ''} 2xl:max-w-7xl gap-y-4 gap-x-4`}>
                 {/* hero image */}
-                <div className='w-full h-48 md:h-80 flex justify-center overflow-hidden rounded-md'>
-                  <Image
-                    src={service?.imageUrl}
-                    alt="hero image"
-                    width={1000}
-                    height={1000}
-                    className='object-cover '
-                  />
-                </div>
+                {service?.imageUrl && ( // If the image if present only then show the image section
+                  <div className='w-full h-48 md:h-80 flex justify-center overflow-hidden rounded-md'>
+                    <Image
+                      src={service?.imageUrl}
+                      alt="hero image"
+                      width={1000}
+                      height={1000}
+                      className='object-cover '
+                    />
+                  </div>                  
+                )}
                 {/* Details */}
                 <div className="w-full md:h-80 flex justify-evenly flex-col gap-1 bg-primary px-4 rounded-md">
                   {/* image, name, rating */}
@@ -110,7 +112,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                       <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
                         <LocationPin className="w-5 h-5" />
                       </div>
-                      <p className="">{service?.provider?.location}</p>
+                      <p className="">{service?.location}</p>
                     </div>
                     {/* Website */}
                     <div className="flex items-center gap-x-6">

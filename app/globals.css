@@ -91,11 +91,11 @@ body {
   }
 
   .big-wrapper {
-    @apply max-w-[1280px] lg:mx-auto w-full;
+    @apply max-w-[1700px] lg:mx-auto w-full;
   }
 
   .wrapper {
-    @apply max-w-[1024px] lg:mx-auto w-full;
+    @apply max-w-[1400px] lg:mx-auto w-full;
   }
 
   .flex-center {

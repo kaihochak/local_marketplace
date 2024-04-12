@@ -187,7 +187,7 @@ export const dummyServices: any[] = [
         {
             title: "Home Organizer",
             description: "Professional home organizing services to declutter and organize your living spaces. From closets to kitchens, we'll help you create a space you'll love.",
-            imageUrl: "https://source.unsplash.com/a-room-with-a-desk-and-chairs-a4Zb82wKISs",
+            //imageUrl: "https://source.unsplash.com/a-room-with-a-desk-and-chairs-a4Zb82wKISs",
             url: "https://www.organizingforyou.com",
             location: "789 Walnut Street, Anycity, USA",
             provider: "65fe9a5396346912b7163245",
