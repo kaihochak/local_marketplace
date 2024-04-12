@@ -1,4 +1,5 @@
 import { ServiceItem } from '@/lib/database/models/service.model';
+import { Description } from '@radix-ui/react-dialog';
 
 export const dummyServices: any[] = [
 
@@ -61,21 +62,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Regular Cleaning",
+                    description: "Routine cleaning services to maintain a clean and healthy home environment.",
                     price: "80",
                     id: "1"
                 },
                 {
                     title: "Deep Cleaning",
+                    description: "Thorough cleaning services to tackle dirt, grime, and dust in hard-to-reach areas.",
                     price: "100",
                     id: "2"
                 },
                 {
                     title: "Move-in/Move-out Cleaning",
+                    description: "Cleaning services for moving in or out of a property to ensure a fresh start.",
                     price: "120",
                     id: "3"
                 },
                 {
                     title: "Specialized Cleaning Services",
+                    description: "Customized cleaning services to meet your specific needs and preferences.",
                     price: "150",
                     id: "4"
                 }
@@ -101,21 +106,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Lawn Mowing",
+                    description: "Regular mowing services to keep your lawn looking neat and well-maintained.",
                     price: "60",
                     id: "1"
                 },
                 {
                     title: "Weed Control",
+                    description: "Removing weeds and preventing weed growth to maintain a healthy lawn.",
                     price: "70",
                     id: "2"
                 },
                 {
                     title: "Fertilization",
+                    description: "Applying fertilizers to promote healthy grass growth and maintain a lush lawn.",
                     price: "80",
                     id: "3"
                 },
                 {
                     title: "Lawn Aeration",
+                    description: "Improving soil health and promoting better grass growth through aeration services.",
                     price: "90",
                     id: "4"
                 }
@@ -138,24 +147,32 @@ export const dummyServices: any[] = [
             url: "https://www.securityforyou.com",
             location: "456 Cedar Street, Anycity, USA",
             provider: "65fe9a5396346912b7163244",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Security System Installation",
+                    description: "Installing security cameras, alarms, and sensors to protect your home from intruders.",
                     price: "200",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Camera Installation",
+                    description: "Setting up surveillance cameras to monitor your home and property.",
                     price: "150",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Alarm System Setup",
+                    description: "Installing alarm systems to alert you of any security breaches or emergencies.",
                     price: "180",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Smart Home Integration",
+                    description: "Integrating security systems with smart home devices for added convenience and control.",
                     price: "250",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 45,
             ratingReviewIDs: [],
@@ -174,24 +191,31 @@ export const dummyServices: any[] = [
             url: "https://www.organizingforyou.com",
             location: "789 Walnut Street, Anycity, USA",
             provider: "65fe9a5396346912b7163245",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Closet Organization",
+                    description: "Organizing and decluttering closets to maximize storage space and efficiency.",
                     price: "90",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Kitchen Organization",
+                    description: "Organizing kitchen cabinets, drawers, and pantry for a more functional and efficient space.",
                     price: "100",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Home Office Setup",
-                    price: "110",
+                    description: "Creating a productive and organized home office space tailored to your needs.",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Garage Organization",
+                    description: "Decluttering and organizing the garage to create a functional and tidy storage space.",
                     price: "120",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -212,24 +236,32 @@ export const dummyServices: any[] = [
             url: "https://www.fitforyou.com",
             location: "456 Pine Street, Anycity, USA",
             provider: "65fe9a5396346912b7163255",
-            servicesOffered: {
-                lesson1: {
+            servicesOffered: [
+                {
                     title: "Strength Training",
+                    description: "Building muscle and increasing strength through weight training exercises.",
                     price: "70",
+                    id: "1"
                 },
-                lesson2: {
+                {
                     title: "HIIT Workouts",
+                    description: "High-intensity interval training for improved cardiovascular fitness and fat loss.",
                     price: "75",
+                    id: "2"
                 },
-                lesson3: {
+                {
                     title: "Weight Loss Programs",
+                    description: "Customized programs to help you lose weight and improve overall health.",
                     price: "80",
+                    id: "3"
                 },
-                lesson4: {
+                {
                     title: "Functional Fitness Training",
+                    description: "Improving mobility, flexibility, and balance through functional fitness exercises.",
                     price: "85",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 28,
             ratingReviewIDs: [],
@@ -248,24 +280,32 @@ export const dummyServices: any[] = [
             url: "https://www.yogaforyou.com",
             location: "789 Oak Avenue, Anytown, USA",
             provider: "65fe9a5396346912b7163256",
-            servicesOffered: {
-                lesson1: {
+            servicesOffered: [
+                {
                     title: "Beginner's Yoga",
+                    description: "Introduction to basic yoga poses and breathing techniques for beginners.",
                     price: "60",
+                    id: "1"
                 },
-                lesson2: {
+                {
                     title: "Vinyasa Flow",
+                    description: "Dynamic and fluid yoga sequences to improve strength, flexibility, and balance.",
                     price: "65",
+                    id: "2"
                 },
-                lesson3: {
+                {
                     title: "Yoga for Stress Relief",
+                    description: "Gentle yoga practices to reduce stress, anxiety, and promote relaxation.",
                     price: "70",
+                    id: "3"
                 },
-                lesson4: {
+                {
                     title: "Advanced Asanas",
+                    description: "Challenging yoga poses and sequences for advanced practitioners to deepen their practice.",
                     price: "75",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 35,
             ratingReviewIDs: [],
@@ -284,24 +324,32 @@ export const dummyServices: any[] = [
             url: "https://www.nutritionforyou.com",
             location: "123 Maple Street, Anycity, USA",
             provider: "65fe9a5396346912b7163257",
-            servicesOffered: {
-                consultation: {
+            servicesOffered: [
+                {
                     title: "Nutritional Consultation",
+                    description: "Assessment of dietary habits and nutritional needs to create a customized meal plan.",
                     price: "90",
+                    id: "1"
                 },
-                mealPlan: {
+                {
                     title: "Custom Meal Plans",
+                    description: "Tailored meal plans based on your dietary preferences, health goals, and lifestyle.",
                     price: "100",
+                    id: "2"
                 },
-                groceryList: {
+                {
                     title: "Grocery Shopping Lists",
+                    description: "Guidance on healthy food choices and creating grocery shopping lists for a balanced diet.",
                     price: "110",
+                    id: "3"
                 },
-                followup: {
+                {
                     title: "Follow-up Sessions",
+                    description: "Regular follow-up sessions to track progress, make adjustments, and provide support.",
                     price: "120",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 42,
             ratingReviewIDs: [],
@@ -320,24 +368,32 @@ export const dummyServices: any[] = [
             url: "https://www.lifecoaching.com",
             location: "456 Cedar Street, Anycity, USA",
             provider: "65fe9a5396346912b7163258",
-            servicesOffered: {
-                session1: {
+            servicesOffered: [
+                {
                     title: "Goal Setting",
+                    description: "Setting achievable goals and creating a plan to work towards them.",
                     price: "80",
+                    id: "1"
                 },
-                session2: {
+                {
                     title: "Career Coaching",
+                    description: "Guidance on career development, job search strategies, and professional growth.",
                     price: "85",
+                    id: "2"
                 },
-                session3: {
+                {
                     title: "Relationship Counseling",
+                    description: "Support and advice on building healthy relationships and improving communication.",
                     price: "90",
+                    id: "3"
                 },
-                session4: {
+                {
                     title: "Personal Development",
+                    description: "Tools and techniques for personal growth, self-improvement, and self-discovery.", 
                     price: "95",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.6,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -356,24 +412,32 @@ export const dummyServices: any[] = [
             url: "https://www.beautyforyou.com",
             location: "789 Elm Street, Anycity, USA",
             provider: "65fe9a5396346912b7163259",
-            servicesOffered: {
-                consultation: {
+            servicesOffered: [
+                {
                     title: "Beauty Consultation",
+                    description: "Personalized beauty advice and recommendations based on your skin type and preferences.",
                     price: "70",
+                    id: "1"
                 },
-                skincare: {
+                {
                     title: "Skincare Routine",
+                    description: "Customized skincare routines to address specific skin concerns and maintain healthy skin.",
                     price: "75",
+                    id: "2"
                 },
-                makeup: {
+                {
                     title: "Makeup Tips",
+                    description: "Makeup application techniques, product recommendations, and makeup tutorials.",
                     price: "80",
+                    id: "3"
                 },
-                haircare: {
+                {
                     title: "Hair Care Advice",
+                    description: "Hair care tips, styling advice, and product recommendations for healthy and beautiful hair.",
                     price: "85",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.9,
             totalReviews: 45,
             ratingReviewIDs: [],
@@ -392,24 +456,32 @@ export const dummyServices: any[] = [
             url: "https://www.financeforyou.com",
             location: "123 Oak Street, Anycity, USA",
             provider: "65fe9a5396346912b7163260",
-            servicesOffered: {
-                consultation: {
+            servicesOffered: [
+                {
                     title: "Financial Consultation",
+                    description: "Assessment of financial goals, assets, and liabilities to create a customized financial plan.",
                     price: "100",
+                    id: "1"
                 },
-                budgeting: {
+                {
                     title: "Budget Planning",
+                    description: "Creating a budget to track expenses, manage debt, and save for future goals.",
                     price: "110",
+                    id: "2"
                 },
-                investment: {
+                {
                     title: "Investment Strategies",
+                    description: "Recommendations on investment options, asset allocation, and risk management.",
                     price: "120",
+                    id: "3"
                 },
-                retirement: {
+                {
                     title: "Retirement Planning",
+                    description: "Planning for retirement, setting up retirement accounts, and maximizing retirement savings.",
                     price: "130",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 40,
             ratingReviewIDs: [],
@@ -430,24 +502,32 @@ export const dummyServices: any[] = [
             url: "https://www.editingforyou.com",
             location: "123 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163290",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Copy Editing",
+                    description: "Editing for grammar, punctuation, and style to improve readability and clarity.",
                     price: "50",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Proofreading",
+                    description: "Checking for errors in spelling, grammar, and formatting to ensure accuracy and consistency.",
                     price: "40",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Manuscript Evaluation",
+                    description: "Feedback on plot, character development, pacing, and overall structure for fiction and non-fiction manuscripts.",
                     price: "100",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Content Development",
+                    description: "Assistance with content creation, idea generation, and writing strategies to enhance your writing.",
                     price: "80",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 42,
             ratingReviewIDs: [],
@@ -466,24 +546,32 @@ export const dummyServices: any[] = [
             url: "https://www.itsupportforyou.com",
             location: "456 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163291",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Troubleshooting",
+                    description: "Identifying and resolving technical issues to keep your systems up and running.",
                     price: "80",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Network Setup",
+                    description: "Setting up wired and wireless networks for optimal connectivity and performance.",
                     price: "100",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Data Backup",
+                    description: "Implementing data backup solutions to protect your valuable information from loss or corruption.",
                     price: "120",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Software Installation",
+                    description: "Installing and configuring software applications to meet your business needs.",
                     price: "70",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 36,
             ratingReviewIDs: [],
@@ -502,24 +590,32 @@ export const dummyServices: any[] = [
             url: "https://www.developmentforyou.com",
             location: "789 Pine Street, Anytown, USA",
             provider: "65fe9a5396346912b7163292",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Website Development",
+                    description: "Designing and developing responsive websites to showcase your brand and services.",
                     price: "150",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Mobile App Development",
+                    description: "Creating custom mobile applications for iOS and Android platforms to engage your audience.",
                     price: "200",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Custom Software Solutions",
+                    description: "Developing software applications to streamline business processes and improve efficiency.",
                     price: "250",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "E-commerce Platforms",
+                    description: "Building online stores and e-commerce platforms to sell products and services online.",
                     price: "180",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -538,24 +634,32 @@ export const dummyServices: any[] = [
             url: "https://www.cybersecurityforyou.com",
             location: "456 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163294",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Security Assessments",
+                    description: "Assessing vulnerabilities and risks in your systems to identify potential security threats.",
                     price: "180",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Penetration Testing",
+                    description: "Simulating cyber attacks to test the security of your systems and applications.",
                     price: "200",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Incident Response",
+                    description: "Developing response plans and protocols to address security incidents and breaches.",
                     price: "220",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Security Training",
+                    description: "Training employees on cybersecurity best practices and awareness to prevent security incidents.",
                     price: "160",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 40,
             ratingReviewIDs: [],
@@ -574,24 +678,32 @@ export const dummyServices: any[] = [
             url: "https://www.cloudsolutionsforyou.com",
             location: "789 Cedar Street, Anytown, USA",
             provider: "65fe9a5396346912b7163295",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Cloud Migration",
+                    description: "Migrating your data and applications to the cloud for improved scalability and flexibility.",
                     price: "250",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Infrastructure Design",
+                    description: "Designing cloud infrastructure to meet your business needs and optimize performance.",
                     price: "300",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Cost Optimization",
+                    description: "Analyzing cloud costs and optimizing resources to reduce expenses and improve ROI.",
                     price: "200",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Disaster Recovery Planning",
+                    description: "Developing disaster recovery plans and backup solutions to ensure business continuity.",
                     price: "280",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 36,
             ratingReviewIDs: [],
@@ -610,24 +722,32 @@ export const dummyServices: any[] = [
             url: "https://www.dataanalysisforyou.com",
             location: "123 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163293",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Data Visualization",
+                    description: "Creating visual representations of data to identify trends, patterns, and insights.",
                     price: "120",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Statistical Analysis",
+                    description: "Analyzing data using statistical methods to draw meaningful conclusions and make data-driven decisions.",
                     price: "140",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Predictive Modeling",
+                    description: "Building predictive models to forecast future trends and outcomes based on historical data.",
                     price: "160",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Data Cleaning",
+                    description: "Cleaning and preparing data for analysis to ensure accuracy and reliability of results.",
                     price: "100",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.6,
             totalReviews: 34,
             ratingReviewIDs: [],
@@ -648,24 +768,32 @@ export const dummyServices: any[] = [
             url: "https://www.legaladviceforyou.com",
             location: "123 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163296",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Contract Review",
+                    description: "Reviewing contracts and agreements to ensure legal compliance and protect your interests.",
                     price: "200",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Legal Consultation",
+                    description: "Providing legal advice and guidance on various legal matters and issues.",
                     price: "250",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Litigation Support",
+                    description: "Assisting with legal disputes, lawsuits, and court proceedings to help you navigate the legal system.",
                     price: "300",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Intellectual Property Advice",
+                    description: "Advice on intellectual property rights, trademarks, copyrights, and patents.",
                     price: "280",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.9,
             totalReviews: 42,
             ratingReviewIDs: [],
@@ -684,24 +812,32 @@ export const dummyServices: any[] = [
             url: "https://www.businessconsultingforyou.com",
             location: "456 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163297",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Strategic Planning",
+                    description: "Developing strategic plans and business goals to drive growth and profitability.",
                     price: "300",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Market Research",
+                    description: "Conducting market research and analysis to identify opportunities and trends in the market.",
                     price: "250",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Financial Analysis",
+                    description: "Analyzing financial data and performance to make informed business decisions and improve profitability.",
                     price: "280",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Business Process Optimization",
+                    description: "Streamlining business processes and operations to improve efficiency and productivity.",
                     price: "320",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.7,
             totalReviews: 36,
             ratingReviewIDs: [],
@@ -720,24 +856,32 @@ export const dummyServices: any[] = [
             url: "https://www.financialadvisorforyou.com",
             location: "789 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163298",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Retirement Planning",
+                    description: "Creating a retirement plan to ensure financial security and peace of mind in your golden years.",
                     price: "350",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Investment Portfolio Management",
+                    description: "Managing your investment portfolio to maximize returns and minimize risk.",
                     price: "400",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Tax Planning",
+                    description: "Developing tax-efficient strategies to reduce tax liabilities and maximize savings.",
                     price: "320",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Estate Planning",
+                    description: "Planning for the distribution of assets and wealth to protect your legacy and loved ones.",
                     price: "380",
-                },
-            },
+                    id: "4"
+                }
+            ],            
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -756,24 +900,32 @@ export const dummyServices: any[] = [
             url: "https://www.marketingconsultingforyou.com",
             location: "123 Pine Street, Anytown, USA",
             provider: "65fe9a5396346912b7163299",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Brand Strategy",
+                    description: "Developing brand positioning, messaging, and identity to differentiate your brand in the market.",
                     price: "280",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Digital Marketing Campaigns",
+                    description: "Creating and managing digital marketing campaigns to reach and engage your target audience.",
                     price: "320",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Social Media Management",
+                    description: "Managing social media accounts and content to build brand awareness and drive engagement.",
                     price: "300",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Content Marketing",
+                    description: "Creating and distributing valuable content to attract and retain customers and drive profitable actions.",
                     price: "270",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.6,
             totalReviews: 34,
             ratingReviewIDs: [],
@@ -792,24 +944,32 @@ export const dummyServices: any[] = [
             url: "https://www.investmentadvisorforyou.com",
             location: "456 Cedar Street, Anytown, USA",
             provider: "65fe9a5396346912b7163300",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Portfolio Management",
+                    description: "Managing your investment portfolio to achieve your financial goals and objectives.",
                     price: "400",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Wealth Planning",
+                    description: "Developing a comprehensive wealth management plan to grow and protect your assets.",
                     price: "380",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Risk Assessment",
+                    description: "Assessing investment risks and developing strategies to mitigate risks and protect your investments.",
                     price: "350",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "Retirement Planning",
+                    description: "Planning for retirement and creating a financial roadmap for a secure and comfortable retirement.",
                     price: "360",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.9,
             totalReviews: 40,
             ratingReviewIDs: [],
@@ -828,24 +988,32 @@ export const dummyServices: any[] = [
             url: "https://www.hrconsultingforyou.com",
             location: "789 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163301",
-            servicesOffered: {
-                service1: {
+            servicesOffered: [
+                {
                     title: "Talent Acquisition",
+                    description: "Recruiting top talent and building a skilled and diverse workforce to drive business growth.",
                     price: "320",
+                    id: "1"
                 },
-                service2: {
+                {
                     title: "Employee Relations",
+                    description: "Managing employee relations, conflict resolution, and fostering a positive work environment.",
                     price: "280",
+                    id: "2"
                 },
-                service3: {
+                {
                     title: "Performance Management",
+                    description: "Developing performance management systems and processes to drive employee engagement and productivity.",
                     price: "300",
+                    id: "3"
                 },
-                service4: {
+                {
                     title: "HR Compliance",
+                    description: "Ensuring compliance with labor laws, regulations, and best practices to mitigate legal risks.",
                     price: "340",
-                },
-            },
+                    id: "4"
+                }
+            ],
             averageRating: 4.7,
             totalReviews: 38,
             ratingReviewIDs: [],
@@ -869,21 +1037,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Oil Painting",
+                    description: "Traditional oil paintings on canvas with rich colors and textures.",
                     price: "500",
                     id: "1"
                 },
                 {
                     title: "Watercolor Painting",
+                    description: "Delicate and translucent watercolor paintings that capture light and color.",
                     price: "450",
                     id: "2"
                 },
                 {
                     title: "Portrait Painting",
+                    description: "Custom portrait paintings that capture the likeness and personality of the subject.",
                     price: "600",
                     id: "3"
                 },
                 {
                     title: "Landscape Painting",
+                    description: "Scenic landscape paintings that evoke a sense of place and atmosphere.",
                     price: "550",
                     id: "4"
                 }
@@ -909,21 +1081,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Wedding Photography",
+                    description: "Beautiful and timeless wedding photography to capture your special day.",
                     price: "1200",
                     id: "1"
                 },
                 {
                     title: "Portrait Photography",
+                    description: "Professional portrait photography for individuals, families, and groups.",
                     price: "800",
                     id: "2"
                 },
                 {
                     title: "Event Photography",
+                    description: "Coverage of corporate events, parties, and special occasions with attention to detail.",
                     price: "1000",
                     id: "3"
                 },
                 {
                     title: "Product Photography",
+                    description: "High-quality product images for e-commerce, marketing, and advertising purposes.",
                     price: "900",
                     id: "4"
                 }
@@ -949,21 +1125,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Bronze Sculptures",
+                    description: "Elegant and timeless bronze sculptures that add sophistication to any space.",
                     price: "800",
                     id: "1"
                 },
                 {
                     title: "Abstract Sculptures",
+                    description: "Intriguing and thought-provoking abstract sculptures that spark conversation and contemplation.",
                     price: "750",
                     id: "2"
                 },
                 {
                     title: "Figurative Sculptures",
+                    description: "Realistic and expressive figurative sculptures that capture the human form and emotion.",
                     price: "850",
                     id: "3"
                 },
                 {
                     title: "Outdoor Sculptures",
+                    description: "Durable and weather-resistant outdoor sculptures for gardens, parks, and public spaces.",
                     price: "900",
                     id: "4"
                 }
@@ -989,21 +1169,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Landscape Photography",
+                    description: "Stunning landscape photography that showcases the beauty of natural environments.",
                     price: "700",
                     id: "1"
                 },
                 {
                     title: "Wildlife Photography",
+                    description: "Captivating wildlife photography that captures the essence and behavior of animals in their natural habitats.",
                     price: "750",
                     id: "2"
                 },
                 {
                     title: "Nature Portraits",
+                    description: "Artistic nature portraits that highlight the beauty and diversity of flora and fauna.",
                     price: "650",
                     id: "3"
                 },
                 {
                     title: "Macro Photography",
+                    description: "Close-up and detailed macro photography of plants, insects, and natural textures.",
                     price: "800",
                     id: "4"
                 }
@@ -1068,21 +1252,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Logo Design",
+                    description: "Custom logo design that reflects your brand identity and values.",
                     price: "500",
                     id: "1"
                 },
                 {
                     title: "Branding Materials",
+                    description: "Design of branding materials such as business cards, letterheads, and marketing collateral.",
                     price: "600",
                     id: "2"
                 },
                 {
                     title: "Packaging Design",
+                    description: "Creative packaging design for products that enhances brand recognition and appeal.",
                     price: "700",
                     id: "3"
                 },
                 {
                     title: "Digital Illustrations",
+                    description: "Unique and eye-catching digital illustrations for websites, social media, and marketing campaigns.",
                     price: "550",
                     id: "4"
                 }
@@ -1147,21 +1335,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Piano Lessons",
+                    description: "Private piano lessons for beginners and advanced players.",
                     price: "60",
                     id: "1"
                 },
                 {
                     title: "Guitar Lessons",
+                    description: "Acoustic and electric guitar lessons for all ages and skill levels.",
                     price: "65",
                     id: "2"
                 },
                 {
                     title: "Violin Lessons",
+                    description: "Classical violin lessons for children and adults.",
                     price: "70",
                     id: "3"
                 },
                 {
                     title: "Vocal Coaching",
+                    description: "Professional vocal coaching and singing lessons to improve technique and performance.",
                     price: "55",
                     id: "4"
                 }
@@ -1364,21 +1556,25 @@ export const dummyServices: any[] = [
             servicesOffered: [
                 {
                     title: "Airport Transfers",
+                    description: "Pick-up and drop-off services to and from the airport.",
                     price: "40",
                     id: "1"
                 },
                 {
                     title: "Event Chauffeur",
+                    description: "Professional chauffeur services for weddings, parties, and special events.",
                     price: "60",
                     id: "2"
                 },
                 {
                     title: "City Tours",
+                    description: "Guided tours of the city with a knowledgeable and friendly driver.",
                     price: "50",
                     id: "3"
                 },
                 {
                     title: "Corporate Transportation",
+                    description: "Transportation services for business meetings, conferences, and events.",
                     price: "70",
                     id: "4"
                 }
