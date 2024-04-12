@@ -103,8 +103,6 @@ export async function getAllServices({ query, limit = 12, page, category }: GetA
       .skip(skipAmount)
       .limit(limit)
 
-      console.log('servicesQuery:', servicesQuery);
-
     // Populate provider and category
     const services = await populateService(servicesQuery)
 
