@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Card from './Card';
 import { ServiceItem } from '@/lib/database/models/service.model';
-import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
+import { ReviewItem } from '@/lib/database/models/review.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
 import Link from 'next/link';
 import { Url } from 'next/dist/shared/lib/router/router';
@@ -11,19 +11,20 @@ import { ArrowLeft } from '@/public/assets/icons/ArrowLeft';
 import { ArrowRight } from '@/public/assets/icons/ArrowRight';
 
 type CollectionProps = {
-    title?: string;
+    title?: { _id: string, name: string };
     direction?: 'horizontal' | 'vertical';
     itemType?: 'service' | 'reservation' | 'review';
-    items?: ServiceItem[] | RatingReviewItem[] | ReservationItem[];
+    items?: ServiceItem[] | ReviewItem[] | ReservationItem[];
     hasButton?: boolean;
     limit?: number;
     hasViewMore?: boolean;
     link?: Url;
     itemsPerPage?: number;
     nextPrevButton?: boolean;
+    selectedCategory?: string;
 };
 
-const Collection = ({ title, direction, itemType, items, hasButton, hasViewMore, link, nextPrevButton
+const Collection = ({ title, direction, itemType, items, hasButton, hasViewMore, link, nextPrevButton, selectedCategory
 }: CollectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -81,8 +82,10 @@ const Collection = ({ title, direction, itemType, items, hasButton, hasViewMore,
      *************************************************************************************/
     return (
         <>
-            <div className='flex justify-start items-center gap-x-2 cursor-pointer [&_*]:hover:opacity-100'>
-                <h2 className='pl-5 md:pl-4 lg:pl-10 h4-bold text-primary-foreground'>{title}</h2>
+            <div className='flex justify-start items-center gap-x-2 cursor-pointer [&_*]:hover:opacity-100 '>
+                <h2 className={`pl-5 md:pl-4 lg:pl-10 h4-bold text-primary-foreground ${selectedCategory === title?._id ? ' highlight-text' : ""}`}>
+                    {title?.name}
+                </h2>
 
                 {/* View more */}
                 {hasViewMore && link &&

@@ -13,11 +13,16 @@ import ServiceReviews from '@/components/shared/ServiceReviews';
 import CommonHeader from '@/components/shared/CommonHeader';
 import { Slash } from "lucide-react"
 import ServiceAndReservation from '@/components/shared/services/ServiceAndReservation';
-import { getServiceById } from '@/lib/actions/service.actions';
+import { getRelatedServicesByCategory, getServiceById } from '@/lib/actions/service.actions';
+import { getReviewsByService } from '@/lib/actions/review.actions';
+import { ReviewItem } from '@/lib/database/models/review.model';
 
 const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) => {
 
   const service = await getServiceById(id);
+  const relatedServices = await getRelatedServicesByCategory({ categoryId: service.category._id, serviceId: service._id, page: 1, limit: 10});
+  // const serviceReviews = await getReviewsByService({ serviceId: service._id, limit: 3, page: 1 });
+  const serviceReviews: ReviewItem[] = [];
 
   const BreadcrumbBar = () => {
     return (
@@ -137,7 +142,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             </section>
 
             {/* Reviews */}
-            <ServiceReviews service={service} />
+            <ServiceReviews serviceReviews={serviceReviews} />
           </div>
 
           {/* Services with the same category */}
@@ -147,7 +152,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
               <Collection
                 direction="horizontal"
                 itemType="service"
-                items={dummyServices}
+                items={relatedServices}
                 nextPrevButton={true}
               />
             </div>

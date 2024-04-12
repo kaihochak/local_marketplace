@@ -7,7 +7,7 @@ export type DummyUser = {
   lastName: string;
   imageUrl: string;
   serviceIDs: string[];
-  ratingReviewIDs: string[];
+  reviewIDs: string[];
   website: string;
   location: string;
   contactNumber: string;
@@ -152,6 +152,14 @@ export type GetOrdersByUserParams = {
   limit?: number
   page: string | number | null
 }
+
+// ====== REVIEW PARAMS
+export type GetReviewsByServiceParams = {
+  serviceId: string
+  limit?: number
+  page: number
+}
+
 
 // ====== Url QUERY PARAMS
 export type UrlQueryParams = {

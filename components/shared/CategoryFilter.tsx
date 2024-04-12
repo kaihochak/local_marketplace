@@ -66,7 +66,7 @@ const CategoryFilter = ({ categories, onCategorySelect }: CategoryFilterProps) =
     <div className="relative [&_#card-prev-next-button]:hover:opacity-50">
       <div
         ref={containerRef}
-        className="flex pt-3 pb-2 pl-4 pr-0 overflow-x-auto gap-x-2 scrollbar-hide"
+        className="flex pt-2 pl-4 pr-0 overflow-x-auto gap-x-2 scrollbar-hide"
       >
         {categories.map(category => (
           <FilterCard key={category._id} category={category} />

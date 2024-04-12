@@ -78,7 +78,24 @@ export async function getServicesByUser(userId: string) {
   }
 }
 
+// Get services by category
+export async function getRelatedServicesByCategory({ categoryId, serviceId }: GetRelatedServicesByCategoryParams) {
+  try {
+    await connectToDatabase()
 
+    const conditions = { category: categoryId, _id: { $ne: serviceId } }
+
+    const servicesQuery = Service.find(conditions)
+      .sort({ createdAt: 'desc' })
+      .limit(4)
+
+    const services = await populateService(servicesQuery)
+
+    return JSON.parse(JSON.stringify(services))
+  } catch (error) {
+    handleError(error)
+  }
+}
 
 // GET ALL SERVICES
 export async function getAllServices({ query, limit = 12, page, category }: GetAllServicesParams) {

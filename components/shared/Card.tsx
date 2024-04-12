@@ -7,7 +7,7 @@ import { Clock } from '@/public/assets/icons/Clock';
 import { StarEmpty } from '@/public/assets/icons/StarEmpty';
 import { IService } from '@/lib/database/models/service.model';
 import Link from 'next/link';
-import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
+import { ReviewItem } from '@/lib/database/models/review.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
 import dummyUsers from '@/constants/dummyUsers';
 import { LocationPin } from '@/public/assets/icons/LocationPin';
@@ -19,7 +19,7 @@ import { useDisclosure } from '@mantine/hooks';
 type CardProps = {
     direction?: 'horizontal' | 'vertical'
     itemType?: 'service' | 'reservation' | 'review'
-    item?: IService | RatingReviewItem | ReservationItem
+    item?: IService | ReviewItem | ReservationItem
     hasButton?: boolean
     bookmarked?: boolean
 };
@@ -35,7 +35,7 @@ const Card = ({
     let service = itemType === "service" ? item as IService : null;
     let bookmarkedItem = itemType === "service" ? service?.bookmarked : null;
     let reservation = itemType === "reservation" ? item as ReservationItem : null;
-    let review = itemType === "review" ? item as RatingReviewItem : null;
+    let review = itemType === "review" ? item as ReviewItem : null;
 
     const [opened, { open, close }] = useDisclosure(false);
     const exit = () => {

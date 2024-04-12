@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   location: { type: String, required: false },
   contactNumber: { type: String, required: false, unique: true },
   serviceIDs: [{ type: String,  required: false, ref: 'Service' }],
-  ratingReviewIDs: [{ type: String, required: false, ref: 'RatingReview' }],
+  reviewIDs: [{ type: String, required: false, ref: 'Review' }],
 }, { timestamps: true }); // Automatically add createdAt and updatedAt fields
 
 const User = models.User || model('User', UserSchema);
@@ -30,7 +30,7 @@ export type UserItem = {
   location: string;
   contactNumber: string;
   serviceIDs: string[]; // Assuming conversion to string IDs for external use
-  ratingReviewIDs: string[]; // Assuming conversion to string IDs for external use
+  reviewIDs: string[]; // Assuming conversion to string IDs for external use
 };
 
 export default User;
