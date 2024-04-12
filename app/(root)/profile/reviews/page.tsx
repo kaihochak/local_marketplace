@@ -18,7 +18,7 @@ const ProfileReviews = () => {
           direction="vertical"
           itemType='review'
           items={reviews}
-          
+          hasButton={true}
         />
       </div>
     </div>
