@@ -83,7 +83,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 36,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1c",
+            categoryId: "661753e13910d3561b47392d",
             bookmarked: true,
         },
     },
@@ -123,7 +123,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 32,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1c",
+            categoryId: "661753e13910d3561b47392d",
             bookmarked: false,
         },
     },
@@ -159,7 +159,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 45,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1c",
+            categoryId: "661753e13910d3561b47392d",
             bookmarked: true,
         },
     },
@@ -195,7 +195,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1c",
+            categoryId: "661753e13910d3561b47392d",
             bookmarked: false,
         },
     },
@@ -233,7 +233,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 28,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1e",
+            categoryId: "661753e23910d3561b473953",
             bookmarked: true,
         },
     },
@@ -269,7 +269,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 35,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1e",
+            categoryId: "661753e23910d3561b473953",
             bookmarked: false,
         },
     },
@@ -305,7 +305,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 42,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1e",
+            categoryId: "661753e23910d3561b473953",
             bookmarked: true,
         },
     },
@@ -341,7 +341,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 38,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1e",
+            categoryId: "661753e23910d3561b473953",
             bookmarked: false,
         },
     },
@@ -377,7 +377,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 45,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1e",
+            categoryId: "661753e23910d3561b473953",
             bookmarked: true,
         },
     },
@@ -413,7 +413,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 40,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d1e",
+            categoryId: "661753e23910d3561b473953",
             bookmarked: false,
         },
     },
@@ -451,7 +451,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 42,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d20",
+            categoryId: "661753e33910d3561b473979",
             bookmarked: true,
         },
     },
@@ -487,7 +487,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 36,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d20",
+            categoryId: "661753e33910d3561b473979",
             bookmarked: false,
         },
     },
@@ -523,7 +523,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d20",
+            categoryId: "661753e33910d3561b473979",
             bookmarked: true,
         },
     },
@@ -559,7 +559,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 40,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d20",
+            categoryId: "661753e33910d3561b473979",
             bookmarked: true,
         },
     },
@@ -595,7 +595,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 36,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d20",
+            categoryId: "661753e33910d3561b473979",
             bookmarked: false,
         },
     },
@@ -631,7 +631,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 34,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d20",
+            categoryId: "661753e33910d3561b473979",
             bookmarked: false,
         },
     },
@@ -669,7 +669,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 42,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d22",
+            categoryId: "661753e43910d3561b47399f",
             bookmarked: true,
         },
     },
@@ -705,7 +705,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 36,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d22",
+            categoryId: "661753e43910d3561b47399f",
             bookmarked: false,
         },
     },
@@ -741,7 +741,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 38,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d22",
+            categoryId: "661753e43910d3561b47399f",
             bookmarked: true,
         },
     },
@@ -777,7 +777,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 34,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d22",
+            categoryId: "661753e43910d3561b47399f",
             bookmarked: false,
         },
     },
@@ -813,7 +813,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 40,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d22",
+            categoryId: "661753e43910d3561b47399f",
             bookmarked: true,
         },
     },
@@ -849,7 +849,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 38,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d22",
+            categoryId: "661753e43910d3561b47399f",
             bookmarked: false,
         },
     },
@@ -891,7 +891,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 45,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d24",
+            categoryId: "661753e53910d3561b4739c8",
             bookmarked: false
         },
     },
@@ -931,7 +931,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 50,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d24",
+            categoryId: "661753e53910d3561b4739c8",
             bookmarked: false
         },
     },
@@ -971,7 +971,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 35,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d24",
+            categoryId: "661753e53910d3561b4739c8",
             bookmarked: false
         },
     },
@@ -1011,21 +1011,21 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 42,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d24",
+            categoryId: "661753e53910d3561b4739c8",
             bookmarked: false
         },
     },
     // Graphic Design
     {
-        _id: "28",
+        _id: "101",
         params:
         {
-            title: "Graphic Design",
+            title: "Better Graphic Design",
             description: "High-quality graphic design services tailored to your needs. From logos to branding materials, I'll help bring your vision to life with creativity and precision.",
             imageUrl: "https://source.unsplash.com/woman-using-macbook-pro-7PHq2BCa7dM",
             url: "https://www.example.com/graphicdesign",
             location: "456 Oak Street, Anytown, USA",
-            provider: "65fe9a5396346912b7163306",
+            provider: "6618810abcccd5fae0d36f89",
             servicesOffered: [
                 {
                     title: "Logo Design",
@@ -1051,11 +1051,89 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 39,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d24",
+            categoryId: "661753e53910d3561b4739c8",
+            bookmarked: false
+        },
+    },
+    {
+        _id: "28",
+        params:
+        {
+            title: "Graphic Design",
+            description: "High-quality graphic design services tailored to your needs. From logos to branding materials, I'll help bring your vision to life with creativity and precision.",
+            imageUrl: "https://source.unsplash.com/woman-using-macbook-pro-7PHq2BCa7dM",
+            url: "https://www.example.com/graphicdesign",
+            location: "456 Oak Street, Anytown, USA",
+            provider: "6618810abcccd5fae0d36f89",
+            servicesOffered: [
+                {
+                    title: "Logo Design",
+                    price: "500",
+                    id: "1"
+                },
+                {
+                    title: "Branding Materials",
+                    price: "600",
+                    id: "2"
+                },
+                {
+                    title: "Packaging Design",
+                    price: "700",
+                    id: "3"
+                },
+                {
+                    title: "Digital Illustrations",
+                    price: "550",
+                    id: "4"
+                }
+            ],
+            averageRating: 4.8,
+            totalReviews: 39,
+            ratingReviewIDs: [],
+            categoryId: "661753e53910d3561b4739c8",
             bookmarked: false
         },
     },
     // Music Lessons  
+    {
+        _id: "102",
+        params:
+        {
+            title: "Better Music Lessons",
+            description: "Professional music lessons tailored to your skill level and musical interests. Whether you're a beginner or an advanced player, I'll help you develop your musical talents.",
+            imageUrl: "https://source.unsplash.com/greyscale-photo-of-man-playing-spinet-piano-close-up-photo-F8E2tks5N04",
+            url: "https://www.example.com/musiclessons",
+            location: "789 Maple Street, Anytown, USA",
+            provider: "65fe9a5396346912b7163307",
+            servicesOffered: [
+                {
+                    title: "Piano Lessons",
+                    price: "60",
+                    id: "1"
+                },
+                {
+                    title: "Guitar Lessons",
+                    price: "65",
+                    id: "2"
+                },
+                {
+                    title: "Violin Lessons",
+                    price: "70",
+                    id: "3"
+                },
+                {
+                    title: "Vocal Coaching",
+                    price: "55",
+                    id: "4"
+                }
+            ],
+            averageRating: 4.5,
+            totalReviews: 32,
+            ratingReviewIDs: [],
+            categoryId: "661753e53910d3561b4739c8",
+            bookmarked: false
+        },
+    },
     {
         _id: "29",
         params:
@@ -1091,13 +1169,56 @@ export const dummyServices: any[] = [
             averageRating: 4.5,
             totalReviews: 32,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d24",
+            categoryId: "661753e53910d3561b4739c8",
             bookmarked: false
         },
     },
 
     // Logistic
     // Moving Services
+    {
+        _id: "103",
+        params:
+        {
+            title: "Better Moving Services",
+            description: "Professional moving services to make your relocation hassle-free. From packing and loading to transportation and unpacking, we'll handle every aspect of your move with care and efficiency.",
+            imageUrl: "https://source.unsplash.com/man-carrying-cardboard-boxes-during-daytime-brizG9kR6qI",
+            url: "https://www.example.com/movingservices",
+            location: "123 Elm Street, Anytown, USA",
+            provider: "65fe9a5396346912b7163308",
+            servicesOffered: [
+                {
+                    title: "Local Moving",
+                    description: "Moving within the same city or area.",
+                    price: "",
+                    id: "1"
+                },
+                {
+                    title: "Long Distance Moving",
+                    description: "Moving to a different city or state.",
+                    price: "",
+                    id: "2"
+                },
+                {
+                    title: "Packing and Unpacking",
+                    description: "Professional packing and unpacking services.",
+                    price: "",
+                    id: "3"
+                },
+                {
+                    title: "Furniture Assembly",
+                    description: "Assembly of furniture at your new location.",
+                    price: "",
+                    id: "4"
+                }
+            ],
+            averageRating: 4.6,
+            totalReviews: 35,
+            ratingReviewIDs: [],
+            categoryId: "661753e63910d3561b473a00",
+            bookmarked: false
+        },
+    },
     {
         _id: "30",
         params:
@@ -1137,7 +1258,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 35,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d26",
+            categoryId: "661753e63910d3561b473a00",
             bookmarked: false
         },
     },
@@ -1181,7 +1302,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 42,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d26",
+            categoryId: "661753e63910d3561b473a00",
             bookmarked: false
         },
     },
@@ -1225,7 +1346,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 37,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d26",
+            categoryId: "661753e63910d3561b473a00",
             bookmarked: false
         },
     },
@@ -1265,7 +1386,7 @@ export const dummyServices: any[] = [
             averageRating: 4.5,
             totalReviews: 35,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d26",
+            categoryId: "661753e63910d3561b473a00",
             bookmarked: false
         },
     },
@@ -1309,7 +1430,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 40,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d26",
+            categoryId: "661753e63910d3561b473a00",
             bookmarked: false
         },
     },
@@ -1353,7 +1474,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 50,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d26",
+            categoryId: "661753e63910d3561b473a00",
             bookmarked: false
         },
     },
@@ -1393,7 +1514,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 65,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d28",
+            categoryId: "661753e73910d3561b473a37",
             bookmarked: false
         },
     },
@@ -1431,7 +1552,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 50,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d28",
+            categoryId: "661753e73910d3561b473a37",
             bookmarked: false
         },
     },
@@ -1469,7 +1590,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 55,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d28",
+            categoryId: "661753e73910d3561b473a37",
             bookmarked: false
         },
     },
@@ -1507,7 +1628,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 48,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d28",
+            categoryId: "661753e73910d3561b473a37",
             bookmarked: false
         },
     },
@@ -1545,7 +1666,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 60,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d28",
+            categoryId: "661753e73910d3561b473a37",
             bookmarked: false
         },
     },
@@ -1583,7 +1704,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 52,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d28",
+            categoryId: "661753e73910d3561b473a37",
             bookmarked: false
         },
     },
@@ -1623,7 +1744,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 70,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d2a",
+            categoryId: "661753e83910d3561b473a69",
             bookmarked: false
         },
     },
@@ -1661,7 +1782,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 65,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d2a",
+            categoryId: "661753e83910d3561b473a69",
             bookmarked: false
         },
     },
@@ -1699,7 +1820,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 80,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d2a",
+            categoryId: "661753e83910d3561b473a69",
             bookmarked: false
         },
     },
@@ -1737,7 +1858,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 60,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d2a",
+            categoryId: "661753e83910d3561b473a69",
             bookmarked: false
         },
     },
@@ -1775,7 +1896,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 75,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d2a",
+            categoryId: "661753e83910d3561b473a69",
             bookmarked: false
         },
     },
@@ -1813,7 +1934,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 70,
             ratingReviewIDs: [],
-            categoryId: "65fe8fbcfb55d63b100a4d2a",
+            categoryId: "661753e83910d3561b473a69",
             bookmarked: false
         },
     },
@@ -1860,7 +1981,7 @@ export const dummyServices: any[] = [
             averageRating: 3.2,
             totalReviews: 12,
             ratingReviewIDs: [],
-            categoryId: "66139dbbef3d91706ad1d17e",
+            categoryId: "661753e93910d3561b473a9c",
             bookmarked: true,
         },
     },
@@ -1905,7 +2026,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 30,
             ratingReviewIDs: [],
-            categoryId: "66139dbbef3d91706ad1d17e",
+            categoryId: "661753e93910d3561b473a9c",
             bookmarked: true,
         },
     },
@@ -1949,7 +2070,7 @@ export const dummyServices: any[] = [
             averageRating: 4.6,
             totalReviews: 22,
             ratingReviewIDs: [],
-            categoryId: "66139dbbef3d91706ad1d17e",
+            categoryId: "661753e93910d3561b473a9c",
             bookmarked: true,
         },
     },
@@ -1993,7 +2114,7 @@ export const dummyServices: any[] = [
             averageRating: 4.9,
             totalReviews: 35,
             ratingReviewIDs: [],
-            categoryId: "66139dbbef3d91706ad1d17e",
+            categoryId: "661753e93910d3561b473a9c",
             bookmarked: true,
         },
     },
@@ -2037,7 +2158,7 @@ export const dummyServices: any[] = [
             averageRating: 4.8,
             totalReviews: 40,
             ratingReviewIDs: [],
-            categoryId: "66139dbbef3d91706ad1d17e",
+            categoryId: "661753e93910d3561b473a9c",
             bookmarked: true
         },
     },
@@ -2081,7 +2202,7 @@ export const dummyServices: any[] = [
             averageRating: 4.7,
             totalReviews: 38,
             ratingReviewIDs: [],
-            categoryId: "66139dbbef3d91706ad1d17e",
+            categoryId: "661753e93910d3561b473a9c",
             bookmarked: true
         },
     },

@@ -12,7 +12,6 @@ import { ArrowRight } from '@/public/assets/icons/ArrowRight';
 
 type CollectionProps = {
     title?: string;
-    selectedCategory?: string;
     direction?: 'horizontal' | 'vertical';
     itemType?: 'service' | 'reservation' | 'review';
     items?: ServiceItem[] | RatingReviewItem[] | ReservationItem[];
@@ -24,7 +23,7 @@ type CollectionProps = {
     nextPrevButton?: boolean;
 };
 
-const Collection = ({ title, selectedCategory, direction, itemType, items, hasButton, limit, hasViewMore, link, itemsPerPage, nextPrevButton
+const Collection = ({ title, direction, itemType, items, hasButton, hasViewMore, link, nextPrevButton
 }: CollectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -61,14 +60,14 @@ const Collection = ({ title, selectedCategory, direction, itemType, items, hasBu
                 {/* Next Prev button */}
                 {nextPrevButton && <button
                     id="card-prev-next-button"
-                    onClick={() => scrollBy(-400)} // Adjust scroll amount as per your design
+                    onClick={() => scrollBy(-800)}
                     className="left-0 hidden md:block"
                 >
                     <ArrowLeft className='text-[22px]' />
                 </button>}
                 {nextPrevButton && <button
                     id="card-prev-next-button"
-                    onClick={() => scrollBy(400)} // Adjust scroll amount as per your design
+                    onClick={() => scrollBy(800)}
                     className="right-0 hidden md:block"
                 >
                     <ArrowRight className='text-[22px]' />
