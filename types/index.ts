@@ -33,6 +33,15 @@ export type UpdateUserParams = {
 };
 
 
+// ====== RESERVATION PARAMS
+export type ReservationParams = {
+  reservationDate: Date;
+  clientId: string;
+  serviceId: string;
+  status: string;
+  selectedServices: string[];
+};
+
 // ====== SERVICE PARAMS
 export type CreateServiceParams = {
   userId: string

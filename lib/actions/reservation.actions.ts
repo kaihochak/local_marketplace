@@ -1,54 +1,32 @@
 import { Schema, model, models, Document } from 'mongoose'
 import { connectToDatabase } from '@/lib/database'
 import { handleError } from '../utils'
+import User from '../database/models/user.model'
+import Reservation from '../database/models/reservation.model'
+import { revalidatePath } from 'next/cache'
+import { ReservationParams } from '@/types'
 
-// populate reservation with event and buyer
+// populate reservation with reservation and buyer
 const populateReservation = (query: any) => {
   return query
-    .populate({ path: 'event', model: 'Event', select: '_id title' })
-    .populate({ path: 'buyer', model: 'User', select: '_id firstName lastName' })
+    .populate({ path: 'event', model: Reservation , select: '_id title' })
+    .populate({ path: 'buyer', model: User , select: '_id firstName lastName' })
 }
 
-export interface IReservation extends Document {
-  createdAt: Date
-  totalAmount: string
-  event: {
-    _id: string
-    title: string
+// get reservation by reservation id
+export async function getReservationById(reservationId: string) {
+  try {
+    await connectToDatabase()
+
+    const reservation = await populateReservation(Reservation.findById(reservationId))
+
+    if (!reservation) throw new Error('Reservation not found')
+
+    return JSON.parse(JSON.stringify(reservation))
+  } catch (error) {
+    handleError(error)
   }
-  buyer: {
-    _id: string
-    firstName: string
-    lastName: string
-  }
 }
-
-export type IReservationItem = {
-  _id: string
-  totalAmount: string
-  createdAt: Date
-  eventTitle: string
-  eventId: string
-  buyer: string
-}
-
-const ReservationSchema = new Schema({
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  serviceItems: {
-    type: String,
-  },
-  service: {
-    type: Schema.Types.ObjectId,
-    ref: 'Service',
-  },
-  buyer: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
-})
 
 // get reservation by user id
 export async function getReservationsByUser(userId: string) {
@@ -63,12 +41,23 @@ export async function getReservationsByUser(userId: string) {
     const reservations = await populateReservation(reservationsQuery)
     const reservationsCount = await Reservation.countDocuments(conditions)
 
-    return { reservations, reservationsCount }
+    return { data: JSON.parse(JSON.stringify(reservations)), count: reservationsCount}
   } catch (error) {
     handleError(error)
   }
 }
 
-const Reservation = models.Reservation || model('Reservation', ReservationSchema)
+// create a new reservation
+export async function createReservation(reservationData: ReservationParams) {
+  try {
+    await connectToDatabase()
 
-export default Reservation
+    const newReservation = await Reservation.create(reservationData)
+
+    console.log('New reservation created:', newReservation)
+
+    return JSON.parse(JSON.stringify(newReservation))
+  } catch (error) {
+    handleError(error)
+  }
+}
