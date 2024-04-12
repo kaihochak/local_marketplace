@@ -128,7 +128,14 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         setSelectedServices(selectedServicesArray);
 
         let total = 0;
-        selectedServicesArray.forEach(service => total += service.price);
+        selectedServicesArray.forEach(service => {
+            // Check if service.price is a string before parsing it
+            if (typeof service.price === 'string') {
+                total += parseInt(service.price, 10); // Parse the string to integer
+            } else {
+                total += service.price; // If it's already a number, directly add it to total
+            }
+        });
         setTotalPrice(total);
     }
 
