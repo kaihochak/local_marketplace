@@ -49,8 +49,6 @@ export default function Home() {
         page: 1,
         category: '',
       });
-      console.log('services:', services?.data);
-
       services && setServices(services?.data);
     }
 

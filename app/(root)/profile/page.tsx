@@ -11,30 +11,46 @@ import CommonHeader from '@/components/shared/CommonHeader'
 import { Pen } from '@/public/assets/icons/Pen'
 import { auth } from '@clerk/nextjs'
 import { createUser, getUserById } from '@/lib/actions/user.actions'
+import { RatingReviewItem } from '@/lib/database/models/ratingReview.model'
+import { ReservationItem } from '@/lib/database/models/reservation.model'
+import { ServiceItem } from '@/lib/database/models/service.model'
+import { getServicesByUser } from '@/lib/actions/service.actions'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
-  // const profile = dummyUsers[0]; // 
+  console.log('userId:', userId);
+
+  /*************************************************************************
+   * get user profile
+   *************************************************************************/
   const profile = await getUserById(userId)
   if (!profile) return null;
 
-  console.log('profile', profile);
+  /*************************************************************************
+   * get reservations
+   *************************************************************************/
+  const myReservations: ReservationItem[] | undefined = [];
 
-  // get reviews
-  const reviews = profile.reviews;
+  /*************************************************************************
+   * get services
+   *************************************************************************/
+  const myServices: ServiceItem[] = await fetchServices();
 
-  const services = dummyServices.filter(service => profile.serviceIDs.includes(service._id));
-  // reviews
-  console.log('profile: ', profile);  
+
+  async function fetchServices() {
+    const services = await getServicesByUser(userId);
+    if (!services) return null;
+    return services.data;
+  }
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
 
   return (
     <>
-      <CommonHeader title='' signOutButton={true}/>
+      <CommonHeader title='' signOutButton={true} />
 
       {/* Profile Name */}
       <section className="pt-4 pb-2 bg-center bg-cover bg-primary-50 bg-dotted-pattern lg:pt-6 lg:pb-4">
@@ -60,14 +76,14 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           {/* Reviews */}
           <Link href="/profile/reviews">
             <div className="transition-all duration-300 ease-in-out rounded-full flex-center w-14 h-14 bg-primary text-grey-600 hover:bg-accent/60">
-              <Pen className='w-9 h-9'/>
+              <Pen className='w-9 h-9' />
             </div>
           </Link>
 
           {/* Saved */}
           <Link href="/profile/saved">
             <div className="transition-all duration-300 ease-in-out rounded-full flex-center w-14 h-14 bg-primary text-grey-600 hover:bg-accent/60">
-              <BookmarkFilled className='w-9 h-9'/>
+              <BookmarkFilled className='w-9 h-9' />
             </div>
           </Link>
         </div>
@@ -75,25 +91,25 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
       {/* My Reservations */}
       <section className="my-5 wrapper">
-          <Collection 
-            title='My Reservations'
-            direction='horizontal'
-            itemType='reservation'
-            items={dummyReservations}
-            hasButton={true}
-            hasViewMore={true}
-            link={"/profile/reservations"}
-            nextPrevButton={true}
-          />
+        <Collection
+          title='My Reservations'
+          direction='horizontal'
+          itemType='reservation'
+          items={myReservations}
+          hasButton={true}
+          hasViewMore={true}
+          link={"/profile/reservations"}
+          nextPrevButton={true}
+        />
       </section>
-      
+
       {/* My Services */}
       <section className="my-5 wrapper">
-        <Collection 
+        <Collection
           title='My Services'
           direction='horizontal'
           itemType='service'
-          items={services}
+          items={myServices}
           hasButton={true}
           hasViewMore={true}
           link={"/profile/services"}

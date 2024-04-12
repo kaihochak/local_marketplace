@@ -59,6 +59,27 @@ export async function getServiceById(serviceId: string) {
   }
 }
 
+// Get services by user
+export async function getServicesByUser(userId: string) {
+  try {
+    await connectToDatabase()
+
+    const conditions = { provider: userId }
+
+    const servicesQuery = Service.find(conditions)
+      .sort({ createdAt: 'desc' })
+
+    const services = await populateService(servicesQuery)
+    const servicesCount = await Service.countDocuments(conditions)
+
+    return { data: JSON.parse(JSON.stringify(services)), count: servicesCount }
+  } catch (error) {
+    handleError(error)
+  }
+}
+
+
+
 // GET ALL SERVICES
 export async function getAllServices({ query, limit = 12, page, category }: GetAllServicesParams) {
   try {
