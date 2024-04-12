@@ -45,7 +45,35 @@ const Card = ({
 
     };
 
+    // const getRandomLandscapeImage = async () => {
+    //     try {
+    //         const response = await fetch('https://source.unsplash.com/featured/landscape');
+    //         if (response.ok) {
+    //             return response.url;
+    //         } else {
+    //             throw new Error('Failed to fetch image');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //         return ''; // Return an empty string if fetching the image fails
+    //     }
+    // };
+
     const ImageBanner = () => {
+
+        // const [randomImageUrl, setRandomImageUrl] = useState('');
+
+        // useEffect(() => {
+        //     const fetchRandomImage = async () => {
+        //         if (!service?.imageUrl) {
+        //             const imageUrl = await getRandomLandscapeImage();
+        //             setRandomImageUrl(imageUrl);
+        //         }
+        //     };
+        //     fetchRandomImage();
+        // }, [service]);
+
+
         // for reservation
         if (itemType === "reservation") {
             return (
@@ -84,10 +112,31 @@ const Card = ({
                         <BookmarkFilled className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                         : <BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     } */}
-                    {service && (
-                        <Image priority className="object-cover w-full h-full"
-                            width={5000} height={5000}
-                            src={service?.imageUrl ?? ''} alt={service?.title}
+                    {/* {service && service?.imageUrl ? (
+
+                        <Image
+                            priority
+                            className="object-cover w-full h-full"
+                            width={5000}
+                            height={5000}
+                            src={service.imageUrl}
+                            alt={service.title}
+                        />
+                    ) : (
+                        <img
+                            src={randomImageUrl}
+                            alt="Random Landscape"
+                            className="object-cover w-full h-full"
+                        />
+                    )} */}
+                    {service && service.imageUrl && (
+                        <Image
+                            priority
+                            className="object-cover w-full h-full"
+                            width={5000}
+                            height={5000}
+                            src={service.imageUrl}
+                            alt={service.title}
                         />
                     )}
                 </div>
