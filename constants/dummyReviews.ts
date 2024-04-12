@@ -1,6 +1,6 @@
-import { RatingReviewItem } from '@/lib/database/models/ratingReview.model';
+import { ReviewItem } from '@/lib/database/models/review.model';
 
-export const dummmyRatingReviews: any[] = [
+export const dummmyReviews: any[] = [
     // S1
     {
         _id: "1",
@@ -559,4 +559,4 @@ export const dummmyRatingReviews: any[] = [
     },
 ];
 
-export default dummmyRatingReviews;
+export default dummmyReviews;

@@ -126,8 +126,7 @@ export default function Home() {
               className='scroll-mt-[280px] md:scroll-mt-[320px] lg:scroll-mt-[320px]'
             >
               <Collection
-                selectedCategory={selectedCategory}
-                title={category.name}
+                title={category}
                 direction="horizontal"
                 itemType="service"
                 items={services.filter(service => {
@@ -138,6 +137,7 @@ export default function Home() {
                 })}
                 nextPrevButton={true}
                 hasViewMore={true}
+                selectedCategory={selectedCategory}
               />
             </div>
           ))}

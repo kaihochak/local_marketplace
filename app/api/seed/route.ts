@@ -13,7 +13,7 @@ import { dummyCategories } from '@/constants/dummyCategories';
 import { dummyUsers } from '@/constants/dummyUsers';
 import { dummyServices } from '@/constants/dummyServices';
 
-let adminID = "6618810abcccd5fae0d36f89";
+let adminID = "6618e3348cdeb4b036e920c2";
 
 // main function
 export async function POST(req: Request) {
