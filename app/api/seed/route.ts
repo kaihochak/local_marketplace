@@ -79,7 +79,7 @@ const createAllUsers = async (dummyUsers: any[]) => {
                     reservation: reservation.params,
                     serviceId: service._id,  // Access the _id property after awaiting the getServiceByTitle function call
                     userId: user._id,
-                    path: '/user'
+                    path: '/services'
                 })
 
                 console.log('createdReservation:', createdReservation);

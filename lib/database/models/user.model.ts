@@ -11,6 +11,7 @@ const UserSchema = new Schema({
   location: { type: String, required: false },
   contactNumber: { type: String, required: false, unique: true },
   serviceIDs: [{ type: String,  required: false, ref: 'Service' }],
+  
   reviewIDs: [{ type: String, required: false, ref: 'Review' }],
   reservationIDs: [{ type: String, required: false, ref: 'Reservation' }],
 }, { timestamps: true }); // Automatically add createdAt and updatedAt fields
