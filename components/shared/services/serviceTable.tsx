@@ -19,6 +19,12 @@ import { Mail } from '@/public/assets/icons/Mail';
 import { Checkmark } from '@/public/assets/icons/Checkmark';
 import ReactCurvedText from "react-curved-text";
 import { Sloth } from '@/public/assets/icons/Sloth';
+import { getUserById, updateUser } from '@/lib/actions/user.actions';
+import { getServiceByTitle, getServicesByUser } from '@/lib/actions/service.actions';
+import { ReservationItem } from '@/lib/database/models/reservation.model';
+import { auth } from '@clerk/nextjs';
+import { get } from 'http';
+import dummyServices from '@/constants/dummyServices';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -65,12 +71,16 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         height: window.innerHeight
     } : {};
 
+    // const { sessionClaims } = auth();
+    // const userId = sessionClaims?.userId as string;
+
     /**************************************************************************
      *  Step 1: Confirm Reservation 
      **************************************************************************/
     const ConfirmReservation = () => {
-        return (
 
+
+        return (
 
             <div>
                 <div className="flex items-center justify-center space-x-4 pb-5">
@@ -266,6 +276,27 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 paymentSuccessMessage = "Reservation Confirmed!";
         }
 
+
+        // return service name of the reserved services
+        console.log('Reserve Service Name', selectedServices.map(service => service.id)[0]);
+        // get service by name and send it to create reservation with param { userId, serviceId, reservation, path}     
+
+        // useEffect(() => {
+        //     // Assuming you have the title stored in state or props
+        //     const title = selectedServices.map(service => service.title)[0];
+        //     if (title) {
+        //         getServiceByTitle(title)
+        //             .then(service => {
+        //                 // Handle the returned service here
+        //                 console.log('Service by title:', service);
+        //             })
+        //             .catch(error => {
+        //                 // Handle errors here
+        //                 console.error('Error fetching service by title:', error);
+        //             });
+        //     }
+        // }, [selectedServices]);
+
         return (
 
             <div>
@@ -309,6 +340,8 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
      **************************************************************************/
     const ReserveDashboard = () => {
 
+
+
         return (
             <Modal
                 opened={opened}
@@ -339,6 +372,10 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         setSelectedPaymentMethod(null);
         closeModal();
     }
+
+    /**************************************************************************
+     *  Reserve Service
+     **************************************************************************/
 
     /**************************************************************************
      *  Render

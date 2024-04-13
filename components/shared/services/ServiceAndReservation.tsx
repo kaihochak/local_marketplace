@@ -1,6 +1,7 @@
+import { IService } from "@/lib/database/models/service.model"
 import { ServiceOffered, columns } from "./columns"
 import { ServiceTable } from "./serviceTable"
-import { ServiceItem } from "@/types"
+import { Service, ServiceItem } from "@/types"
 
 async function getData(): Promise<ServiceOffered[]> {
   // Fetch data from API here.
@@ -32,10 +33,10 @@ async function getData(): Promise<ServiceOffered[]> {
   ]
 }
 
-export default async function ServiceAndReservation({ servicesOffered }: { servicesOffered: ServiceOffered[] }) {
+export default async function ServiceAndReservation({ service }: { service: IService }) {
   return (
     <div className="pt-6 pb-3">
-      <ServiceTable columns={columns} data={servicesOffered} />
+      <ServiceTable columns={columns} data={service?.servicesOffered} />
     </div>
   )
 }
