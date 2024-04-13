@@ -130,6 +130,10 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         let total = 0;
         selectedServicesArray.forEach(service => {
             // Check if service.price is a string before parsing it
+
+            // if price is not defined then it is assigned 0
+            if (!service.price) service.price = 0;
+
             if (typeof service.price === 'string') {
                 total += parseInt(service.price, 10); // Parse the string to integer
             } else {
@@ -194,7 +198,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                                 </p>
                             </div>
                         )}
-                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'stripe' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('stripe')}>
+                        <div className={`flex justify-between border p-3 rounded-md pointer-events-none opacity-50 ${selectedPaymentMethod === 'stripe' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('stripe')}>
                             <label className="ml-2">Stripe</label>
                             <Stripe className="w-6 h-6" />
                         </div>
@@ -204,7 +208,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                                 <p>Stripe payment section...</p>
                             </div>
                         )}
-                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'paypal' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('paypal')}>
+                        <div className={`flex justify-between border p-3 rounded-md pointer-events-none opacity-50 ${selectedPaymentMethod === 'paypal' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('paypal')}>
                             <label className="ml-2">PayPal</label>
                             <Paypal className="w-6 h-6" />
                         </div>
@@ -243,12 +247,12 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         // Generate different success messages based on the selected payment method
         switch (selectedPaymentMethod) {
             case "inPerson":
-                paymentSuccessMessage = "Thank you for supporting this service";
-                setrx = 200;
+                paymentSuccessMessage = "Pending for approval...";
+                setrx = 140;
                 break;
             case "interac":
-                paymentSuccessMessage = "Waiting for you Interac payment...";
-                setrx = 200;
+                paymentSuccessMessage = "Pending for approval...";
+                setrx = 140;
                 break;
             case "stripe":
                 paymentSuccessMessage = "Payment Success through Stripe";
@@ -435,7 +439,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 </div>
 
                 {/* Reserve Button */}
-                <Button onClick={handleReserve} variant="default">Reserve</Button>
+                <Button onClick={handleReserve} disabled={table.getFilteredSelectedRowModel().rows.length === 0} variant="default">Reserve</Button>
             </div>
 
             {/* Reserve Modal */}

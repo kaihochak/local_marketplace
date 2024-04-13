@@ -14,6 +14,7 @@ interface IServiceRef {
 // Define the IReservation interface for use in the rest of the application
 export interface IReservation extends Document {
   reservationDate: Date;
+  providerId: IUserRef;
   clientId: IUserRef;
   serviceId: IServiceRef;
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
@@ -22,8 +23,9 @@ export interface IReservation extends Document {
 
 const ReservationSchema = new Schema({
   reservationDate: { type: Date, required: true },
-  clientId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  serviceId: { type: Schema.Types.ObjectId, ref: 'Service', required: true },
+  providerId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true  },
+  clientId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
+  serviceId: { type: Schema.Types.ObjectId, ref: 'Service', required: true, index: true},
   status: { 
     type: String, 
     enum: ['pending', 'confirmed', 'completed', 'cancelled'], 
@@ -43,7 +45,7 @@ export type ReservationItem = {
   totalAmount: number; 
   reservationDate: Date;
   clientId: { _id: string, firstName: string, lastName: string };
-  service: { _id: string, title: string, image: string, location: string };
+  serviceId: { _id: string, title: string, imageUrl: string, location: string };
   date: string;
   notes: string;
   status: string;

@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import Category from '@/lib/database/models/category.model';
 import User from '@/lib/database/models/user.model';
 import Service from '@/lib/database/models/service.model';
+import Reservation from '@/lib/database/models/reservation.model';
 
 import { createCategory } from '@/lib/actions/category.actions';
 import { createUser, getAllUsers, getUserById } from '@/lib/actions/user.actions';
@@ -24,6 +25,7 @@ export async function POST(req: Request) {
     // Delete everything
     await deleteAllServices();
     await deleteAllUsers();
+    await deleteAllReservations();
 
     // Create everything 
     await createAllUsers(dummyUsers);
@@ -59,7 +61,7 @@ const createAllUsers = async (dummyUsers: any[]) => {
         }
     }
 
-    
+
     // create reservations based on the user
     const usersFromDB = await getAllUsers();
     for (let i = 0; i < usersFromDB.length; i++) {
@@ -67,8 +69,6 @@ const createAllUsers = async (dummyUsers: any[]) => {
         const user = usersFromDB[i];
 
         console.log('user:', user);
-        
-
         if (user.reservationIDs.length > 0) {
             for (let j = 0; j < user.reservationIDs.length; j++) {
                 const reservation = dummyReservations.find(reservation => reservation._id === user.reservationIDs[j]);
@@ -77,7 +77,7 @@ const createAllUsers = async (dummyUsers: any[]) => {
 
                 const createdReservation = await createReservation({
                     reservation: reservation.params,
-                    serviceId: service._id, // Access the _id property after awaiting the getServiceByTitle function call
+                    serviceId: service._id,  // Access the _id property after awaiting the getServiceByTitle function call
                     userId: user._id,
                     path: '/services'
                 })
@@ -100,6 +100,23 @@ const createAllUsers = async (dummyUsers: any[]) => {
             console.log('createdService:', createdService);
         }
     }
+
+    // create admins' reservations
+    // if (admin && admin.reservationIDs.length > 0) {
+    //     for (let i = 0; i < admin.reservationIDs.length; i++) {
+    //         const reservation = dummyReservations.find(reservation => reservation._id === admin.reservationIDs[i]);
+    //         const serviceTitle = dummyServices.find(service => service._id === reservation.params.serviceId).params.title;
+    //         const service = await getServiceByTitle(serviceTitle); // Await the getServiceByTitle function call
+
+    //         const createdReservation = await createReservation({
+    //             reservation: reservation.params,
+    //             serviceId: service._id, // Access the _id property after awaiting the getServiceByTitle function call
+    //             userId: adminID,
+    //             path: '/user'
+    //         })
+    //         console.log('createdReservation:', createdReservation);
+    //     }
+    // }
 
     return NextResponse.json({ message: 'OK', user: dummyUsers });
 }
@@ -134,6 +151,25 @@ const deleteAllServices = async () => {
         return NextResponse.json({ message: 'OK', service: deleted })
     } catch (error) {
         console.error('Error deleting all services:', error);
+        return NextResponse.json({ message: 'Error', error: error })
+    }
+}
+
+/*******************************************************************
+ *  Reservations
+ *******************************************************************/
+
+const deleteAllReservations = async () => {
+    console.log('Deleting all reservations');
+    try {
+        await connectToDatabase();
+        const deleted = await Reservation.deleteMany({});
+        if (deleted) {
+            console.log('Deleted all reservations', deleted);
+        }
+        return NextResponse.json({ message: 'OK', reservation: deleted })
+    } catch (error) {
+        console.error('Error deleting all reservations:', error);
         return NextResponse.json({ message: 'Error', error: error })
     }
 }
