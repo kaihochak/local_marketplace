@@ -93,7 +93,7 @@ const Card = ({
                     <BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     <Image priority className="object-cover w-full h-full"
                         width={5000} height={5000}
-                        src={reservation?.service.image ?? ''} alt={reservation?.service.title ?? ''}
+                        src={reservation?.serviceId.image ?? ''} alt={reservation?.serviceId.title ?? ''}
                     />
                 </div>
             )
@@ -151,12 +151,12 @@ const Card = ({
                 <div className=''>
                     {/* Titile */}
                     <div className='flex-between'>
-                        <p className="p5-semibold">{reservation?.service?.title}</p>
+                        <p className="p5-semibold">{reservation?.serviceId?.title}</p>
                         <StarEmpty className='w-4 h-4' />
                     </div>
                     <div className='flex items-center justify-start gap-x-2'>
                         <LocationPin />
-                        <p className="p7-medium text-gray-500">{reservation?.service.location}</p>
+                        <p className="p7-medium text-gray-500">{reservation?.serviceId.location}</p>
                     </div>
                 </div>
             )

@@ -7,6 +7,13 @@ import { connectToDatabase } from '../database';
 import Reservation from '../database/models/reservation.model';
 import User from '../database/models/user.model';
 import { revalidatePath } from "next/cache";
+import Service from "../database/models/service.model";
+
+// populate reservation with client and service
+const populateReservation = (query: any) => {
+  return query
+    .populate({ path: 'serviceId', model: Service, select: '_id title imageUrl location' })
+}
 
 // Get all reservations for a service
 export async function createReservation({ userId, serviceId, reservation, path}: CreateReservationParams) {
@@ -29,7 +36,22 @@ export async function createReservation({ userId, serviceId, reservation, path}:
   }
 }
 
-// get re
+// get reservation by user id using populate service
+export async function getReservationsByUser(userId: string) {
+  try {
+    await connectToDatabase();
+
+    const reservations = await populateReservation(Reservation.find({ clientId: userId }).sort({ createdAt: 'desc'}));
+    const reservationsCount = await Reservation.countDocuments({ clientId: userId });
+    
+    if (!reservations) return null;
+
+    return { data: JSON.parse(JSON.stringify(reservations)), count: reservationsCount };
+  } catch (error) {
+    handleError(error);
+  }
+}
+
 
 
 // have something like service ids for hihijojo in reservation id

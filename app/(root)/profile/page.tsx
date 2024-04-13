@@ -15,6 +15,7 @@ import { ReviewItem } from '@/lib/database/models/review.model'
 import { ReservationItem } from '@/lib/database/models/reservation.model'
 import { ServiceItem } from '@/lib/database/models/service.model'
 import { getServicesByUser } from '@/lib/actions/service.actions'
+import { getReservationsByUser } from '@/lib/actions/reservation.actions'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
@@ -31,7 +32,14 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   /*************************************************************************
    * get reservations
    *************************************************************************/
-  const myReservations: ReservationItem[] | undefined = [];
+  const myReservations: ReservationItem[] = await fetchReservations();
+
+  async function fetchReservations() {
+    
+    const reservations = await getReservationsByUser(userId);
+    if (!reservations) return null;
+    return reservations.data;
+  }
 
   /*************************************************************************
    * get services
