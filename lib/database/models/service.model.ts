@@ -6,7 +6,7 @@ export interface IService extends Document {
   location?: string;
   imageUrl?: string;
   url?: string;
-  provider: { _id: string, firstName: string, lastName: string }; 
+  provider: { _id: string, firstName: string, lastName: string, imageUrl: string}; 
   category: { _id: string, name: string }
   servicesOffered: { id: string, title: string, description: string, price: string }[]; 
   reviewIDs: string[]; 

@@ -69,8 +69,6 @@ const createAllUsers = async (dummyUsers: any[]) => {
         const user = usersFromDB[i];
 
         console.log('user:', user);
-
-
         if (user.reservationIDs.length > 0) {
             for (let j = 0; j < user.reservationIDs.length; j++) {
                 const reservation = dummyReservations.find(reservation => reservation._id === user.reservationIDs[j]);
@@ -104,24 +102,21 @@ const createAllUsers = async (dummyUsers: any[]) => {
     }
 
     // create admins' reservations
-    if (admin && admin.reservationIDs.length > 0) {
-        for (let i = 0; i < admin.reservationIDs.length; i++) {
-            const reservation = dummyReservations.find(reservation => reservation._id === admin.reservationIDs[i]);
-            const serviceTitle = dummyServices.find(service => service._id === reservation.params.serviceId).params.title;
-            const service = await getServiceByTitle(serviceTitle); // Await the getServiceByTitle function call
+    // if (admin && admin.reservationIDs.length > 0) {
+    //     for (let i = 0; i < admin.reservationIDs.length; i++) {
+    //         const reservation = dummyReservations.find(reservation => reservation._id === admin.reservationIDs[i]);
+    //         const serviceTitle = dummyServices.find(service => service._id === reservation.params.serviceId).params.title;
+    //         const service = await getServiceByTitle(serviceTitle); // Await the getServiceByTitle function call
 
-            console.log("HIHIJOJO",service)
-
-            const createdReservation = await createReservation({
-                reservation: reservation.params,
-                serviceId: service._id, // Access the _id property after awaiting the getServiceByTitle function call
-                userId: adminID,
-                path: '/user'
-            })
-
-            console.log('createdReservation:', createdReservation);
-        }
-    }
+    //         const createdReservation = await createReservation({
+    //             reservation: reservation.params,
+    //             serviceId: service._id, // Access the _id property after awaiting the getServiceByTitle function call
+    //             userId: adminID,
+    //             path: '/user'
+    //         })
+    //         console.log('createdReservation:', createdReservation);
+    //     }
+    // }
 
     return NextResponse.json({ message: 'OK', user: dummyUsers });
 }

@@ -93,7 +93,7 @@ const Card = ({
                     <BookmarkEmpty className="absolute top-1 right-0 text-primary-dark font-extrabold mr-1 w-5 h-5 lg:w-10 lg:h-10" />
                     <Image priority className="object-cover w-full h-full"
                         width={5000} height={5000}
-                        src={reservation?.serviceId.image ?? ''} alt={reservation?.serviceId.title ?? ''}
+                        src={reservation?.serviceId.imageUrl ?? ''} alt={reservation?.serviceId.title ?? ''}
                     />
                 </div>
             )
@@ -173,7 +173,7 @@ const Card = ({
                             <div className='w-5 h-5 lg:w-7 lg:h-7 overflow-hidden'>
                                 <Image priority className="w-full h-full rounded-full mr-2 object-cover"
                                     src={service?.provider?.imageUrl ?? ''}
-                                    alt={service?.provider?.name ?? ''}
+                                    alt={service?.provider?.firstName ?? ''}
                                     width={5000} height={5000}
                                 />
                             </div>

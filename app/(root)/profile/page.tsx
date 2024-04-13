@@ -35,7 +35,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const myReservations: ReservationItem[] = await fetchReservations();
 
   async function fetchReservations() {
-    
     const reservations = await getReservationsByUser(userId);
     if (!reservations) return null;
     return reservations.data;
@@ -45,7 +44,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
    * get services
    *************************************************************************/
   const myServices: ServiceItem[] = await fetchServices();
-
 
   async function fetchServices() {
     const services = await getServicesByUser(userId);
