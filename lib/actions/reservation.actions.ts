@@ -28,3 +28,18 @@ export async function createReservation({ userId, serviceId, reservation, path}:
     handleError(error);
   }
 }
+
+// get re
+
+
+// have something like service ids for hihijojo in reservation id
+// route delete all reservatiton ()
+  // creaate admin reservation 
+// create 101 dummy reservatiojn for hihijojo
+  // also for reviews ??
+
+  //when no selected reservatrion, no modal popup
+  // fix total price when no price is given 
+  // make paypal and stripe unavailable, cannot be picked 
+  // chnage payemnt to pending for approval
+  // upom payment picked  link to their profile to show reservation - reservation ?? 

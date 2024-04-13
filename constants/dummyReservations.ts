@@ -2,6 +2,39 @@ import { ReservationItem } from "@/lib/database/models/reservation.model";
 
 export const dummyReservations: any[] = [
     {
+        _id: "101",
+        params:
+        {
+            reservationDate: new Date(),
+            clientId: "1",
+            serviceId: "1",
+            status: "pending",
+            selectedServices: ["1", "2", "3", "4"],
+        },
+    },
+    {
+        _id: "102",
+        params:
+        {
+            reservationDate: new Date(),
+            clientId: "1",
+            serviceId: "2",
+            status: "pending",
+            selectedServices: ["1", "2"],
+        },
+    },
+    {
+        _id: "103",
+        params:
+        {
+            reservationDate: new Date(),
+            clientId: "1",
+            serviceId: "3",
+            status: "pending",
+            selectedServices: ["2", "3"],
+        },
+    },
+    {
         _id: "1",
         params:
         {
