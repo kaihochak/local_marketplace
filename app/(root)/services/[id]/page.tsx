@@ -98,33 +98,41 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
                   {/* Contact Info */}
                   <div className='flex flex-col items-start justify-center w-full gap-y-2 px-4 pb-4'>
                     {/* Phone */}
-                    <div className="flex items-center gap-x-6">
-                      <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                        <Phone className="w-5 h-5" />
+                    {service?.provider?.contactNumber && (
+                      <div className="flex items-center gap-x-6">
+                        <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                          <Phone className="w-5 h-5" />
+                        </div>
+                        <a href={`tel:$`} className="text-black">{service?.provider?.contactNumber}</a>
                       </div>
-                      <a href={`tel:$`} className="text-black">{service?.provider?.contactNumber}</a>
-                    </div>
+                    )}
                     {/* Email */}
-                    <div className="flex items-center gap-x-6">
-                      <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                        <Mail className="w-5 h-5" />
+                    {service?.provider?.email && (
+                      <div className="flex items-center gap-x-6">
+                        <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                          <Mail className="w-5 h-5" />
+                        </div>
+                        <a href={`mailto:${service?.provider?.email}`} className="text-black">{service?.provider?.email}</a>
                       </div>
-                      <a href={`mailto:${service?.provider?.email}`} className="text-black">{service?.provider?.email}</a>
-                    </div>
+                    )}
                     {/* Location */}
-                    <div className="flex items-center gap-x-6">
-                      <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                        <LocationPin className="w-5 h-5" />
+                    {service?.location && (
+                      <div className="flex items-center gap-x-6">
+                        <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                          <LocationPin className="w-5 h-5" />
+                        </div>
+                        <p className="">{service?.location}</p>
                       </div>
-                      <p className="">{service?.location}</p>
-                    </div>
+                    )}
                     {/* Website */}
-                    <div className="flex items-center gap-x-6">
-                      <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
-                        <Globe className="w-5 h-5" />
+                    {service?.provider?.website && (
+                      <div className="flex items-center gap-x-6">
+                        <div className="w-7 h-7 border border-black rounded-full flex items-center justify-center">
+                          <Globe className="w-5 h-5" />
+                        </div>
+                        <a href={'{service?.provider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{service?.provider?.website}</a>
                       </div>
-                      <a href={'{service?.provider?.website}'} className="text-black" target="_blank" rel="noopener noreferrer">{service?.provider?.website}</a>
-                    </div>
+                    )}
                     {/* Service Description (for desktop) */}
                     <div className='mx-2 md:my-2'>
                       <p className='text-m'>{service?.description}</p>
