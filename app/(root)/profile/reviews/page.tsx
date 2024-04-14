@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 const ProfileReviews = () => {
 
+  // load dummy data 
   const user = DummyUsers[0];
   const reviews = dummmyReviews.filter(review => review._id === user._id);
 

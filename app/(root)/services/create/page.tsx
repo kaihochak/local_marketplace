@@ -9,7 +9,9 @@ const page = () => {
 
   return (
     <section >
+      {/* CommonHeader component is used to display the title of the page and back button */}
       <CommonHeader title="Create New Service" />
+      {/* CreateService form is used to create a new service */}
       <CreateService userId={userId}/>
     </section>
   )
