@@ -21,6 +21,7 @@ import ReactCurvedText from "react-curved-text";
 import { Sloth } from '@/public/assets/icons/Sloth';
 import { IService } from '@/lib/database/models/service.model';
 import { createReservation } from '@/lib/actions/reservation.actions';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/ui/accordion";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -32,11 +33,11 @@ interface ExtendedDataTableProps<TData, TValue> extends DataTableProps<TData, TV
     service: IService
 };
 
-export function ServiceTable<TData, TValue>({ 
-    columns, 
-    data, 
-    service, 
-    userId 
+export function ServiceTable<TData, TValue>({
+    columns,
+    data,
+    service,
+    userId
 }: ExtendedDataTableProps<TData, TValue>) {
 
     /**************************************************************************
@@ -130,7 +131,7 @@ export function ServiceTable<TData, TValue>({
 
                 {/* okay button */}
                 <div className="flex justify-end">
-                    <Button onClick={() => setStep(2)} variant="default">Okay</Button>
+                    <Button onClick={() => setStep(2)} variant="default">Next</Button>
                 </div>
             </div>
         )
@@ -168,6 +169,19 @@ export function ServiceTable<TData, TValue>({
      *  Step 2: Payment Screen
      **************************************************************************/
     const PaymentScreen = () => {
+
+        const handleNextClick = () => {
+            if (selectedPaymentMethod) {
+                handleCreateReservation();
+                setStep(3);
+            } else {
+                alert('Please select a payment method');
+            }
+        };
+
+        const isStripeEnabled = false;
+        const isPaypalEnabled = false;
+
         return (
             <div>
                 {/* form progress tracker */}
@@ -183,64 +197,54 @@ export function ServiceTable<TData, TValue>({
 
                 {/* Payment methods section */}
                 <h2 className="text-xl font-semibold mb-3">Select Payment Method:</h2>
-                <div className="flex items-center justify-right mb-5">
-                    <div className="flex flex-col gap-3 w-full">
-                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'inPerson' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('inPerson')}>
-                            <label className="ml-2">In Person</label>
+
+
+                <Accordion type="single" collapsible className="w-full" onValueChange={(value:string) => setSelectedPaymentMethod(value)}>
+                    <AccordionItem value="inPerson" className=''>
+                        <AccordionTrigger className="">
+                            <span className="">Cash</span>
                             <Cash className="w-6 h-6" />
-                        </div>
-                        {selectedPaymentMethod === 'inPerson' && (
-                            <div className=''>
-                                {/* Add in-person payment specific content here */}
-                                <p className='text-center'>Pay in person at the service location</p>
-                            </div>
-                        )}
-                        <div className={`flex justify-between border p-3 rounded-md ${selectedPaymentMethod === 'interac' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('interac')}>
-                            <label className="ml-2">E-Transfer</label>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            Pay in Person
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="interac">
+                        <AccordionTrigger>
+                            <span className="">Interac</span>
                             <InteractTransfer className="w-6 h-6" />
-                        </div>
-                        {selectedPaymentMethod === 'interac' && (
-                            <div className='flex flex-col items-center'>
-                                {/* Add Interac payment specific content here */}
-                                <p className="flex items-center">
-                                    <Phone className="mr-2" />
-                                    <span className="">+1 234 554 2343</span>
-                                </p>
-                                <p className="flex items-center">
-                                    <Mail className="mr-2" />
-                                    <span className="">chrisdojacob@gmail.com</span>
-                                </p>
-                            </div>
-                        )}
-                        <div className={`flex justify-between border p-3 rounded-md pointer-events-none opacity-50 ${selectedPaymentMethod === 'stripe' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('stripe')}>
-                            <label className="ml-2">Stripe</label>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            {service.provider.firstName}
+                        </AccordionContent>
+                    </AccordionItem>
+                    {isStripeEnabled && <AccordionItem value="stripe">
+                        <AccordionTrigger>
+                            <span className="">Stripe</span>
                             <Stripe className="w-6 h-6" />
-                        </div>
-                        {selectedPaymentMethod === 'stripe' && (
-                            <div className='text-center'>
-                                {/* Add Stripe payment specific content here */}
-                                <p>Stripe payment section...</p>
-                            </div>
-                        )}
-                        <div className={`flex justify-between border p-3 rounded-md pointer-events-none opacity-50 ${selectedPaymentMethod === 'paypal' ? 'bg-gray-200' : ''}`} onClick={() => setSelectedPaymentMethod('paypal')}>
-                            <label className="ml-2">PayPal</label>
+                        </AccordionTrigger>
+                        <AccordionContent>
+
+                        </AccordionContent>
+                    </AccordionItem> }
+                    {isPaypalEnabled && <AccordionItem value="paypal">
+                        <AccordionTrigger>
+                            <span className="">Paypal</span>
                             <Paypal className="w-6 h-6" />
-                        </div>
-                        {selectedPaymentMethod === 'paypal' && (
-                            <div className='text-center'>
-                                {/* Add PayPal payment specific content here */}
-                                <p>PayPal payment section...</p>
-                            </div>
-                        )}
-                    </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+
+                        </AccordionContent>
+                    </AccordionItem>}
+
+                </Accordion>
+
+
+                {/* next and back button  */}
+                <div className="flex justify-between">
+                    <Button onClick={() => setStep(1)} variant="default">Back</Button>
+                    <Button onClick={ handleNextClick } variant="default">Next</Button>
                 </div>
-
-                {/* next button  */}
-                <div className="flex">
-                    <Button className="w-full h-12 bg-black text-white hover:bg-white hover:text-black hover:border border-black" onClick={() => {handleCreateReservation(); setStep(3);}} variant="default">Next</Button>
-                </div>
-
-
             </div>
         )
     }
@@ -254,11 +258,11 @@ export function ServiceTable<TData, TValue>({
     /**************************************************************************
      *  Step 3: Payment Success
      **************************************************************************/
-     // create reservation function
-     const handleCreateReservation = async () => {
+    // create reservation function
+    const handleCreateReservation = async () => {
 
         console.log("2- userId", userId);
-        
+
         const reservationParams = {
             providerId: service.provider._id,
             serviceId: service._id,
@@ -303,7 +307,7 @@ export function ServiceTable<TData, TValue>({
                 setrx = 180;
                 break;
             default:
-                paymentSuccessMessage = "Reservation Confirmed!";
+                paymentSuccessMessage = "Pending for approval...";
         }
 
         return (
