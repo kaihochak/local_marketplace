@@ -55,7 +55,7 @@ const ServiceForm = ({
   const [alertOpen, setAlertOpen] = useState(false) // for alert dialog
   const [deleteItem, setDeleteItem] = useState<number>(0) // for deleting service item
   const { startUpload } = useUploadThing('imageUploader')
-  const [newService, setNewService] = useState<IService>(null)
+  const [newService, setNewService] = useState<IService>()
   const [serviceItems, setServiceItems] = useState<IService[]>([])
   const [noServiceItem, setNoServiceItem] = useState<boolean>(false)
 
