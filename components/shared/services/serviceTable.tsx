@@ -19,14 +19,18 @@ import { Mail } from '@/public/assets/icons/Mail';
 import { Checkmark } from '@/public/assets/icons/Checkmark';
 import ReactCurvedText from "react-curved-text";
 import { Sloth } from '@/public/assets/icons/Sloth';
+import { IService } from '@/lib/database/models/service.model';
 
-interface DataTableProps<TData, TValue, S> {
+interface DataTableProps<TData, TValue, IService, string> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
-    service: S
+    service: IService
+    userId: string
 };
 
-export function ServiceTable<TData, TValue, S>({ columns, data, service }: DataTableProps<TData, TValue, S>) {
+export function ServiceTable<TData, TValue, IService, string>({ columns, data, service, userId }: DataTableProps<TData, TValue, IService, string>) {
+    
+
     /**************************************************************************
      *  React Table
      **************************************************************************/
@@ -65,17 +69,21 @@ export function ServiceTable<TData, TValue, S>({ columns, data, service }: DataT
         width: window.innerWidth,
         height: window.innerHeight
     } : {};
-    
-    // create reservation function
-    // const handleCreateReservation = async () => {
-    //     try {
-    //         await createReservation({
-    //     }
-    // }
 
     /**************************************************************************
      *  Step 1: Confirm Reservation 
      **************************************************************************/
+
+    // create reservation function
+//     const handleCreateReservation = async () => {
+//         try {
+//             // await createReservation({
+// // 
+// // export async function createReservation({ userId, serviceId, reservation, path}: CreateReservationParams) {
+    
+//         }
+//     }
+
     const ConfirmReservation = () => {
         return (
 

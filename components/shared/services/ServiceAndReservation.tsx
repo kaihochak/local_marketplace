@@ -3,6 +3,9 @@ import { ServiceOffered, columns } from "./columns"
 import { ServiceTable } from "./serviceTable"
 import { ServiceItem } from "@/types"
 
+import { auth } from "@clerk/nextjs";
+
+
 async function getData(): Promise<ServiceOffered[]> {
   // Fetch data from API here.
   return [
@@ -35,14 +38,13 @@ async function getData(): Promise<ServiceOffered[]> {
 
 export default async function ServiceAndReservation({ service }: { service: IService }) {
 
-  console.log('servicesOffered S&R:', service.servicesOffered);
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;
 
   const formattedData = service.servicesOffered.map((item) => ({
     ...item,
     price: parseFloat(item.price),
   }));
-
-  console.log('formattedData:', formattedData);
 
   return (
     <div className="pt-6 pb-3">

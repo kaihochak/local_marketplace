@@ -142,6 +142,7 @@ export type CreateReservationParams = {
     serviceId: string
     // totalAmount: string
     createdAt: Date
+    selectedServices: string[]
   }
   path: string
 }
