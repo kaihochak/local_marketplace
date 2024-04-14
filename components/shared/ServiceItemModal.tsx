@@ -14,12 +14,13 @@ import { Textarea } from "@/components/ui/textarea"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { serviceFormSchema } from "@/lib/validator"
 import { IService } from "@/lib/database/models/service.model"
+import { ServiceItem } from '@/types'
 
 type ServiceItemModalProps = {
   type: "Create" | "Update"
   serviceItem?: IService | null
-  serviceItems: IService[]
-  setServiceItems: (serviceItems: IService[]) => void
+  serviceItems: ServiceItem[]
+  setServiceItems: (serviceItems: ServiceItem[]) => void
   setIsModalOpen: (isOpen: boolean) => void
   isModalOpen?: boolean
 }

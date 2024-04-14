@@ -38,7 +38,7 @@ type ServiceFormProps = {
   serviceId?: string
   serviceItem?: IService | null
   serviceItems?: ServiceItem[]
-  setServiceItems: (serviceItems: IService[]) => void
+  setServiceItems: (serviceItems: ServiceItem[]) => void
   setIsModalOpen: (isOpen: boolean) => void
 }
 
@@ -57,7 +57,7 @@ const ServiceForm = ({
   const [deleteItem, setDeleteItem] = useState<number>(0) // for deleting service item
   const { startUpload } = useUploadThing('imageUploader')
   const [newService, setNewService] = useState<IService>()
-  const [serviceItems, setServiceItems] = useState<IService[]>([])
+  const [serviceItems, setServiceItems] = useState<ServiceItem[]>([])
   const [noServiceItem, setNoServiceItem] = useState<boolean>(false)
 
   // form setup with react-hook-form and zod
