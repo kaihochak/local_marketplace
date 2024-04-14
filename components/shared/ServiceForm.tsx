@@ -27,7 +27,6 @@ import Card from "@/components/shared/Card";
 import Dropdown from "@/components/shared/Dropdown";
 import Confetti from 'react-confetti';
 import dummyServices from "@/constants/dummyServices"
-import { IService } from "@/lib/database/models/service.model"
 import { MdOutlineModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
