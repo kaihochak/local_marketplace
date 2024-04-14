@@ -29,6 +29,7 @@ import Confetti from 'react-confetti';
 import dummyServices from "@/constants/dummyServices"
 import { MdOutlineModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { ServiceItem } from '@/types'
 
 type ServiceFormProps = {
   userId: string
@@ -36,7 +37,7 @@ type ServiceFormProps = {
   service?: IService,
   serviceId?: string
   serviceItem?: IService | null
-  serviceItems?: IService[]
+  serviceItems?: ServiceItem[]
   setServiceItems: (serviceItems: IService[]) => void
   setIsModalOpen: (isOpen: boolean) => void
 }
