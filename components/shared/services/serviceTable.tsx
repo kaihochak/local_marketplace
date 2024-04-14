@@ -237,7 +237,7 @@ export function ServiceTable<TData, TValue>({
 
                 {/* next button  */}
                 <div className="flex">
-                    <Button className="w-full h-12 bg-black text-white hover:bg-white hover:text-black hover:border border-black" onClick={() => setStep(3)} variant="default">Next</Button>
+                    <Button className="w-full h-12 bg-black text-white hover:bg-white hover:text-black hover:border border-black" onClick={() => {handleCreateReservation(); setStep(3);}} variant="default">Next</Button>
                 </div>
 
 
@@ -249,7 +249,6 @@ export function ServiceTable<TData, TValue>({
     const handleReserve = () => {
         open();
         calculateTotalPrice();
-        handleCreateReservation();
     }
 
     /**************************************************************************
