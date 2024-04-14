@@ -20,12 +20,13 @@ import { Checkmark } from '@/public/assets/icons/Checkmark';
 import ReactCurvedText from "react-curved-text";
 import { Sloth } from '@/public/assets/icons/Sloth';
 
-interface DataTableProps<TData, TValue> {
+interface DataTableProps<TData, TValue, S> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
+    service: S
 };
 
-export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+export function ServiceTable<TData, TValue, S>({ columns, data, service }: DataTableProps<TData, TValue, S>) {
     /**************************************************************************
      *  React Table
      **************************************************************************/
@@ -64,6 +65,13 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         width: window.innerWidth,
         height: window.innerHeight
     } : {};
+    
+    // create reservation function
+    // const handleCreateReservation = async () => {
+    //     try {
+    //         await createReservation({
+    //     }
+    // }
 
     /**************************************************************************
      *  Step 1: Confirm Reservation 

@@ -1,3 +1,4 @@
+import { IService } from "@/lib/database/models/service.model";
 import { ServiceOffered, columns } from "./columns"
 import { ServiceTable } from "./serviceTable"
 import { ServiceItem } from "@/types"
@@ -32,10 +33,20 @@ async function getData(): Promise<ServiceOffered[]> {
   ]
 }
 
-export default async function ServiceAndReservation({ servicesOffered }: { servicesOffered: ServiceOffered[] }) {
+export default async function ServiceAndReservation({ service }: { service: IService }) {
+
+  console.log('servicesOffered S&R:', service.servicesOffered);
+
+  const formattedData = service.servicesOffered.map((item) => ({
+    ...item,
+    price: parseFloat(item.price),
+  }));
+
+  console.log('formattedData:', formattedData);
+
   return (
     <div className="pt-6 pb-3">
-      <ServiceTable columns={columns} data={servicesOffered} />
+      <ServiceTable columns={columns} data={formattedData} service={service} />
     </div>
   )
 }

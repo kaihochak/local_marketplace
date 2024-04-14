@@ -24,6 +24,8 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
   // const serviceReviews = await getReviewsByService({ serviceId: service._id, limit: 3, page: 1 });
   const serviceReviews: ReviewItem[] = [];
 
+  console.log('Service offered in service page', service.servicesOffered)
+
   const BreadcrumbBar = () => {
     return (
       <div className='py-4'>
@@ -138,7 +140,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             {/* Services & Reservation */}
             <section className="flex flex-col pt-6">
               <h2 className="h4-semibold">Services Offered</h2>
-              <ServiceAndReservation servicesOffered={service?.servicesOffered} />
+              <ServiceAndReservation service={service} />
             </section>
 
             {/* Reviews */}
