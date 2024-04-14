@@ -15,12 +15,12 @@ import { Button } from "@/components/ui/button"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { ICategory } from '@/lib/database/models/category.model';
 import { getAllCategories } from '@/lib/actions/category.actions';
-import { ServiceItem } from '@/lib/database/models/service.model';
+import { IService } from '@/lib/database/models/service.model';
 import { getAllServices, getServiceById } from '@/lib/actions/service.actions';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Recommendations");
-  const [services, setServices] = useState<ServiceItem[]>([]);
+  const [services, setServices] = useState<IService[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [opened, { open, close }] = useDisclosure(true);
 
