@@ -18,7 +18,7 @@ import { ServiceItem } from '@/types'
 
 type ServiceItemModalProps = {
   type: "Create" | "Update"
-  serviceItem?: IService | null
+  serviceItem?: ServiceItem | null
   serviceItems: ServiceItem[]
   setServiceItems: (serviceItems: ServiceItem[]) => void
   setIsModalOpen: (isOpen: boolean) => void
