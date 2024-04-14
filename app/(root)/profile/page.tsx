@@ -9,7 +9,7 @@ import { Pen } from '@/public/assets/icons/Pen'
 import { auth } from '@clerk/nextjs'
 import { getUserById } from '@/lib/actions/user.actions'
 import { ReservationItem } from '@/lib/database/models/reservation.model'
-import { ServiceItem } from '@/lib/database/models/service.model'
+import { IService } from '@/lib/database/models/service.model'
 import { getServicesByUser } from '@/lib/actions/service.actions'
 import { getReservationsByUser, getReservationsByProvider } from '@/lib/actions/reservation.actions'
 import ProfileSwitchView from '@/components/shared/ProfileSwitchView'
@@ -53,7 +53,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   /*************************************************************************
    * get services
    *************************************************************************/
-  const myServices: ServiceItem[] = await fetchServices();
+  const myServices: IService[] = await fetchServices();
 
   async function fetchServices() {
     const services = await getServicesByUser(userId);

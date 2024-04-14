@@ -27,7 +27,7 @@ import Card from "@/components/shared/Card";
 import Dropdown from "@/components/shared/Dropdown";
 import Confetti from 'react-confetti';
 import dummyServices from "@/constants/dummyServices"
-import { ServiceItem } from "@/types";
+import { IService } from "@/lib/database/models/service.model"
 import { MdOutlineModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
@@ -36,9 +36,9 @@ type ServiceFormProps = {
   type: "Create" | "Update"
   service?: IService,
   serviceId?: string
-  serviceItem?: ServiceItem | null
-  serviceItems?: ServiceItem[]
-  setServiceItems: (serviceItems: ServiceItem[]) => void
+  serviceItem?: IService | null
+  serviceItems?: IService[]
+  setServiceItems: (serviceItems: IService[]) => void
   setIsModalOpen: (isOpen: boolean) => void
 }
 
@@ -57,7 +57,7 @@ const ServiceForm = ({
   const [deleteItem, setDeleteItem] = useState<number>(0) // for deleting service item
   const { startUpload } = useUploadThing('imageUploader')
   const [newService, setNewService] = useState<IService>(null)
-  const [serviceItems, setServiceItems] = useState<ServiceItem[]>([])
+  const [serviceItems, setServiceItems] = useState<IService[]>([])
   const [noServiceItem, setNoServiceItem] = useState<boolean>(false)
 
   // form setup with react-hook-form and zod

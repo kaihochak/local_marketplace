@@ -4,14 +4,14 @@ import React, { useState } from 'react'
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { ReservationItem } from '@/lib/database/models/reservation.model';
-import { ServiceItem } from '@/lib/database/models/service.model';
+import { IService } from '@/lib/database/models/service.model';
 import Collection from '@/components/shared/Collection'
 import { motion, AnimatePresence } from "framer-motion";
 import { initialTabs as tabs } from "./ingredients";
 
 type ProfileSwitchViewProps = {
     myReservations: ReservationItem[],
-    myServices: ServiceItem[],
+    myServices: IService[],
     myRequests: ReservationItem[]
 }
 

@@ -1,5 +1,3 @@
-import { ServiceItem } from '@/lib/database/models/service.model';
-
 export const dummyServices = [
     {
         title: "Wall Painter",

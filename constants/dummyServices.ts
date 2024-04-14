@@ -1,6 +1,3 @@
-import { ServiceItem } from '@/lib/database/models/service.model';
-import { Description } from '@radix-ui/react-dialog';
-
 export const dummyServices: any[] = [
 
     // Home

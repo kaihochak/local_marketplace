@@ -1,7 +1,6 @@
 import { IService } from "@/lib/database/models/service.model";
 import { ServiceOffered, columns } from "./columns"
 import { ServiceTable } from "./serviceTable"
-import { ServiceItem } from "@/types"
 
 import { auth } from "@clerk/nextjs";
 

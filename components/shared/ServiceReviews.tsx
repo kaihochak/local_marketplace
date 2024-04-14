@@ -6,9 +6,9 @@ import { dummmyReviews } from '@/constants/dummyReviews';
 import { dummyUsers } from '@/constants/dummyUsers';
 import { Pen } from '@/public/assets/icons/Pen';
 import { ReviewItem } from '@/lib/database/models/review.model';
-import { ServiceItem } from '@/lib/database/models/service.model';
+import { IService } from '@/lib/database/models/service.model';
 
-const ServiceReviews = ({ service, serviceReviews }: { service: ServiceItem, serviceReviews: ReviewItem[] }) => {
+const ServiceReviews = ({ service, serviceReviews }: { service: IService, serviceReviews: ReviewItem[] }) => {
 
     return (
         <section className="wrapper my-8 flex flex-col gap-3 md:gap-6">

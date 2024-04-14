@@ -3,12 +3,12 @@
 import React, { useEffect } from 'react'
 import ServiceForm from "./ServiceForm"
 import ServiceItemModal from "./ServiceItemModal";
-import { ServiceItem } from "@/types";
+import { IService } from "@/lib/database/models/service.model";
   
 const CreateService = ({ userId } : { userId: string }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
-    const [serviceItems, setServiceItems] = React.useState<ServiceItem[]>([])
-    const [updateItem, setUpdateItem] = React.useState<ServiceItem | null>(null)
+    const [serviceItems, setServiceItems] = React.useState<IService[]>([])
+    const [updateItem, setUpdateItem] = React.useState<IService | null>(null)
     
     return (
         <div>
