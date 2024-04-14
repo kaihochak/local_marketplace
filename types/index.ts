@@ -139,9 +139,11 @@ export type CreateReservationParams = {
   serviceId: string
   reservation: {
     // stripeId: string
+    providerId: string
     serviceId: string
     // totalAmount: string
     createdAt: Date
+    selectedServices: string[]
   }
   path: string
 }

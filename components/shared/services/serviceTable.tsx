@@ -19,13 +19,26 @@ import { Mail } from '@/public/assets/icons/Mail';
 import { Checkmark } from '@/public/assets/icons/Checkmark';
 import ReactCurvedText from "react-curved-text";
 import { Sloth } from '@/public/assets/icons/Sloth';
+import { IService } from '@/lib/database/models/service.model';
+import { createReservation } from '@/lib/actions/reservation.actions';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 };
 
-export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+interface ExtendedDataTableProps<TData, TValue> extends DataTableProps<TData, TValue> {
+    userId: string
+    service: IService
+};
+
+export function ServiceTable<TData, TValue>({ 
+    columns, 
+    data, 
+    service, 
+    userId 
+}: ExtendedDataTableProps<TData, TValue>) {
+
     /**************************************************************************
      *  React Table
      **************************************************************************/
@@ -68,6 +81,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     /**************************************************************************
      *  Step 1: Confirm Reservation 
      **************************************************************************/
+
     const ConfirmReservation = () => {
         return (
 
@@ -235,11 +249,38 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     const handleReserve = () => {
         open();
         calculateTotalPrice();
+        handleCreateReservation();
     }
 
     /**************************************************************************
      *  Step 3: Payment Success
      **************************************************************************/
+     // create reservation function
+     const handleCreateReservation = async () => {
+
+        console.log("2- userId", userId);
+        
+        const reservationParams = {
+            providerId: service.provider._id,
+            serviceId: service._id,
+            createdAt: new Date(),
+            selectedServices: selectedServices.map(service => service.id),
+        }
+
+        try {
+            const reseravation = await createReservation({
+                userId: userId,
+                serviceId: service._id,
+                reservation: reservationParams,
+                path: '/profile'
+            });
+            if (reseravation) {
+                console.log('Reservation created successfully:', reseravation)
+            }
+        } catch (error) {
+            console.log('Error creating reservation:', error)
+        }
+    }
     const PaymentSuccess = () => {
         let paymentSuccessMessage = "";
         let setrx = 140;
@@ -302,7 +343,6 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
             </div>
         );
     }
-
 
     /**************************************************************************
      *  Reserve Dashboard Modal

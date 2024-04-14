@@ -21,7 +21,6 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
   const service = await getServiceById(id);
   const relatedServices = await getRelatedServicesByCategory({ categoryId: service.category._id, serviceId: service._id, page: 1, limit: 10});
-  // const serviceReviews = await getReviewsByService({ serviceId: service._id, limit: 3, page: 1 });
   const serviceReviews: ReviewItem[] = [];
 
   const BreadcrumbBar = () => {
@@ -138,7 +137,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             {/* Services & Reservation */}
             <section className="flex flex-col pt-6">
               <h2 className="h4-semibold">Services Offered</h2>
-              <ServiceAndReservation servicesOffered={service?.servicesOffered} />
+              <ServiceAndReservation service={service} />
             </section>
 
             {/* Reviews */}

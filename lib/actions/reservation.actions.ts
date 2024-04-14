@@ -26,7 +26,7 @@ export async function createReservation({ userId, serviceId, reservation, path}:
     if (!service) throw new Error('Service not found');
 
     const providerId = service.provider;
-
+    
     // check if client exists
     const client = await User.findById(userId);
     if (!client) throw new Error('Client not found');
@@ -39,8 +39,6 @@ export async function createReservation({ userId, serviceId, reservation, path}:
       providerId: providerId,
     });
     revalidatePath(path);
-
-    console.log("123123", JSON.parse(JSON.stringify(newReservation)));
 
     return JSON.parse(JSON.stringify(newReservation));
   } catch (error) {
