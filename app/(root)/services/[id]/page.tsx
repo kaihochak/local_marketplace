@@ -149,7 +149,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
             </section>
 
             {/* Reviews */}
-            <ServiceReviews serviceReviews={serviceReviews} />
+            <ServiceReviews service={service} serviceReviews={serviceReviews} />
           </div>
 
           {/* Services with the same category */}
