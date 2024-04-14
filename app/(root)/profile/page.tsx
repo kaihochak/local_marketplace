@@ -1,7 +1,4 @@
 import Collection from '@/components/shared/Collection'
-import { dummyReservations } from '@/constants/dummyReservations'
-import { dummyUsers } from '@/constants/dummyUsers'
-import { dummyServices } from '@/constants/dummyServices'
 import { BookmarkFilled } from '@/public/assets/icons/BookmarkFilled'
 import { SearchParamProps } from '@/types'
 import Image from 'next/image'
@@ -10,12 +7,13 @@ import React from 'react'
 import CommonHeader from '@/components/shared/CommonHeader'
 import { Pen } from '@/public/assets/icons/Pen'
 import { auth } from '@clerk/nextjs'
-import { createUser, getUserById } from '@/lib/actions/user.actions'
-import { ReviewItem } from '@/lib/database/models/review.model'
+import { getUserById } from '@/lib/actions/user.actions'
 import { ReservationItem } from '@/lib/database/models/reservation.model'
 import { ServiceItem } from '@/lib/database/models/service.model'
 import { getServicesByUser } from '@/lib/actions/service.actions'
-import { getReservationsByUser } from '@/lib/actions/reservation.actions'
+import { getReservationsByUser, getReservationsByProvider } from '@/lib/actions/reservation.actions'
+import ProfileSwitchView from '@/components/shared/ProfileSwitchView'
+
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
@@ -28,6 +26,18 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
    *************************************************************************/
   const profile = await getUserById(userId)
   if (!profile) return null;
+
+
+  /*************************************************************************
+   * get requests
+   *************************************************************************/
+  const myRequests: ReservationItem[] = await fetchRequests();
+
+  async function fetchRequests() {
+    const reservations = await getReservationsByProvider(userId);
+    if (!reservations) return null;
+    return reservations.data;
+  }
 
   /*************************************************************************
    * get reservations
@@ -59,7 +69,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       <CommonHeader title='' signOutButton={true} />
 
       {/* Profile Name */}
-      <section className="pt-4 pb-2 bg-center bg-cover bg-primary-50 bg-dotted-pattern lg:pt-6 lg:pb-4">
+      <section className="flex-center pt-4 pb-2 lg:pt-6 lg:pb-4">
         <div className="flex flex-col items-center justify-center wrapper sm:justify-between">
           {/* profile image */}
           <div className="flex items-center justify-center w-40 h-40 overflow-hidden border border-black rounded-full">
@@ -94,34 +104,12 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           </Link>
         </div>
       </section>
-
-      {/* My Reservations */}
-      <section className="my-5 wrapper">
-        <Collection
-          title={{_id: "My Reservations", name: "My Reservations"}}
-          direction='horizontal'
-          itemType='reservation'
-          items={myReservations}
-          hasButton={true}
-          hasViewMore={true}
-          link={"/profile/reservations"}
-          nextPrevButton={true}
-        />
-      </section>
-
-      {/* My Services */}
-      <section className="my-5 wrapper">
-        <Collection
-          title={{_id: "My Services", name: "My Services"}}
-          direction='horizontal'
-          itemType='service'
-          items={myServices}
-          hasButton={true}
-          hasViewMore={true}
-          link={"/profile/services"}
-          nextPrevButton={true}
-        />
-      </section>
+      {/* Switch for views */}
+      <ProfileSwitchView
+        myRequests={myRequests}
+        myReservations={myReservations}
+        myServices={myServices}
+      />
     </>
   )
 }

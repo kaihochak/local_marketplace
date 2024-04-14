@@ -53,9 +53,23 @@ export async function getReservationsByUser(userId: string) {
 
     const reservations = await populateReservation(Reservation.find({ clientId: userId }).sort({ createdAt: 'desc'}));
     const reservationsCount = await Reservation.countDocuments({ clientId: userId });
-    console.log('reservations:', reservations);
-      
 
+    if (!reservations) return null;
+
+    return { data: JSON.parse(JSON.stringify(reservations)), count: reservationsCount };
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+
+// get reservation by provider id using populate service
+export async function getReservationsByProvider(userId: string) {
+  try {
+    await connectToDatabase();
+
+    const reservations = await populateReservation(Reservation.find({ providerId: userId }).sort({ createdAt: 'desc'}));
+    const reservationsCount = await Reservation.countDocuments({ providerId: userId });
     if (!reservations) return null;
 
     return { data: JSON.parse(JSON.stringify(reservations)), count: reservationsCount };
