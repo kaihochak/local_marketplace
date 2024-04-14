@@ -39,6 +39,7 @@ export default async function ServiceAndReservation({ service }: { service: ISer
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
+  // format servie data according to the input type of servicesOffered 
   const formattedData = service.servicesOffered.map((item) => ({
     ...item,
     price: parseFloat(item.price),

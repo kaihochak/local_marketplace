@@ -8,7 +8,9 @@ const EditReview = () => {
 
     return (
         <div>
+            {/* CommonHeader component is used to display the title of the page and back button */}
             <CommonHeader title='Edit Review' />
+            {/* display review form  */}
             <ReviewForm 
                 userId={userId} 
                 type="Edit" 

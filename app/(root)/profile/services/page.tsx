@@ -6,8 +6,10 @@ import { dummyServices } from '@/constants/dummyServices'
 const services = () => {
   return (
     <div className=''>
+        {/* CommonHeader component is used to display the title of the page and back button */}
         <CommonHeader title='My Services'/>
         <div className='flex-center pt-6'>
+          {/* Collection component to display a list services */}
           <Collection 
             direction="vertical"
             itemType='service'
