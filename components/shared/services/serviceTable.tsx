@@ -8,16 +8,38 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Modal } from '@mantine/core';
-import Confetti from 'react-confetti';
 import { useDisclosure } from '@mantine/hooks';
 import { ServiceOffered, columns } from "./columns"
+import { Cash } from '@/public/assets/icons/Cash';
+import { InteractTransfer } from '@/public/assets/icons/InteractTransfer';
+import { Stripe } from '@/public/assets/icons/Stripe';
+import { Paypal } from '@/public/assets/icons/Paypal';
+import { Phone } from '@/public/assets/icons/Phone';
+import { Mail } from '@/public/assets/icons/Mail';
+import { Checkmark } from '@/public/assets/icons/Checkmark';
+import ReactCurvedText from "react-curved-text";
+import { Sloth } from '@/public/assets/icons/Sloth';
+import { IService } from '@/lib/database/models/service.model';
+import { createReservation } from '@/lib/actions/reservation.actions';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/ui/accordion";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 };
 
-export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+interface ExtendedDataTableProps<TData, TValue> extends DataTableProps<TData, TValue> {
+    userId: string
+    service: IService
+};
+
+export function ServiceTable<TData, TValue>({
+    columns,
+    data,
+    service,
+    userId
+}: ExtendedDataTableProps<TData, TValue>) {
+
     /**************************************************************************
      *  React Table
      **************************************************************************/
@@ -60,13 +82,16 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
     /**************************************************************************
      *  Step 1: Confirm Reservation 
      **************************************************************************/
+
     const ConfirmReservation = () => {
         return (
+
+
             <div>
                 <div className="flex items-center justify-center space-x-4 pb-5">
                     <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">1</div>
                     <div className="w-12 h-0.5 bg-gray-200"></div>
-                    <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">2</div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full">2</div>
                     <div className="w-12 h-0.5 bg-gray-200"></div>
                     <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full">3</div>
                 </div>
@@ -80,15 +105,15 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                     <TableHeader>
                         <TableRow>
                             <TableHead>Service</TableHead>
-                            <TableHead>Rating</TableHead>
+                            {/* <TableHead>Rating</TableHead> */}
                             <TableHead>Price</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {selectedServices.map((service, index) => (
                             <TableRow key={index}>
-                                <TableCell>{service.service}</TableCell>
-                                <TableCell>{service.rating}</TableCell>
+                                <TableCell>{service.title}</TableCell>
+                                {/* <TableCell>{service.rating}</TableCell> */}
                                 <TableCell>{service.price}</TableCell>
                             </TableRow>
                         ))}
@@ -100,13 +125,13 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
 
                 {/* Total Price */}
                 <div className="flex flex-col items-end">
-                    <h3 className="text-end mr-4">Total Price <span className="font-bold">{totalPrice}</span></h3>
+                    <h3 className="text-end mr-4">Total Price <span className="font-bold">${totalPrice}</span></h3>
                     <div className="border-b my-4 w-32"></div>
                 </div>
 
                 {/* okay button */}
                 <div className="flex justify-end">
-                    <Button onClick={() => setStep(2)} variant="default">Okay</Button>
+                    <Button onClick={() => setStep(2)} variant="default">Next</Button>
                 </div>
             </div>
         )
@@ -114,10 +139,22 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
 
     // Calculate total price
     const calculateTotalPrice = () => {
+        const selectedServicesArray = Object.keys(rowSelection).map(rowId => getServiceDetails(rowId));
+        setSelectedServices(selectedServicesArray);
+
         let total = 0;
-        // convert rowSelection to array of selected services
-        setSelectedServices(Object.keys(rowSelection).map(rowId => getServiceDetails(rowId)));
-        selectedServices.forEach(service => total += service.price)
+        selectedServicesArray.forEach(service => {
+            // Check if service.price is a string before parsing it
+
+            // if price is not defined then it is assigned 0
+            if (!service.price) service.price = 0;
+
+            if (typeof service.price === 'string') {
+                total += parseInt(service.price, 10); // Parse the string to integer
+            } else {
+                total += service.price; // If it's already a number, directly add it to total
+            }
+        });
         setTotalPrice(total);
     }
 
@@ -132,21 +169,25 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
      *  Step 2: Payment Screen
      **************************************************************************/
     const PaymentScreen = () => {
+
+        const handleNextClick = () => {
+            if (selectedPaymentMethod) {
+                handleCreateReservation();
+                setStep(3);
+            } else {
+                alert('Please select a payment method');
+            }
+        };
+
+        const isStripeEnabled = false;
+        const isPaypalEnabled = false;
+
         return (
             <div>
-                {/* <div className="flex flex-col items-center justify-center">
-                            <h1 className="text-3xl font-semibold my-5 text-left">Payment</h1>
-                        </div> */}
-
+                {/* form progress tracker */}
                 <div className="flex items-center justify-center space-x-4 pb-5">
-                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full pl-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-180" viewBox="0 0 20 20" fill="currentColor">
-                            <path
-                                fillRule="evenodd"
-                                d="M16.707 4.293a1 1 0 00-1.414 0l-8 8a1 1 0 001.414 1.414l7.293-7.293 7.293 7.293a1 1 0 001.414-1.414l-8-8z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
+                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full">
+                        <Checkmark className="w-4 h-4" />
                     </div>
                     <div className="w-12 h-0.5 bg-gray-200"></div>
                     <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">2</div>
@@ -155,65 +196,55 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 </div>
 
                 {/* Payment methods section */}
-                <div className="flex flex-col items-center justify-right mb-5">
-                    <h2 className="text-xl font-semibold mb-3">Select Payment Method:</h2>
-                    <div className="flex gap-3 w-full h-10">
-                        <button onClick={handleCardPayment} className="flex items-center justify-center w-full px-4 py-2 border rounded-md shadow-sm bg-gray-200 text-gray-700  hover:bg-white">
-                            <FaCreditCard className="mr-2" />
-                        </button>
-                        <button onClick={handleStripePayment} className="flex items-center justify-center w-full px-2 py-2 border rounded-md shadow-sm bg-gray-200 text-gray-700  hover:bg-white">
-                            <FaStripe className="mr-2" />
-                        </button>
-                        <button onClick={handlePaypalPayment} className="flex items-center justify-center w-full px-4 py-2 border rounded-md shadow-sm bg-gray-200 text-gray-700  hover:bg-white">
-                            <FaPaypal className="mr-2" />
-                        </button>
-                    </div>
+                <h2 className="text-xl font-semibold mb-3">Select Payment Method:</h2>
+
+
+                <Accordion type="single" collapsible className="w-full" onValueChange={(value:string) => setSelectedPaymentMethod(value)}>
+                    <AccordionItem value="inPerson" className=''>
+                        <AccordionTrigger className="">
+                            <span className="">Cash</span>
+                            <Cash className="w-6 h-6" />
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            Pay in Person
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="interac">
+                        <AccordionTrigger>
+                            <span className="">Interac</span>
+                            <InteractTransfer className="w-6 h-6" />
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            {service.provider.firstName}
+                        </AccordionContent>
+                    </AccordionItem>
+                    {isStripeEnabled && <AccordionItem value="stripe">
+                        <AccordionTrigger>
+                            <span className="">Stripe</span>
+                            <Stripe className="w-6 h-6" />
+                        </AccordionTrigger>
+                        <AccordionContent>
+
+                        </AccordionContent>
+                    </AccordionItem> }
+                    {isPaypalEnabled && <AccordionItem value="paypal">
+                        <AccordionTrigger>
+                            <span className="">Paypal</span>
+                            <Paypal className="w-6 h-6" />
+                        </AccordionTrigger>
+                        <AccordionContent>
+
+                        </AccordionContent>
+                    </AccordionItem>}
+
+                </Accordion>
+
+
+                {/* next and back button  */}
+                <div className="flex justify-between">
+                    <Button onClick={() => setStep(1)} variant="default">Back</Button>
+                    <Button onClick={ handleNextClick } variant="default">Next</Button>
                 </div>
-
-
-                {/* Payment method specific sections */}
-                {selectedPaymentMethod === 'card' && (
-                    <div className="flex flex-col items-center justify-center">
-                        {/* Add card payment specific content here */}
-                        <form className="w-full max-w-sm">
-                            <div className="mb-4">
-                                <label htmlFor="cardName" className="block text-gray-700 font-semibold mb-2">Cardholder's Name</label>
-                                <input type="text" id="cardName" name="cardName" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="Enter cardholder's name" />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="cardNumber" className="block text-gray-700 font-semibold mb-2">Card Number</label>
-                                <input type="text" id="cardNumber" name="cardNumber" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="Enter card number" />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="expiryDate" className="block text-gray-700 font-semibold mb-2">Expiry Date</label>
-                                <input type="text" id="expiryDate" name="expiryDate" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="MM/YY" />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="cvv" className="block text-gray-700 font-semibold mb-2">CVV</label>
-                                <input type="text" id="cvv" name="cvv" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="Enter CVV" />
-                            </div>
-                            <div className="flex justify-center">
-                                <button type="submit" className="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">Pay Now</button>
-                            </div>
-                        </form>
-                    </div>
-                )}
-
-                {selectedPaymentMethod === 'stripe' && (
-                    <div className="flex flex-col items-center justify-center">
-                        {/* Add Stripe payment specific content here */}
-                        <h2 className="text-lg font-semibold mb-3">Stripe Payment Section</h2>
-                        <p>Use Stripe payment gateway here...</p>
-                    </div>
-                )}
-
-                {selectedPaymentMethod === 'paypal' && (
-                    <div className="flex flex-col items-center justify-center">
-                        {/* Add Paypal payment specific content here */}
-                        <h2 className="text-lg font-semibold mb-3">Paypal Payment Section</h2>
-                        <p>Use Paypal payment gateway here...</p>
-                    </div>
-                )}
             </div>
         )
     }
@@ -224,30 +255,97 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
         calculateTotalPrice();
     }
 
-    const handleCardPayment = () => {
-        setSelectedPaymentMethod('card');
-    }
-
-    const handleStripePayment = () => {
-        setSelectedPaymentMethod('stripe');
-    }
-
-    const handlePaypalPayment = () => {
-        setSelectedPaymentMethod('paypal');
-    }
-
-
     /**************************************************************************
      *  Step 3: Payment Success
      **************************************************************************/
-    const PaymentSuccess = () => {
-        return (
-            <div>
-                Payment Success
-            </div>
-        )
-    }
+    // create reservation function
+    const handleCreateReservation = async () => {
 
+        console.log("2- userId", userId);
+
+        const reservationParams = {
+            providerId: service.provider._id,
+            serviceId: service._id,
+            createdAt: new Date(),
+            selectedServices: selectedServices.map(service => service.id),
+        }
+
+        try {
+            const reseravation = await createReservation({
+                userId: userId,
+                serviceId: service._id,
+                reservation: reservationParams,
+                path: '/profile'
+            });
+            if (reseravation) {
+                console.log('Reservation created successfully:', reseravation)
+            }
+        } catch (error) {
+            console.log('Error creating reservation:', error)
+        }
+    }
+    const PaymentSuccess = () => {
+        let paymentSuccessMessage = "";
+        let setrx = 140;
+
+        // Generate different success messages based on the selected payment method
+        switch (selectedPaymentMethod) {
+            case "inPerson":
+                paymentSuccessMessage = "Pending for approval...";
+                setrx = 140;
+                break;
+            case "interac":
+                paymentSuccessMessage = "Pending for approval...";
+                setrx = 140;
+                break;
+            case "stripe":
+                paymentSuccessMessage = "Payment Success through Stripe";
+                setrx = 180;
+                break;
+            case "paypal":
+                paymentSuccessMessage = "Payment Success through PayPal";
+                setrx = 180;
+                break;
+            default:
+                paymentSuccessMessage = "Pending for approval...";
+        }
+
+        return (
+
+            <div>
+                <div className="flex items-center justify-center space-x-4 pb-5">
+                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full">
+                        <Checkmark className="w-4 h-4" />
+                    </div>
+                    <div className="w-12 h-0.5 bg-gray-200"></div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-indigo-500 text-white rounded-full">
+                        <Checkmark className="w-4 h-4" />
+                    </div>
+                    <div className="w-12 h-0.5 bg-gray-200"></div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">3</div>
+                </div>
+
+                <div className="flex flex-col items-center justify-center">
+                    <div className="text-xl font-bold text-center">
+                        <ReactCurvedText
+                            width={370}
+                            height={100}
+                            cx={160}
+                            cy={120}
+                            rx={setrx}
+                            ry={80}
+                            startOffset={80}
+                            reversed={true}
+                            text={paymentSuccessMessage}
+                        />
+                    </div>
+                    <div className="mt-4">
+                        <Sloth className="w-12 h-12" />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     /**************************************************************************
      *  Reserve Dashboard Modal
@@ -294,9 +392,9 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 {/* Search bar */}
                 <Input
                     placeholder="Find services..."
-                    value={(table.getColumn("service")?.getFilterValue() as string) ?? ""}
+                    value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("service")?.setFilterValue(event.target.value)
+                        table.getColumn("title")?.setFilterValue(event.target.value)
                     }
                     className="w-full"
                 />
@@ -384,7 +482,7 @@ export function ServiceTable<TData, TValue>({ columns, data }: DataTableProps<TD
                 </div>
 
                 {/* Reserve Button */}
-                <Button onClick={handleReserve} variant="default">Reserve</Button>
+                <Button onClick={handleReserve} disabled={table.getFilteredSelectedRowModel().rows.length === 0} variant="default">Reserve</Button>
             </div>
 
             {/* Reserve Modal */}
