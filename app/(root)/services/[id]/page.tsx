@@ -21,10 +21,7 @@ const ServicePost = async ({ params: { id }, searchParams }: SearchParamProps) =
 
   const service = await getServiceById(id);
   const relatedServices = await getRelatedServicesByCategory({ categoryId: service.category._id, serviceId: service._id, page: 1, limit: 10});
-  // const serviceReviews = await getReviewsByService({ serviceId: service._id, limit: 3, page: 1 });
   const serviceReviews: ReviewItem[] = [];
-
-  console.log('Service offered in service page', service.servicesOffered)
 
   const BreadcrumbBar = () => {
     return (

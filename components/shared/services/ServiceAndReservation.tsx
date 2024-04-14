@@ -37,7 +37,6 @@ async function getData(): Promise<ServiceOffered[]> {
 }
 
 export default async function ServiceAndReservation({ service }: { service: IService }) {
-
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
@@ -48,7 +47,7 @@ export default async function ServiceAndReservation({ service }: { service: ISer
 
   return (
     <div className="pt-6 pb-3">
-      <ServiceTable columns={columns} data={formattedData} service={service} />
+      <ServiceTable columns={columns} data={formattedData} service={service} userId={userId}/>
     </div>
   )
 }
