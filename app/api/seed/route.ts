@@ -8,7 +8,7 @@ import Reservation from '@/lib/database/models/reservation.model';
 
 import { createCategory } from '@/lib/actions/category.actions';
 import { createUser, getAllUsers, getUserById } from '@/lib/actions/user.actions';
-import { createService, getServiceByName, getServiceByTitle } from '@/lib/actions/service.actions';
+import { createService, getServiceByTitle } from '@/lib/actions/service.actions';
 import { createReservation } from '@/lib/actions/reservation.actions';
 
 import { dummyCategories } from '@/constants/dummyCategories';
