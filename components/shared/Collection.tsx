@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Card from './Card';
-import { ServiceItem } from '@/lib/database/models/service.model';
+import { IService } from '@/lib/database/models/service.model';
 import { ReviewItem } from '@/lib/database/models/review.model';
 import { ReservationItem } from '@/lib/database/models/reservation.model';
 import Link from 'next/link';
@@ -14,7 +14,7 @@ type CollectionProps = {
     title?: { _id: string, name: string };
     direction?: 'horizontal' | 'vertical';
     itemType?: 'service' | 'reservation' | 'review';
-    items?: ServiceItem[] | ReviewItem[] | ReservationItem[];
+    items?: IService[] | ReviewItem[] | ReservationItem[];
     hasButton?: boolean;
     limit?: number;
     hasViewMore?: boolean;
