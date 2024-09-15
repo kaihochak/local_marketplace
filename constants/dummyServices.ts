@@ -8,7 +8,7 @@ export const dummyServices: any[] = [
         {
             title: "ASAP Plumbers",
             description: "Experienced plumber providing reliable plumbing services for residential and commercial properties. We've got you covered.",
-            imageUrl: "https://api.unsplash.com/a-man-working-on-a-pipe-in-a-wall-c314Gh8dXAo",
+            imageUrl: "https://source.unsplash.com/a-man-working-on-a-pipe-in-a-wall-c314Gh8dXAo",
             url: "https://www.plumbingforyou.com",
             location: "123 Elm Street, Anycity, USA",
             provider: "65fe9a5396346912b7163240",
@@ -52,7 +52,7 @@ export const dummyServices: any[] = [
         {
             title: "Soph Cleaning",
             description: "Professional house cleaning services to keep your home spotless and tidy. We offer regular cleaning, deep cleaning, and move-in/move-out cleaning services.",
-            imageUrl: "https://api.unsplash.com/grayscale-photography-of-woman-cleaning-glass-window-t5qnrCVkUz8",
+            imageUrl: "https://source.unsplash.com/grayscale-photography-of-woman-cleaning-glass-window-t5qnrCVkUz8",
             url: "https://www.cleaningforyou.com",
             location: "789 Pine Street, Anycity, USA",
             provider: "65fe9a5396346912b7163242",
@@ -96,7 +96,7 @@ export const dummyServices: any[] = [
         {
             title: "Noah Lawns",
             description: "Professional lawn care services including mowing, edging, weed control, and fertilization. Let us take care of your lawn so you can enjoy your outdoor space.",
-            imageUrl: "https://api.unsplash.com/man-riding-red-and-black-ride-on-lawn-mower-on-green-grass-field-during-daytime-QqPFf7gIHCU",
+            imageUrl: "https://source.unsplash.com/man-riding-red-and-black-ride-on-lawn-mower-on-green-grass-field-during-daytime-QqPFf7gIHCU",
             url: "https://www.lawnforyou.com",
             location: "123 Maple Street, Anycity, USA",
             provider: "65fe9a5396346912b7163243",
@@ -140,7 +140,7 @@ export const dummyServices: any[] = [
         {
             title: "Home Security System",
             description: "Protect your home with professional security system installation services. We offer customized solutions to keep your home safe and secure.",
-            imageUrl: "https://api.unsplash.com/gold-apple-iphone-smartphone-held-at-the-door-IJkSskfEqrM",
+            imageUrl: "https://source.unsplash.com/gold-apple-iphone-smartphone-held-at-the-door-IJkSskfEqrM",
             url: "https://www.securityforyou.com",
             location: "456 Cedar Street, Anycity, USA",
             provider: "65fe9a5396346912b7163244",
@@ -184,7 +184,7 @@ export const dummyServices: any[] = [
         {
             title: "Home Organizer",
             description: "Professional home organizing services to declutter and organize your living spaces. From closets to kitchens, we'll help you create a space you'll love.",
-            //imageUrl: "https://api.unsplash.com/a-room-with-a-desk-and-chairs-a4Zb82wKISs",
+            //imageUrl: "https://source.unsplash.com/a-room-with-a-desk-and-chairs-a4Zb82wKISs",
             url: "https://www.organizingforyou.com",
             location: "789 Walnut Street, Anycity, USA",
             provider: "65fe9a5396346912b7163245",
@@ -229,7 +229,7 @@ export const dummyServices: any[] = [
         {
             title: "Personal Trainer",
             description: "Certified personal trainer offering customized workout plans and one-on-one training sessions to help you achieve your fitness goals.",
-            imageUrl: "https://api.unsplash.com/woman-in-black-tank-top-and-black-leggings-doing-yoga-E8VOttj22s4",
+            imageUrl: "https://source.unsplash.com/woman-in-black-tank-top-and-black-leggings-doing-yoga-E8VOttj22s4",
             url: "https://www.fitforyou.com",
             location: "456 Pine Street, Anycity, USA",
             provider: "65fe9a5396346912b7163255",
@@ -273,7 +273,7 @@ export const dummyServices: any[] = [
         {
             title: "Yoga Instructor",
             description: "Experienced yoga instructor providing personalized yoga sessions tailored to your needs, whether you're a beginner or an advanced practitioner.",
-            imageUrl: "https://api.unsplash.com/woman-in-white-shirt-sitting-on-brown-and-white-pillow-zTgFtM6M9Gs",
+            imageUrl: "https://source.unsplash.com/woman-in-white-shirt-sitting-on-brown-and-white-pillow-zTgFtM6M9Gs",
             url: "https://www.yogaforyou.com",
             location: "789 Oak Avenue, Anytown, USA",
             provider: "65fe9a5396346912b7163256",
@@ -317,7 +317,7 @@ export const dummyServices: any[] = [
         {
             title: "Personal Nutritionist",
             description: "Certified nutritionist offering personalized diet plans and nutritional counseling to help you achieve your health and wellness goals.",
-            imageUrl: "https://api.unsplash.com/woman-holding-fork-in-front-table-Orz90t6o0e4",
+            imageUrl: "https://source.unsplash.com/woman-holding-fork-in-front-table-Orz90t6o0e4",
             url: "https://www.nutritionforyou.com",
             location: "123 Maple Street, Anycity, USA",
             provider: "65fe9a5396346912b7163257",
@@ -361,7 +361,7 @@ export const dummyServices: any[] = [
         {
             title: "Life Coach",
             description: "Experienced life coach providing personalized coaching sessions to help you navigate life's challenges, set goals, and achieve personal growth.",
-            imageUrl: "https://api.unsplash.com/man-in-white-dress-shirt-sitting-beside-woman-in-black-long-sleeve-shirt-376KN_ISplE",
+            imageUrl: "https://source.unsplash.com/man-in-white-dress-shirt-sitting-beside-woman-in-black-long-sleeve-shirt-376KN_ISplE",
             url: "https://www.lifecoaching.com",
             location: "456 Cedar Street, Anycity, USA",
             provider: "65fe9a5396346912b7163258",
@@ -405,7 +405,7 @@ export const dummyServices: any[] = [
         {
             title: "Beauty Consultant",
             description: "Professional beauty consultant offering personalized beauty tips, skincare routines, and makeup advice to enhance your natural beauty.",
-            imageUrl: "https://api.unsplash.com/woman-in-blue-and-red-shirt-KdbCwfzcwWE",
+            imageUrl: "https://source.unsplash.com/woman-in-blue-and-red-shirt-KdbCwfzcwWE",
             url: "https://www.beautyforyou.com",
             location: "789 Elm Street, Anycity, USA",
             provider: "65fe9a5396346912b7163259",
@@ -449,7 +449,7 @@ export const dummyServices: any[] = [
         {
             title: "Finance Advisor",
             description: "Qualified financial advisor offering personalized financial planning services, budgeting advice, and investment strategies to help you achieve financial success.",
-            imageUrl: "https://api.unsplash.com/person-holding-pencil-near-laptop-computer-5fNmWej4tAA",
+            imageUrl: "https://source.unsplash.com/person-holding-pencil-near-laptop-computer-5fNmWej4tAA",
             url: "https://www.financeforyou.com",
             location: "123 Oak Street, Anycity, USA",
             provider: "65fe9a5396346912b7163260",
@@ -495,7 +495,7 @@ export const dummyServices: any[] = [
         {
             title: "Emily Types",
             description: "Professional editing services for all your written content. From articles to manuscripts, we'll help you refine your writing and polish it to perfection.",
-            imageUrl: "https://api.unsplash.com/woman-sitting-on-brown-wooden-chair-while-using-silver-laptop-computer-in-room-WHWYBmtn3_0",
+            imageUrl: "https://source.unsplash.com/woman-sitting-on-brown-wooden-chair-while-using-silver-laptop-computer-in-room-WHWYBmtn3_0",
             url: "https://www.editingforyou.com",
             location: "123 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163290",
@@ -539,7 +539,7 @@ export const dummyServices: any[] = [
         {
             title: "IT Support by David",
             description: "Reliable IT support services to keep your systems running smoothly. From troubleshooting to system maintenance, we've got your back.",
-            imageUrl: "https://api.unsplash.com/man-in-brown-jacket-looking-at-contract-on-docusign-on-a-laptop-8aYqlvrVM_Y",
+            imageUrl: "https://source.unsplash.com/man-in-brown-jacket-looking-at-contract-on-docusign-on-a-laptop-8aYqlvrVM_Y",
             url: "https://www.itsupportforyou.com",
             location: "456 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163291",
@@ -583,7 +583,7 @@ export const dummyServices: any[] = [
         {
             title: "Michael Developments",
             description: "Experienced web and software developers to bring your ideas to life. From websites to applications, we'll build solutions tailored to your needs.",
-            imageUrl: "https://api.unsplash.com/a-couple-of-men-standing-next-to-each-other-ZYUcxbMeaIY",
+            imageUrl: "https://source.unsplash.com/a-couple-of-men-standing-next-to-each-other-ZYUcxbMeaIY",
             url: "https://www.developmentforyou.com",
             location: "789 Pine Street, Anytown, USA",
             provider: "65fe9a5396346912b7163292",
@@ -627,7 +627,7 @@ export const dummyServices: any[] = [
         {
             title: "Ethan Cyber Consultancy",
             description: "Protect your digital assets with expert cybersecurity consulting services. From risk assessments to security audits, we'll safeguard your business.",
-            imageUrl: "https://api.unsplash.com/man-wearing-headphones-while-sitting-on-chair-in-front-of-macbook-4-EeTnaC1S4",
+            imageUrl: "https://source.unsplash.com/man-wearing-headphones-while-sitting-on-chair-in-front-of-macbook-4-EeTnaC1S4",
             url: "https://www.cybersecurityforyou.com",
             location: "456 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163294",
@@ -671,7 +671,7 @@ export const dummyServices: any[] = [
         {
             title: "Cloud Solutions and Aid",
             description: "Customized cloud solutions to optimize your infrastructure. From architecture design to implementation, we'll help you leverage the power of the cloud.",
-            imageUrl: "https://api.unsplash.com/person-using-macbok-DgoyKNgPiFQ",
+            imageUrl: "https://source.unsplash.com/person-using-macbok-DgoyKNgPiFQ",
             url: "https://www.cloudsolutionsforyou.com",
             location: "789 Cedar Street, Anytown, USA",
             provider: "65fe9a5396346912b7163295",
@@ -715,7 +715,7 @@ export const dummyServices: any[] = [
         {
             title: "Analysis Freelance Soph",
             description: "Data analysis services to help you make informed decisions. From data visualization to predictive analytics, we'll uncover insights from your data.",
-            imageUrl: "https://api.unsplash.com/woman-using-desktop-computer-0Vc8UJenzm0",
+            imageUrl: "https://source.unsplash.com/woman-using-desktop-computer-0Vc8UJenzm0",
             url: "https://www.dataanalysisforyou.com",
             location: "123 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163293",
@@ -761,7 +761,7 @@ export const dummyServices: any[] = [
         {
             title: "Liv Leagal",
             description: "Expert legal advice and consultation for all your legal needs. From contract review to litigation support, we'll guide you through the legal complexities.",
-            imageUrl: "https://api.unsplash.com/lawyer-legal-advice-Xp5gUHjTprg",
+            imageUrl: "https://source.unsplash.com/lawyer-legal-advice-Xp5gUHjTprg",
             url: "https://www.legaladviceforyou.com",
             location: "123 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163296",
@@ -805,7 +805,7 @@ export const dummyServices: any[] = [
         {
             title: "Elijah Business",
             description: "Strategic business consulting services to help you achieve your business objectives. From market analysis to growth strategies, we'll drive your success.",
-            imageUrl: "https://api.unsplash.com/a-person-sitting-at-a-table-with-a-laptop-oUbzU87d1Gc",
+            imageUrl: "https://source.unsplash.com/a-person-sitting-at-a-table-with-a-laptop-oUbzU87d1Gc",
             url: "https://www.businessconsultingforyou.com",
             location: "456 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163297",
@@ -849,7 +849,7 @@ export const dummyServices: any[] = [
         {
             title: "Ava Fiscal",
             description: "Comprehensive financial planning and investment management services to secure your financial future. From retirement planning to wealth management, we'll help you achieve your financial goals.",
-            imageUrl: "https://api.unsplash.com/two-women-sitting-at-a-table-with-a-laptop-bWL-c09Ys80",
+            imageUrl: "https://source.unsplash.com/two-women-sitting-at-a-table-with-a-laptop-bWL-c09Ys80",
             url: "https://www.financialadvisorforyou.com",
             location: "789 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163298",
@@ -893,7 +893,7 @@ export const dummyServices: any[] = [
         {
             title: "Marketing by Liam",
             description: "Strategic marketing consulting services to elevate your brand and drive growth. From market analysis to campaign management, we'll help you reach your target audience.",
-            imageUrl: "https://api.unsplash.com/a-man-sitting-at-a-table-in-front-of-a-laptop-TLiWhlDEJwA",
+            imageUrl: "https://source.unsplash.com/a-man-sitting-at-a-table-in-front-of-a-laptop-TLiWhlDEJwA",
             url: "https://www.marketingconsultingforyou.com",
             location: "123 Pine Street, Anytown, USA",
             provider: "65fe9a5396346912b7163299",
@@ -937,7 +937,7 @@ export const dummyServices: any[] = [
         {
             title: "Mia's Advisory",
             description: "Expert investment advice and portfolio management services to grow your wealth. From asset allocation to risk management, we'll help you make informed investment decisions.",
-            imageUrl: "https://api.unsplash.com//a-woman-with-a-backpack-smiling-ZDVUNqe5aLo",
+            imageUrl: "https://source.unsplash.com//a-woman-with-a-backpack-smiling-ZDVUNqe5aLo",
             url: "https://www.investmentadvisorforyou.com",
             location: "456 Cedar Street, Anytown, USA",
             provider: "65fe9a5396346912b7163300",
@@ -981,7 +981,7 @@ export const dummyServices: any[] = [
         {
             title: "HR Consultancy",
             description: "Strategic human resources consulting services to optimize your workforce. From talent acquisition to performance management, we'll help you build a high-performing team.",
-            imageUrl: "https://api.unsplash.com/photography-of-people-inside-room-during-daytime-rg1y72eKw6o",
+            imageUrl: "https://source.unsplash.com/photography-of-people-inside-room-during-daytime-rg1y72eKw6o",
             url: "https://www.hrconsultingforyou.com",
             location: "789 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163301",
@@ -1027,7 +1027,7 @@ export const dummyServices: any[] = [
         {
             title: "Fine Art Painting",
             description: "Original fine art paintings created with passion and creativity. Transform your space with unique artwork that reflects your style and personality.",
-            imageUrl: "https://api.unsplash.com/woman-in-white-long-sleeve-shirt-and-blue-denim-jeans-sitting-on-brown-wooden-table-kBuAJnv31aQ",
+            imageUrl: "https://source.unsplash.com/woman-in-white-long-sleeve-shirt-and-blue-denim-jeans-sitting-on-brown-wooden-table-kBuAJnv31aQ",
             url: "https://www.example.com/fineartpainting",
             location: "123 Main Street, Anytown, USA",
             provider: "65fe9a5396346912b7163302",
@@ -1071,7 +1071,7 @@ export const dummyServices: any[] = [
         {
             title: "Professional Photography",
             description: "Capture memorable moments with stunning photography services. From weddings to corporate events, I provide high-quality images that tell your story.",
-            imageUrl: "https://api.unsplash.com/shallow-focus-photography-of-man-using-a-dslr-camera-DQPP9rVLYGQ",
+            imageUrl: "https://source.unsplash.com/shallow-focus-photography-of-man-using-a-dslr-camera-DQPP9rVLYGQ",
             url: "https://www.example.com/professionalphotography",
             location: "456 Oak Avenue, Anytown, USA",
             provider: "65fe9a5396346912b7163303",
@@ -1115,7 +1115,7 @@ export const dummyServices: any[] = [
         {
             title: "Sculpture Art",
             description: "Unique sculpture art pieces crafted with precision and creativity. Elevate your space with stunning sculptures that capture attention and inspire awe.",
-            imageUrl: "https://api.unsplash.com/a-man-is-making-a-bowl-on-a-potters-wheel-uZYo1sIh2hQ",
+            imageUrl: "https://source.unsplash.com/a-man-is-making-a-bowl-on-a-potters-wheel-uZYo1sIh2hQ",
             url: "https://www.example.com/sculptureart",
             location: "789 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163304",
@@ -1159,7 +1159,7 @@ export const dummyServices: any[] = [
         {
             title: "Nature Photography",
             description: "Capture the beauty of nature with breathtaking photography services. From landscapes to wildlife, I specialize in capturing nature's wonders.",
-            imageUrl: "https://api.unsplash.com/man-with-backpack-taking-picture-beside-lake-04OtkxJTQR4",
+            imageUrl: "https://source.unsplash.com/man-with-backpack-taking-picture-beside-lake-04OtkxJTQR4",
             url: "https://www.example.com/naturephotography",
             location: "123 Pine Street, Anytown, USA",
             provider: "65fe9a5396346912b7163305",
@@ -1203,7 +1203,7 @@ export const dummyServices: any[] = [
         {
             title: "Better Graphic Design",
             description: "High-quality graphic design services tailored to your needs. From logos to branding materials, I'll help bring your vision to life with creativity and precision.",
-            imageUrl: "https://api.unsplash.com/woman-using-macbook-pro-7PHq2BCa7dM",
+            imageUrl: "https://source.unsplash.com/woman-using-macbook-pro-7PHq2BCa7dM",
             url: "https://www.example.com/graphicdesign",
             location: "456 Oak Street, Anytown, USA",
             provider: "6618810abcccd5fae0d36f89",
@@ -1242,7 +1242,7 @@ export const dummyServices: any[] = [
         {
             title: "Graphic Design",
             description: "High-quality graphic design services tailored to your needs. From logos to branding materials, I'll help bring your vision to life with creativity and precision.",
-            imageUrl: "https://api.unsplash.com/woman-using-macbook-pro-7PHq2BCa7dM",
+            imageUrl: "https://source.unsplash.com/woman-using-macbook-pro-7PHq2BCa7dM",
             url: "https://www.example.com/graphicdesign",
             location: "456 Oak Street, Anytown, USA",
             provider: "6618810abcccd5fae0d36f89",
@@ -1286,7 +1286,7 @@ export const dummyServices: any[] = [
         {
             title: "Better Music Lessons",
             description: "Professional music lessons tailored to your skill level and musical interests. Whether you're a beginner or an advanced player, I'll help you develop your musical talents.",
-            imageUrl: "https://api.unsplash.com/greyscale-photo-of-man-playing-spinet-piano-close-up-photo-F8E2tks5N04",
+            imageUrl: "https://source.unsplash.com/greyscale-photo-of-man-playing-spinet-piano-close-up-photo-F8E2tks5N04",
             url: "https://www.example.com/musiclessons",
             location: "789 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163307",
@@ -1325,7 +1325,7 @@ export const dummyServices: any[] = [
         {
             title: "Music Lessons",
             description: "Professional music lessons tailored to your skill level and musical interests. Whether you're a beginner or an advanced player, I'll help you develop your musical talents.",
-            imageUrl: "https://api.unsplash.com/greyscale-photo-of-man-playing-spinet-piano-close-up-photo-F8E2tks5N04",
+            imageUrl: "https://source.unsplash.com/greyscale-photo-of-man-playing-spinet-piano-close-up-photo-F8E2tks5N04",
             url: "https://www.example.com/musiclessons",
             location: "789 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163307",
@@ -1371,7 +1371,7 @@ export const dummyServices: any[] = [
         {
             title: "Better Moving Services",
             description: "Professional moving services to make your relocation hassle-free. From packing and loading to transportation and unpacking, we'll handle every aspect of your move with care and efficiency.",
-            imageUrl: "https://api.unsplash.com/man-carrying-cardboard-boxes-during-daytime-brizG9kR6qI",
+            imageUrl: "https://source.unsplash.com/man-carrying-cardboard-boxes-during-daytime-brizG9kR6qI",
             url: "https://www.example.com/movingservices",
             location: "123 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163308",
@@ -1414,7 +1414,7 @@ export const dummyServices: any[] = [
         {
             title: "Moving Services",
             description: "Professional moving services to make your relocation hassle-free. From packing and loading to transportation and unpacking, we'll handle every aspect of your move with care and efficiency.",
-            imageUrl: "https://api.unsplash.com/man-carrying-cardboard-boxes-during-daytime-brizG9kR6qI",
+            imageUrl: "https://source.unsplash.com/man-carrying-cardboard-boxes-during-daytime-brizG9kR6qI",
             url: "https://www.example.com/movingservices",
             location: "123 Elm Street, Anytown, USA",
             provider: "65fe9a5396346912b7163308",
@@ -1458,7 +1458,7 @@ export const dummyServices: any[] = [
         {
             title: "Courier Services",
             description: "Reliable courier services for fast and secure delivery of your packages and documents. Whether it's local or international, we'll ensure your items reach their destination safely and on time.",
-            imageUrl: "https://api.unsplash.com/man-in-brown-jacket-beside-car-KSQgzzn3dW0",
+            imageUrl: "https://source.unsplash.com/man-in-brown-jacket-beside-car-KSQgzzn3dW0",
             url: "https://www.example.com/courierservices",
             location: "456 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163309",
@@ -1502,7 +1502,7 @@ export const dummyServices: any[] = [
         {
             title: "Equipment Rental",
             description: "Flexible equipment rental services for your short-term and long-term needs. From construction equipment to party supplies, we have everything you need for your project or event.",
-            imageUrl: "https://api.unsplash.com/yellow-and-black-handle-hammer-and-screw-driver-Z3vFp7szCAY",
+            imageUrl: "https://source.unsplash.com/yellow-and-black-handle-hammer-and-screw-driver-Z3vFp7szCAY",
             url: "https://www.example.com/equipmentrental",
             location: "789 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163310",
@@ -1546,7 +1546,7 @@ export const dummyServices: any[] = [
         {
             title: "Driver Services",
             description: "Professional driver services for all your transportation needs. Whether it's a ride to the airport or a chauffeur for an event, our drivers provide safe and reliable transportation.",
-            imageUrl: "https://api.unsplash.com/driver-services-1",
+            imageUrl: "https://source.unsplash.com/driver-services-1",
             url: "https://www.example.com/driverservices",
             location: "1010 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163313",
@@ -1590,7 +1590,7 @@ export const dummyServices: any[] = [
         {
             title: "Catering Service",
             description: "Professional catering service providing delicious and customized menus for all your events. From corporate lunches to weddings, our experienced chefs will delight your guests with gourmet cuisine.",
-            imageUrl: "https://api.unsplash.com/person-holding-stainless-steel-fork-and-knife-kFEdwp6n_mI",
+            imageUrl: "https://source.unsplash.com/person-holding-stainless-steel-fork-and-knife-kFEdwp6n_mI",
             url: "https://www.example.com/cateringservice",
             location: "456 Oak Street, Anytown, USA",
             provider: "65fe9a5396346912b7163319",
@@ -1634,7 +1634,7 @@ export const dummyServices: any[] = [
         {
             title: "Pet Sitting Service",
             description: "Professional pet sitting service offering reliable care for your furry friends while you're away. Our experienced pet sitters provide personalized attention and ensure your pets are happy and comfortable in their own home.",
-            imageUrl: "https://api.unsplash.com/woman-hugging-a-dog-FtuJIuBbUhI",
+            imageUrl: "https://source.unsplash.com/woman-hugging-a-dog-FtuJIuBbUhI",
             url: "https://www.example.com/petsittingservice",
             location: "789 Cedar Street, Anytown, USA",
             provider: "65fe9a5396346912b7163320",
@@ -1680,7 +1680,7 @@ export const dummyServices: any[] = [
         {
             title: "Application Development",
             description: "Custom application development services tailored to your business needs. From mobile apps to web applications, we help bring your ideas to life with cutting-edge technology.",
-            imageUrl: "https://api.unsplash.com/a-person-wearing-a-mask-and-sitting-at-a-desk-xrWlGiv8m-4",
+            imageUrl: "https://source.unsplash.com/a-person-wearing-a-mask-and-sitting-at-a-desk-xrWlGiv8m-4",
             url: "https://www.example.com/applicationdevelopment",
             location: "123 Oak Street, Anycity, USA",
             provider: "65fe9a5396346912b7163328",
@@ -1718,7 +1718,7 @@ export const dummyServices: any[] = [
         {
             title: "Cake Baking Workshop",
             description: "Fun and interactive cake baking workshops for beginners and enthusiasts. Learn essential baking techniques, decorate cakes like a pro, and unleash your creativity!",
-            imageUrl: "https://api.unsplash.com/woman-in-white-and-red-long-sleeve-shirt-standing-in-kitchen-qoPrNU12Cg0",
+            imageUrl: "https://source.unsplash.com/woman-in-white-and-red-long-sleeve-shirt-standing-in-kitchen-qoPrNU12Cg0",
             url: "https://www.example.com/cakebakingworkshop",
             location: "456 Maple Avenue, Anycity, USA",
             provider: "65fe9a5396346912b7163329",
@@ -1756,7 +1756,7 @@ export const dummyServices: any[] = [
         {
             title: "Data Science Bootcamp",
             description: "Join our intensive data science bootcamp and become proficient in Python, machine learning, data visualization, and more. Gain hands-on experience through real-world projects and launch your career in data science.",
-            imageUrl: "https://api.unsplash.com/black-and-silver-laptop-computer-tR0jvlsmCuQ",
+            imageUrl: "https://source.unsplash.com/black-and-silver-laptop-computer-tR0jvlsmCuQ",
             url: "https://www.example.com/datasciencebootcamp",
             location: "789 Oak Lane, Anycity, USA",
             provider: "65fe9a5396346912b7163327",
@@ -1794,7 +1794,7 @@ export const dummyServices: any[] = [
         {
             title: "Photography Workshop",
             description: "Join our photography workshop and unleash your creativity behind the lens. Learn photography techniques, composition, lighting, and post-processing to capture stunning images.",
-            imageUrl: "https://api.unsplash.com/a-person-giving-a-presentation-0k2mMcdTOYU",
+            imageUrl: "https://source.unsplash.com/a-person-giving-a-presentation-0k2mMcdTOYU",
             url: "https://www.example.com/photographyworkshop",
             location: "456 Elm Street, Anycity, USA",
             provider: "65fe9a5396346912b7163326",
@@ -1832,7 +1832,7 @@ export const dummyServices: any[] = [
         {
             title: "Web Development Bootcamp",
             description: "Embark on a journey to become a proficient web developer. Our bootcamp covers HTML, CSS, JavaScript, and frameworks like React and Node.js. Build real-world projects and launch your career in web development.",
-            imageUrl: "https://api.unsplash.com/people-meeting-in-room-cw-cj_nFa14",
+            imageUrl: "https://source.unsplash.com/people-meeting-in-room-cw-cj_nFa14",
             url: "https://www.example.com/webdevelopmentbootcamp",
             location: "123 Maple Avenue, Anycity, USA",
             provider: "65fe9a5396346912b7163325",
@@ -1870,7 +1870,7 @@ export const dummyServices: any[] = [
         {
             title: "Graphic Design Workshop",
             description: "Unlock your creativity with our graphic design workshop. Learn graphic design principles, typography, color theory, and use industry-standard tools like Adobe Photoshop and Illustrator.",
-            imageUrl: "https://api.unsplash.com/selective-focus-photography-of-woman-and-man-using-macbook-pro-on-table-dWYU3i-mqEo",
+            imageUrl: "https://source.unsplash.com/selective-focus-photography-of-woman-and-man-using-macbook-pro-on-table-dWYU3i-mqEo",
             url: "https://www.example.com/graphicdesignworkshop",
             location: "789 Pine Street, Anycity, USA",
             provider: "65fe9a5396346912b7163324",
@@ -1910,7 +1910,7 @@ export const dummyServices: any[] = [
         {
             title: "General Physician",
             description: "Comprehensive medical care provided by board-certified general physicians. We offer diagnosis, treatment, and preventive care for a wide range of health conditions.",
-            imageUrl: "https://api.unsplash.com/person-in-blue-gloves-and-blue-denim-jeans-cEzMOp5FtV4",
+            imageUrl: "https://source.unsplash.com/person-in-blue-gloves-and-blue-denim-jeans-cEzMOp5FtV4",
             url: "https://www.example.com/generalphysician",
             location: "123 Elm Street, Anycity, USA",
             provider: "65fe9a5396346912b716332a",
@@ -1948,7 +1948,7 @@ export const dummyServices: any[] = [
         {
             title: "Dentist",
             description: "Comprehensive dental care provided by experienced dentists. We offer preventive, restorative, and cosmetic dental treatments to maintain your oral health.",
-            imageUrl: "https://api.unsplash.com/a-woman-in-a-white-coat-O13B7suRG4A",
+            imageUrl: "https://source.unsplash.com/a-woman-in-a-white-coat-O13B7suRG4A",
             url: "https://www.example.com/dentist",
             location: "456 Oak Lane, Anycity, USA",
             provider: "65fe9a5396346912b716332b",
@@ -1986,7 +1986,7 @@ export const dummyServices: any[] = [
         {
             title: "Pediatrician",
             description: "Specialized medical care for infants, children, and adolescents provided by pediatricians. We focus on promoting children's health, growth, and development.",
-            imageUrl: "https://api.unsplash.com/a-woman-is-talking-on-a-phone-to-a-baby-8nL4sGMz5vU",
+            imageUrl: "https://source.unsplash.com/a-woman-is-talking-on-a-phone-to-a-baby-8nL4sGMz5vU",
             url: "https://www.example.com/pediatrician",
             location: "789 Pine Street, Anycity, USA",
             provider: "65fe9a5396346912b716332c",
@@ -2024,7 +2024,7 @@ export const dummyServices: any[] = [
         {
             title: "Optometrist",
             description: "Comprehensive eye care provided by licensed optometrists. We offer vision testing, prescription eyewear, and management of various eye conditions.",
-            imageUrl: "https://api.unsplash.com/a-close-up-of-an-eye-chart-on-a-wall-jnRAF4U_V5A",
+            imageUrl: "https://source.unsplash.com/a-close-up-of-an-eye-chart-on-a-wall-jnRAF4U_V5A",
             url: "https://www.example.com/optometrist",
             location: "123 Maple Avenue, Anycity, USA",
             provider: "65fe9a5396346912b716332d",
@@ -2062,7 +2062,7 @@ export const dummyServices: any[] = [
         {
             title: "Dermatologist",
             description: "Specialized skin care provided by dermatologists. We offer diagnosis, treatment, and management of various skin conditions and diseases.",
-            imageUrl: "https://api.unsplash.com/woman-holding-pen-and-white-cotton-candy-l9VjM-Pp7-M",
+            imageUrl: "https://source.unsplash.com/woman-holding-pen-and-white-cotton-candy-l9VjM-Pp7-M",
             url: "https://www.example.com/dermatologist",
             location: "456 Elm Street, Anycity, USA",
             provider: "65fe9a5396346912b716332e",
@@ -2100,7 +2100,7 @@ export const dummyServices: any[] = [
         {
             title: "Chiropractor",
             description: "Holistic chiropractic care focused on spinal health and overall wellness. We offer adjustments, therapies, and lifestyle recommendations to alleviate pain and improve mobility.",
-            imageUrl: "https://api.unsplash.com/man-massaging-womans-body-a9pFSC8dTlo",
+            imageUrl: "https://source.unsplash.com/man-massaging-womans-body-a9pFSC8dTlo",
             url: "https://www.example.com/chiropractor",
             location: "789 Oak Lane, Anycity, USA",
             provider: "65fe9a5396346912b716332f",
@@ -2141,7 +2141,7 @@ export const dummyServices: any[] = [
         {
             title: "Guitar Tutor",
             description: "I am a guitar tutor and I teach guitar to people who want to learn guitar",
-            imageUrl: "https://api.unsplash.com/person-playing-guitar-fCEJGBzAkrU",
+            imageUrl: "https://source.unsplash.com/person-playing-guitar-fCEJGBzAkrU",
             url: "https://www.chrisdlake.com",
             location: "123",
             provider: "65fe9a5396346912b7163251",
@@ -2185,7 +2185,7 @@ export const dummyServices: any[] = [
         {
             title: "Cooking Classes",
             description: "Join our cooking classes to learn delicious recipes from around the world, taught by professional chefs.",
-            imageUrl: "https://api.unsplash.com/woman-in-black-and-white-striped-long-sleeve-shirt-holding-stainless-steel-bowl-UyEmagArOLY",
+            imageUrl: "https://source.unsplash.com/woman-in-black-and-white-striped-long-sleeve-shirt-holding-stainless-steel-bowl-UyEmagArOLY",
             url: "https://www.culinarydelights.com",
             location: "321 Elm Avenue, Anycity, USA",
             provider: "65fe9a5396346912b7163254",
@@ -2230,7 +2230,7 @@ export const dummyServices: any[] = [
         {
             title: "Language Tutor",
             description: "Experienced language tutor offering personalized lessons in Spanish, French, and German.",
-            imageUrl: "https://api.unsplash.com/woman-in-black-sleeveless-top-h6gCRTCxM7o",
+            imageUrl: "https://source.unsplash.com/woman-in-black-sleeveless-top-h6gCRTCxM7o",
             url: "https://www.languagemasters.com",
             location: "789 Maple Street, Anytown, USA",
             provider: "65fe9a5396346912b7163256",
@@ -2274,7 +2274,7 @@ export const dummyServices: any[] = [
         {
             title: "Photography Lessons",
             description: "Professional photography lessons tailored to your skill level, covering everything from basic camera techniques to advanced composition.",
-            imageUrl: "https://api.unsplash.com/man-on-top-of-mountain-taking-pictures-jg-6ARMiaPM",
+            imageUrl: "https://source.unsplash.com/man-on-top-of-mountain-taking-pictures-jg-6ARMiaPM",
             url: "https://www.shuttermasters.com",
             location: "123 Main Street, Anytown, USA",
             provider: "65fe9a5396346912b7163257",
@@ -2318,7 +2318,7 @@ export const dummyServices: any[] = [
         {
             title: "Yoga Instructor",
             description: "Certified yoga instructor offering personalized yoga sessions tailored to individual needs and goals.",
-            imageUrl: "https://api.unsplash.com/woman-wearing-black-shirt-sitting-on-green-yoga-mat-GpVak9-cL6E",
+            imageUrl: "https://source.unsplash.com/woman-wearing-black-shirt-sitting-on-green-yoga-mat-GpVak9-cL6E",
             url: "https://www.yogamasters.com",
             location: "456 Oak Street, Anycity, USA",
             provider: "65fe9a5396346912b7163258",
@@ -2362,7 +2362,7 @@ export const dummyServices: any[] = [
         {
             title: "Math Tutor",
             description: "Experienced math tutor offering personalized lessons in algebra, calculus, and geometry.",
-            imageUrl: "https://api.unsplash.com/woman-reading-book-sitting-on-chair-in-room-i5nMmbr8JYg",
+            imageUrl: "https://source.unsplash.com/woman-reading-book-sitting-on-chair-in-room-i5nMmbr8JYg",
             url: "https://www.mathgenius.com",
             location: "789 Pine Avenue, Anycity, USA",
             provider: "65fe9a5396346912b7163259",
