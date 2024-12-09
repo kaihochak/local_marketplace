@@ -6,8 +6,10 @@ const reservations = () => {
 
   return (
     <div className=''>
+        {/* CommonHeader component is used to display the title of the page and back button */}
         <CommonHeader title='My Reservations'/>
         <div className='flex-center pt-6'>
+          {/* Collection component to display a list of reservations */}
           <Collection 
               direction='vertical' 
               itemType='reservation' 

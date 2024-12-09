@@ -53,14 +53,14 @@ export async function POST(req: Request) {
 
   // Get the ID and type
   const { id } = evt.data;
-  const eventType = evt.type;
+  const serviceType = evt.type;
 
   /*
   * Handle the user changes in clerk webhook in our database, make sure they are synchronized
   */
 
   // Create a new user in OUR database, whenever a user is created in Clerk
-  if (eventType === 'user.created') {
+  if (serviceType === 'user.created') {
     // this is the data from clerk webhook
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
   }
 
   // // Update the user in OUR database, whenever a user is updated in Clerk
-  // if (eventType === 'user.updated') {
+  // if (serviceType === 'user.updated') {
   //   const { id, image_url, first_name, last_name, username } = evt.data;
   //   const user = {
   //     firstName: first_name,
@@ -102,7 +102,7 @@ export async function POST(req: Request) {
   // }
 
   // // Delete the user in OUR database, whenever a user is deleted in Clerk
-  // if (eventType === 'user.deleted') {
+  // if (serviceType === 'user.deleted') {
   //   const { id } = evt.data;
   //   const deletedUser = await deleteUser(id!);
   //   return NextResponse.json({ message: 'OK', user: deletedUser });

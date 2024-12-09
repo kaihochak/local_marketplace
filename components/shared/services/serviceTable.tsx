@@ -86,7 +86,7 @@ export function ServiceTable<TData, TValue>({
     const ConfirmReservation = () => {
         return (
 
-
+            
             <div>
                 <div className="flex items-center justify-center space-x-4 pb-5">
                     <div className="flex items-center justify-center w-8 h-8 bg-green-200 text-gray-700 rounded-full">1</div>
